@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+日期对象（Date）
+*/
+	var date=new Date();	//获取当前系统时间
+	document.write(date+"<br/>");
+	document.write("年:"+date.getFullYear()+"<br/>");
+	document.write("月:"+(date.getMonth()+1)+"<br/>");
+	document.write("日:"+date.getDate()+"<br/>");
+	document.write("时:"+date.getHours()+"<br/>");
+	document.write("分:"+date.getMinutes()+"<br/>");
+	document.write("秒:"+date.getSeconds()+"<br/>");
+	
+	
+	document.write("当前时间⌚️："+date.toLocaleString()+"<br/>");
+	
+	//yyyy-MM-dd hh:mm:ss
+	document.write("当前时间⌚️："+date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "
+			+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()+"<br/>");
+	
+	document.write("<hr/>");
+</script>
+</head>
+
+<body>
+	当前系统时间⌚️：<span id="time"></span>
+</body>
+<script type="text/javascript">
+/*显示当前系统时间*/
+	function getCurrenTime(){
+		//获取到当前系统时间
+		var date=new Date();
+		//把当前系统时间拼装成指定的格式
+		var timeInfo=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "
+				+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+		//找到span对象
+		var timeObj=document.getElementById("time");
+		//设置spin标签体的内容
+		timeObj.innerHTML=timeInfo.fontcolor("red");
+	}
+	getCurrenTime();
+	//定时方法
+	//window.setInterval(callback, delay);	//第一次参数是要调用的代码，第二个参数是每隔指定的毫秒数调用
+	window.setInterval("getCurrenTime()", 1000);
+	
+</script>
+</html>

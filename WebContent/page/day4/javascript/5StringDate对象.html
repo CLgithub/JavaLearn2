@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+创建字符串的方式：
+	方式一：
+		new String("内容");
+	方式二：
+		var str="内容";
+	
+字符串常用的方法：
+	anchor（）   	生产锚点
+	blink（）    	为元素添加blink标签 
+	charAt()    	返回指定索引位置处的字符。
+	charCodeAt()	返回一个整数，代表指定位置上字符的 Unicode 编码。
+	
+	fontcolor()  	把带有 COLOR 属性的一个 HTML <FONT> 标记放置在 String 对象中的文本两端
+	indexOf()    	返回 String 对象内第一次出现子字符串的字符位置
+	
+	italics()    	把 HTML <I> 标记放置在 String 对象中的文本两端。 //斜体
+	link()			把一个有 HREF 属性的 HTML 锚点放置在 String 对象中的文本两端。
+	
+	replace()		返回根据正则表达式进行文字替换后的字符串的复制
+	split()			切割  
+	
+	Substr()		截取子串
+	toUpperCase()	转大写
+	toLowerCase		转小写
+*/
+	/* var str1=new String("hello");
+	var str2=new String("hello");
+	document.write("两个字符串对象一样吗？"+(str1==str2)+"<br>");
+	document.write("两个字符串对象一样吗？"+(str1.toString()==str2.toString())+"<br>"); */
+	
+	/* <a name="锚点的名字"></a> */
+	document.write("第五章".anchor("five")+"<br/>");
+	document.write("第五章".blink()+"<br/>");
+	document.write("abc".charAt(1)+"<br/>");
+	document.write("abc".charCodeAt(1)+"<br/>");
+	
+	document.write("第六章".fontcolor("red")+"<br/>");	//给字符传添加一个font标签，然后设置它颜色
+	document.write("abchellohehehehello".indexOf("el")+"<br/>");
+	
+	document.write("第七章".italics()+"<br/>");
+	document.write("谷歌".link("https://www.google.com.hk/?hl=zh-cn")+"<br/>");		
+	
+	document.write("明天fdsaf".replace("f","x")+"<br/>");
+	document.write("<hr/>");
+	var str="我们-大家-好";
+	var arr=str.split("-");
+	for(var i=0;i<arr.length;i++){
+		document.write(arr[i]+"<br/>");
+	}
+	document.write("<hr/>");
+	document.write("abchellohSDFDhehFDehello中文".toUpperCase()+"<br/>");
+	document.write("abchellohSDFDhehFDehello中文".toLowerCase()+"<br/>");
+	
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
