@@ -53,48 +53,9 @@ javascript的函数要注意的细节：
 		//找到对应的标签对象，获得该对象的属性
 		var inputObj=document.getElementById("month");
 		var month=inputObj.value;
+		var arr=[31,27,31,30,31,30,31,31,30,31,30,31];
 		var days;
-		switch (parseInt(month)) {
-		case 1:
-			days=31;
-			break;
-		case 2:
-			days=27;
-			break;
-		case 3:
-			days=31;
-			break;
-		case 4:
-			days=30;
-			break;
-		case 5:
-			days=31;
-			break;
-		case 6:
-			days=30;
-			break;
-		case 7:
-			days=31;
-			break;
-		case 8:
-			days=31;
-			break;
-		case 9:
-			days=30;
-			break;
-		case 10:
-			days=31;
-			break;
-		case 11:
-			days=30;
-			break;
-		case 12:
-			days=31;
-			break;
-		default:
-			days="输入有误";
-			break;
-		}
+		days=arr[parseInt(month)-1]!=undefined?arr[parseInt(month)-1]:"输入有误";
 		alert(days);
 	}
 
