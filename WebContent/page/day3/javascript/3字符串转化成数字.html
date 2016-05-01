@@ -4,8 +4,8 @@
 <script type="text/javascript">
 /*
  字符串转数字
- 	parseInt()
- 	parseFloat()
+ 	parseInt()	可以把一个字符串转换成一个整数
+ 	parseFloat()	可以把一个字符串转换成一个小数
  	
  	
  
@@ -25,9 +25,23 @@
 //	document.write("a的数据类型："+typeof a+"<br>");
 	var b=parseInt(a);
 //	document.write("b的数据类型："+typeof b);
-	document.write("b="+b);
+	document.write("b="+b+"<br/>");
 
+	var e="3.14";
+	e="10";		//如果一个字符串是整数，那么使用parseFloat还是转换成整数
+	e="100a";
+	e="abc123";
+	document.write("e="+parseFloat(e)+"<br>");
 
+/*javascript提供一个IsNaN的方法让我们判断该字符串是否是 不是一个数字
+  is not a number 
+  不是一个数字返回true，是一个数字返回false
+ */
+ 	
+ 	document.write("123不是一个数字吗？"+isNaN("123")+"<br>");
+ 	
+ 	document.write("acd123不是一个数字吗？"+isNaN("acd123")+"<br>");
+	
 
 </script>
 <meta charset="UTF-8">
