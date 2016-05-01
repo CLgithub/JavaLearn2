@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+/*
+ 字符串转数字
+ 	parseInt()
+ 	parseFloat()
+ 	
+ 	
+ 
+ 
+ */
+	var a="12";
+	a=12.74;
+	a="123abc456";	//如果接收的字符串含有非数字的字符，那么会从字符串的首个字符开始寻找，一直找到非数字字符为止，然后使用前面字符转换为数字
+	a="a123abc456";//如果一开始就每找到数字字符 那么就是NaN	not a number
+	a="012";		//如果是0开头		就先去除0，再转换			12
+	a="0x10";		//如果是0x开头		会把字符串中的内容当成16进制的数字进行处理			12
+	
+	
+	
+	
+	
+//	document.write("a的数据类型："+typeof a+"<br>");
+	var b=parseInt(a);
+//	document.write("b的数据类型："+typeof b);
+	document.write("b="+b);
+
+
+
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
