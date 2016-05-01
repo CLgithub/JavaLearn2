@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+/*
+函数：
+函数的定义格式：
+	function 函数名(行参列表){
+		函数体;
+	}
+	
+javascript的函数要注意的细节：
+	1.在 javascript中函数 定义形参时是不能使用var关键字声明变量 的。
+	2.在javascript中 的函数是没有 返回值类型 的，如果函数需要返回数据给调用者，直接返回即可，如果不需要返回则不返回。
+	3.在javascript中，是没有方法重载的，后定义的函数会直接覆盖前面定义的同名函数
+	4.在javascript中任何的函数内部都隐式的维护了一个arguments（数组）的对象，给函数 传递数据的时候，是会先传递到arguments对象中，
+	然后再由arguments对象分配数据给形参的。
+	
+练习：
+*/
+
+	//需求：定义一个函数做两个参数的加法功能。
+	function add(a,b){
+		var sum=a+b;
+		document.write("两个参数的总和："+sum);
+		//return sum;
+	}
+	function add(a,b,c){
+		var sum=a+b+c;
+		document.write("三个参数的总和："+sum);
+	}
+	function add(){
+		document.write("长度："+arguments.length+"<br>");
+		for(var i=0;i<arguments.length;i++){
+			document.write(arguments[i]+",");
+		}
+		document.write("<br>");
+		
+		/* var sum=0;
+		document.write("3三个参数的总和："+sum); */
+	}
+	
+	//调用函数
+	/* var result=add(1,2);
+	document.write("结果："+result); */
+	add(1,2,4,"ad");
+	document.write("<hr>");
+
+</script>
+<script type="text/javascript">
+	
+	function showDay() {
+		//找到对应的标签对象，获得该对象的属性
+		var inputObj=document.getElementById("month");
+		var month=inputObj.value;
+		var days;
+		switch (parseInt(month)) {
+		case 1:
+			days=31;
+			break;
+		case 2:
+			days=27;
+			break;
+		case 3:
+			days=31;
+			break;
+		case 4:
+			days=30;
+			break;
+		case 5:
+			days=31;
+			break;
+		case 6:
+			days=30;
+			break;
+		case 7:
+			days=31;
+			break;
+		case 8:
+			days=31;
+			break;
+		case 9:
+			days=30;
+			break;
+		case 10:
+			days=31;
+			break;
+		case 11:
+			days=30;
+			break;
+		case 12:
+			days=31;
+			break;
+		default:
+			days="输入有误";
+			break;
+		}
+		alert(days);
+	}
+
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	月份：<input type="text" id="month" /><input type="button" value="查询" onclick="showDay()" />
+</body>
+</html>
