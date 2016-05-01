@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+/*
+ 控制流程语句
+ 	if语句
+选择语句： 
+	switch语句
+	特殊之处：
+		1. 	在javascript中case后面可以跟常量与变量还可以跟表达式。
+		循环语句：
+		while
+			格式：
+				while(判断的条件){
+					循环体内容	
+				}
+ 	var count = 0 ; 
+	while(count<5){
+		document.write("hello world<br/>");
+		count++;
+	}
+ 需求： 计算1~100的总和。
+ var num = 1;
+	var result = 0;
+	while(num<=100){
+		result +=num;	
+		num++;
+	}
+	document.write("结果："+result);
+ 需求；计算1~100奇数的总和。
+	var num = 1;
+	var result = 0;
+	do{
+		if(num%2!=0){
+			result +=num;
+		}
+		num++;
+	}while(num<=100);
+	document.write("结果："+result);
+ 需求；计算1~100偶数的总和。
+	 for循环语句:
+		格式：
+			for(初始化语句; 判断的条件 ; 循环后的语句){
+				循环体语句；	
+			}
+ 	var result = 0 ; 	
+	for(var i =  1 ; i<=100 ; i++){
+		if(i%2==0){
+			result +=i;
+		}
+	}	
+	document.write("结果："+result);
+ 
+ */
+/*
+ 练习：
+ 1，显示“*”为正方形，5行5列。
+ 2，显示“*”为直角三角型，5行，第1行有1个“*”，第2行有2个“*”……
+ 3，显示乘法口诀。
+	1*1=1
+	1*2=2 2*2=4
+	....
+	1*9=9 2*9=18 ...
+ */
+	for(var i=0;i<5;i++){
+		for(var j=0;j<5;j++){
+			document.write("* ");
+		}
+		document.write("<br/>");
+	}
+ 	document.write("<hr/>");
+ 	for(var i=0;i<5;i++){
+		for(var j=0;j<i+1;j++){
+			document.write("* ");
+		}
+		document.write("<br/>");
+	}
+ 	document.write("<hr/>");
+ 	for(var i=1;i<=9;i++){
+		for(var j=1;j<=i;j++){
+			document.write(j+"*"+i+"="+(j*i+"&nbsp;|"));
+		}
+		document.write("<br/>");
+	}
+</script>
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

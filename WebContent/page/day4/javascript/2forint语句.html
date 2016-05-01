@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+/*
+ for-in语句：
+ 	格式：
+ 		for(var 变量名 in 遍历的目标){
+ 		}
+ for-in语句的作用：
+ 	1.遍历数组的元素	注意：使用for－in语句，遍历数组的时候，遍历出来的是数组的下标
+ 	2.可以用于遍历对象的所有属性数据	注意：使用for-in语句遍历出来的是所有属性的属性名
+ */
+ 
+	var arr=[12,13,19,25,16];
+//	遍历数组的元素
+	/* for(var i in arr){
+ 		document.write(arr[i]+",");
+	}
+	for(var index = 0 ; index<arr.length ; index++){
+		document.write(arr[index]+",");	
+	} */
+ 	
+ 	//遍历对象的所有属性数据
+ 	/* function Person(id,name){
+ 		this.id=id;
+ 		this.name=name;
+ 	}
+ //创建一个对象
+ 	var p1=new Person(110,"小明");
+ 	//for-in遍历对象的所有属性
+ 	for(var p in p1){
+ 		document.write(p1[p]+",");	
+ 	} */
+ 	
+ 	
+ 	
+ 
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

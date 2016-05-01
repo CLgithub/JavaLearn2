@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+/*
+ with语句：有了 With 语句，在存取对象属性和调用方法时就不用重复指定对象。
+	格式：
+		with(对象){
+		}
+ 
+ 
+ 
+*/
+ 	
+ 	/* with(document){
+		for(var i=0;i<5;i++){
+			for(var j=0;j<i+1;j++){
+				write("* ");
+			}
+			write("<br/>");
+		}
+		write("<hr/>");
+	} */
+
+	function Person(id,name){
+ 		this.id=id;
+ 		this.name=name;
+ 	}
+ 	var p1=new Person(110,"小明");
+ 	with(p1){
+	 	document.write(id+","+name);	
+ 	}
+
+
+
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
