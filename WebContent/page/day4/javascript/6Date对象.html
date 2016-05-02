@@ -24,14 +24,8 @@
 			+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()+"<br/>");
 	
 	document.write("<hr/>");
-</script>
-</head>
-
-<body>
-	当前系统时间⌚️：<span id="time"></span>
-</body>
-<script type="text/javascript">
-/*显示当前系统时间*/
+	
+	/*显示当前系统时间*/
 	function getCurrenTime(){
 		//获取到当前系统时间
 		var date=new Date();
@@ -43,10 +37,21 @@
 		//设置spin标签体的内容
 		timeObj.innerHTML=timeInfo.fontcolor("red");
 	}
-	getCurrenTime();
+	
+	function showTime(){
+		getCurrenTime();
+	}
 	//定时方法
 	//window.setInterval(callback, delay);	//第一次参数是要调用的代码，第二个参数是每隔指定的毫秒数调用
 	window.setInterval("getCurrenTime()", 1000);
+</script>
+</head>
+
+<body onload="showTime()">
+	当前系统时间⌚️：<span id="time"></span>
+</body>
+<script type="text/javascript">
+
 	
 </script>
 </html>

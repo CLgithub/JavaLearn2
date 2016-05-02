@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+常用的事件：
+	鼠标点击相关：
+		onclick 在用户用鼠标左键单击对象时触发。 
+		ondblclick 当用户双击对象时触发。 
+		onmousedown 当用户用任何鼠标按钮单击对象时触发。 	按下
+		onmouseup 当用户在鼠标位于对象之上时释放鼠标按钮时触发。 		松开
+
+	鼠标移动相关：
+		onmouseout  当用户将鼠标指针移出对象边界时触发。 
+		onmousemove 当用户将鼠标划过对象时触发。 
+
+	焦点相关的：
+		onblur 在对象失去输入焦点时触发。 
+		onfocus 当对象获得焦点时触发。
+
+	其他：
+		onchange 当对象或选中区的内容改变时触发。 
+		onload 在浏览器完成对象的装载后立即触发。 
+		onsubmit 当表单将要被提交时触发。 
+*/
+
+	function clickTest() {
+		alert("单击");
+	}
+	function dblclickTest() {
+		alert("双击");
+	}
+	
+	function getTime(){
+		//获取到当前系统时间
+		var date=new Date();
+		//把当前系统时间拼装成指定的格式
+		var timeInfo=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "
+				+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+		return timeInfo;
+	}
+	
+	function showTime() {
+		var timeInfo=this.getTime();
+		var timeSpan=document.getElementById("timeSpan");
+		timeSpan.innerHTML=timeInfo.fontcolor("red");
+		
+//		window.setInterval("getTime()", 1000);
+	}
+	function hideTime() {
+		var timeSpan=document.getElementById("timeSpan");
+		timeSpan.innerHTML="";
+	}
+	
+	function showUS() {
+		var userSpan=document.getElementById("userSpan");
+		userSpan.innerHTML="用户名由6个英文字面组成".fontcolor("red");
+	}
+	
+	function hideUS() {
+		var userSpan=document.getElementById("userSpan");
+		userSpan.innerHTML="";
+	}
+	
+	function mychane() {
+		alert("城市改变了");
+	}
+
+
+</script>
+</head>
+<body>
+	<input type="button" onclick="clickTest()" value="单击" />
+	<input type="button" ondblclick="dblclickTest()" value="双击" />
+	<hr>
+	<a id="time" onmousemove="showTime()" onmouseout="hideTime()" href="#">查看系统事件：</a>
+		<span id="timeSpan"></span>
+	<hr>
+	用户名：<input type="text" id="userInput" onfocus="showUS()" onblur="hideUS()"  ><span id="userSpan"></span>
+	密码：<input type="password" id="passInput"  >
+	<hr>
+	选择：<select onchange="mychane()">
+			<option>广州</option>
+			<option>深圳</option>
+			<option>上海</option>
+		</select>
+</body>
+</html>

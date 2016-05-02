@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+</script>
+</head>
+<!-- <body onload="ready()" > -->
+<body id="body" >
+
+</body>
+<script type="text/javascript">
+/*
+window事件：
+	注册事件的方式：
+		方式一：直接在html元素上注册
+		方式二：可以使用js代码先找到对于的对象，再注册	推荐使用
+		
+*/
+
+	//方式一
+	/* function ready() {
+		alert("body被加载完毕1");
+	} */ 
+
+	//方式二
+	var bodyNode=document.getElementById("body");
+	bodyNode.onload=function(){
+		alert("body被加载完毕");
+	}
+
+</script>
+</html>
