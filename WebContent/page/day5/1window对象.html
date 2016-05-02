@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+javascript组成部分：
+	EMCAScript(基本语法)
+	BOM(Browser Object Model)	浏览器对象模型
+		浏览器对象模型中，把浏览器的各个部分都使用了对象进行描述，如果我们要操作浏览器
+		的一些属性，就可以通过浏览器对象模型操作
+		
+		比如：
+		window		代表了一个新开的窗口对象
+		location	代表地址栏对象
+		screen		代表整个屏幕对象
+		
+	window对象常用方法：
+		open()		打开一个新的窗口
+		resizeBy()	改变窗口当前的位置缩放指定的x和y的偏移量
+		resizeTo()	将窗口的大些改变为指定的宽度和高度
+		moveBy()	相对于原来的窗口移动指定的x，y值
+		moveTo()	相对于屏幕左上角指定窗口位置
+		setInterval()	每经过指定到毫秒数就会执行指定到代码
+		clearInterval()			根据任务id取消定时任务
+		setTimeout()			经过指定到毫秒数就会执行指定到代码
+	
+注意：使用	window的任何属性和对象window可以省略不写
+		
+	DOM
+*/
+	
+	function showAd() {
+		for(var i=0;i<1;i++){
+			window.open("https://www.google.com.hk/","_blank",
+					"height=400px,width=600px,toolbar=no,location=no,top=200px")
+		}
+	}
+	function small() {
+		window.resizeBy(-100, -50);	//想对于原本的窗口指定的大小
+	}
+	function bian() {
+		window.resizeTo(800, 500);
+	}
+	function moveBy1() {
+		window.moveBy(80, 50);
+	}
+	function moveBy2() {
+		window.moveBy(50, 0);
+		/* window.moveBy(0, 50);
+		window.moveBy(－50, 0);
+		window.moveBy(0, －50);*/
+	} 
+	function moveTo1() {
+		window.moveTo(80, 50);
+	}
+	
+	window.setTimeout("showAd()", 2000);
+
+	/* var id=window.setInterval("moveBy2()", 500);
+	function clear1() {
+		window.clearInterval(id);
+	} */
+	
+	
+
+</script>
+</head>
+<body>
+	<input type="button" onclick="showAd()" value="下载电影"><br>
+	<input type="button" onclick="small()" value="变小">
+	<input type="button" onclick="bian()" value="变"><br>
+	<input type="button" onclick="moveBy1()" value="移动">
+	<input type="button" onclick="moveTo1()" value="移动到">
+	<!-- <input type="button" onclick="moveBy2()" value="震动"> -->
+	<input type="button" onclick="clear1()" value="取消定时任务">
+</body>
+</html>
