@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+自定义对象：
+	在javascript没有类的概念，只要又函数即可创建对象。
+	自定义对象的方式
+	
+*/
+	//	方式1:使用无参函数创建对象
+		/* function Person(){
+		}
+	
+		var p=new Person();		//创建了一个person对象
+		p.id=110;
+		p.name="小明";
+		p.say=function (){
+			alert("这个人的名字叫"+this.name);
+		}
+		*/
+			
+			
+	//	方式2:使用待参的函数创建函数
+		/* function Person(id,name){
+			this.id=id;
+			this.name=name;
+			this.say=function(){
+				alert(name+"呵呵");
+			}
+		}
+		
+		var p=new Person(110,"小红");
+		var p2=new Person(220,"小黑"); */
+		
+	// 方式3:使用javascript函数创建对象
+	//	function Object(){}	javascript里又这样一个函数
+		/* var p=new Object();
+		p.id=110;
+		p.name="小明";
+		p.say=function (){
+			alert("这个人的名字叫"+this.name);
+		} */
+		
+		
+	//方式4:使用字面量的方式创建
+		/* var p={
+			id:110,
+			name:"小白",
+			say:function(){
+				alert("这个人的名字叫"+this.name);
+			}
+		}
+		
+		document.write("id："+p.id+"，姓名："+p.name+"<br/>");
+		p.say(); */
+
+	//	window.setInterval("p.say()", 10);
+</script>
+
+<script src="js1.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var arr=[34,21,9,1,50,24];
+	var max=arrayTool.getMax(arr)
+	var index=arrayTool.getIndex(arr, 1)
+	
+	
+	
+	document.write(max+"<br/>");
+	document.write(index+"<br/>");
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
