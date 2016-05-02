@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+	通过html元素的标签属性找节点。
+		document.getElementById("html元素的id") 
+		document.getElementsByTagName("标签名") 
+		document.getElementsByName("html元素的name")
+*/
+	
+	function showText() {
+		var note=document.getElementById("text2");		//根据id找到元素
+	//	var notes=document.getElementsByTagName("input");
+		note.value="设置文本";
+		
+	}
+	//innerHTML是用于设置标签体的内容的，value是用于设置标签的value属性值
+	
+	
+	function showImg() {
+		var imgs=document.getElementsByTagName("img");	//根据标签名获取说有的标签对象
+		for(var i=0;i<imgs.length;i++){
+			imgs[i].src="https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png";
+			imgs[i].width="100";
+			imgs[i].height="35";
+		}		
+	}
+	
+	function showDiv(){
+		var divs=document.getElementsByName("info");
+		for(var i=0;i<divs.length;i++){
+			divs[i].innerHTML="div内容".fontcolor("red");
+		}
+	}
+
+</script>
+</head>
+<body>
+	<input type="text" id="text1" value="text1">
+	<input type="text" id="text2" value="text2">
+	<br>
+	<input type="button" onclick="showText()" value="设置文本">
+	<hr/>
+	<input type="button" onclick="showImg()" value="设置图片">
+	<br>
+	<img alt="" src="" >
+	<img alt="" src="" >
+	<img alt="" src="" >
+	<hr/>
+	<input type="button" onclick="showDiv()" value="设置div内容">
+	<div name="info"></div>
+	<div name="info"></div>
+	<div name="info"></div>
+</body>
+</html>
