@@ -16,8 +16,8 @@ import java.lang.reflect.Method;
  */
 public class Demo2 {
 	public static void main(String[] args) throws Exception {
-//		testProperty();
-		getAllProperty();
+		testProperty();
+//		getAllProperty();
 	}
 	
 	public static void getAllProperty() throws Exception {
