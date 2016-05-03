@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*	
+ 	插入目标元素的位置	 
+	elt.insertBefore(newNode, oldNode);			添加到elt中，child之前。
+	注意： elt必须是oldNode的直接父节点。
+	elt.removeChild(child)					删除指定的子节点
+	注意： elt必须是child的直接父节点。
+*/
+	//利用table方法添加
+	function add1() {
+		var tableObject=document.getElementsByTagName("table")[0];
+		var rowNumber=tableObject.rows.length;
+		var rowN=tableObject.insertRow(rowNumber);
+		var lie1= rowN.insertCell(0);
+		var lie2=rowN.insertCell(1);
+		lie1.innerHTML='<input type="file" />';
+		lie2.innerHTML='<a href="#" onclick="deleteT1(this)">'+rowNumber+'删除附件</a>'; 
+	}
+	function deleteT1(a) {
+		var i=a.parentNode.parentNode.rowIndex;
+		var tableObject=document.getElementsByTagName("table")[0];
+		tableObject.deleteRow(i);
+	}
+	
+	//利用createElement添加
+	function add2(){
+	//	alert(a.parentNode.parentNode.nodeName);
+		var tbodyObject=document.getElementsByTagName("tbody")[0];
+		//创建tr
+		var trNode=document.createElement("tr");
+		//创建td
+		var tdNode1=document.createElement("td");
+		var tdNode2=document.createElement("td");
+		tdNode1.innerHTML='<input type="file" />';
+		tdNode2.innerHTML='<a href="#" onclick="deleteT2(this)">删除附件</a>'; 
+		trNode.appendChild(tdNode1);
+		trNode.appendChild(tdNode2);
+		tbodyObject.insertBefore(trNode,document.getElementById("lastRow")); 
+	}
+	function deleteT2(a) {
+		var trNode=a.parentNode.parentNode;
+		var tbodyObject=document.getElementsByTagName("tbody")[0];
+		tbodyObject.removeChild(trNode);
+	}
+
+</script>
+</head>
+<body>
+	<table border="1" >
+		<tr id="lastRow">
+			<td><input type="button" value="添加附件" onclick="add1()" /></td><td></td>
+		</tr>
+	</table>
+</body>
+
+</html>

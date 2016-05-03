@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+
+*/
+	
+	function showCity(sf) {
+		//用一个二维数组存储所有城市
+	//	var citys=["['城市']","['广州'，'佛山','中山']","['长沙','衡阳','岳阳']","['南宁','桂林','柳州']"];
+		var citys = [["城市"],["广州","佛山","湛江","中山"],["长沙","衡阳","岳阳","郴州"],["南宁","桂林","贵港","柳州"]];
+		var selected=sf.selectedIndex;
+		var svalue=sf.options[selected].value;
+	//	alert(selected);
+		var cityDatas=citys[selected];
+		//找到city节点
+		var cityS=document.getElementById("city");
+		
+		//先清空city框所有option
+		/* var children = cityS.childNodes;
+		for(var i = 0;i<children.length; ){
+			cityS.removeChild(children[i]);
+		} */
+		
+		//设置options的个数。
+		cityS.options.length = 0 ;
+		
+		for(var i=0;i<cityDatas.length;i++){
+			var y=document.createElement('option');
+			y.text=cityDatas[i];
+			cityS.appendChild(y);
+		}
+		
+	}
+</script>
+</head>
+<body>
+	省份：<select onchange="showCity(this)" >
+			<option>省份</option>
+			<option>广东</option>
+			<option>湖南</option>
+			<option>广西</option>
+		</select>
+	城市:<select id="city">
+			<option>城市</option>
+		</select>
+	
+</body>
+</html>
