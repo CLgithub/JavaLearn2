@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="button" onclick="add()" value="添加" >
+</body>
+<script type="text/javascript">
+/*
+创建节点于插入节点，设置节点的属性
+	document.createElement("标签名")		创建新元素节点
+	elt.setAttribute("属性名", "属性值")	设置属性
+	elt.appendChild(e)						添加元素到elt中最后的位置
+
+*/
+	var num=1;
+	function add() {
+		//设置body节点
+		
+		var inputNode=document.createElement("input");	//创建一个指定标签名字的节点
+		//设置节点的属性
+		inputNode.setAttribute("type", "button");
+		inputNode.setAttribute("value", "🔘"+num++);
+		var bodyNode=document.getElementsByTagName("body")[0];
+		bodyNode.appendChild(inputNode);	//给bodyNode添加子节点
+	}
+
+
+</script>
+</html>
