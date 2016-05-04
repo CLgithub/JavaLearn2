@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function read(){
+		 yLoad();
+		 mLoad();
+	}
+	function yLoad() {
+		//找到年节点
+		var yNode=document.getElementById("y");
+		//清理年节点
+		yNode.options.length=1;
+		//给年节电添加选项
+		var date=new Date();//得到今天的日期
+		for(var y=1901;y<=date.getFullYear();y++){
+		//	alert(y);
+		 	var optionNode=document.createElement("option");
+			optionNode.innerHTML=y;
+			yNode.appendChild(optionNode);
+		}
+	}
+	function mLoad(){
+		var mNode=document.getElementById("m");
+		for(var m=1;m<=12;m++){
+			var optionNode=document.createElement("option");
+			optionNode.innerHTML=m;
+			mNode.appendChild(optionNode);
+		}
+	}
+	
+	
+	
+	function yChange(){
+		//得到所选择的年
+		var yNode=document.getElementById("y");
+		//得到所选择的月
+		var mNode=document.getElementById("m");
+		var selected=mNode.selectedIndex;
+		var m=mNode.options[selected].value;
+		if(m==2){//如果是二月，就重新加载日期
+			mChange();
+		}
+	}
+	
+	function mChange() {
+		//得到所选择的年
+		var yNode=document.getElementById("y");
+		var selectedy=yNode.selectedIndex;
+		var y=yNode.options[selectedy].value;
+		//得到所选择的月
+		var mNode=document.getElementById("m");
+		var selected=mNode.selectedIndex;
+		var m=mNode.options[selected].value;
+		//根据月和年加载日期
+		var d=0;
+		if((m==1)||(m==3)||(m==5)||(m==7)||(m==8)||(m==10)||(m==12)){
+			d=31;
+		}else if((m==4)||(m==6)||(m==9)||(m==11)){
+			d=30;
+		}else if(m==2){
+			if((y%4)==0){//润
+				d=29;
+			}else {
+				d=28;
+			}
+		}
+		
+		var dNode=document.getElementById("d");
+		//清理日期节电
+		dNode.options.length=0;
+		//加载日期框
+		for(var day=1;day<=d;day++){
+			var optionNode=document.createElement("option");
+			optionNode.innerHTML=day;
+			dNode.appendChild(optionNode);
+		}
+		
+	}
+	
+</script>
+</head>
+<body onload="read()">
+	时间：
+			<select id="y" onchange="yChange()">
+				<option>1900</option>
+			</select>年
+			<select id="m" onchange="mChange()"></select>月
+			<select id="d" onchange="dChange()"></select>日
+</body>
+</html>
