@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//检查用户名
+	function checkName(){
+		var userNameNode=document.getElementById("userName");
+		var userName=userNameNode.value;
+		var reg1=/^[a-zA-Z0-9]{1,15}$/i;	//只能有字母和数字组成，长度大于0不超15个字符
+		var spanNode=document.getElementById("userId");
+		if(reg1.test(userName)){
+			spanNode.innerHTML="✅".fontcolor("green");
+			return true;
+		}else{
+			spanNode.innerHTML="用户名不能为空,且只能有字母和数字组成，长度不能超过15".fontcolor("red");
+			return false;
+		}
+	}
+	//检查密码
+	function checkPass(){
+		var pwd=document.getElementById("pwd").value;
+		var reg=/^.{6,}$/i;				//至少6位
+		var pwdspan=document.getElementById("passId");
+		if(reg.test(pwd)){
+			pwdspan.innerHTML="✅".fontcolor("green");
+			return true;
+		}else{
+			pwdspan.innerHTML="密码至少6位".fontcolor("red");
+			return false;
+		}
+	}
+	//检查确认密码
+	function ensurepass(){
+		if(checkPass()){
+			var pwd=document.getElementById("pwd").value;
+			var ensurepwd=document.getElementById("ensurepwd").value;
+			var ensurespan=document.getElementById("ensure");
+			if(pwd==ensurepwd){
+				ensurespan.innerHTML="✅".fontcolor("green");
+				return true;
+			}else{
+				ensurespan.innerHTML="两次输入的密码不符".fontcolor("red");
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	//检查邮箱
+	function checkEmail() {
+		var email=document.getElementById("email").value;
+	//	var reg1=/^[a-zA-Z1-9]\\w+@[a-zA-Z0-9]{2,}(\\.(com|cn|net)){1,2}$/i
+		var reg1=/^[a-zA-Z1-9]\w+@[a-zA-Z0-9]+(\.[a-z]{2,3}){1,2}$/i;						//不是写在字符串里，所有只有一个\
+		var emailspanNode=document.getElementById("emailspan");
+		if(reg1.test(email)){
+			emailspanNode.innerHTML="✅".fontcolor("green");
+			return true;
+		}else{
+			emailspanNode.innerHTML="邮箱格式不符".fontcolor("red");
+			return false;
+		}
+	}
+	//检查城市
+	function checkCity(){
+		var reg4=/^[^0]$/i;				//非0
+		var cityNode=document.getElementById("city");
+		var cityspan=document.getElementById("cityspan");
+		if(reg4.test(cityNode.selectedIndex)){
+			cityspan.innerHTML="✅".fontcolor("green");
+			return true;
+		}else{
+			cityspan.innerHTML="请选择城市".fontcolor("red");
+			return false;
+		}
+	}
+	//检查自我介绍
+	function checkMyInfo(){
+		var myInfo=document.getElementById("myInfo").value;
+		var reg=/^.{1,50}$/i				//长度1至50任意字符
+		var myInfospan=document.getElementById("myInfospan");
+		if(reg.test(myInfo)){
+			myInfospan.innerHTML="✅".fontcolor("green");
+			return true;
+		}else{
+			myInfospan.innerHTML="请输入自我介绍，长度不能超过50".fontcolor("red");
+			return false;
+		}
+	}
+	/*
+	表单提交的时候会提交onsubmit事件，如果onsubmit return true，允许提交，return false 不允许提交
+	*/
+	function checkAll() {
+		var userName=checkName();
+	 	var pass=checkPass();
+	 	var epass=ensurepass();
+		var email=checkEmail();
+		var city=checkCity();
+		var myInfo=checkMyInfo(); 
+		/* alert(userName);
+		alert(pass);
+		alert(email);
+		alert(city);
+		alert(myInfo);  */
+		if(userName&&pass&&epass&&email&&city&&myInfo){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
+</script>
+</head>
+<body>
+<form action="success.html" method="get" onsubmit="return checkAll()" > <!--如果表单提交时候触发的方法返回是false,那么该表单不允许提交，如果返回的是true允许提交 -->
+			<table border="1px" width="50%" align="center" cellspacing="0px" cellpadding="3px">
+				<tr>
+					<td width="25%">姓名:</td>
+					<td>
+						<input type="text" name="userName" id="userName" onblur="checkName()"/>
+						<font color="red">*</font>
+                        <span id="userId"></span>
+					</td>
+				</tr>
+				<tr>
+					<td >密码:</td><td>
+						<input type="password"  name="pwd" id="pwd" onblur="checkPass()"/>
+						<font color="red">*</font>
+                        <span id="passId"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>确认密码:</td><td>
+						<input type="password" name="ensurepwd" id="ensurepwd" onblur="ensurepass()" />	
+						<font color="red">*</font>
+						<span id="ensure"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>邮箱</td><td>
+						<input type="text" name="email" id="email" onblur="checkEmail()"/>
+						<font color="red">*</font>
+                		<span id="emailspan"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>性别</td><td>
+						<input type="radio" checked="ture" name="gender" id="male" value="male"/>
+					男
+						<input type="radio" name="gender" value="female"/>
+					女</td>
+				</tr>
+				<tr>
+					<td>爱好:</td><td>
+						<input type="checkbox"  name="like" />
+					eat
+						<input type="checkbox" name="like" />
+					sleep
+						<input type="checkbox" name="like"/>
+					play  
+                    <span id="hobbySpan"></span>
+                    </td>
+				</tr>
+				<tr>
+					<td>城市</td><td>
+					<select name="city" id="city" onblur="checkCity()">
+						<option value=""> 请选择</option>
+						<option value="bj"> 北京 </option>
+						<option value="gz"> 广州 </option>
+						<option value="sh"> 上海 </option>
+					</select>
+					<span id="cityspan"></span>
+                    <font color="red">*</font>
+                    </td>
+				</tr>
+				<tr>
+					<td>自我介绍</td><td>
+					<textarea cols="15" rows="5"  name="myInfo" id="myInfo" onblur="checkMyInfo()"></textarea>
+					<font color="red">*</font>
+					<span id="myInfospan"></span>
+					</td>
+				</tr>
+				<tr align="center">
+					<td colspan="2"><!--提交按钮-->
+					<input type="submit"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+</body>
+</html>
