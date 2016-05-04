@@ -3,6 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function checkAll(){
+		var userNameNode=document.getElementById("userName");
+		var pwdNode=document.getElementById("pwd");
+		var ensurepwdNode=document.getElementById("ensurepwd");
+		var emailNode=document.getElementById("email");
+		var cityNode=document.getElementById("city");
+		var myInfoNode=document.getElementById("myInfo");
+		
+		var reg1=/^[a-zA-Z0-9]{1,15}$/i;	//只能有字母和数字组成，长度大于0不超15个字符
+		var reg2=/^.{6,}$/i;				//至少6位
+	//	var reg3=/^[a-zA-Z1-9]\\w+@$/i;		//邮箱，xxx@xxx.xx
+		var reg4=/^[^0]$/i;				//非0
+		var reg5=/^.{1,50}$/i				//长度1至50任意字符
+		
+		if(!reg1.test(userNameNode.value)){
+			alert("用户名不能为空,且只能有字母和数字组成，长度不能超过15");
+			userNameNode.focus();
+			return false;
+		}else if(!reg2.test(pwdNode.value)){
+			alert("密码长度至少6位");
+			pwdNode.focus();
+			return false;
+		}else if(pwdNode.value!=ensurepwdNode.value){
+			alert("两次输入的秘密不一致，请重新输入");
+			pwdNode.focus();
+			pwdNode.value="";
+			ensurepwdNode.value="";
+			return false;
+		}/* else if(!reg3.test(emailNode.value)){
+			alert("邮箱格式不符");
+			emailNode.focus();
+			return false;
+		} */else if(!reg4.test(cityNode.selectedIndex)){
+			alert("请选择城市");
+			cityNode.focus();
+			return false;
+		}else if(!reg5.test(myInfoNode.value)){
+			alert("请输入自我介绍，长度不能超过50");
+			myInfoNode.focus();
+			return false;
+		}else{
+			return true;
+		}
+		
+	}
+</script>
 </head>
 <body>
 <form action="success.html" method="get" onsubmit="return checkAll()" > <!--如果表单提交时候触发的方法返回是false,那么该表单不允许提交，如果返回的是true允许提交 -->
@@ -11,25 +58,29 @@
 					<td width="25%">姓名:</td>
 					<td>
 						<input type="text" name="userName" id="userName" onblur="checkName()"/>
+						<font color="red">*</font>
                         <span id="userId"></span>
 					</td>
 				</tr>
 				<tr>
 					<td >密码:</td><td>
 						<input type="password"  name="pwd" id="pwd" onblur="checkPass()"/>
+						<font color="red">*</font>
                         <span id="passId"></span>
 					</td>
 				</tr>
 				<tr>
 					<td>确认密码:</td><td>
-				<input type="password" name="ensurepwd" id="ensurepwd" onblur="ensurepass()" />		                <span id="ensure"></span>
+						<input type="password" name="ensurepwd" id="ensurepwd" onblur="ensurepass()" />	
+						<font color="red">*</font>
+						<span id="ensure"></span>
 					</td>
 				</tr>
 				<tr>
 					<td>邮箱</td><td>
-						<input type="text" name="email" id="email" onblur="checkEmail()"/>
+						<input type="text" name="email" id="" onblur="checkEmail()"/>
+						<font color="red">*</font>
                 		<span id="emailspan"></span>
-				        
 					</td>
 				</tr>
 				<tr>
@@ -58,12 +109,14 @@
 						<option value="gz"> 广州 </option>
 						<option value="sh"> 上海 </option>
 					</select>
-                    
+                    <font color="red">*</font>
                     </td>
 				</tr>
 				<tr>
 					<td>自我介绍</td><td>
-					<textarea cols="15" rows="5"  name="myInfo" id="myInfo"></textarea></td>
+					<textarea cols="15" rows="5"  name="myInfo" id="myInfo"></textarea>
+					<font color="red">*</font>
+					</td>
 				</tr>
 				<tr align="center">
 					<td colspan="2"><!--提交按钮-->
