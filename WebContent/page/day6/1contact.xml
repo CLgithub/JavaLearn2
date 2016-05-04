@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+	文档声明， 
+	version版本号
+	encoding：解析xml文件时查询的码表
+-->
+<!-- 
+XML语法
+	​xml文件以xml后缀名结尾。
+	​xml文件需要使用xml解析器去解析。浏览器内置了xml解析器
+	
+	​3.1 标签
+	​语法： <student></student>  开始标签  标签体内容  结束标签
+	​1）<student/> 或 <student></student> 空标签。没有标签体内容
+	​2）xml标签名称区分大小写。
+	​3）xml标签一定要正确配对。
+	​4）xml标签名中间不能使用空格
+	​5）xml标签名不能以数字开头
+	​​6）注意： 在一个xml文档中，有且仅有一个根标签
+	
+	​3.2 属性
+	​语法： <Student name="eric">student</Student>
+	​注意：
+	​1）属性值必须以引号包含，不能省略，也不能单双引号混用！！！
+	​2）一个标签内可以有多个属性，但不能出现重复的属性名！！！
+	
+	​3.3 注释
+	​语言：
+
+ -->
+<!-- 
+	练习：
+	​通讯录系统
+	​联系人数据：编号 （唯一的） 姓名   年龄   电话 邮箱  QQ
+	要求：
+	​contact.xml
+	​1）设计一个xml文件，用于存储联系人数据
+	​2）这个xml文件可以多个联系人。
+ -->
+<contacts>
+	<contact id="001" name="小明" age="18" teleno="18745121202"
+		email="xxx@xx.com" qq="164211244"></contact>
+	<contact id="002" name="小红" age="23" teleno="18745126202"
+		email="xxx@xx.com" qq="164211244"></contact>
+	<contact id="003" name="小黑" age="21" teleno="18745132202"
+		email="xxx@xx.com" qq="164211244"></contact>
+</contacts>
