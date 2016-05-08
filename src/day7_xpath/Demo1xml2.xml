@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Students> 
+  <Student id="1"> 
+    <name>小明</name>  
+    <gender>男</gender> 
+  </Student> 
+</Students>

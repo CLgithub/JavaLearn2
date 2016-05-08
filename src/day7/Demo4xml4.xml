@@ -5,4 +5,8 @@
     <name>小明</name>
     <gender>男</gender>
   </Student>
+  <Student id="2">
+    <name>小红2</name>
+    <gender>女</gender>
+  </Student>
 </Students>

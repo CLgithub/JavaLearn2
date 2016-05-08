@@ -142,7 +142,7 @@ public class Demo4 {
 		for(int i=0;i<elements.size();i++){
 			if(elements.get(i).attribute("id").getValue().equals("2")){
 				elements.get(i).element("name").setText("小红2");
-				elements.get(i).detach();
+//				elements.get(i).detach();
 			}
 		}
 		
