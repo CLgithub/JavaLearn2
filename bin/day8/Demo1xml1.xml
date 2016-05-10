@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "note.dtd"><!-- 引入约束 -->
+<note>
+  <to></to>
+  <to></to>
+  <from aa="a">John</from>
+  <heading bb="bb">Reminder<a></a></heading>
+  <body>Don't forget the meeting!</body>
+</note>
