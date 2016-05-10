@@ -3,7 +3,7 @@ package day7_sax;
 public class Contact {
 	private String id;
 	private String name;
-	private int age;
+	private String age;
 	private String phone;
 	private String email;
 	private String qq;
@@ -30,11 +30,11 @@ public class Contact {
 		this.name = name;
 	}
 
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 

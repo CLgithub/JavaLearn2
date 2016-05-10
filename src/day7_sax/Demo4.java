@@ -1,5 +1,9 @@
 package day7_sax;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /*
 	总结：
 		DOM解析	与	SAX解析区别
@@ -71,5 +75,5 @@ package day7_sax;
 				。。。。。
 */
 public class Demo4 {
-
+	
 }

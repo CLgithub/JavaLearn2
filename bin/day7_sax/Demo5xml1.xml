@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<contactList>
+  <contact id="1">
+    <name>aa</name>
+    <age>12</age>
+    <phone>31452454</phone>
+    <email>43255@r334.cd</email>
+    <qq>4351</qq>
+  </contact>
+</contactList>

@@ -8,7 +8,6 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-import com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl;
 
 /*
 	第一个SAX读取xml文件程序

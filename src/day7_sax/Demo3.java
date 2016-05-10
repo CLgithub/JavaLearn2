@@ -59,7 +59,7 @@ class MyDefaultHandler3 extends DefaultHandler{
 			contact.setName(str);
 		}
 		if("age".equals(curTag)){
-			contact.setAge(Integer.parseInt(str));
+			contact.setAge(str);
 		}
 		if("phone".equals(curTag)){
 			contact.setPhone(str);
