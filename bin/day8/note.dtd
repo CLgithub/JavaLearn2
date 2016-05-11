@@ -1,13 +1,13 @@
-<!ELEMENT note (to+,from*,heading,body?)>	
 <!-- 
 	顺序问题：
 		<!ELEMENT 元素名称 (子元素名称 1,子元素名称 2,.....)>： 按顺序出现子标签
 	次数问题：
-		标签   ：  	必须且只出现1次。
-		标签+  ：		至少出现1次
-	    标签*  ： 	0或n次。
-		标签？  ： 	0 或1次。 
+		标签		必须且只出现1次。
+		标签+	至少出现1次
+	   	标签*	0或n次。
+		标签?	0 或1次。 
 -->
+<!ELEMENT note (to+,from*,heading,body?)>
 <!ELEMENT to      EMPTY>		<!-- 空标签 -->
 <!ELEMENT from    (#PCDATA)>	<!-- 普通字符串 -->
 <!ELEMENT heading ANY>			<!-- 任何内容 -->

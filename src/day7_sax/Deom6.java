@@ -18,6 +18,9 @@ XML加强
 			删除：		
 					Element.detach();   删除标签
 				    Attribute.detach();  删除属性
+		    属性可以增删改，Element.addAtrribute（“name”，“value”）	Attribute.detach()	Attribute.setValue("value");
+		  标签只能新增，删除，Element.addElement("name")	 Element.detach()
+		  文本只能修改，Element.setText("value")
 				
 		2）XPath技术： 快速找到xml元素（标签，属性，文本）
 				2.1 dom4j使用xpath：
