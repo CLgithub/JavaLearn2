@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema 
+	targetNamespace="http://www.xxx.cn" 	
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+	<!-- 用targetNamespace给schema文件定义名称空间 -->
+	
+	
+	<xs:element name='书架'><!-- xs:element约束一个标签，名字书架 -->
+		<xs:complexType><!-- complexType 复杂类型-->
+			<xs:sequence maxOccurs='unbounded'><!-- sequence按顺序出现，maxOccurs='unbounded'最大出现次数无限制 -->
+				<xs:element name='书'>	<!-- 约束书标签 -->
+					<xs:complexType>	<!-- 书标签下是复杂类型 -->
+						<xs:sequence>	<!-- 按顺序出现 没有maxOccurs默认出现1次-->
+							<xs:element name='书名' type='xs:string' /><!-- 书名标签，文本类型是string -->
+							<xs:element name='作者' type='xs:string' />
+							<xs:element name='售价' type='xs:integer' />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
