@@ -16,12 +16,22 @@
     <servlet-name>Demo4Servlet2</servlet-name>
     <url-pattern>/hello2</url-pattern>
   </servlet-mapping>
-   <servlet>
+  
+  <servlet>
     <servlet-name>Servlet3</servlet-name>
     <servlet-class>day9_http.Deom1</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Servlet3</servlet-name>
     <url-pattern>/Servlet3</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Servlet4</servlet-name>
+    <servlet-class>day9_http.Demo2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Servlet4</servlet-name>
+    <url-pattern>/Servlet4</url-pattern>
   </servlet-mapping>
 </web-app>
