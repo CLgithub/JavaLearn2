@@ -1,6 +1,13 @@
 package day9_http;
 
+import java.io.IOException;
+import java.util.Enumeration;
 
+import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 //2 Http协议入门
 //	2.1 什么是http协议
@@ -67,6 +74,35 @@ package day9_http;
 					b）POST提交的参数数据没有限制。
 					c）POST方式提交敏感数据。
 				
+		3.2 请求头
+			Accept: text/html,image/*      -- 浏览器接受的数据类型
+			Accept-Charset: ISO-8859-1     -- 浏览器接受的编码格式
+			Accept-Encoding: gzip,compress  --浏览器接受的数据压缩格式
+			Accept-Language: en-us,zh-       --浏览器接受的语言
+			Host: www.it315.org:80          --（必须的）当前请求访问的目标地址（主机:端口）
+			If-Modified-Since: Tue, 11 Jul 2000 18:23:51 GMT  --浏览器最后的缓存时间
+			Referer: http://www.it315.org/index.jsp      -- 当前请求来自于哪里
+			User-Agent: Mozilla/4.0 (compatible; MSIE 5.5; Windows NT 5.0)  --浏览器类型
+			Cookie:name=eric                     -- 浏览器保存的cookie信息
+			Connection: close/Keep-Alive            -- 浏览器跟服务器连接状态。close: 连接关闭  keep-alive：保存连接。
+			Date: Tue, 11 Jul 2000 18:23:51 GMT      -- 请求发出的时间
+			
+		3.3 实体内容
+			只有POST提交的参数会放到实体内容中
+			
+		3.4 HttpServletRequest对象
+		HttpServletRequest对象作用是用于获取请求数据。
+		   核心的API：
+			请求行： 
+				request.getMethod();   请求方式
+				request.getRequetURI()   / request.getRequetURL()   请求资源
+				request.getProtocol()   请求http协议版本
+			请求头：
+				request.getHeader("名称")   根据请求头获取请求值
+				request.getHeaderNames()    获取所有的请求头名称 其实不全
+
+			实体内容:
+				request.getInputStream()   获取实体内容数据
 				
 				
 
@@ -74,6 +110,63 @@ package day9_http;
 		
 
 
-public class Deom1 {
+public class Deom1 extends HttpServlet{
 
+	//1.tomcat服务器接收到浏览器发送的请求数据，任何封装到HttpServletRequest对象
+	//2.tocmat服务器调用doGet方法，然后把request对象传入到servlet中
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.getWriter().write("aaabbb");
+		//3.从request对象取出请求数据。
+		
+		//3.1请求行 （GET /day09/hello HTTP/1.1）
+//		t1(req);
+		
+		//3.2请求头
+//		t2(req);
+
+	}
+	
+	//接收post提交的请求
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//3.3请求的实体内容
+		ServletInputStream inputStream = req.getInputStream();
+		byte[] buf=new byte[1024];
+		int len=0;
+		while((len=inputStream.read(buf))!=-1){
+			System.out.println("实体内容："+new String(buf,0,len));
+		}
+	}
+
+	/**
+	 * 得到请求头
+	 * @param req
+	 * @author L
+	 * @date 2016年5月15日
+	 */
+	private void t2(HttpServletRequest req) {
+		System.out.println("Host："+req.getHeader("Host"));	//根据头名称得到头内容
+		
+		Enumeration<String> headerNames = req.getHeaderNames();		//得到所有的请求头名称列表	(得到个迭代器)
+		System.out.println("客户端ip："+req.getRemoteHost());
+		while(headerNames.hasMoreElements()){
+			String name = headerNames.nextElement();
+			System.out.println(name+":"+req.getHeader(name));
+		}
+	}
+
+	/**
+	 * 得到请求行
+	 * @param req
+	 * @author L
+	 * @date 2016年5月15日
+	 */
+	private void t1(HttpServletRequest req) {
+		System.out.println("请求方式："+req.getMethod());
+		System.out.println("统一资源标记付URI："+req.getRequestURI());		//统一资源标记付
+		System.out.println("统一资源定位付URL："+req.getRequestURL());		//统一资源定位付
+		System.out.println("请求协议："+req.getProtocol());
+	}
+	
 }
