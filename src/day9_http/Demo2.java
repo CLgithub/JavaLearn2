@@ -1,6 +1,7 @@
 package day9_http;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Enumeration;
 import javax.servlet.ServletException;
@@ -47,17 +48,22 @@ public class Demo2 extends HttpServlet{
 //			System.out.println("post方式："+new String(buf,0,len));
 //		}
 		
-//		method1(req);
+		method1(req);
 		
 		//调用doGet方法
-		this.doGet(req, resp);
+//		this.doGet(req, resp);
 	}
 	
 	//统一方便的获取请求参数
-	private void method1(HttpServletRequest req) {
+	private void method1(HttpServletRequest req) throws UnsupportedEncodingException {
+		//设置getParameter解码时查询的码表 
+		//只设置了post的，因为该方法只能对请求实体内容的数据编码起作用，post的提交数据在实体内容里，而got的在uri后面
+		req.setCharacterEncoding("utf-8");		//统一设置解决编码问题
+		
 		System.out.println("请求方式："+req.getMethod());
 		//统一方便的获取请求参数
 		String name = req.getParameter("name");			//根据参数名字查找	，但是只能获取一个值
+//		name=new String(name.getBytes("iso-8859-1"),"utf-8");	手动解决编码问题
 		String password=req.getParameter("password");
 		System.out.println("name="+name);
 		System.out.println("password="+password);
