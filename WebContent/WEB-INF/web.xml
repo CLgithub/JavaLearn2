@@ -34,4 +34,13 @@
     <servlet-name>Servlet4</servlet-name>
     <url-pattern>/Servlet4</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Servlet5</servlet-name>
+    <servlet-class>day9_http.Demo3</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Servlet5</servlet-name>
+    <url-pattern>/Servlet5</url-pattern>
+  </servlet-mapping>
 </web-app>
