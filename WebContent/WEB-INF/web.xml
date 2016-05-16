@@ -1,46 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <servlet>
-    <servlet-name>Demo3Servlet1</servlet-name>
-    <servlet-class>day8_web.Demo3Servlet1</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Demo3Servlet1</servlet-name>
-    <url-pattern>/hello</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>Demo4Servlet2</servlet-name>
-    <servlet-class>day8_web.Demo4Servlet2</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Demo4Servlet2</servlet-name>
-    <url-pattern>/hello2</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <servlet-name>Servlet3</servlet-name>
-    <servlet-class>day9_http.Deom1</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Servlet3</servlet-name>
-    <url-pattern>/Servlet3</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <servlet-name>Servlet4</servlet-name>
-    <servlet-class>day9_http.Demo2</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Servlet4</servlet-name>
-    <url-pattern>/Servlet4</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <servlet-name>Servlet5</servlet-name>
-    <servlet-class>day9_http.Demo3</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Servlet5</servlet-name>
-    <url-pattern>/Servlet5</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<servlet>
+		<servlet-name>Demo3Servlet1</servlet-name>
+		<servlet-class>day8_web.Demo3Servlet1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Demo3Servlet1</servlet-name>
+		<url-pattern>/hello</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Demo4Servlet2</servlet-name>
+		<servlet-class>day8_web.Demo4Servlet2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Demo4Servlet2</servlet-name>
+		<url-pattern>/hello2</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Servlet3</servlet-name>
+		<servlet-class>day9_http.Deom1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet3</servlet-name>
+		<url-pattern>/Servlet3</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Servlet4</servlet-name>
+		<servlet-class>day9_http.Demo2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet4</servlet-name>
+		<url-pattern>/Servlet4</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Servlet5</servlet-name>
+		<servlet-class>day9_http.Demo3</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet5</servlet-name>
+		<url-pattern>/Servlet5</url-pattern>
+	</servlet-mapping>
+
+	<!-- 配置一个servlet -->
+	<servlet>
+		<!-- 配置servlet名称 -->
+		<servlet-name>Servlet6</servlet-name>
+		<!-- 配置servlet完整类名 -->
+		<servlet-class>day10_servlet.Demo1</servlet-class>
+	</servlet>
+	<!-- 配置servlet映射 -->
+	<servlet-mapping>
+		<!-- 访问哪个servlet -->
+		<servlet-name>Servlet6</servlet-name>
+		<!-- servlet的映射路径，访问地址 -->
+		<url-pattern>/abc/*</url-pattern>
+	</servlet-mapping>
 </web-app>
