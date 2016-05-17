@@ -72,4 +72,15 @@
 		<servlet-name>Servlet7</servlet-name>
 		<url-pattern>/Servlet7</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Servlet8</servlet-name>
+		<servlet-class>day10_servlet.Demo3init</servlet-class>
+		<!-- 让servlet对象自动加载，数值越大，优先级越低 -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet8</servlet-name>
+		<url-pattern>/Servlet8</url-pattern>
+	</servlet-mapping>
 </web-app>
