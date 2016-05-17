@@ -65,6 +65,8 @@
 	<servlet>
 		<servlet-name>Servlet7</servlet-name>
 		<servlet-class>day10_servlet.Demo2</servlet-class>
+		<!-- 让servlet对象自动加载，数值越大，优先级越低 -->
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Servlet7</servlet-name>
