@@ -71,6 +71,20 @@ Servlet学习的大纲：
 			3.1 精确匹配优先。（长的最像优先被匹配）
 			3.2 以后缀名结尾的模糊匹配优先级最低！！！
 	
+	3.servlet缺省路径
+		servlet的缺省路径是在tomcat服务器内置的一个路径。该路径对应的是一个org.apache.catalina.servlets.DefaultServlet（缺省servlet）
+		这个缺省的servlet的作用是用于解析web应用的静态资源文件
+		
+		问题：url输入http://localhost:8090/JavaLearn2/index.jsp的时候是如何读取文件的？？？
+		
+		1）到JavaLearn2应用下的web.xml中去查找是否有匹配的 url－pattern，如果找到就处理
+		2）如果某页匹配的url－pattern，则交给tomcat内置的DefaultServlet去处理，
+		3）DefaultServlet程序到javalearn2应用的根目录下去查找是否存在一个名称为index.jsp的静态文件。
+		4）如果找到改文件，这读取改文件内容，返回给浏览器，如果找不到，返回404
+		
+		结论：先找动态资源，再找静态资源
+		
+		
 	
 */
 public class Demo1 extends HttpServlet{
