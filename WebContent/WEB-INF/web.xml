@@ -61,4 +61,13 @@
 		<!-- servlet的映射路径，访问地址 -->
 		<url-pattern>/abc/*</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Servlet7</servlet-name>
+		<servlet-class>day10_servlet.Demo2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet7</servlet-name>
+		<url-pattern>/Servlet7</url-pattern>
+	</servlet-mapping>
 </web-app>
