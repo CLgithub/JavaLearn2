@@ -65,15 +65,7 @@ import javax.servlet.http.HttpServletResponse;
 			web应用参数可以让当前web应用的所有servlet获取
 			
 	
-	10.3.4	RequestDispatcher getRequestDispatcher(java.lang.String path)   --转发（类似于重定向）
 	
-	转发和重定向的区别。
-		1）转发
-			地址栏不会变
-			只转发到当前 web应用内的资源
-		2）重定向
-			地址栏会改变，变成了重定向的地址
-			可以跳转到当前web应用，其他web应用， 或外部域名
 		
 	
 */
@@ -104,12 +96,6 @@ public class Demo5ServletContext extends HttpServlet{
 			//将数据共享给servlet11
 		servletContext.setAttribute("student1", new Student(1, "小明", 23));
 		
-		//4.转发（类似于重定向）,效果：跳转页面
-		RequestDispatcher rDispatcher = servletContext.getRequestDispatcher("/index.jsp");
-		rDispatcher.forward(req, resp);
-		//请求重定向
-//		resp.sendRedirect(contextPath+"/index.jsp");
-		//转发和重定向的区别。转发时地址栏不会变，cong
 		
 	}
 }

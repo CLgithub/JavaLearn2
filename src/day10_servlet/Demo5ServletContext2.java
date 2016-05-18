@@ -46,13 +46,17 @@ public class Demo5ServletContext2 extends HttpServlet{
 		resp.getWriter().write("Servlet11<br>");
 		//得到域对象servletContext，
 		ServletContext servletContext = this.getServletContext();
-		//取出保存到在其中的student对象，并显示
+		//取出保存到在servletContext中的student对象，并显示
 		Student student = (Student) servletContext.getAttribute("student1");
 		if(student!=null){
 			resp.getWriter().write(student.toString());
 		}else {
-			resp.getWriter().write("没有收到对象");
+			resp.getWriter().write("没有收到对象<br>");
 		}
+		
+		//取出保存在HttpServletRequest对象中的数据
+		String data1 = (String) req.getAttribute("data1");
+		resp.getWriter().write("req中的数据是："+data1);
 		
 	}
 }

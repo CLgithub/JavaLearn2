@@ -66,12 +66,18 @@ public class Demo4 extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=utf-8");
 		
-//		FileInputStream fileInputStream=new FileInputStream("E:/aaa/a.txt");
+//		FileInputStream fileInputStream=new FileInputStream("/Users/L/Downloads/aaa/aa");
 //		byte[] buf=new byte[1024];
 //		int len=0;
 //		while((len=fileInputStream.read(buf))!=-1){
 ////			System.out.println(Arrays.toString(buf));
-//			System.out.println(new String(buf,0,len,"utf-8"));
+//			System.out.println(new String(buf,0,len));
+//		}
+//		System.out.println("----------------");
+//		BufferedReader bReader=new BufferedReader(new FileReader("/Users/L/Downloads/aaa/aa"));
+//		String string=null;
+//		while((string=bReader.readLine())!=null){
+//			System.out.println(string);
 //		}
 		
 		ServletConfig config = this.getServletConfig();//不用自己维护config，父类已经维护并且已经维权赋值

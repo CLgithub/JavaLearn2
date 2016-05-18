@@ -139,4 +139,25 @@
 		<servlet-name>Servlet11</servlet-name>
 		<url-pattern>/Servlet11</url-pattern>
 	</servlet-mapping>
+	
+	<!-- 转发 -->
+	<servlet>
+		<servlet-name>Demo5RequestDispatcher</servlet-name>
+		<servlet-class>day10_servlet.Demo5RequestDispatcher</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Demo5RequestDispatcher</servlet-name>
+		<url-pattern>/Demo5RequestDispatcher</url-pattern>
+	</servlet-mapping>
+	<!-- 重定向 -->
+	<servlet>
+		<servlet-name>Demo5Redirect</servlet-name>
+		<servlet-class>day10_servlet.Demo5Redirect</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Demo5Redirect</servlet-name>
+		<url-pattern>/Demo5Redirect</url-pattern>
+	</servlet-mapping>
 </web-app>
