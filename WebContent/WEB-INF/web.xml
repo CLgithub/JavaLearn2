@@ -3,6 +3,21 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
+	
+	<!-- 配置web应用参数 -->
+	<context-param>
+		<param-name>AAA</param-name>
+		<param-value>AAA值</param-value>
+	</context-param>
+	<context-param>
+		<param-name>BBB</param-name>
+		<param-value>BBB值</param-value>
+	</context-param>
+	<context-param>
+		<param-name>BBB</param-name>
+		<param-value>BBB值</param-value>
+	</context-param>
+	
 	<servlet>
 		<servlet-name>Demo3Servlet1</servlet-name>
 		<servlet-class>day8_web.Demo3Servlet1</servlet-class>
@@ -103,5 +118,25 @@
 	<servlet-mapping>
 		<servlet-name>Servlet9</servlet-name>
 		<url-pattern>/Servlet9</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Servlet10</servlet-name>
+		<servlet-class>day10_servlet.Demo5ServletContext</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet10</servlet-name>
+		<url-pattern>/Servlet10</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Servlet11</servlet-name>
+		<servlet-class>day10_servlet.Demo5ServletContext2</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet11</servlet-name>
+		<url-pattern>/Servlet11</url-pattern>
 	</servlet-mapping>
 </web-app>

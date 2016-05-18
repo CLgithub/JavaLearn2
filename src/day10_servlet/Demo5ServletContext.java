@@ -1,5 +1,15 @@
 package day10_servlet;
 
+import java.io.IOException;
+import java.util.Enumeration;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /*
 10.ServletContext对象
 	10.1 servletContext对象，叫做servlet的上下文对象。
@@ -49,9 +59,58 @@ package day10_servlet;
 		java.lang.String getRealPath(java.lang.String path)    --得到web应用的资源
 		java.io.InputStream getResourceAsStream(java.lang.String path) 
 
+	10.3.1 	java.lang.String getContextPath()   --得到当前web应用的路径
+	10.3.2 	java.lang.String getInitParameter(java.lang.String name)  	--得到当前web应用的初始化参数（全局）
+			java.util.Enumeration getInitParameterNames()  
+			web应用参数可以让当前web应用的所有servlet获取
+			
 	
-
+	10.3.4	RequestDispatcher getRequestDispatcher(java.lang.String path)   --转发（类似于重定向）
+	
+	转发和重定向的区别。
+		1）转发
+			地址栏不会变
+			只转发到当前 web应用内的资源
+		2）重定向
+			地址栏会改变，变成了重定向的地址
+			可以跳转到当前web应用，其他web应用， 或外部域名
+		
+	
 */
-public class Demo5ServletContext {
-
+public class Demo5ServletContext extends HttpServlet{
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html; charset=utf-8");
+		//0.得到上下文对象servletContext
+		ServletContext servletContext = this.getServletConfig().getServletContext();
+		ServletContext servletContext2 = this.getServletContext();//第二种写法，看源码，其实也是通过上面的方法得到的getServletConfig().getServletContext()
+		
+		//1.得到web应用路径	web应用路径：部署到tomcat服务器上运行的web应用的名称
+		String contextPath = servletContext.getContextPath();
+		System.out.println("web应用的路径："+contextPath);		//web应用的路径：/JavaLearn2
+		//应用到请求重定向
+//		resp.sendRedirect(contextPath+"/index.jsp");
+		
+		//2.得到web应用参数
+		Enumeration<String> initParameterNames = servletContext.getInitParameterNames();
+		while(initParameterNames.hasMoreElements()){
+			String parameterName = initParameterNames.nextElement();
+			System.out.println("web应用参数:"+parameterName+"="+servletContext.getInitParameter(parameterName));
+		}
+		
+		//3.和域对象有关的方法
+			//将数据共享给servlet11
+		servletContext.setAttribute("student1", new Student(1, "小明", 23));
+		
+		//4.转发（类似于重定向）,效果：跳转页面
+		RequestDispatcher rDispatcher = servletContext.getRequestDispatcher("/index.jsp");
+		rDispatcher.forward(req, resp);
+		//请求重定向
+//		resp.sendRedirect(contextPath+"/index.jsp");
+		//转发和重定向的区别。转发时地址栏不会变，cong
+		
+	}
 }
+
