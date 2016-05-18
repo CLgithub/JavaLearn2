@@ -33,9 +33,7 @@ public class Demo3init extends HttpServlet{
 			}
 			count++;
 		}
-		
 	}
-	
 	
 	
 	
