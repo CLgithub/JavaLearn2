@@ -9,12 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /*
- 7.有参的init方法和无参的init方法
+7.有参的init方法和无参的init方法
  
- 8.servlet在tomcat下是单实例，多线程的
+8.servlet在tomcat下是单实例，多线程的
  	有线程安全问题，如果多个对象同时访问啦servlet对象的公共部分，可能会有线程安全问题
  
- 解决办法：所
+  解决办法：锁
+  
+  
 */
 public class Demo3init extends HttpServlet{
 	
