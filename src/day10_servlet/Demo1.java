@@ -33,7 +33,7 @@ Servlet学习的大纲：
 		http://: http协议
 		localhost： 		到本地的hosts文件中查找是否存在该域名对应的IP地址 127.0.0.1
 		8090：    		找到tomcat服务器
-		/JavaLearn2     在tomcat的webapps目录下找 day10的目录
+		/JavaLearn2     在tomcat的webapps目录下找 JavaLearn2的目录
 		/Servlet6    	资源名称。
 			1）在JavaLearn2的web.xml中查找是否有匹配的url-pattern的内容（/Servlet6）
 			2）如果找到匹配的url-pattern,则使用当前servlet-name的名称到web.xml文件中查询是否相同名称的servlet配置
