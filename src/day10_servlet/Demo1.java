@@ -83,8 +83,6 @@ Servlet学习的大纲：
 		4）如果找到改文件，这读取改文件内容，返回给浏览器，如果找不到，返回404
 		
 		结论：先找动态资源，再找静态资源
-		
-		
 	
 */
 public class Demo1 extends HttpServlet{
