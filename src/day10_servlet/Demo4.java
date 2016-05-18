@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /*
   
-servlet对象：
+servlet核心4大对象：
 	HttpServletRequest		请求对象：获取请求信息
 	HttpServletResponse		相应对象：设置相应对象
 	ServletConfig			servlet配置对象
@@ -34,7 +34,9 @@ servlet对象：
 			<param-name>path</param-name>
 			<param-value>E:/aaa/a.txt</param-value>
 		</init-param>
- 		
+		
+ 		注意： servlet的参数只能由当前的这个sevlet获取！！！！
+		
 		ServletConfig的API：
 			java.lang.String getInitParameter(java.lang.String name)  根据参数名获取参数值
 			java.util.Enumeration getInitParameterNames()    获取所有参数
