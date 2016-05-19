@@ -1,14 +1,9 @@
 package day10_servlet_exercise;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +39,8 @@ public class MainC extends HttpServlet{
 			} else {
 				document = new SAXReader().read(xml);
 			}
+			this.getServletContext().setAttribute("document", document);
+			this.getServletContext().setAttribute("xml", xml);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -62,28 +59,33 @@ public class MainC extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=utf-8");
-		String str=req.getParameter("gn");
-		//根据相应功能转发到不同功能页面
-		if("1".equals(str)){
-			//到达添加联系人页面
-			resp.sendRedirect(this.getServletContext().getContextPath()+"/page/day10/addc.html");
-		}else if("2".equals(str)){
-			//到达修改联系人页面
-//			resp.sendRedirect(this.getServletContext().getContextPath()+"/page/day10/addc.html");
-//			toSaveOrUpdate();
-//			this.getServletContext().getRequestDispatcher("/page/day10/addc.html").forward(req, resp);
-			
-		}else if("3".equals(str)){
-			//删除联系人
-//			resp.sendRedirect(this.getServletContext().getContextPath()+"/page/day10/addc.html");
-		}else if("4".equals(str)){
-			//查询联系人
-			try {
-				this.selectC(document,resp);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+
+		//输出主页面（有功能列表，联系人列表，点击不同的功能，到达不同的servlet处理）
+		StringBuffer sBuffer=new StringBuffer();
+		sBuffer.append("<form action='"+this.getServletContext().getContextPath()+"/addC'  method='get'>"
+				+ "<table border='1'>"
+				+ "<tr>	 <td colspan='6'>	"
+				+ "<input type='submit' value='新增'>"
+				+ "</td>"
+				+ "</tr>"
+				+ "<tr>	"
+				+ "<td>姓名</td>	 <td>年龄</td> <td>电话</td>	 <td>邮箱</td> <td>qq</td> <td>操作</td>	"
+				+ "</tr>");
+			//	+ "<tr>	<td>小明</td><td>23</td><td>4324</td><td>邮箱</td><td>qq</td>	<td><a href='#'>修改</a><a href='#'>删除</a></td>	</tr>"
+		List<Node> contacts = document.selectNodes("/contactList/contact");
+		for(Node c:contacts){
+			Element element=(Element) c;
+			sBuffer.append("<tr>");
+			sBuffer.append("<td>"+element.element("name").getText()+"</td>");
+			sBuffer.append("<td>"+element.element("age").getText()+"</td>");
+			sBuffer.append("<td>"+element.element("phone").getText()+"</td>");
+			sBuffer.append("<td>"+element.element("email").getText()+"</td>");
+			sBuffer.append("<td>"+element.element("qq").getText()+"</td>");
+			sBuffer.append("<td><a href='#'>修改</a><a href='#'>删除</a></td>");
+			sBuffer.append("</tr>");
 		}
+		sBuffer.append( "</table>	</form>");
+		resp.getWriter().write(sBuffer.toString());
 	}
 	
 	@Override
