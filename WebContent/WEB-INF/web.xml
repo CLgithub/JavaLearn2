@@ -183,4 +183,14 @@
 		<servlet-name>addC</servlet-name>
 		<url-pattern>/addC</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Servlet12</servlet-name>
+		<servlet-class>day11.Demo1Path</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet12</servlet-name>
+		<url-pattern>/Servlet12</url-pattern>
+	</servlet-mapping>
 </web-app>
