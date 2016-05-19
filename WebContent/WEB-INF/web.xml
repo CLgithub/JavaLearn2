@@ -160,4 +160,18 @@
 		<servlet-name>Demo5Redirect</servlet-name>
 		<url-pattern>/Demo5Redirect</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>mainContact</servlet-name>
+		<servlet-class>day10_servlet_exercise.MainC</servlet-class>
+		<init-param>
+			<param-name>dataXML</param-name>
+			<param-value>/Users/L/Downloads/aaa/dataXML.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mainContact</servlet-name>
+		<url-pattern>/mainContact</url-pattern>
+	</servlet-mapping>
 </web-app>

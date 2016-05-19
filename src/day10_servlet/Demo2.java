@@ -74,7 +74,7 @@ public class Demo2 extends HttpServlet{
 	 * 1.创建时调用改方法
 	 */
 	public Demo2() {
-		System.out.println("1.创建时调用改方法构造方法");
+//		System.out.println("1.创建时调用改方法构造方法");
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public class Demo2 extends HttpServlet{
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		System.out.println("2.调用初始化init方法");
+//		System.out.println("2.调用初始化init方法");
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class Demo2 extends HttpServlet{
 	@Override
 	public void destroy() {
 		super.destroy();
-		System.out.println("4.销毁时调用destroy");
+//		System.out.println("4.销毁时调用destroy");
 	}
 	
 	

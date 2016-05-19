@@ -59,7 +59,7 @@ import org.dom4j.io.XMLWriter;
 public class Demo5 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader bReader=new BufferedReader(new InputStreamReader(System.in));
-		File xml=new File("e:/clProject/javaLearn2/src/day7_sax/Demo5xml1.xml");
+		File xml=new File("/Users/L/Downloads/aaa/dataXML.xml");
 		Document document=null;
 		if(!xml.exists()){
 			document = DocumentHelper.createDocument();
@@ -209,7 +209,7 @@ public class Demo5 {
 	private static void saveCDao(Contact contact,File xml, Document document) throws Exception {
 		Integer id=1;
 		List<Node> contacts = document.selectNodes("/contactList/contact");
-		if(contacts.size()!=0){
+		if(contacts.size()!=0){	//如果已经有了联系入，那么的到其id＋1
 			Element elementC=(Element) contacts.get(contacts.size()-1);
 			id=1+Integer.parseInt(elementC.attributeValue("id"));
 		}

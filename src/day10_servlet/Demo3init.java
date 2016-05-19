@@ -56,7 +56,7 @@ public class Demo3init extends HttpServlet{
 	 */
 	@Override
 	public void init() throws ServletException {
-		System.out.println("无参init方法");
+//		System.out.println("无参init方法");
 	}
 	
 	
