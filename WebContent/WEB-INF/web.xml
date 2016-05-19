@@ -193,4 +193,14 @@
 		<servlet-name>Servlet12</servlet-name>
 		<url-pattern>/Servlet12</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Servlet13</servlet-name>
+		<servlet-class>day11.Demo2Cooke1</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet13</servlet-name>
+		<url-pattern>/Servlet13</url-pattern>
+	</servlet-mapping>
 </web-app>
