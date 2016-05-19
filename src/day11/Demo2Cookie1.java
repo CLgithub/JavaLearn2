@@ -51,7 +51,7 @@ import javax.servlet.http.HttpServletResponse;
 		
 		
 */
-public class Demo2Cooke1 extends HttpServlet{
+public class Demo2Cookie1 extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

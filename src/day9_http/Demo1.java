@@ -110,7 +110,7 @@ import javax.servlet.http.HttpServletResponse;
 		
 
 
-public class Deom1 extends HttpServlet{
+public class Demo1 extends HttpServlet{
 
 	//1.tomcat服务器接收到浏览器发送的请求数据，然后封装到HttpServletRequest对象
 	//2.tocmat服务器调用doGet方法，然后把request对象传入到servlet中
