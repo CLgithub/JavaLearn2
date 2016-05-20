@@ -196,7 +196,7 @@
 	
 	<servlet>
 		<servlet-name>Servlet13</servlet-name>
-		<servlet-class>day11.Demo2Cooke1</servlet-class>
+		<servlet-class>day11.Demo2Cookie1</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
