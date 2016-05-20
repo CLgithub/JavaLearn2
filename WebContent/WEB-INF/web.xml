@@ -206,4 +206,41 @@
   	<!-- 15分钟后session过期 -->
   	<session-timeout>15</session-timeout>
   </session-config>
+  
+  <servlet>
+    <servlet-name>session3</servlet-name>
+    <servlet-class>day12.Demo1Session1</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>session3</servlet-name>
+    <url-pattern>/session3</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>session4</servlet-name>
+    <servlet-class>day12.Demo1Session2</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>session4</servlet-name>
+    <url-pattern>/session4</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>session5</servlet-name>
+    <servlet-class>day12.Demo1Session3</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>session5</servlet-name>
+    <url-pattern>/session5</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Black</servlet-name>
+    <servlet-class>day12.Black</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Black</servlet-name>
+    <url-pattern>/Black</url-pattern>
+  </servlet-mapping>
 </web-app>
