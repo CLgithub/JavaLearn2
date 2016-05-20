@@ -203,4 +203,14 @@
 		<servlet-name>Servlet13</servlet-name>
 		<url-pattern>/Servlet13</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Servlet14</servlet-name>
+		<servlet-class>day11.Demo3Cookie2</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet14</servlet-name>
+		<url-pattern>/Servlet14</url-pattern>
+	</servlet-mapping>
 </web-app>
