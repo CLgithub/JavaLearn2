@@ -9,7 +9,7 @@
 <body>
 	<!-- jsp脚本，java代码写在其中 -->
 	<% 
-		String name="小明"; 
+		String name="小明"; 		//局部变量，声明在service方法里
 		int a=2;
 		int b=3;
 	%>
@@ -36,5 +36,28 @@
 			%><br><%
 		}
 	%>
+	<hr>
+	<!-- jsp声明 -->
+	<%!
+		//声明一个成员变量
+		String name2="aaa";		
+		
+		//声明一个成员方法
+		public String getName(){
+			return name2;
+		}
+		
+		//方法重载
+		public void _jspService(){
+			
+		}
+		
+		//jsp的声明中不能重复定义翻译好的一些方法
+		/* public void _jspInit() {
+		} */
+	%>
+	<!-- html的注释，会翻译，被当做html内容输出，然后再根据html语法隐藏 -->
+	<%-- <jsp:forward page="jspTest1.jsp"></jsp:forward> --%>
+	<%-- jsp的注释 ，不会被翻译--%>
 </body>
 </html>
