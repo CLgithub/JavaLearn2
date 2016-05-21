@@ -13,7 +13,7 @@
 	<%
 		SimpleDateFormat sDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String curDate= sDateFormat.format(new Date());
-		out.write("当前时间为："+curDate);	//可以向浏览器输出内容
+		out.write("当前时间2为："+curDate);	//可以向浏览器输出内容
 	%>
 </body>
 </html>
