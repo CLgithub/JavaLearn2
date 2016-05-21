@@ -35,7 +35,7 @@ public class MainC extends HttpServlet{
 		List<Contact> contacts = Dao.findAll();
 		StringBuffer sBuffer=new StringBuffer();
 		sBuffer.append("<a href='"+req.getContextPath()+"/page/day10/addc.html'>新增</a>"
-				+ "<table border='1'>"
+				+ "<table border='1' style='border-collapse: collapse;0'>"
 				+ "<tr>	 <td colspan='6'>	"
 				+ "</td>"
 				+ "</tr>"
