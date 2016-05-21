@@ -134,10 +134,6 @@
   <servlet>
     <servlet-name>mainContact</servlet-name>
     <servlet-class>day10_servlet_exercise.MainC</servlet-class>
-    <init-param>
-      <param-name>dataXML</param-name>
-      <param-value>/Users/L/Downloads/aaa/dataXML.xml</param-value>
-    </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
@@ -153,6 +149,25 @@
     <servlet-name>addC</servlet-name>
     <url-pattern>/addC</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>updateC</servlet-name>
+    <servlet-class>day10_servlet_exercise.UpdateC</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updateC</servlet-name>
+    <url-pattern>/updateC</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>deleteC</servlet-name>
+    <servlet-class>day10_servlet_exercise.DeleteC</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteC</servlet-name>
+    <url-pattern>/deleteC</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <servlet-name>Servlet12</servlet-name>
     <servlet-class>day11.Demo1Path</servlet-class>
