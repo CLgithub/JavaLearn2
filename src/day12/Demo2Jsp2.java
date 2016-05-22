@@ -14,6 +14,7 @@ package day12;
 		注意：
 			1）原因就是把其中的java代码拷贝到service中去执行
 	5.4 jsp的声明
+		
 	5.5 jsp的注释
 */
 public class Demo2Jsp2 {
