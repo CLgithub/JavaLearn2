@@ -31,6 +31,7 @@ el表达式
 			4.4 判空
 				${empty name} 等价于${name==null || name==""}
 				null 或空字符串
+				
 --%>
 <html>
 <head>
