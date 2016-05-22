@@ -7,6 +7,11 @@
 <title>猜数字游戏</title>
 </head>
 <body>
-
+	<%-- 显示信息 --%>
+	<%=request.getAttribute("massage") %><br>
+	<form action="/JavaLearn2/GuessServlet" method="post">
+	<input type="text" name="userNum">
+	<input type="submit" value="确定">
+	</form>
 </body>
 </html>
