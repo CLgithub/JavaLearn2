@@ -267,4 +267,15 @@
     <servlet-name>Black</servlet-name>
     <url-pattern>/Black</url-pattern>
   </servlet-mapping>
+  
+  <!-- jsp最佳实践 -->
+  <servlet>
+    <servlet-name>servletJsp1</servlet-name>
+    <servlet-class>day13.Demo1</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletJsp1</servlet-name>
+    <url-pattern>/servletJsp1</url-pattern>
+  </servlet-mapping>
 </web-app>
