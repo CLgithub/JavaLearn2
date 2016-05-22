@@ -17,7 +17,7 @@
 	<%
 	//	out.write("abc");	//只写前面的头信息，深779
 		StringBuffer sb=new StringBuffer();
-		for(int i=0;i<778;i++){
+		for(int i=0;i<779;i++){
 			sb.append("a");
 		}
 		out.write(sb.toString());

@@ -36,7 +36,7 @@ jsp内置对象（重点）
 			write(内容)	直接向浏览器输出内容
 		jspWriter
 			write(内容)	向jsp缓存区写出内容		缓冲区大小默认8k，可以用page指令设置
-	
+			
 */
 public class Demo2jsp4 extends HttpServlet{
 

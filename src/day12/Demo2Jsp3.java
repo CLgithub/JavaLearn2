@@ -36,7 +36,7 @@ package day12;
 		    
 		    
 		    
-		    buffer="8kb"							//jsp页面缓存区大小，后期说
+		    buffer="8kb"							//jsp页面缓存区大小，后期说,使用out内置对象向浏览器输出内容时，会先输出到缓存区，这里就是指定这个缓冲区大小
 			session="true"							//是否开启session的功能	false不能使用内置对象session，true可以使用session内置对象
 			isELIgnored="false"    					//是否是忽略el表达式，后期说
 		    %>
