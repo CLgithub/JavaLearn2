@@ -36,11 +36,11 @@
 		6.3 taglib指令：向页面导入标签库
 		
 		静态包含  vs 动态包含
-		静态包含：
+		静态包含：（jsp的include指令）
 			1.原理：先包含，后翻译
 			2.语法：<%@include file="common/header.jsp" %>
 			3.传参数：不能向被包含页面传参
-		动态包含：
+		动态包含：（jsp的include标签）
 			1.原理：先翻译，后包含
 			2.语法：<jsp:include page="被包含的页面" />
 			3.可以向被包含的页面传参
@@ -83,8 +83,8 @@
 				pageContext.setAttribute("message", "test信息request", PageContext.REQUEST_SCOPE);	//保持到request域中
 		取出数据时：pageContext.findAttribute("message")，自动查找，顺序从小到大page---》request---》session---》ServletContext
  --%>
-<%-- 待总结jsp标签，动作标签，jstl标签，自定义标签 --%>
-<%-- el表达式 --%>
+<%-- el表达式 替换jsp表达式--%>
+<%-- 待总结jsp标签，动作标签，jstl标签，自定义标签 替换jsp脚本--%>
  <%
  	
  %>
