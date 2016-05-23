@@ -288,4 +288,14 @@
     <servlet-name>GuessServlet</servlet-name>
     <url-pattern>/GuessServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>jstlServlet1</servlet-name>
+    <servlet-class>day13_jstl_exercise.ContactMain</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>jstlServlet1</servlet-name>
+    <url-pattern>/jstlServlet1</url-pattern>
+  </servlet-mapping>
 </web-app>
