@@ -37,6 +37,32 @@
 	    	<rtexprvalue>false</rtexprvalue>
 	    </attribute>
 	</tag>
+	
+	<tag>
+		<name>loginForm</name>
+		<tag-class>day14.Demo3Login</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+	    	<name>action</name>
+	    	<required>true</required>
+	    	<rtexprvalue>false</rtexprvalue>
+	    </attribute>
+	    <attribute>
+	    	<name>method</name>
+	    	<required>true</required>
+	    	<rtexprvalue>false</rtexprvalue>
+	    </attribute>
+	    <attribute>
+	    	<name>userName</name>
+	    	<required>true</required>
+	    	<rtexprvalue>false</rtexprvalue>
+	    </attribute>
+	    <attribute>
+	    	<name>password</name>
+	    	<required>true</required>
+	    	<rtexprvalue>false</rtexprvalue>
+	    </attribute>
+	</tag>
 
 
 
