@@ -288,7 +288,7 @@
     <servlet-name>GuessServlet</servlet-name>
     <url-pattern>/GuessServlet</url-pattern>
   </servlet-mapping>
-  
+  <!-- xml+servlet+jstl标签/el表达式，联系人管理  -->
   <servlet>
     <servlet-name>jstlServlet1</servlet-name>
     <servlet-class>day13_jstl_exercise.ContactMain</servlet-class>
@@ -298,4 +298,32 @@
     <servlet-name>jstlServlet1</servlet-name>
     <url-pattern>/jstlServlet1</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>DoAddOrUpdateC</servlet-name>
+    <servlet-class>day13_jstl_exercise.DoAddOrUpdateC</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoAddOrUpdateC</servlet-name>
+    <url-pattern>/DoAddOrUpdateC</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ToAddOrUpdateC</servlet-name>
+    <servlet-class>day13_jstl_exercise.ToAddOrUpdateC</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ToAddOrUpdateC</servlet-name>
+    <url-pattern>/ToAddOrUpdateC</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DoDelC</servlet-name>
+    <servlet-class>day13_jstl_exercise.DoDelC</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDelC</servlet-name>
+    <url-pattern>/DoDelC</url-pattern>
+  </servlet-mapping>
+  <!-- xml+servlet+jstl标签/el表达式，联系人管理 end -->
 </web-app>

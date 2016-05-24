@@ -20,7 +20,8 @@ public class ContactDao {
 
 	static{
 		String string = ContactDao.class.getResource("").toString();
-		xml=new File("/Users/L/Downloads/aaa/ContactDB.xml");
+//		xml=new File("/Users/L/Downloads/aaa/ContactDB.xml");
+		xml=new File("D:/ContactDB.xml");
 		try {
 			if (!xml.exists()) {
 				document = DocumentHelper.createDocument();
@@ -67,7 +68,7 @@ public class ContactDao {
 	//新增或修改
 	public static void addOrUpdate(Contact contact) {
 		String contactId = contact.getId();
-		if(contactId==null){	//新增
+		if(contactId==null||contactId==""){	//新增
 			Integer id=1;
 			List<Node> contacts = document.selectNodes("/contactList/contact");
 			if(contacts.size()!=0){

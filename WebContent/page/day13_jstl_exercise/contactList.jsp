@@ -8,7 +8,7 @@
 <title>联系人列表页</title>
 </head>
 <body>
-	<a href='"+req.getContextPath()+"/page/day10/addc.html'>新增</a>
+	<a href='<%=application.getContextPath()%>/ToAddOrUpdateC'>新增</a>
 	<table border='1' style='border-collapse: collapse;0'>
 		<tr>
 			<td colspan='6'></td>
@@ -21,24 +21,18 @@
 			<th>qq</th>
 			<th>操作</th>
 		</tr>
-		<%-- <%
-			//从request中接受数据
-			List<Contact> contacts=(List<Contact>)request.getAttribute("contacts");	
-			for(Contact c:contacts){
-				%><tr><%
-					%><td><%=c.getName()%></td><%
-					%><td><%=c.getAge()%></td><%
-					%><td><%=c.getPhone()%></td><%
-					%><td><%=c.getEmail()%></td><%
-					%><td><%=c.getQq()%></td><%
-					%><td><a href='<%=request.getContextPath()+"/updateC?id="+c.getId() %>'>修改</a>
-					<a href='<%=request.getContextPath()+"/deleteC?id="+c.getId() %>'>删除</a></td><%
-				%></tr><%
-			}
-		%> --%>
-		
-		<c:forEach items="${request.list }" var="c" varStatus="vS">
-			a
+		<c:forEach items="${list}" var="c" varStatus="vs">
+			<tr>
+				<td>${c.name}</td>
+				<td>${c.age}</td>
+				<td>${c.phone}</td>
+				<td>${c.email}</td>
+				<td>${c.qq}</td>
+				<td>
+					<a href="<%=application.getContextPath()%>/ToAddOrUpdateC?id=${c.id}">修改</a> 
+					<a href="<%=application.getContextPath()%>/DoDelC?id=${c.id}">删除</a>
+				</td>
+			</tr>
 		</c:forEach>
 	</table>
 </body>
