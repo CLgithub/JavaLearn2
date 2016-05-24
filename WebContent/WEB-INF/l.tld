@@ -22,6 +22,12 @@
 		<!-- 输出标签体内容的格式 -->
 		<body-content>scriptless</body-content>
 	</tag>
+	
+	<tag>
+		<name>Demo2Tag</name>
+		<tag-class>day14.Demo2Tag</tag-class>
+		<body-content>scriptless</body-content>
+	</tag>
 
 
 
