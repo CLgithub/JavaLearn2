@@ -64,6 +64,16 @@
 	    </attribute>
 	</tag>
 
+	<tag>
+		<name>if</name>
+		<tag-class>day14.Demo4Tag</tag-class>
+		<body-content>scriptless</body-content>
+	    <attribute>
+	    	<name>test</name>
+	    	<required>true</required>
+	    	<rtexprvalue>true</rtexprvalue>
+	    </attribute>
+	</tag>
 
 
 </taglib>
