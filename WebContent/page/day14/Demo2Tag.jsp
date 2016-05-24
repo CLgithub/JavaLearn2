@@ -8,6 +8,6 @@
 <title>自定义标签2</title>
 </head>
 <body>
-	<l:Demo2Tag> 标签体内容aaAABBDECD<br> </l:Demo2Tag> 标签余下的内容
+	<l:Demo2Tag num="3"> 标签体内容aaAABBDECD<br> </l:Demo2Tag> 标签余下的内容
 </body>
 </html>

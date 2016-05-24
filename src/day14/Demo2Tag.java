@@ -21,6 +21,11 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 	（5）带属性的标签
 */
 public class Demo2Tag extends SimpleTagSupport {
+	private Integer num;
+	
+	public void setNum(Integer num) {
+		this.num = num;
+	}
 
 	@Override
 	public void doTag() throws JspException, IOException {
@@ -44,12 +49,15 @@ public class Demo2Tag extends SimpleTagSupport {
 		
 		//4改变标签体内容,将标签体内容全部变成小写输出	,
 		//思路：将标签体内容输出到一个临时容器，改变这个内容后输出到浏览器
-		JspWriter out = this.getJspContext().getOut();
-		StringWriter sWriter=new StringWriter();
-		jspBody.invoke(sWriter);
-		out.write(sWriter.toString().toLowerCase());
+//		JspWriter out = this.getJspContext().getOut();
+//		StringWriter sWriter=new StringWriter();
+//		jspBody.invoke(sWriter);
+//		out.write(sWriter.toString().toLowerCase());
 		
 		//带属性的标签
+		for(int i=0;i<num;i++){
+			jspBody.invoke(null);
+		}
 		
 	}
 }

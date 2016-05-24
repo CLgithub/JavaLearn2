@@ -27,6 +27,15 @@
 		<name>Demo2Tag</name>
 		<tag-class>day14.Demo2Tag</tag-class>
 		<body-content>scriptless</body-content>
+		 <!-- 属性声明 -->
+	    <attribute>
+	    	<!-- 属性名称 -->
+	    	<name>num</name>
+	    	<!-- 是否必填 -->
+	    	<required>false</required>
+	    	<!-- 是否支持EL表达式 -->
+	    	<rtexprvalue>false</rtexprvalue>
+	    </attribute>
 	</tag>
 
 
