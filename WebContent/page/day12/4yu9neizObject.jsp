@@ -67,7 +67,7 @@
 		HttpServletResponse（response）		相应对象
 		
 		PageConfig（pageContext）			jsp上下文对象
-		Object（page）						相当于jsp的this
+		Object（page）						相当于jsp的this，翻译过来的java源文件这个类
 		
 		jspWriter（out）						向浏览器输出信息用
 		Throwable(exception)				异常对象（需要在page指令中设置后才能用）
