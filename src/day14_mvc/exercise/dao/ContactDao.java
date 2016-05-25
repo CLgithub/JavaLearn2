@@ -1,10 +1,9 @@
-package day13_jstl_exercise;
+package day14_mvc.exercise.dao;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.LinkedList;
 import java.util.List;
-
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
@@ -12,8 +11,7 @@ import org.dom4j.Node;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
-
-import day7_sax.Contact;
+import day14_mvc.exercise.entity.ContactMvc;
 
 
 public class ContactDao {
@@ -50,11 +48,11 @@ public class ContactDao {
 	}
 	
 	//查询所有
-	public static List<Contact> findAll(){
+	public static List<ContactMvc> findAll(){
 		List<Node> contacts = document.selectNodes("/contactList/contact");
-		List<Contact> list=new LinkedList<>();
+		List<ContactMvc> list=new LinkedList<>();
 		for(Node c:contacts){
-			Contact contact = new Contact();
+			ContactMvc contact = new ContactMvc();
 			Element element=(Element) c;
 			contact.setId(element.attributeValue("id"));
 			contact.setName(element.elementText("name"));
@@ -68,7 +66,7 @@ public class ContactDao {
 	}
 
 	//新增或修改
-	public static void addOrUpdate(Contact contact) {
+	public static void addOrUpdate(ContactMvc contact) {
 		String contactId = contact.getId();
 		if(contactId==null||contactId==""){	//新增
 			Integer id=1;
@@ -97,12 +95,12 @@ public class ContactDao {
 		saveXML(xml, document);
 	}
 
-	public static Contact findById(String id) {
+	public static ContactMvc findById(String id) {
 //		Element rootElement = document.getRootElement();
 //		Node selectSingleNode = rootElement.selectSingleNode("/contact[@id='"+id+"']");
 		Node selectSingleNode = document.selectSingleNode("//contact[@id='"+id+"']");
 		Element contactE = (Element)selectSingleNode ;
-		Contact contact = new Contact();
+		ContactMvc contact = new ContactMvc();
 		contact.setId(contactE.attributeValue("id"));
 		contact.setName(contactE.elementText("name"));
 		contact.setAge(contactE.elementText("age"));

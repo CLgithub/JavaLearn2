@@ -326,4 +326,15 @@
     <url-pattern>/DoDelC</url-pattern>
   </servlet-mapping>
   <!-- xml+servlet+jstl标签/el表达式，联系人管理 end -->
+  <!-- xml+dao+service+controller+jstljstl标签/el表达式 联系人管理-->
+  <servlet>
+    <servlet-name>ContactMain</servlet-name>
+    <servlet-class>day14_mvc.exercise.controller.ContactMain</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ContactMain</servlet-name>
+    <url-pattern>/ContactMain</url-pattern>
+  </servlet-mapping>
+  <!-- xml+dao+service+controller+jstljstl标签/el表达式 联系人管理 end-->
 </web-app>
