@@ -131,9 +131,89 @@
 			
 --%>
 
-<%-- 待总结jsp标签，动作标签，jstl标签，自定义标签 替换jsp脚本
-
-
+<%-- 总结jsp标签，动作标签，jstl标签，自定义标签 替换jsp脚本
+	jsp标签
+		作用：替换jsp脚本<% %>执行java代码，流程判断，转发页面等
+		jsp标签分类：
+			（1）内置标签（动作标签）：不需要在jsp页面导入就可以使用
+			（2）jstl标签：java标准标签库（java standard tag libarary），需要在jsp页面中导入
+			（3）自定义标签：开发者自行定义的标签，需要在jsp页面中导入
+		（1）动作标签（内置标签）：
+			常见：
+				转发标签:<jsp:forward />
+				参数标签:<jsp:pararm />
+				包含标签:<jsp:include />
+					原理：先翻译，后包含，动态包含
+		（2）jstl标签
+			jstl：java标准标签库（java standard tag libarary）
+			核心标签库：（c标签库）
+			国际化标签库：（fmt标签库）
+			el标签库：（fn标签库）
+			xml标签库：（x标签库）
+			sql标签库：（sql标签库）
+			
+			使用步骤：
+				（1）如果没有jar包，导jstl的jar包
+				（2）使用jsp三大指令中的taglib指令，在jsp页面中导入标签库
+					<%@taglib uri="tld文件的uri名称" prefix="" %>	uri统一资源标识符
+				（3）使用：常用有
+					<c:set></c:set>					保存数据
+					<c:out value=""></c:out>		获取数据
+					<c:if test=""></c:if>			单个条件判断
+					
+					<c:choose>			多条件判断
+						<c:when test=""></c:when>		
+						<c:otherwise></c:otherwise>
+					</c:choose>
+					
+					<c:forEach></c:forEach>								循环
+					<c:forTokens items="" delims=""></c:forTokens>		循环特殊
+					
+					<c:redirect></c:redirect>			重定向
+				
+		（3）自定义标签：开发者自己定义开发的标签
+			开发过程：
+				（1）编写标签处理器类，一个普通的java类，继承SimpleTagSupport类
+				（2）重写SimpleTagSupport的方法：doTag()方法处理具体标签要做什么
+					void setJspContext(JspContext pc)		设置pageContext对象，传入pageContext，之后就可以通过getJspContext()方法得到（一定调用）
+					void setParent(JspTag parent)			设置父标签对象，如果没有父标签，则不调用该方法，如果有则调用传入JspTag父标签对象,之后可以通过getParent()得到
+					void setJspBody(JspFragment jspBody)	设置标签体内容，标签体内容封装到jspFragment对象中，然后传入JspFragment对象，通过getJspBody()方法得到,如果没有标签体内容，则不调用次方法
+					void doTag() throws JspException, IOException	执行标签时调用的方法	（一定调用）
+				（3）注册（声明）标签到标签库：在WEB-INF目录下建立一个l.tld文件，可以参考c标签库标签声明文件
+				（4）在jsp页面导入标签库<%@taglib uri="http://tag.cl.com"  prefix="l" %>
+				（5）使用：<l:showIp />
+			
+			自定义标签执行过程
+				tomcat启动的时候，会加载每个web应用，加载每个web应用下WEB-INF的所有文件：web.xml tld文件等
+				访问Domo1.jsp资源，
+				tomcat把jsp翻译成java源文件，编译成class文件，构造类对象，调用jspService方法
+				检查jsp文件中的taglib指令，是否存在一个名为http://tag.cl.com的tld文件，
+				上一步已经读到了l.tld文件，当读到<l:showIp />时，会到l.tld文件中查找name为<tag>的标签
+				找到tag标签后，读取<tag-class>day14.Dome1ShowIpTag</tag-class>的内容
+				得到day14.Dome1ShowIpTag，
+				构造Dome1ShowIpTag对象，调用Dome1ShowIpTag的方法
+			
+			自定义标签处理器类的生命周期：
+				SimpleTag接口：
+					void setJspContext(JspContext pc)		设置pageContext对象，传入pageContext，之后就可以通过getJspContext()方法得到（一定调用）
+					void setParent(JspTag parent)			设置父标签对象，如果没有父标签，则不调用该方法，如果有则调用传入JspTag父标签对象,之后可以通过getParent()得到
+					void setJspBody(JspFragment jspBody)	设置标签体内容，标签体内容封装到jspFragment对象中，然后传入JspFragment对象，通过getJspBody()方法得到,如果没有标签体内容，则不调用次方法
+					void doTag() throws JspException, IOException	执行标签时调用的方法	（一定调用）
+			
+			自定义标签能做什么：
+				（1）控制标签体内容是否输出
+					通过getJspBody()方法可以获得标签体对象JspFragment，调用JspFragment对象的invoke()方法可以将标签体内容输出到一个Writer中
+					invoke(null)输出到this.getJspContext().getOut()中，即输出到浏览器，不调用，不输出
+				（2）控制标签余下内容是否输出
+					默认会输出，抛出throw new SkipPageException();异常不输出
+				（3）控制重复输出标签体内容
+					多次调用invoke方法，多次输出
+				（4）改变标签体内容
+					将标签体内容输出到一个临时容器，改变这个内容后输出到浏览器
+					StringWriter是个合适的容器
+				（5）带属性的标签
+					需要在标签声明文件中声明，在标签处理器类中设置成员变量，并提供其set方法
+				
 --%>
  <%
  	

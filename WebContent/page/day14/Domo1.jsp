@@ -3,7 +3,7 @@
 <%@taglib uri="http://tag.cl.com"  prefix="l" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%--
-自定义表情：
+自定义标签：
 	引入：
 		需求：向浏览器输出当前客户端的ip地址（要求只能使用jsp标签）
 	
