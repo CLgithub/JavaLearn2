@@ -8,7 +8,32 @@
 <title>3大指令4大域对象9大内置对象总结</title>
 </head>
 <body>
-<%-- 待总结jsp语法：模版，表达式，脚本，声明，注释 --%>
+<%-- 
+	5.jsp语法
+		5.1 jsp模版
+			jsp页面中的html代码就是jsp的模版
+		5.2 jsp表达式
+			语法：<%= %>
+			作用：向浏览器输出变量的值或表达式的运算结果
+			注意：
+				（1）表达式的原理就是翻译成out.print("内容");通过该方法向浏览器输出内容
+				（2）表达式后不需要加;
+		5.3 jsp脚本
+			语法：<% %>
+			作用：执行java代码
+			注意：
+				（1）原理就是把其中的java代码拷贝到service中去执行
+		5.4 jsp声明
+			语法：<%! %>
+			作用：声明成员变量或成员方法
+			注意：
+				（1）如果是变量的话，会翻译成成员变量
+				（2）如果是方法，会翻译成成员方法
+		5.5 jsp注释
+			语法：
+			注意：html注释会被翻译和执行，jsp注释不会被翻译和执行
+
+--%>
 <%-- 
  	jsp三大指令
  		6.1 include指令：
@@ -82,9 +107,34 @@
 				pageContext.setAttribute("message", "test信息session", PageContext.SESSION_SCOPE);	//保持到session域中
 				pageContext.setAttribute("message", "test信息request", PageContext.REQUEST_SCOPE);	//保持到request域中
 		取出数据时：pageContext.findAttribute("message")，自动查找，顺序从小到大page---》request---》session---》ServletContext
- --%>
-<%-- el表达式 替换jsp表达式--%>
-<%-- 待总结jsp标签，动作标签，jstl标签，自定义标签 替换jsp脚本--%>
+--%>
+<%-- 
+	el表达式：
+		作用：替换	jsp表达式，向浏览器输出 域对象中的 变量的值或表达式计算的结果
+		语法：${变量或表达式}
+			(1)输出基本数据类型变量
+				1.1 从四个域获取
+					${变量或表达式}
+				1.2 定制域获取
+					${requestScope.name}
+					域范围：pageScope,requestScope,sessionScope,applicationScope
+			(2)输出对象的属性值
+			(3)输出集合对象：
+				List和Map
+			(4)表达式计算
+				4.1 算术表达式
+				4.2 比较运算
+				4.3 逻辑运算
+				4.4 判空运算
+					${empty name}等价于${name==null || name==""}
+					null 或空字符串
+			
+--%>
+
+<%-- 待总结jsp标签，动作标签，jstl标签，自定义标签 替换jsp脚本
+
+
+--%>
  <%
  	
  %>
