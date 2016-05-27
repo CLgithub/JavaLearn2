@@ -30,7 +30,20 @@ mysql的简介
 		设置用户名的密码：两行都是密码，第一行是密码，第二行是确认密码。
 		安装完成。
 		
+进入数据库：
+	windows，启动服务，电开mysql command Line Client,输入密码即可
+	
+	mac os：
+		启动或停止服务：/usr/local/mysql-5.7.10-osx10.9-x86_64/support-files目录下，
+			执行 sudo sh mysql.server (start/stop) 
 		
+		进入：/usr/local/mysql-5.7.10-osx10.9-x86_64/bin目录下
+			执行sudo ./mysql -u L -p
+			输入密码即可
+	mac os下安装后有问题解决方案看印象笔记
+		
+mysql数据存储结构：
+	数据库－－》表－－－》数据
 	
 		
 		
