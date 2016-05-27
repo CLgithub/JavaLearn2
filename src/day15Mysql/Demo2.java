@@ -55,6 +55,29 @@ package day15Mysql;
 	     		desc 表名;
 		
 		
+	表管理练习：
+		1.创建一个员工表
+			字段     属性
+			id        整形(int)
+			name     字符串(varchar)（长度为20）
+			gender    字符串（长度为2）
+			birthday  日期型(date)
+			email	   字符串（长度为10）
+			remark     字符串（长度为50）
+			
+		create table emp( id int, name varchar(20),gender varchar(2),birthday date,
+			eamil varchar(10),remark varchar(50));
+		
+		2.修改表练习
+			2.1 在员工表基础上增加age列
+				alter table emp add column age int;
+			2.2 修改email列长度为50
+				alter table emp change eamil email varchar(50);
+			2.3 删除remark列
+				alter table emp drop reamak;
+			2.4 列名name修改为username
+				alter table emp change name username varchar(20);
+		
 		
 */
 public class Demo2 {
