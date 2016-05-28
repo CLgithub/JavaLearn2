@@ -32,7 +32,7 @@ package day15Mysql;
 		创建表
 		    create table student(sid int,sname varchar(20),sage int);
 			表名tab1，主键id，自增长，……
-		     create table tab1( id int(11) auto_ increment primary key, test varchar(80)   );
+		     create table tab1( id int(11) auto_increment primary key, test varchar(80)   );
      	删除表
      		drop table 表名;
  		查看所有表
@@ -77,7 +77,34 @@ package day15Mysql;
 				alter table emp drop reamak;
 			2.4 列名name修改为username
 				alter table emp change name username varchar(20);
+				
+	管理数据：
+		增：
+			插入所有字段，必须依次按序
+				insert into 表名 values(各字段值，中间用“,”隔开);		按顺序
+				例：insert into students values(2,"小红",22,"",'女');
+			插入部分字段
+				insert into 表名(字段名中间用“,”隔开) values(各字段对应值，中间用“,”隔开);	
+				例：INSERT INTO students(id,name) values(3,'小白');
+		删：
+			delete from 表名 where 条件;
+			例：delete from students where id=3;
+			另一种方式		清空表
+				truncate table 表名;
+				truncate table students;
+				
+			delete 和 truncate 的区别
+				delete：
+					（1）delete可以带条件删除，		（2）delete只能删除表的数据，不能删除表的约束	（3）delete删除的数据是可以回滚的
+				truncate：
+					（1）truncate不能带条件删除，	（2）既可以删除表数据，也可以删除表的约束		（3）truncate删除的数据是不能回滚
 		
+		改：
+			update 表名 set 字段名='字段值',字段名2='字段值2' where 条件;
+			例：update students set gender='男' where id='1';
+		
+		查：Demo3.java
+			
 		
 */
 public class Demo2 {
