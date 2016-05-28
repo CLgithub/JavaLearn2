@@ -86,7 +86,6 @@ package day15Mysql;
 				select gender,count(1) from students group by gender having count(1)>3;
 		
 		
-		
 	练习一：查询操作练习(在学生表数据基础上：student.sql)
 		查询表中所有学生的信息。
 			select * from student;

@@ -1,0 +1,15 @@
+package day15Mysql;
+
+/*
+sql分类：
+	DDL：数据定义语言
+		create/drop/alter
+	DML:数据操作语言
+		insert/delete/update/truncate
+	DQL：数据查询语言
+		select/show
+
+*/
+public class Demo4 {
+
+}
