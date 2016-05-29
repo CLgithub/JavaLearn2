@@ -124,6 +124,34 @@ mysql的的变量
 	局部变量：所有在存储过程中使用的变量，只要存储过程执行完毕，局部变量就丢失
 	
 	
+存储过程练习：
+	编写一个存储过程 
+	如果学生的英语平均分小于等于70分，则输出'一般'
+	如果学生的英语平均分大于70分，且小于等于90分，则输出‘良好’
+	如果学生的英语平均分大于90分，则输出‘优秀’
+	
+	delimiter $
+	create procedure pro_getEngAvg(out str varchar(20))
+	begin
+		declare i double;
+		select avg(english) into i from student;
+		if i<=70 then
+			set str='一般';
+		elseif 70<i and i<=90 then
+			set str='良好';
+		elseif i>90 then
+			set str='优秀';
+		end if;
+	end $
+
+
+call pro_getEngAvg(@str);
+select @str;
+
+
+call pro_getEng(@str);
+select @str;
+	
 	
 	
 */
