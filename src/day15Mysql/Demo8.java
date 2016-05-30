@@ -38,7 +38,7 @@ mysql权限问题：
 			给他追加一个可以插入的权限
 				grant insert on mytest1.sys_log_2016_2 to 'user1'@'%' identified by '456123';
 			给root用户，分配密码123456，任意地点登陆，all权限，任意库，任意表
-			例如：grant all on *.* to root@"%" identified by "123456";
+			例如：grant all on *.* to 'root'@'%' identified by '123456';
 			
 mysql 备份和还原
 	在命令行下操作，到达mysql安装目录bin下，不登陆数据库,
