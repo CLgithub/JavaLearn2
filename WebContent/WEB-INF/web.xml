@@ -337,4 +337,13 @@
     <url-pattern>/ContactMain</url-pattern>
   </servlet-mapping>
   <!-- xml+dao+service+controller+jstljstl标签/el表达式 联系人管理 end-->
+  <servlet>
+    <servlet-name>jdbcDemo4Login</servlet-name>
+    <servlet-class>day17.Demo4Login</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>jdbcDemo4Login</servlet-name>
+    <url-pattern>/jdbcDemo4Login</url-pattern>
+  </servlet-mapping>
 </web-app>

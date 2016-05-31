@@ -13,7 +13,7 @@ import java.sql.Statement;
  */
 public class Demo2JdbcUtil {
 	private static String url="jdbc:mysql://localhost:3306/jdbc1?autoReconnect=true&useSSL=false";
-	private static String user="root";
+	private static String user="L";
 	private static String password="123456";
 	//只加载一次
 	static{
