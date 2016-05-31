@@ -2,11 +2,11 @@ package day15Mysql;
 
 /*
 sql分类：
-	DDL：数据定义语言
+	DDL：数据定义语言（data definition  language）
 		create/drop/alter
-	DML:数据操作语言
+	DML:数据操作语言	（data manipulation language）
 		insert/delete/update/truncate
-	DQL：数据查询语言
+	DQL：数据查询语言（data query language）
 		select/show
 
 1.数据约束

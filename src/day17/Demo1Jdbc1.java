@@ -1,12 +1,12 @@
 package day17;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 import org.junit.Test;
-import sun.security.util.Password;
 
 /*
 	jdbc入门
@@ -24,23 +24,16 @@ import sun.security.util.Password;
 				端口
 				用户名
 				密码
-			
-		Mon May 30 22:44:16 CST 2016 WARN: Establishing SSL connection without server's 
-		identity verification is not recommended.
-		 According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be 
-		 established by default if explicit option isn't set. 
-		 For compliance with existing applications not using SSL the verifyServerCertificate property 
-		 is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, 
-		 or set useSSL=true and provide truststore for server certificate verification.
+		
 			
 */
 public class Demo1Jdbc1 {
 
 	//连接数据库的url，jdbc协议
 	//jdbc协议：数据库子协议://主机:端口/具体数据库
-	private String url="jdbc:mysql://localhost:3306/myLearn2";	
+	private String url="jdbc:mysql://localhost:3306/jdbc1?autoReconnect=true&useSSL=false";	
 	
-	private String user="L";
+	private String user="root";
 	private String password="123456";
 	
 	//方法一：连接数据库
