@@ -13,7 +13,7 @@ import org.junit.Test;
 Statement与PreparedStatement的区别
 	1 语法上的差异
 	2 执行效率上，支持sql缓冲区的 数据库上PreparedStatement会更高，（支持oracle，sql server）（不支持，mysql）
-	3 
+	3 PreparedStatement能防止sql注入
 */
 public class Demo3 {
 	
