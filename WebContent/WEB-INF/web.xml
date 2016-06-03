@@ -346,4 +346,15 @@
     <servlet-name>jdbcDemo4Login</servlet-name>
     <url-pattern>/jdbcDemo4Login</url-pattern>
   </servlet-mapping>
+  <!-- mysql+dao+service+controller+jstljstl标签/el表达式 联系人管理-->
+  <servlet>
+    <servlet-name>ContactMain2</servlet-name>
+    <servlet-class>day17.exercise.controller.ContactMain</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ContactMain2</servlet-name>
+    <url-pattern>/ContactMain2</url-pattern>
+  </servlet-mapping>
+  <!-- mysql+dao+service+controller+jstljstl标签/el表达式 联系人管理 end-->
 </web-app>
