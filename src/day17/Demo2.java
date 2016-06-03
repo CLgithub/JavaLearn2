@@ -49,11 +49,11 @@ public class Demo2 {
 	@Test
 	public void test1(){
 		//DDL
-		String sql="create table student(id int primary key auto_increment,name varchar(20),gender varchar(2))";
+//		String sql="create table student(id int primary key auto_increment,name varchar(20),gender varchar(2))";
 		
 		//DML
 		//新增
-//		String sql="insert into student(name,gender) values('小白','男');";
+		String sql="insert into student(name,gender) values('小白','男');";
 		//修改
 //		String sql="update student set name='小黄' where id=4";
 		//删除

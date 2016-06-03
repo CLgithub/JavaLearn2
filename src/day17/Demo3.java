@@ -21,14 +21,16 @@ public class Demo3 {
 	public void test1(){
 		//DDL
 //		String sql="create table student(id int primary key auto_increment,name varchar(20),gender varchar(2))";
+//		String sql="create table users(id int primary key auto_increment,name varchar(20),password varchar(32))";
 		
 		//DML
 //		//新增	一个?（占位符）代表一个参数
 //		String sql="insert into student(name,gender) values(?,?);";
+		String sql="insert into users(name,password) values(?,?);";
 //		//修改
 //		String sql="update student set name=?,gender=? where id=?";
 //		//删除
-		String sql="delete from student where id=?";
+//		String sql="delete from student where id=?";
 		Connection connection=null;
 		Statement statement=null;
 		try{
@@ -37,9 +39,11 @@ public class Demo3 {
 			//对sql执行预编译，编译成中间（状态），检查语法是否正确
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);
 			//设置参数的值	第一个参数代表占位符的位置，第二个参数是真正的实参
-//			prepareStatement.setString(1, "小黄");
+//			prepareStatement.setString(1, "小黄1");
 //			prepareStatement.setString(2, "男");
-			prepareStatement.setInt(1, 5);
+			prepareStatement.setString(1, "aaa");
+			prepareStatement.setString(2, "123456");
+//			prepareStatement.setInt(1, 5);
 			//发生参数执行sql
 			int i = prepareStatement.executeUpdate();
 			System.out.println("影响的行数："+i);
