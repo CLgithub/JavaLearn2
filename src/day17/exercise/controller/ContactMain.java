@@ -1,11 +1,16 @@
 package day17.exercise.controller;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Enumeration;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.beanutils.BeanUtils;
+
 import day17.exercise.entity.Contact17;
 import day17.exercise.service.ContactService;
 import day17.exercise.service.ContactServiceImpl;
@@ -35,18 +40,34 @@ public class ContactMain extends HttpServlet{
 			req.getRequestDispatcher("/page/day17/exercise/addorUpdateC.jsp").forward(req, resp);
 		}else if("doAddOrU".equals(mark)){	//新增或修改
 			Contact17 contact = new Contact17();
-			String id=req.getParameter("id");
-			if(!id.equals("")){
-				contact.setId(Integer.valueOf(id));
+			//使用getParameter得到表单提交数据，封装到对象
+//			String id=req.getParameter("id");
+//			if(!id.equals("")){
+//				contact.setId(Integer.valueOf(id));
+//			}
+//			contact.setName(req.getParameter("name"));
+//			String age = req.getParameter("age");
+//			if(age.equals("")){
+//				contact.setAge(null);
+//			}
+//			contact.setPhone(req.getParameter("phone"));
+//			contact.setEmail(req.getParameter("email"));
+//			contact.setQq(req.getParameter("qq"));
+			
+			//用BeanUtils封装
+			Enumeration<String> parameterNames = req.getParameterNames();	//获取所有参数名称列表，详情见day9_http.Demo2
+			while(parameterNames.hasMoreElements()){
+				String eName = parameterNames.nextElement();
+				String parameter = req.getParameter(eName);
+				try {
+					BeanUtils.setProperty(contact, eName, parameter);
+//					BeanUtils.copyProperty(contact, eName, parameter);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-			contact.setName(req.getParameter("name"));
-			String age = req.getParameter("age");
-			if(age.equals("")){
-				contact.setAge(null);
-			}
-			contact.setPhone(req.getParameter("phone"));
-			contact.setEmail(req.getParameter("email"));
-			contact.setQq(req.getParameter("qq"));
+			
+			
 			contactService.addOrUpdate(contact);
 			resp.sendRedirect(req.getContextPath()+"/ContactMain2");
 		}else if("delete".equals(mark)){	//删除
