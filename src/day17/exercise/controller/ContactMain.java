@@ -40,7 +40,10 @@ public class ContactMain extends HttpServlet{
 				contact.setId(Integer.valueOf(id));
 			}
 			contact.setName(req.getParameter("name"));
-			contact.setAge(req.getParameter("age"));
+			String age = req.getParameter("age");
+			if(age.equals("")){
+				contact.setAge(null);
+			}
 			contact.setPhone(req.getParameter("phone"));
 			contact.setEmail(req.getParameter("email"));
 			contact.setQq(req.getParameter("qq"));

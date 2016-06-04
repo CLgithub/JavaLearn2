@@ -53,13 +53,12 @@ public class DaoUtil {
 			prepareStatement=connection.prepareStatement(sql);
 			for(int i=0;i<objects.length;i++){
 				Object object = objects[i];
-				
-				if(object instanceof Integer){
-					prepareStatement.setInt(i+1, (Integer) objects[i]);
-				}else if(object instanceof String){
-					prepareStatement.setString(i+1, (String) objects[i]);
-				}
-				
+//				if(object instanceof Integer){
+//					prepareStatement.setInt(i+1, (Integer) objects[i]);
+//				}else if(object instanceof String){
+//					prepareStatement.setString(i+1, (String) objects[i]);
+//				}
+				prepareStatement.setObject(i+1, object);
 			}
 			j=prepareStatement.executeUpdate();
 			return j;
@@ -86,7 +85,8 @@ public class DaoUtil {
 		try {
 			prepareStatement=connection.prepareStatement(sql);
 			for(int i=0;i<objects.length;i++){
-				prepareStatement.setString(i+1, (String) objects[i]);
+//				prepareStatement.setString(i+1, (String) objects[i]);
+				prepareStatement.setObject(i+1, objects[i]);
 			}
 			resultSet = prepareStatement.executeQuery();
 			while(resultSet.next()){
