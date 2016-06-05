@@ -18,7 +18,7 @@
 			<th>年龄</th>
 			<th>电话</th>
 			<th>邮箱</th>
-			<th>qq</th>
+			<th>dateTest</th>
 			<th>操作</th>
 		</tr>
 		<c:forEach items="${list}" var="c" varStatus="vs">
@@ -27,7 +27,7 @@
 				<td>${c.age}</td>
 				<td>${c.phone}</td>
 				<td>${c.email}</td>
-				<td>${c.qq}</td>
+				<td>${c.dateTest}</td>
 				<td>
 					<a href="${pageContext.servletContext.contextPath}/ContactMain2?mark=toAddOrU&id=${c.id}">修改</a> 
 					<a href="${pageContext.servletContext.contextPath}/ContactMain2?mark=delete&id=${c.id}">删除</a>

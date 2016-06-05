@@ -6,7 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -82,6 +85,7 @@ public class DaoUtil {
 		connection=getConnect();
 		List<Contact17> list=new ArrayList<>();
 		PreparedStatement prepareStatement =null;
+		SimpleDateFormat sDateFormat=new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			prepareStatement=connection.prepareStatement(sql);
 			for(int i=0;i<objects.length;i++){
@@ -93,10 +97,10 @@ public class DaoUtil {
 				Contact17 contact17 = new Contact17();
 				contact17.setId(resultSet.getInt("id"));
 				contact17.setName(resultSet.getString("name"));
-				contact17.setAge(resultSet.getString("age"));
+				contact17.setAge(resultSet.getObject("age")==null?null:Integer.parseInt(resultSet.getObject("age").toString()));
 				contact17.setPhone(resultSet.getString("phone"));
 				contact17.setEmail(resultSet.getString("email"));
-				contact17.setQq(resultSet.getString("qq"));
+				contact17.setDateTest(resultSet.getDate("dateTest"));
 				list.add(contact17);
 			}
 			return list;

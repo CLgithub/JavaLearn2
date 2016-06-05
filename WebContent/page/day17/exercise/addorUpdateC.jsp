@@ -22,7 +22,7 @@
 			</tr><tr>
 				<td>邮箱</td><td><input type="text" name="email" value="${contact.email}"></td>
 			</tr><tr>
-				<td>qq</td><td><input type="text" name="qq" value="${contact.qq}"></td>
+				<td>dateTest</td><td><input type="text" name="dateTest" value="${contact.dateTest}"></td>
 			</tr><tr>
 				<td colspan="2" align="center"><input type="submit" value="保存"></td>
 			</tr>

@@ -1,18 +1,14 @@
 package day17.exercise.entity;
 
+import java.util.Date;
+
 public class Contact17 {
 	private Integer id;
 	private String name;
-	private String age;
+	private Integer age;
 	private String phone;
 	private String email;
-	private String qq;
-
-	@Override
-	public String toString() {
-		return "Contact [id=" + id + ", name=" + name + ", age=" + age + ", phone=" + phone + ", email=" + email
-				+ ", qq=" + qq + "]";
-	}
+	private Date dateTest;
 
 	public Integer getId() {
 		return id;
@@ -30,11 +26,11 @@ public class Contact17 {
 		this.name = name;
 	}
 
-	public String getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
@@ -54,12 +50,30 @@ public class Contact17 {
 		this.email = email;
 	}
 
-	public String getQq() {
-		return qq;
+	public Date getDateTest() {
+		return dateTest;
 	}
 
-	public void setQq(String qq) {
-		this.qq = qq;
+	public void setDateTest(Date dateTest) {
+		this.dateTest = dateTest;
+	}
+
+	public Contact17() {
+	}
+
+	public Contact17(Integer id, String name, Integer age, String phone, String email, Date dateTest) {
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.phone = phone;
+		this.email = email;
+		this.dateTest = dateTest;
+	}
+
+	@Override
+	public String toString() {
+		return "Contact17 [id=" + id + ", name=" + name + ", age=" + age + ", phone=" + phone + ", email=" + email
+				+ ", dateTest=" + dateTest + "]";
 	}
 
 }

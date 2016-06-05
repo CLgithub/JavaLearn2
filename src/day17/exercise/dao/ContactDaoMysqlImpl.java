@@ -20,13 +20,13 @@ public class ContactDaoMysqlImpl implements ContactDao{
 		Integer contactId = contact.getId();
 		String sql="";
 		if(contactId==null||contactId==0){	//新增
-			sql="insert into contact17(name,age,phone,email,qq) values(?,?,?,?,?)";
+			sql="insert into contact17(name,age,phone,email,dateTest) values(?,?,?,?,?)";
 			int i = DaoUtil.executeSql(sql, 
-						contact.getName(),contact.getAge(),contact.getPhone(),contact.getEmail(),contact.getQq());
+						contact.getName(),contact.getAge(),contact.getPhone(),contact.getEmail(),contact.getDateTest());
 		}else {
-			sql="update contact17 set name=?,age=?,phone=?,email=?,qq=? where id=?";
+			sql="update contact17 set name=?,age=?,phone=?,email=?,dateTest=? where id=?";
 			int i = DaoUtil.executeSql(sql, 
-					contact.getName(),contact.getAge(),contact.getPhone(),contact.getEmail(),contact.getQq(),contact.getId());
+					contact.getName(),contact.getAge(),contact.getPhone(),contact.getEmail(),contact.getDateTest(),contact.getId());
 		}
 	}
 
