@@ -12,7 +12,8 @@ public class ContactDaoMysqlImpl implements ContactDao{
 	@Override
 	public List<Contact17> findAll() {
 		String sql="select * from contact17";
-		return DaoUtil.selectListBySql(sql);
+//		return DaoUtil.selectListBySql(sql);
+		return DaoUtil.selectListTBySql(Contact17.class, sql);
 	}
 
 	@Override

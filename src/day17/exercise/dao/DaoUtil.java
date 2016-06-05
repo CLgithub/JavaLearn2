@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+
+import org.apache.commons.beanutils.BeanUtils;
 
 import day17.Demo2JdbcUtil;
 import day17.exercise.entity.Contact17;
@@ -105,6 +108,45 @@ public class DaoUtil {
 			}
 			return list;
 		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			closeC(connection, prepareStatement, resultSet);
+		}
+	}
+	
+	/**
+	 * 根据sql查询得到list
+	 * @param sql
+	 * @param objects
+	 * @return
+	 * @author L
+	 * @param <T>
+	 * @date 2016年6月3日
+	 */
+	public static <T>List<T> selectListTBySql(Class<T> clazz, String sql, Object... objects){
+		connection=getConnect();
+		PreparedStatement prepareStatement =null;
+		try {
+			List<T> list=new ArrayList<>();
+			prepareStatement=connection.prepareStatement(sql);
+			for(int i=0;i<objects.length;i++){
+				prepareStatement.setObject(i+1, objects[i]);
+			}
+			resultSet = prepareStatement.executeQuery();
+			while(resultSet.next()){
+				T t = clazz.newInstance();
+				ResultSetMetaData metaData = resultSet.getMetaData();
+				int count = metaData.getColumnCount();
+				for(int i=0;i<count;i++){
+					String columnName = metaData.getColumnName(i+1);
+					Object columnValue=resultSet.getObject(columnName);
+					BeanUtils.setProperty(t, columnName, columnValue);
+				}
+				list.add(t);
+			}
+			return list;
+		}catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}finally {
