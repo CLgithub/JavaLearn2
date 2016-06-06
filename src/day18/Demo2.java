@@ -46,8 +46,15 @@ jdbc 批处理
 		  boolean next():将光标移到到下一行
 		  getXXX():获取列的值
 
-
-
+Statement和PrepareStatement对象执行批处理区别?
+		1.Statement它更适合执行不同sql的批处理。它没有提供预处理功能，性能比较低。		
+		2.PreparedStatement它适合执行相同sql的批处理，它提供了预处理功能，性能比较高。
+		
+注意;mysql默认情况下，批处理中的预处理功能没有开启，需要开启
+		1.在 url下添加参数
+			url=jdbc:mysql:///day17?useServerPrepStmts=true&cachePrepStmts=true&rewriteBatchedStatements=true
+		2.注意驱动版本
+			Mysql驱动要使用mysql-connector-java-5.1.13以上
 
 */
 public class Demo2 {
@@ -67,9 +74,10 @@ public class Demo2 {
 		PreparedStatement pStatement=null;
 		String sql="insert into contact17(name,age,phone,email,qq) values(?,?,?,?,?)";
 		try{
+			long l=System.currentTimeMillis();
 			connection=Demo2JdbcUtil.getConnect();
 			pStatement = connection.prepareStatement(sql);
-			final int batchSize = 10;
+			final int batchSize = 1000;
 			int count = 0;
 			for(Contact17 contact17:list){
 				pStatement.setObject(1, contact17.getName());
@@ -85,6 +93,7 @@ public class Demo2 {
 			}
 			pStatement.executeBatch();
 			pStatement.clearBatch();
+			System.out.println(System.currentTimeMillis()-l);
 		}catch(Exception e){
 			e.printStackTrace();
 		} finally{
