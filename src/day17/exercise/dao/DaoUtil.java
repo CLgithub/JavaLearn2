@@ -141,7 +141,9 @@ public class DaoUtil {
 				for(int i=0;i<count;i++){
 					String columnName = metaData.getColumnName(i+1);
 					Object columnValue=resultSet.getObject(columnName);
-					BeanUtils.setProperty(t, columnName, columnValue);
+					if(columnValue!=null){
+						BeanUtils.setProperty(t, columnName, columnValue);
+					}
 				}
 				list.add(t);
 			}
