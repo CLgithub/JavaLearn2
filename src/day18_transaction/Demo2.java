@@ -1,5 +1,12 @@
 package day18_transaction;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import org.junit.Test;
+
+import day17.Demo2JdbcUtil;
+
 /*
 
 事务特性(重点) ACID
@@ -87,8 +94,25 @@ package day18_transaction;
 					mysql默认隔离级别 repeatable read ，oracle默认隔离级别 read committed
 						
 			2.jdbc中设置
-	
+				使用java.sql.Connection接口中提供的方法
+					void setTransactionIsolation(int level) throws SQLException
+					参数level可以取以下值:
+						level - 以下 Connection 常量之一：
+						Connection.TRANSACTION_READ_UNCOMMITTED、
+						Connection.TRANSACTION_READ_COMMITTED、
+						Connection.TRANSACTION_REPEATABLE_READ 
+						Connection.TRANSACTION_SERIALIZABLE。
+						（注意，不能使用 Connection.TRANSACTION_NONE，因为它指定了不受支持的事务。） 
+				
+				
+				
 */
 public class Demo2 {
-
+	
+	//jdbc中设置事务隔离级别
+	@Test
+	public void test1() throws SQLException{
+		Connection connect = Demo2JdbcUtil.getConnect();
+		connect.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+	}
 }
