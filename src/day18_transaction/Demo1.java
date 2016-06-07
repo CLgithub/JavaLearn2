@@ -1,5 +1,12 @@
 package day18_transaction;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import org.junit.Test;
+import day17.Demo2JdbcUtil;
+
 /*
 事务:
 	问题:事务是什么，有什么用?
@@ -32,22 +39,52 @@ package day18_transaction;
 						1.set autocommit=off 关闭自动事务。
 						2.必须手动commit才可以将事务提交。
 						注意:mysql默认autocommit=on  oracle默认的autocommit=off;
-
-事务特性(重点) ACID
-	1.原子性（Atomicity）原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 
-	2.一致性（Consistency）事务前后数据的完整性必须保持一致。
-	3.隔离性（Isolation）事务的隔离性是指多个用户并发访问数据库时，一个用户的事务不能被其它用户的事务所干扰，多个并发事务之间数据要相互隔离。
-	4.持久性（Durability）持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来即使数据库发生故障也不应该对其有任何影响
-	
-	如果不考虑事务隔离性，会出现什么问题？
-		1.脏读 一个事务读取到另一个事务的未提交数据。
-		2.不可重复读	两次读取的数据不一致(update)
-		3.虚读(幻读)	两次读取的数据一一致(insert)
-		4.丢失更新	两个事务对同一条记录进行操作，后提交的事务，将先提交的事务的修改覆盖了。
-		
-		
+		2.jdbc下怎么操作
+			java.sql.conection接口中有几个方法是可以操作事务
+			|- Connection
+				void setAutoCommit(boolean autoCommit) ;  设置事务是否自动提交，true自动提交(默认)，false手动提交
+				void commit();			手动提交事务
+				void rollback();		回滚（出现异常的时候，所有已经执行成功的代码需要回退到事务开始前）
+				Savepoint setSavepoint(String name) 	在当前事务中创建一个未命名的保存点 (savepoint)，并返回表示它的新 Savepoint 对象。
+						如果在活动事务范围之外调用 setSavepoint，则将在新创建的保存点上启动事务。
+			
+			
 
 */
-public class Demo1 {
 
+public class Demo1 {
+	@Test
+	public void test1() {
+		String sql1 = "update account set money=money-500 where id=1";
+		String sql2 = "update account set money=money+500 where id=2";
+		Connection connect = null;
+		PreparedStatement pStatement1 = null;
+		PreparedStatement pStatement2 = null;
+		try {
+			connect = Demo2JdbcUtil.getConnect();
+			// 设置自动提交事务为false
+			connect.setAutoCommit(false);
+			pStatement1 = connect.prepareStatement(sql1);
+			pStatement2 = connect.prepareStatement(sql2);
+			int i1 = pStatement1.executeUpdate();
+			int i2 = pStatement2.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// 如果出现异常，则回滚
+			try {
+				connect.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			// 最终要提交
+			try {
+				connect.commit();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			Demo2JdbcUtil.closeC(connect, pStatement1);
+			Demo2JdbcUtil.closeC(connect, pStatement2);
+		}
+	}
 }
