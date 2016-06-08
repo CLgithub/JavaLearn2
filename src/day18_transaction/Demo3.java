@@ -29,7 +29,7 @@ import org.junit.Test;
 					可以对行为增强
 					Proxy.newProxyInstance(classLoacer, class[],InvoactionHandler);
 			结论：connection对象如果是从连接池中获取，那么它的close方法的行为已经改变，不是关闭，而是重新装入连接池
-		
+
 */
 public class Demo3 {
 	@Test
