@@ -17,6 +17,9 @@ public class Demo2JdbcUtil {
 	private static String user=null;
 	private static String password=null;
 	private static String driverClass=null;
+	
+	private static final ThreadLocal<Connection> tl=new ThreadLocal<>();
+	
 	//只加载一次
 	static{
 		//读取db.properties配置信息
@@ -43,13 +46,16 @@ public class Demo2JdbcUtil {
 	 * @return
 	 */
 	public static Connection getConnect(){
-		try {
-			Connection connection = DriverManager.getConnection(url, user, password);
-			return connection;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
+		Connection connection=tl.get();//从threadLocal中获取connection，第一次获取得到的是null
+		if(connection==null){
+			try {
+				connection=DriverManager.getConnection(url, user, password);
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+			tl.set(connection);
 		}
+		return connection;
 	}
 	
 	/**

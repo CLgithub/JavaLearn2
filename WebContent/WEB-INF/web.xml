@@ -368,4 +368,15 @@
     <url-pattern>/ContactMain3</url-pattern>
   </servlet-mapping>
   <!-- mysql+dao+service+controller+jstljstl标签/el表达式 联系人管理，三层结构改造 end-->
+  <!-- 转账案例，事务 -->
+  <servlet>
+    <servlet-name>AccountServlet</servlet-name>
+    <servlet-class>day18_transaction.account.servlet.AccountServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccountServlet</servlet-name>
+    <url-pattern>/AccountServlet</url-pattern>
+  </servlet-mapping>
+   <!-- 转账案例，事务 end -->
 </web-app>
