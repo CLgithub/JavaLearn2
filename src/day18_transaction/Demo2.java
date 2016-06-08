@@ -76,7 +76,27 @@ import day17.Demo2JdbcUtil;
 						设置a，b事务的隔离级别为serializable
 							set session transaction isolation level serializable;
 						如果设置成这种事务隔离级别，会出现锁表，也就是说，一个事务再对表进行操作时，其他事务操作不了，直到锁表的事务commit或timeout
-				
+					(5)丢失更新
+						多个事务同时对一条记录进行了操作，后提交的事务将先提交的事务操作覆盖
+						如果解决：
+							悲观锁（认为丢失一直会产生，利用数据库底层的锁实现）
+								提供两种锁机制：
+									共享锁：
+										select * from table lock in share mode（读锁、共享锁）
+										被操作的数据被共享锁时，其他事务是不向这条记录添加排他锁的
+									排他锁：
+										select * from table for update （写锁、排它锁）
+										被操作的数据被加上了排他锁，该数据是不能被其他事务查询的，从而避免了丢失更新
+									update语句默认加排他锁
+							乐观锁（认为丢失更新不一定会参数，利用在程序中添加版本字段实现）
+								create table product (
+								   id int,
+								   name varchar(20),
+								   updatetime timestamp
+								);
+								insert into product values(1,'冰箱',null);
+								update product set name='洗衣机' where id = 1;
+								
 					事务隔离级别总结：
 						脏读：一个事务读取到另一个事务未提交数据
 						不可重复读：两次读取数据不一致（update）
@@ -115,4 +135,6 @@ public class Demo2 {
 		Connection connect = Demo2JdbcUtil.getConnect();
 		connect.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
 	}
+	
+	
 }
