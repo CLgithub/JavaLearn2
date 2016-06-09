@@ -1,20 +1,16 @@
 package day19_2;
 
-import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
-
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.junit.Test;
-
-import com.sun.accessibility.internal.resources.accessibility;
 
 
 
@@ -121,8 +117,6 @@ public class Demo3 {
 	public void test4() throws Exception{
 		String sql="update account set money=999";
 		MyQueryRunner runner=new MyQueryRunner(MyDataSourceUtils.getDataSource());
-		int i = runner.update(sql);
-		System.out.println(i);
 	}
 	
 	//自定义 queryRunner		select
