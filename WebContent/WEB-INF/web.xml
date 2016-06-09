@@ -379,4 +379,13 @@
     <url-pattern>/AccountServlet</url-pattern>
   </servlet-mapping>
    <!-- 转账案例，事务 end -->
+   <servlet>
+    <servlet-name>day19_2_demo1</servlet-name>
+    <servlet-class>day19_2.Demo1</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>day19_2_demo1</servlet-name>
+    <url-pattern>/day19_2_demo1</url-pattern>
+  </servlet-mapping>
 </web-app>
