@@ -54,7 +54,7 @@ public interface BaseService<T> {
 	 * @param sql
 	 * @param objects
 	 */
-	void batchEntityBySQL(String sql, Object... objects);
+	void batchEntityBySQL(String sql, Object[][] objects);
 	
 	/**
 	 * 执行原始sql

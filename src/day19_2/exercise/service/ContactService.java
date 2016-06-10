@@ -41,6 +41,24 @@ public interface ContactService extends BaseService<Contact19_2> {
 	 */
 	List<Contact19_2> findAllC();
 
+	/**
+	 * 根据id批量删除联系人
+	 * @param ids
+	 * @author L
+	 * @date 2016年6月10日
+	 */
+	void batchDeleteByIds(String ids);
+
+	/**
+	 * 根据条件查询联系人
+	 * @param s	字段明
+	 * @param msg	字段值
+	 * @return
+	 * @author L
+	 * @date 2016年6月10日
+	 */
+	List<Contact19_2> selectC(String s, String msg);
+
 	
 
 	

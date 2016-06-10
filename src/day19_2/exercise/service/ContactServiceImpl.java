@@ -1,5 +1,6 @@
 package day19_2.exercise.service;
 
+import java.util.Arrays;
 import java.util.List;
 
 import day19_2.exercise.base.BaseServiceImpl;
@@ -41,5 +42,36 @@ public class ContactServiceImpl extends BaseServiceImpl<Contact19_2> implements 
 		return this.findListT(Contact19_2.class,sql);
 	}
 
+	@Override
+	public void batchDeleteByIds(String ids) {
+		String sql="delete from contact17 where id=?";
+		Integer[] ids1=StringTOArray(ids);
+		Integer[][] ids2=new Integer[ids1.length][1];
+		for(int i=0;i<ids1.length;i++){
+			ids2[i][0]=ids1[i];
+		}
+		this.batchEntityBySQL(sql, ids2);
+	}
+
+	private Integer[] StringTOArray(String ids) {
+		String[] strs = ids.split(",");
+		Integer[] integers=new Integer[strs.length];
+		for(int i=0;i<strs.length;i++){
+			Integer j = Integer.parseInt(strs[i]);
+			integers[i]=j;
+		}
+		return integers;
+	}
+
+	@Override
+	public List<Contact19_2> selectC(String s, String msg) {
+		String sql="select * from contact17 ";
+		if(s!=null&&!"".equals(s)){
+			sql+=" where "+s+" like ? ";
+			return this.findListT(Contact19_2.class, sql, "%"+msg+"%");
+		}else {
+			return this.findAllC();
+		}
+	}
 
 }

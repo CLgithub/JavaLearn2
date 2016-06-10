@@ -42,8 +42,18 @@ public class ContactMain extends BaseController {
 				String id = req.getParameter("id");
 				contactService.deleteC(id);
 				resp.sendRedirect(req.getContextPath() + "/ContactMain4");
-			} else { // 查询所用
-				List<Contact19_2> list = contactService.findAllC();
+			}else if("batchD".equals(mark)){	//批量删除选中
+				String ids = req.getParameter("ids");
+				if(ids.length()>0){
+					ids=ids.substring(0, ids.length()-1);
+					contactService.batchDeleteByIds(ids);
+				}
+				resp.sendRedirect(req.getContextPath() + "/ContactMain4");
+			} else { // 主列表页
+				String s = req.getParameter("s");
+				String msg=req.getParameter("msg");
+				List<Contact19_2> list = contactService.selectC(s,msg);
+//				List<Contact19_2> list = contactService.findAllC();
 				// 存储数据到域对象
 				req.setAttribute("list", list);
 				// 跳转到目标页面

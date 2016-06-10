@@ -33,7 +33,7 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 	}
 
 	@Override
-	public void batchEntityBySQL(String sql, Object... objects) {
+	public void batchEntityBySQL(String sql, Object[][] objects) {
 		baseDao.batchEntityBySQL(sql, objects);
 	}
 

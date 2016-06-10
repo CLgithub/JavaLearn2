@@ -50,8 +50,12 @@ public class BaseDaoImal<T> implements BaseDao<T> {
 	}
 
 	@Override
-	public void batchEntityBySQL(String sql, Object... objects) {
-		
+	public void batchEntityBySQL(String sql, Object[][] objects) {
+		try {
+			runner.batch(sql, objects);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
