@@ -1,12 +1,16 @@
 package day19_2;
 
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
@@ -70,8 +74,8 @@ public class Demo4 {
 //		System.out.println(map);
 		
 		//将每个字段名称作为key，字段值作为value，封装成map，再将所有的map封装成list
-		List<Map<String,Object>> list = runner.query(sql, new MapListHandler());
-		System.out.println(list);
+//		List<Map<String,Object>> list = runner.query(sql, new MapListHandler());
+//		System.out.println(list);
 		
 		//将指定字段的值作为key，将这条记录map作为value，封装成map
 //		Map<Object, Map<String, Object>> map = runner.query(sql, new KeyedHandler<>("accountName"));
@@ -83,16 +87,20 @@ public class Demo4 {
 //		System.out.println(object);
 
 		//自定义ResultSetHandler接口实现类
-//		List<Account> list = runner.query(sql, new MyRsHandler<>(Account.class));
+//		List<Account> list = runner.query(sql, new MyBeanListHandler<>(Account.class));
 //		System.out.println(list);
+		
+		//自定义ResultSetHandler接口实现类
+		Account account = runner.query(sql, new MyBeanHandler<>(Account.class));
+		System.out.println(account);
 	}
 	
 }
 
 
-class MyRsHandler<T> implements ResultSetHandler<List<T>> {
+class MyBeanListHandler<T> implements ResultSetHandler<List<T>> {
 	private Class<T> clazz;
-	public MyRsHandler(Class<T> clazz) {
+	public MyBeanListHandler(Class<T> clazz) {
 		this.clazz=clazz;
 	}
 	@Override
@@ -115,5 +123,46 @@ class MyRsHandler<T> implements ResultSetHandler<List<T>> {
 		}
 		return list;
 	}
+}
+
+class MyBeanHandler<T> implements ResultSetHandler<T>{
+	private Class<T> clazz;
+	public MyBeanHandler(Class<T> clazz) {
+		this.clazz=clazz;
+	}
+	@Override
+	public T handle(ResultSet rs) throws SQLException {
+		try {
+			T t=clazz.newInstance();
+			//利用元数据和BeanUtils封装
+//			ResultSetMetaData metaData = rs.getMetaData();
+//			int count = metaData.getColumnCount();
+//			if(rs.next()){
+//				for(int i=1;i<=count;i++){
+//					Object value = rs.getObject(i);
+//					String columnName = metaData.getColumnName(i);
+//					BeanUtils.setProperty(t, columnName, value);
+//				}
+//			}
+			//利用内省封装
+			BeanInfo beanInfo = Introspector.getBeanInfo(clazz);
+			PropertyDescriptor[] pDescriptors = beanInfo.getPropertyDescriptors();
+			if(rs.next()){
+				for(PropertyDescriptor pDescriptor:pDescriptors){
+ 					String columnName = pDescriptor.getName();
+					Method getMethod = pDescriptor.getWriteMethod();
+					if(getMethod!=null){
+						Object object = rs.getObject(columnName);
+						getMethod.invoke(t, object);
+					}
+				}
+				return t;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 }
 
