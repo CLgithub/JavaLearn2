@@ -32,6 +32,15 @@ el表达式
 				${empty name} 等价于${name==null || name==""}
 				null 或空字符串
 				
+			if标签比较运算
+				关系运算符： 
+				-lt 　　　小于 
+				-le 　　  小于或者等于 
+				-gt　　　 大于 
+				-ge 　　　大于或者等于 
+				-eq 　　　等于 
+				-ne 　　　不等于 
+				
 --%>
 <html>
 <head>
