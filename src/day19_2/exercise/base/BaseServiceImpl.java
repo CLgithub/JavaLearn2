@@ -3,6 +3,9 @@ package day19_2.exercise.base;
 import java.util.List;
 import java.util.Map;
 
+import day19_2.exercise.common.PageBean;
+import day19_2.exercise.entity.Contact19_2;
+
 public class BaseServiceImpl<T> implements BaseService<T>{
 
 	BaseDao<T> baseDao=new BaseDaoImal<>();
@@ -48,8 +51,37 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 	}
 
 	@Override
-	public List<Map> getListBySQl(String sql, Object... objects) {
+	public Map<String,Object> getListBySQl(String sql, Object... objects) {
 		return baseDao.getListBySQl(sql, objects);
 	}
+	
+	@Override
+	public PageBean getPageBean(Class<T> clazz,String sql, Integer page, Integer pageSize, Object...objects) {
+		String pageSql=this.getMysqlPageSql(sql, page, pageSize);
+		List<T> list = this.findListT(clazz, pageSql, objects);
+		Integer allRow = this.getTotlaBySql(sql, objects);// 得到总的记录长度
+		PageBean pageBean = new PageBean();
+		pageBean.setTotal(allRow);
+		pageBean.setRows(list);
+		pageBean.setPage(page);
+		pageBean.setPageSize(pageSize);
+		return pageBean;
+	}
+
+	private Integer getTotlaBySql(String sql, Object... objects) {
+		int index = sql.toLowerCase().indexOf("from");
+		String subString = sql.substring(index);
+		String newSql = "select count(*) as count " + subString;
+		Map<String, Object> map = this.getListBySQl(newSql, objects);
+		Object count =  map.get("count");
+		return Integer.valueOf(count.toString());
+	}
+
+	@Override
+	public String getMysqlPageSql(String sql, Integer page, Integer pageSize) {
+		return sql+=" limit "+(page-1)*pageSize+","+pageSize;
+	}
+
+	
 
 }

@@ -3,6 +3,8 @@ package day19_2.exercise.base;
 import java.util.List;
 import java.util.Map;
 
+import day19_2.exercise.common.PageBean;
+
 public interface BaseService<T> {
 	
 	/**
@@ -83,5 +85,29 @@ public interface BaseService<T> {
 	 * @param objects
 	 * @return
 	 */
-	List<Map> getListBySQl(String sql, Object... objects);
+	Map<String,Object> getListBySQl(String sql, Object... objects);
+	
+	/**
+	 * 根据sql封装的到pageBean
+	 * @param sql 原sql
+	 * @param page 第几页
+	 * @param pageSize 每页显示多少条
+	 * @return
+	 * @author L
+	 * @date 2016年6月11日
+	 */
+	PageBean getPageBean(Class<T> clazz,String sql, Integer page, Integer pageSize, Object...objects);
+	
+	/**
+	 * 根据sql得到mysql的分页sql
+	 * @param sql 原sql
+	 * @param page 第几页
+	 * @param pageSize 每页显示多少条
+	 * @return	分页sql
+	 * @author L
+	 * @date 2016年6月11日
+	 */
+	String getMysqlPageSql(String sql, Integer page, Integer pageSize) ;
+	
+	
 }

@@ -3,6 +3,7 @@ package day19_2.exercise.service;
 import java.util.List;
 
 import day19_2.exercise.base.BaseService;
+import day19_2.exercise.common.PageBean;
 import day19_2.exercise.entity.Contact19_2;
 
 
@@ -51,13 +52,25 @@ public interface ContactService extends BaseService<Contact19_2> {
 
 	/**
 	 * 根据条件查询联系人
-	 * @param s	字段明
+	 * @param s	字段名
 	 * @param msg	字段值
 	 * @return
 	 * @author L
 	 * @date 2016年6月10日
 	 */
 	List<Contact19_2> selectC(String s, String msg);
+
+	/**
+	 * 根据条件查询联系人
+	 * @param s	字段名
+	 * @param msg 字段值
+	 * @param page 第几页
+	 * @param pageSize 每页显示多少条记录
+	 * @return
+	 * @author L
+	 * @date 2016年6月11日
+	 */
+	PageBean selectCBuPage(String s, String msg, Integer page, Integer pageSize);
 
 	
 

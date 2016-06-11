@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import day19_2.exercise.base.BaseServiceImpl;
+import day19_2.exercise.common.PageBean;
 import day19_2.exercise.entity.Contact19_2;
 
 
@@ -73,5 +74,19 @@ public class ContactServiceImpl extends BaseServiceImpl<Contact19_2> implements 
 			return this.findAllC();
 		}
 	}
+
+	@Override
+	public PageBean selectCBuPage(String s, String msg, Integer page, Integer pageSize) {
+		String sql="select * from contact17 ";
+		if(s!=null&&!"".equals(s)){
+			sql+=" where "+s+" like ? ";
+			return getPageBean(Contact19_2.class, sql, page, pageSize, "%"+msg+"%");
+		}else {
+			return getPageBean(Contact19_2.class, sql, page, pageSize);
+		}
+	}
+
+	
+
 
 }

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import day19_2.exercise.base.BaseController;
+import day19_2.exercise.common.PageBean;
 import day19_2.exercise.entity.Contact19_2;
 import day19_2.exercise.entity.Users;
 import day19_2.exercise.service.ContactService;
@@ -52,10 +53,13 @@ public class ContactMain extends BaseController {
 			} else { // 主列表页
 				String s = req.getParameter("s");
 				String msg=req.getParameter("msg");
-				List<Contact19_2> list = contactService.selectC(s,msg);
+				Integer page=Integer.parseInt(req.getParameter("page")==null?"1":req.getParameter("page"));
+				Integer pageSize=Integer.parseInt(req.getParameter("pageSize")==null?"5":req.getParameter("pageSize"));
 //				List<Contact19_2> list = contactService.findAllC();
+//				List<Contact19_2> list = contactService.selectC(s,msg);
+				PageBean pageBean = contactService.selectCBuPage(s,msg,page,pageSize);
 				// 存储数据到域对象
-				req.setAttribute("list", list);
+				req.setAttribute("pageBean", pageBean);
 				// 跳转到目标页面
 				req.getRequestDispatcher("/page/day19_2/exercise/contactList.jsp").forward(req, resp);
 			}
