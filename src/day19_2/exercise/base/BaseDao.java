@@ -83,5 +83,5 @@ public interface BaseDao<T> {
 	 * @param objects
 	 * @return
 	 */
-	Map<String,Object> getListBySQl(String sql, Object... objects);
+	List<Map<String,Object>> getListBySQl(String sql, Object... objects);
 }

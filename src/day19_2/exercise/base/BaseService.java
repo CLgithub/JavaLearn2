@@ -85,7 +85,7 @@ public interface BaseService<T> {
 	 * @param objects
 	 * @return
 	 */
-	Map<String,Object> getListBySQl(String sql, Object... objects);
+	List<Map<String,Object>> getListBySQl(String sql, Object... objects);
 	
 	/**
 	 * 根据sql封装的到pageBean

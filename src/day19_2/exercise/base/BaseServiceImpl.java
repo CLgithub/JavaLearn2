@@ -51,7 +51,7 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 	}
 
 	@Override
-	public Map<String,Object> getListBySQl(String sql, Object... objects) {
+	public List<Map<String,Object>> getListBySQl(String sql, Object... objects) {
 		return baseDao.getListBySQl(sql, objects);
 	}
 	
@@ -72,8 +72,8 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 		int index = sql.toLowerCase().indexOf("from");
 		String subString = sql.substring(index);
 		String newSql = "select count(*) as count " + subString;
-		Map<String, Object> map = this.getListBySQl(newSql, objects);
-		Object count =  map.get("count");
+		List<Map<String,Object>> list = this.getListBySQl(newSql, objects);
+		Object count =  list.get(0).get("count");
 		return Integer.valueOf(count.toString());
 	}
 

@@ -1,6 +1,5 @@
 package day19_2.exercise.entity;
 
-import sun.security.util.Password;
 
 public class Users {
 	private Integer id;

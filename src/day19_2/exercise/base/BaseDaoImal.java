@@ -9,6 +9,7 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ColumnListHandler;
 import org.apache.commons.dbutils.handlers.MapHandler;
+import org.apache.commons.dbutils.handlers.MapListHandler;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
@@ -82,14 +83,14 @@ public class BaseDaoImal<T> implements BaseDao<T> {
 	}
 
 	@Override
-	public Map<String,Object> getListBySQl(String sql, Object... objects) {
+	public List<Map<String,Object>> getListBySQl(String sql, Object... objects) {
+		List<Map<String, Object>> list=new ArrayList<>();
 		try {
-			Map<String, Object> query = runner.query(sql, new MapHandler(), objects);
-			return query;
+			list = runner.query(sql, new MapListHandler(), objects);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return null;
 		}
+		return list;
 	}
 
 	

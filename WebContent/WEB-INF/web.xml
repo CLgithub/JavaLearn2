@@ -15,6 +15,21 @@
 		<param-name>BBB</param-name>
 		<param-value>BBB值</param-value>
 	</context-param>
+	
+	<!-- list在servleit之前，在context-param之后 -->
+	<!-- 注册监听application对象的创建与销毁监听器 -->
+	<listener >
+		<listener-class>day19_2_listener.MyApplicationListener</listener-class>
+	</listener>
+	<!-- 注册监听session对象的创建与销毁监听器 -->
+	<listener >
+		<listener-class>day19_2_listener.MySessionListener</listener-class>
+	</listener>
+	<!-- 注册监听request对象的创建与销毁监听器 -->
+	<listener >
+		<listener-class>day19_2_listener.MyRequestListener</listener-class>
+	</listener>
+	
 	<servlet>
 		<servlet-name>Demo3Servlet1</servlet-name>
 		<servlet-class>day8_web.Demo3Servlet1</servlet-class>
