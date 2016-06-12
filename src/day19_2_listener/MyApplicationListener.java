@@ -47,12 +47,22 @@ import javax.servlet.http.HttpServletResponse;
 				session对象销毁：
 					1.默认超时	30m
 					2.设置超时时间
-					3.HttpSession.inval idate()手动销毁
+					3.HttpSession.invalidate()手动销毁
 					4.web应用关闭
 			3.监听request对象的创建与销毁
 				请求发生时创建
 				响应产生时销毁
+演示监听属性变化
+	演示监听session的属性变化（MySessionAttributeListener）
+
+思考：在监听器中能拿到属性值吗
+	常识：在java的监听机制中，是可以在监听器中获取事件源的
+	我们在开发中，如果遇到事件触发机制，那么一般情况下，都可以使用方法的参数（事件对象）来获取想要的信息
+				
 问题：这些监听器在web开发中有什么用
+	在主流中应用比较少，但是可以完成一些性能监测操作
+	
+	
 */
 public class MyApplicationListener implements ServletContextListener{
 

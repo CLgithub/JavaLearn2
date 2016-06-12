@@ -29,6 +29,10 @@
 	<listener >
 		<listener-class>day19_2_listener.MyRequestListener</listener-class>
 	</listener>
+	<!-- 注册监听session域对象的属性变化 -->
+	<listener >
+		<listener-class>day19_2_listener.MySessionAttributeListener</listener-class>
+	</listener>
 	
 	<servlet>
 		<servlet-name>Demo3Servlet1</servlet-name>
