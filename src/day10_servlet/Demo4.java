@@ -23,7 +23,9 @@ servlet核心4大对象：
   
  9.ServletConfig对象
  	9.1作用
- 		servletConfig对象：主要是用于加载servlet的初始化参数
+ 		servletConfig对象：1.主要是用于加载servlet的初始化参数
+ 					2.获得servlet名字
+ 					3.获得servletContext对象
  	9.2对象的创建和得到
  		创建时机：在创建问servlet对象之后，在调用init方法之前创建
  		得到对象：直接从有参数的init方法中得到

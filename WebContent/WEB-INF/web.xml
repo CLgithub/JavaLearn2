@@ -24,7 +24,20 @@
 	</filter>
 	<filter-mapping><!-- 配置一个filter映射 -->
 		<filter-name>demo1Filter1</filter-name><!-- 使用哪个filter拦截 -->
-		<url-pattern>/index.jsp</url-pattern><!-- 需要拦截哪个资源 -->
+		<url-pattern></url-pattern><!-- 需要拦截哪个资源 -->
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>demo1Filter2</filter-name>
+		<filter-class>day21.Demo1Filter2</filter-class>
+		<init-param><!-- 配置filter初始化参数 -->
+			<param-name>aaa</param-name>
+			<param-value>abcd123</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>demo1Filter2</filter-name>
+		<url-pattern>/index.jsp</url-pattern>
 	</filter-mapping>
 	
 	<!-- list在servleit之前，在context-param之后 -->
