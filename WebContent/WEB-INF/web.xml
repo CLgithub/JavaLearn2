@@ -18,21 +18,30 @@
 	
 	<!-- list在servleit之前，在context-param之后 -->
 	<!-- 注册监听application对象的创建与销毁监听器 -->
-	<listener >
+	<!-- <listener >
 		<listener-class>day19_2_listener.MyApplicationListener</listener-class>
 	</listener>
-	<!-- 注册监听session对象的创建与销毁监听器 -->
+	注册监听session对象的创建与销毁监听器
 	<listener >
 		<listener-class>day19_2_listener.MySessionListener</listener-class>
 	</listener>
-	<!-- 注册监听request对象的创建与销毁监听器 -->
+	注册监听request对象的创建与销毁监听器
 	<listener >
 		<listener-class>day19_2_listener.MyRequestListener</listener-class>
 	</listener>
-	<!-- 注册监听session域对象的属性变化 -->
+	注册监听session域对象的属性变化
 	<listener >
 		<listener-class>day19_2_listener.MySessionAttributeListener</listener-class>
+	</listener> -->
+	
+	<!-- DEMO -->
+	<!-- <listener >
+		<listener-class>day19_2_listener.demo.MyServletContextListener</listener-class>
 	</listener>
+	demo
+	<listener >
+		<listener-class>day19_2_listener.demo.MyHttpSessionListener</listener-class>
+	</listener> -->
 	
 	<servlet>
 		<servlet-name>Demo3Servlet1</servlet-name>

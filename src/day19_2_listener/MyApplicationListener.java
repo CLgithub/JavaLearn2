@@ -26,6 +26,13 @@ import javax.servlet.http.HttpServletResponse;
 			ServletContext
 				监听器：ServletContextAttributeListener 监听application对象属性的变化
 		3.session绑定javaBean
+			1.HttpSessionBindingListener
+				这个监听器，可以让JavaBean对象，感知他被绑定到session中或从session中移除。
+			2.HttpSessionAttributeListener
+				这个监听器，可以让javaBean对象，感知被钝化或活化
+					（服务器正常关闭时，session会被保存到文件里？）
+					钝化：内存--》硬盘，活化：硬盘---》内存
+			这两个监听器都由javaBean实现，并且都不用配置
 	在javaweb中servlet规范中定义了三种技术 servlet、Listener、Filter
 
 演示关于web中的监听器怎么使用
