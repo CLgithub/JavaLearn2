@@ -43,7 +43,7 @@ Servlet学习的大纲：
 					a）构造FirstServlet的对象
 					b）然后调用FirstServlet里面的方法
 					
-	2 Servlet的映射路径
+	2 Servlet的映射路径(/day21/Doc1.java)
 	<servlet-mapping>
 		<servlet-name>Servlet6</servlet-name>
 		<url-pattern>/Servlet6</url-pattern>
@@ -66,7 +66,7 @@ Servlet学习的大纲：
 	
 	注意：
 		1）url-pattern要么以 / 开头，要么以*开头。  	例如， Servlet6是非法路径。
-		2）*匹配和后缀匹配不能同时使用，					例如 /l/*.do是非法路径
+		2）后缀匹配,以*.xxx结束，不能以"/"开始					例如 /l/*.do是非法路径
 		3）当有输入的URL有多个servlet同时被匹配的情况下：
 			3.1 精确匹配优先。（长的最像优先被匹配）
 			3.2 以后缀名结尾的模糊匹配优先级最低！！！

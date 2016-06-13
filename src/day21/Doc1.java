@@ -30,6 +30,12 @@ Filter过滤器
 		filter怎么实现过滤器操作
 			1.<url-pattern>设置要过滤的路径
 			2.在doFilter方法中的第三个参数FilterChain，它是用于控制是否可以访问资源的
+				在web应用中，可以编写多个filter，这些filter组合起来称之为一个filter链（FilterChain）
+				web服务器根据Filter在web.xml文件中的注册顺序<mapping>,决定先调用哪个filter，当第一个filter
+				的doFilter方法被调用时，web服务器会创建一个代表filter链的FilterChain对象，传递给该方法。在
+				doFilter方法中，开发人员如果调用了FilterChain对象的doFilter方法，则web服务器会检查FilterChain
+				对象中是否还有filter，如果有，则调用第2个filter，如果没有，则调用目标资源
+	
 		
 	filter生命周期
 		java.servlet.Filter接口中的三个方法
@@ -51,7 +57,26 @@ Filter过滤器
 			3.servletContext对象获取
 				getServletContext();
 			
-			
+	filter详细配置
+		1.关于配置filter 详情看web.xml
+
+		2.Filter链
+			在web应用中，可以编写多个filter，这些filter组合起来称之为一个filter链（FilterChain）
+			web服务器根据Filter在web.xml文件中的注册顺序<mapping>,决定先调用哪个filter，当第一个filter
+			的doFilter方法被调用时，web服务器会创建一个代表filter链的FilterChain对象，传递给该方法。在
+			doFilter方法中，开发人员如果调用了FilterChain对象的doFilter方法，则web服务器会检查FilterChain
+			对象中是否还有filter，如果有，则调用第2个filter，如果没有，则调用目标资源
+			注意：
+				1.filter的顺序由filter-mapping的配置顺序执行
+		3.url-pattern
+			对于filter来说，它是确定拦截资源的路径
+			<url-pattern>有几种写法：	day10_servlet/Demo1.java
+				1.完全匹配	必须使用"/"开始
+				2.可以使用*通配符
+					1.目录匹配		必须"/"开始
+					2.后缀匹配		以*.xxx结束，不能以"/"开始
+		
+		
 */
 public class Doc1 {
 

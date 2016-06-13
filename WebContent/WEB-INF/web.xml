@@ -18,19 +18,23 @@
 	
 	<!-- filter在context之后 -->
 	<!-- filter，listener，servlet都将了，讲完filter后总结一下三者 -->
-	<filter><!-- 配置一个filter -->
-		<filter-name>demo1Filter1</filter-name><!-- filter名称 -->
-		<filter-class>day21.Demo1Filter1</filter-class><!-- filter处理类 -->
+	<!-- <filter>配置一个filter
+		<filter-name>demo1Filter1</filter-name>filter名称
+		<filter-class>day21.Demo1Filter1</filter-class>filter处理类
+		<init-param>配置filter初始化参数
+			<param-name>a</param-name>初始化参数名称
+			<param-value>2</param-value>初始化参数值
+		</init-param>
 	</filter>
-	<filter-mapping><!-- 配置一个filter映射 -->
-		<filter-name>demo1Filter1</filter-name><!-- 使用哪个filter拦截 -->
-		<url-pattern></url-pattern><!-- 需要拦截哪个资源 -->
+	<filter-mapping>配置一个filter映射
+		<filter-name>demo1Filter1</filter-name>使用哪个filter拦截
+		<url-pattern></url-pattern>需要拦截哪个资源
 	</filter-mapping>
 	
 	<filter>
 		<filter-name>demo1Filter2</filter-name>
 		<filter-class>day21.Demo1Filter2</filter-class>
-		<init-param><!-- 配置filter初始化参数 -->
+		<init-param>
 			<param-name>aaa</param-name>
 			<param-value>abcd123</param-value>
 		</init-param>
@@ -38,7 +42,36 @@
 	<filter-mapping>
 		<filter-name>demo1Filter2</filter-name>
 		<url-pattern>/index.jsp</url-pattern>
+	</filter-mapping> -->
+	
+	<!-- filter链，demo2 开始 -->
+	<filter>
+		<filter-name>demo2Filter1</filter-name>
+		<filter-class>day21.Demo2Filter1</filter-class>
+	</filter>
+	<filter>
+		<filter-name>demo2Filter2</filter-name>
+		<filter-class>day21.Demo2Filter2</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>demo2Filter1</filter-name>
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<filter-mapping>
+		<filter-name>demo2Filter2</filter-name>
+		<url-pattern>/Demo2Servlet1</url-pattern>
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>Demo2Servlet1</servlet-name>
+		<servlet-class>day21.Demo2Servlet1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Demo2Servlet1</servlet-name>
+		<url-pattern>/Demo2Servlet1</url-pattern>
+	</servlet-mapping>
+	<!-- filter链，demo2 结束 -->
+	
 	
 	<!-- list在servleit之前，在context-param之后 -->
 	<!-- 注册监听application对象的创建与销毁监听器 -->
