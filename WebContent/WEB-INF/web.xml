@@ -45,7 +45,7 @@
 	</filter-mapping> -->
 	
 	<!-- filter链，demo2 开始 -->
-	<filter>
+	<!-- <filter>
 		<filter-name>demo2Filter1</filter-name>
 		<filter-class>day21.Demo2Filter1</filter-class>
 		
@@ -56,13 +56,13 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>demo2Filter1</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/Demo2Servlet1</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>demo2Filter2</filter-name>
-		<!-- <url-pattern>/Demo2Servlet1</url-pattern> -->
-		<servlet-name>Demo2Servlet1</servlet-name><!-- 指定filter拦截哪个servlet -->
-		<!-- <dispatcher>REQUEST</dispatcher> --><!-- 指定过滤器所拦截的资源被 Servlet 容器调用的方式 -->
+		<url-pattern>/Demo2Servlet1</url-pattern>
+		<servlet-name>Demo2Servlet1</servlet-name>指定filter拦截哪个servlet
+		<dispatcher>REQUEST</dispatcher>指定过滤器所拦截的资源被 Servlet 容器调用的方式
 	</filter-mapping>
 	
 	<servlet>
@@ -72,8 +72,40 @@
 	<servlet-mapping>
 		<servlet-name>Demo2Servlet1</servlet-name>
 		<url-pattern>/Demo2Servlet1</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 	<!-- filter链，demo2 结束 -->
+	
+	<!-- fiterdemo3 开始 -->
+	<!-- <filter>
+		<filter-name>d21Demo3Filter</filter-name>
+		<filter-class>day21.Demo3Filter1</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>d21Demo3Filter</filter-name>
+		<url-pattern>/d21Demo3Servlet1</url-pattern>
+		
+	</filter-mapping>
+	<servlet>
+		<servlet-name>d21Demo3Servlet1</servlet-name>
+		<servlet-class>day21.Demo3Servlet1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>d21Demo3Servlet1</servlet-name>
+		<url-pattern>/d21Demo3Servlet1</url-pattern>
+	</servlet-mapping> -->
+	<!-- fiterdemo3 结束 -->
+	
+	<!-- fiterdemo4 开始 -->
+	<filter>
+		<filter-name>Demo4Filter1</filter-name>
+		<filter-class>day21.Demo4Filter1</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Demo4Filter1</filter-name>
+		<url-pattern>*.PNG</url-pattern>
+	</filter-mapping>
+	<!-- fiterdemo4 结束 -->
+	
 	
 	
 	<!-- list在servleit之前，在context-param之后 -->
