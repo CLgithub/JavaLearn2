@@ -16,6 +16,17 @@
 		<param-value>BBB值</param-value>
 	</context-param>
 	
+	<!-- filter在context之后 -->
+	<!-- filter，listener，servlet都将了，讲完filter后总结一下三者 -->
+	<filter><!-- 配置一个filter -->
+		<filter-name>demo1Filter1</filter-name><!-- filter名称 -->
+		<filter-class>day21.Demo1Filter1</filter-class><!-- filter处理类 -->
+	</filter>
+	<filter-mapping><!-- 配置一个filter映射 -->
+		<filter-name>demo1Filter1</filter-name><!-- 使用哪个filter拦截 -->
+		<url-pattern>/index.jsp</url-pattern><!-- 需要拦截哪个资源 -->
+	</filter-mapping>
+	
 	<!-- list在servleit之前，在context-param之后 -->
 	<!-- 注册监听application对象的创建与销毁监听器 -->
 	<!-- <listener >
