@@ -75,7 +75,46 @@ Filter过滤器
 				2.可以使用*通配符
 					1.目录匹配		必须"/"开始
 					2.后缀匹配		以*.xxx结束，不能以"/"开始
-		
+		4.<sevlet-name>
+			它的作用就是针对一个servlet进行拦截，他需要的就是servlet的名称
+			
+		5.<dispatcher>
+			指定过滤器所拦截的资源被 Servlet 容器调用的方式
+			可以取：
+				1.REQUEST	直接访问（默认）	如果目标资源是通过RequestDispatcher的include()或forward()方法访问时，那么该过滤器就不会被调用。
+				2.FORWARD	请求转发	如果目标资源是通过RequestDispatcher的forward()方法访问时，那么该过滤器将被调用，除此之外，该过滤器不会被调用。
+				3.INCLUDE	include包含 	如果目标资源是通过RequestDispatcher的include()方法访问时，那么该过滤器将被调用。除此之外，该过滤器不会被调用。
+				4.ERROR		异常拦截		如果目标资源是通过声明式异常处理机制调用时，那么该过滤器将被调用。除此之外，过滤器不会被调用。
+					例如：
+						<error-page>
+							<error-code>500</error-code>
+							<location>/page/day12/common/500.jsp</location>
+						</error-page>
+				5.ASYNC
+		filter案例：
+			1.简单的编码过滤（只针对post请求）
+				1.编写一个jsp页面
+				2.编写一个servlet，在servlet中获取请求
+				问题：乱码问题?
+					对于post怎么解决：request.setCharacterEncoding("utf-8");
+				3.创建一个filter，在filter中完成编码处理
+			2.禁用jsp页面缓存
+				问题：为什么要禁用jsp页面缓存
+					为了得到实时信息
+				怎样禁用jsp页面缓存？
+					1.在jsp页面上设置
+						<meta http-equiv="pargma" content="no-cache">
+						<meta http-equiv="cache-control" content="no-cache">
+						<meta http-equiv="expires" content="0">
+					2.可以通过filter来实现
+						1.在filter中设置
+							request.setHeader("pargma","no-cache");
+							request.setHeader("cache-control","no-cache");
+							request.setHeader("expires",-1);
+						2.filter的url-pattern
+							*.jsp
+							
+			3.设置图片的缓存时间
 		
 */
 public class Doc1 {

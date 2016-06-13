@@ -41,6 +41,7 @@ public class Demo5RequestDispatcher extends HttpServlet{
 //																										//b.只转发到当前 web应用内的资源
 		
 		RequestDispatcher rDispatcher = this.getServletContext().getRequestDispatcher("/Servlet11");	
+//		rDispatcher.include(req, resp);
 		rDispatcher.forward(req, resp);
 	}
 	
