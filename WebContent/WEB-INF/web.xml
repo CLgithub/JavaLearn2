@@ -76,7 +76,7 @@
 	<!-- filter链，demo2 结束 -->
 	
 	<!-- fiterdemo3 开始 -->
-	<!-- <filter>
+	<filter>
 		<filter-name>d21Demo3Filter</filter-name>
 		<filter-class>day21.Demo3Filter1</filter-class>
 	</filter>
@@ -92,7 +92,7 @@
 	<servlet-mapping>
 		<servlet-name>d21Demo3Servlet1</servlet-name>
 		<url-pattern>/d21Demo3Servlet1</url-pattern>
-	</servlet-mapping> -->
+	</servlet-mapping> 
 	<!-- fiterdemo3 结束 -->
 	
 	<!-- fiterdemo4 开始 -->
@@ -107,7 +107,7 @@
 	<!-- fiterdemo4 结束 -->
 	
 	<!-- fiterdemo5 自动登录 开始 -->
-	<filter>
+	<!-- <filter>
 		<filter-name>Demo5Filter1</filter-name>
 		<filter-class>day21.Demo5LoginFilter1</filter-class>
 	</filter>
@@ -123,7 +123,7 @@
 	<servlet-mapping>
 		<servlet-name>Demo5LoginServlet</servlet-name>
 		<url-pattern>/Demo5LoginServlet</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 	<!-- fiterdemo5 自动登录 结束 -->
 	
 	

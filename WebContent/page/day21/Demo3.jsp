@@ -11,7 +11,8 @@
 </head>
 <body>
 	<form action="${pageContext.servletContext.contextPath}/d21Demo3Servlet1" method="post">
-		<input type="text" name="name" value="post提交中文测试">
+		<input type="text" name="msg1" value="post提交中文测试">
+		<input type="text" name="msg2" value="post提交中文测试">
 		<input type="submit" value="提交">
 	</form>
 </body>
