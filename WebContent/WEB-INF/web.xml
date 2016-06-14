@@ -106,15 +106,16 @@
 	</filter-mapping> -->
 	<!-- fiterdemo4 结束 -->
 	
-	<!-- fiterdemo4 自动登录 开始 -->
-	<!-- <filter>
+	<!-- fiterdemo5 自动登录 开始 -->
+	<filter>
 		<filter-name>Demo5Filter1</filter-name>
-		<filter-class>day21.Demo5LoginFilter</filter-class>
+		<filter-class>day21.Demo5LoginFilter1</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>Demo5Filter1</filter-name>
-		<url-pattern>/UserController</url-pattern>
-	</filter-mapping> -->
+		<url-pattern>/page/day21/Demo5AutoLogin.jsp</url-pattern>
+		<url-pattern>/page/day21/mainPage.jsp</url-pattern>
+	</filter-mapping>
 	<servlet>
 		<servlet-name>Demo5LoginServlet</servlet-name>
 		<servlet-class>day21.Demo5LoginServlet</servlet-class>
@@ -123,7 +124,7 @@
 		<servlet-name>Demo5LoginServlet</servlet-name>
 		<url-pattern>/Demo5LoginServlet</url-pattern>
 	</servlet-mapping>
-	<!-- fiterdemo4 自动登录 结束 -->
+	<!-- fiterdemo5 自动登录 结束 -->
 	
 	
 	<!-- list在servleit之前，在context-param之后 -->
