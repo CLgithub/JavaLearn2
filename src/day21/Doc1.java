@@ -1,5 +1,8 @@
 package day21;
 
+
+import java.net.URLDecoder;
+
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
@@ -125,8 +128,19 @@ Filter过滤器
 					2.如果勾选了自动登录，将用户名和密码存到cookie中
 					3.做一个filter，他拦截所有请求，当访问资源时，我们从cookie中获取用户名和密码，进行登录操作
 				
-		
+				问题：如果用户名是中文怎么办，cookie不能存储中文
+					存储时，编码后（utf-8）存储，使用时解码使用
+					URLEncoder.encode(s, enc);(存)
+					URLDecoder.decode(s, enc);（解）
+					
+				关于密码的安全性问题：
+					可以对密码进行加密	md5
+					
+					mysql:	md5(值)
+					java：	md5Utils
 */
 public class Doc1 {
-
+	public static void main(String[] args) {
+		
+	}
 }

@@ -23,7 +23,7 @@ public class Demo5LoginServlet extends HttpServlet {
 			if(user!=null){
 				Cookie name=new Cookie("userName", user.getLoginName());
 				Cookie pass=new Cookie("pass", user.getPassword());
-				
+
 				String rememberMe = req.getParameter("rememberMe");
 				boolean b = Boolean.parseBoolean(rememberMe);
 				if(b){
