@@ -18,7 +18,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
-import javax.servlet.http.HttpServletResponse;import com.sun.org.apache.xalan.internal.utils.XMLSecurityManager.NameMap;
+import javax.servlet.http.HttpServletResponse;
 
 public class Demo3Filter1 implements Filter{
 

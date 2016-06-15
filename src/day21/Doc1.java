@@ -1,12 +1,11 @@
 package day21;
 
-<<<<<<< HEAD
+
 
 import java.net.URLDecoder;
-=======
+
 import java.io.UnsupportedEncodingException;
 import java.util.ResourceBundle;
->>>>>>> 551e556f18f82130562fceb16cebf7e9c5db5b83
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -137,7 +136,7 @@ Filter过滤器
 					2.如果勾选了自动登录，将用户名和密码存到cookie中
 					3.做一个filter，他拦截所有请求，当访问资源时，我们从cookie中获取用户名和密码，进行登录操作
 				
-<<<<<<< HEAD
+
 				问题：如果用户名是中文怎么办，cookie不能存储中文
 					存储时，编码后（utf-8）存储，使用时解码使用
 					URLEncoder.encode(s, enc);(存)
@@ -148,7 +147,7 @@ Filter过滤器
 					
 					mysql:	md5(值)
 					java：	md5Utils
-=======
+
 			5.url级别权限控制
 				思路：在给目标资源添加filter，在filter里判断该用户是否有权限访问该资源（代码简单，目前这样写难受）
 					用ResourceBundle读取资源配置文件
@@ -172,7 +171,7 @@ Filter过滤器
 					
 				
 		
->>>>>>> 551e556f18f82130562fceb16cebf7e9c5db5b83
+
 */
 public class Doc1 {
 	public static void main(String[] args) {
