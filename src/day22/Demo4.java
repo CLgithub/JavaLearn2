@@ -37,7 +37,11 @@ public class Demo4 extends HttpServlet{
 					if(!fTime.isFormField()){
 						String name = fTime.getName();
 						InputStream inputStream = fTime.getInputStream();
-						FileOutputStream fOutputStream=new FileOutputStream(this.getServletContext().getRealPath("/uploadFile/")+name);
+						File dir=new File(this.getServletContext().getRealPath("/uploadFile/")+FileUploadUtis.getRandomDirectory(name));
+						if(!dir.exists()){
+							dir.mkdirs();
+						}
+						FileOutputStream fOutputStream=new FileOutputStream(dir+"/"+name);
 						IOUtils.copy(inputStream, fOutputStream);
 						fTime.delete();
 						inputStream.close();
