@@ -154,6 +154,27 @@
 		<listener-class>day19_2_listener.demo.MyHttpSessionListener</listener-class>
 	</listener> -->
 	
+	<!-- day22 文件上传	demo1 开始 -->
+	<servlet>
+		<servlet-name>upload1</servlet-name>
+		<servlet-class>day22.Demo1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>upload1</servlet-name>
+		<url-pattern>/upload1</url-pattern>
+	</servlet-mapping>
+	<!-- day22 文件上传	demo1 结束 -->
+	<!-- day22 文件上传	demo2开始 -->
+	<servlet>
+		<servlet-name>upload2</servlet-name>
+		<servlet-class>day22.Demo2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>upload2</servlet-name>
+		<url-pattern>/upload2</url-pattern>
+	</servlet-mapping>
+	<!-- day22 文件上传	demo2 结束 -->
+	
 	<servlet>
 		<servlet-name>Demo3Servlet1</servlet-name>
 		<servlet-class>day8_web.Demo3Servlet1</servlet-class>
