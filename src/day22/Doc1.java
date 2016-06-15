@@ -1,9 +1,10 @@
 package day22;
 
+import java.io.File;
 import java.util.List;
-
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 
 /*
@@ -71,8 +72,62 @@ servlet规范	Servlet Filter Listener
 						可以自己将输入流接入将内容写到文件
 						也可以：
 							IOUtils.copy(fileItem.getInputStream(), fOutputStream);
-						
-						
+
+				核心api介绍	(Demo3)
+					1.DiskFileItemFactory	
+						作用：可以设置缓存大小以及临时文件保存位置
+							默认缓存大小是10240（10k）
+							临时文件默认存储在系统的临时文件目录下，
+							1.new DiskFileItemFactory
+								dfFactory.setSizeThreshold(sizeThreshold);		//设置缓存大小
+								dfFactory.setRepository(repository);			//设置临时文件目录
+							2.new DiskFileItemFactory(1024*100, new File("file"));
+								
+					2.ServletFileUpload
+						1.创建一个上传工具，指定使用缓存区大小和临时文件存储目录
+							ServletFileUpload sFileUpload=new ServletFileUpload(dfFactory);
+						2.解析request对象，得到所有上传项，每一关fileitem就相当于一个上传项
+							List<FileItem> list = sFileUpload.parseRequest(req);
+						3.判断是否是上传
+							boolean b = sFileUpload.isMultipartContent(req);	
+							可以简单理解，就是判断encType=="multipart/form-data"
+						4.设置上传文件大小
+							sFileUpload.setFileSizeMax(fileSizeMax);	//设置单个文件上传最大上传大小
+							sFileUpload.setSizeMax(sizeMax);		//设置总文件上传大小
+						5.解决上传文件中文名称乱码问题
+							sFileUpload.setHeaderEncoding("utf-8");
+							
+					3.FileItem
+						1.判断是否是formFiled
+							item.isFormField()
+						2.fileItem.getFieldName()
+							返回值string ，得到组件名称<input name="">
+						3.fileItem.getName()
+							得到上传文件名称
+							注意:浏览器不同，它们得到的效果不一样
+								1.包含全路径名称
+								2.值包含上传文件名称
+						4.getString()
+							可以获得组件的内容，相当于getParameter方法，注意编码
+							如果是上传组件，上传的文件是文本文件，可以用这方法，注意方法
+						5.获取上传文件内容，保存到服务器端
+							getInputStream(),方法可以获取上传文件内容的输入流
+							可以自己将输入流接入将内容写到文件
+							也可以：
+								IOUtils.copy(fileItem.getInputStream(), fOutputStream);
+						6.删除临时文件
+							item.delete();
+								
+					---------------------
+					总结：文件上传时乱码问题
+						1.上传名称乱码
+							sFileUpload.setHeaderEncoding("utf-8");
+						2.非上传组件内容乱码
+							FileItem.getString("utf-8");
+						3.思考：上传文件信息是否会乱码，需要解决吗
+							不需要解决，因为上传时使用的是字节流进行复制
+					
+					
 */
 public class Doc1 {
 
