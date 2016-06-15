@@ -174,7 +174,7 @@
 		<url-pattern>/upload2</url-pattern>
 	</servlet-mapping>
 	<!-- day22 文件上传	demo2 结束 -->
-	<!-- day22 文件上传	demo2开始 -->
+	<!-- day22 文件上传	demo3开始 -->
 	<servlet>
 		<servlet-name>upload3</servlet-name>
 		<servlet-class>day22.Demo3</servlet-class>
@@ -183,7 +183,17 @@
 		<servlet-name>upload3</servlet-name>
 		<url-pattern>/upload3</url-pattern>
 	</servlet-mapping>
-	<!-- day22 文件上传	demo2 结束 -->
+	<!-- day22 文件上传	demo3 结束 -->
+	<!-- day22 文件上传	demo4开始 -->
+	<servlet>
+		<servlet-name>upload4</servlet-name>
+		<servlet-class>day22.Demo4</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>upload4</servlet-name>
+		<url-pattern>/upload4</url-pattern>
+	</servlet-mapping>
+	<!-- day22 文件上传	demo4 结束 -->
 	
 	<servlet>
 		<servlet-name>Demo3Servlet1</servlet-name>

@@ -1,6 +1,7 @@
 package day22;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -126,7 +127,21 @@ servlet规范	Servlet Filter Listener
 							FileItem.getString("utf-8");
 						3.思考：上传文件信息是否会乱码，需要解决吗
 							不需要解决，因为上传时使用的是字节流进行复制
-					
+							
+	-------------------------------------------------------------------
+		多文件上传(demo4)
+			服务器端和单文件一样
+-------------------------------------------------------------------------
+关于文件上传的注意事项：
+	1.上传文件在服务器保存位置问题
+		1.保存在可以被浏览器直接访问的位置
+			例如：商城的商品图片
+			保存在工程的webroot下，WEB-INF、META-INF目录及其子目录除外的目录
+			FileOutputStream fOutputStream=new FileOutputStream(this.getServletContext().getRealPath("/uploadFile/")+name);
+		2.保存的问题不允许浏览器直接访问
+			例如：付费电影
+			1.工程中	META-INF、WEB-INF目录及其子目录
+			2.不在工程下
 					
 */
 public class Doc1 {

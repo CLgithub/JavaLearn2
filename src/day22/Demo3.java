@@ -27,13 +27,14 @@ public class Demo3 extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html; charset=utf-8");
+//		req.setCharacterEncoding("utf-8");
+//		resp.setContentType("text/html; charset=utf-8");
 		
 		DiskFileItemFactory dfFactory=new DiskFileItemFactory();//使用默认的
-		dfFactory.setRepository(new File("D:/Tomcat 8.0/webapps/JavaLearn2/tmp"));
+		dfFactory.setRepository(new File(req.getServletContext().getRealPath("/tmp")));
+		dfFactory.setSizeThreshold(1024*1000);
 		
-		//sizeThreshold		临时文件大小
+		//sizeThreshold		缓存大小
 		//repository		临时文件存储位置
 //		System.out.println(this.getClass().getResource("../../../tmp/"));	//	"/"代表classes目录
 		//this.getClass().getResourceAsStream("/xxx")用于到classes目录取出指定文件输入流
@@ -50,7 +51,7 @@ public class Demo3 extends HttpServlet{
 //		sFileUpload.setFileSizeMax(fileSizeMax);	//设置单个文件上传最大上传大小
 //		sFileUpload.setSizeMax(sizeMax);			//设置总文件上传大小
 		
-//		sFileUpload.setHeaderEncoding("utf-8");		//解决上传文件中文名称乱码问题
+		sFileUpload.setHeaderEncoding("utf-8");		//解决上传文件中文名称乱码问题
 		
 		if(b){
 			try {
