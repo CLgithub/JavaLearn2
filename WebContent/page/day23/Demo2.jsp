@@ -13,10 +13,10 @@
 %>
 <%
 	String country=request.getParameter("country");
-
+	bundle=ResourceBundle.getBundle("message", Locale.CHINA);
 	if("US".equals(country)){
 		bundle=ResourceBundle.getBundle("message", Locale.US);
-	}else if("CN".equals(country)){
+	}else {
 		bundle=ResourceBundle.getBundle("message", Locale.CHINA);
 	}
 %>

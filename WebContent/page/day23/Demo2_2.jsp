@@ -13,9 +13,9 @@
 %>
 <%
 	String country=request.getHeader("Accept-Language");
-//	System.out.println(country);
+	System.out.println(country);
 	
-	if(country.startsWith("en-US")){
+	if(country.startsWith("en")){
 		bundle=ResourceBundle.getBundle("message", Locale.US);
 	}else {
 		bundle=ResourceBundle.getBundle("message", Locale.CHINA);

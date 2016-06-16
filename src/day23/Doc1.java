@@ -51,8 +51,29 @@ import java.util.ResourceBundle;
 					native2ascii  源文件路径   目录文件路径
 					例如: native2ascii d:/a.txt  d:/a.properties
 	---------------------------------------------------------------
-	国际化登录页面（demo2）
+	国际化登录页面（Demo2.jsp）
 	
+	-----------------------------------------------
+	关于日期国际化（Demo3）
+		DateFormat类
+		作用：
+			1.将一个Date对象格式化成一个指定效果的String 	format方法
+			2.将一个Sring解析成Date对象			parse方法
+		
+		1.DateFormat对象创建
+			
+	货币国际化
+		NumberFormat类（Demo4）
+			Format
+				正向		format方法
+				反向解析	parse方法
+			--|DateFormat
+			--|NumberFormat
+				1.对数值进行格式化
+				2.对数值进行百分比
+				3.对数值进行以货币显示
+		
+		
 			
 */
 public class Doc1 {
