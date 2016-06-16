@@ -50,6 +50,9 @@ import java.util.ResourceBundle;
 				2.批量翻译
 					native2ascii  源文件路径   目录文件路径
 					例如: native2ascii d:/a.txt  d:/a.properties
+	---------------------------------------------------------------
+	国际化登录页面（demo2）
+	
 			
 */
 public class Doc1 {
