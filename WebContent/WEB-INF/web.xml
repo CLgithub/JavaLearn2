@@ -194,6 +194,16 @@
 		<url-pattern>/upload4</url-pattern>
 	</servlet-mapping>
 	<!-- day22 文件上传	demo4 结束 -->
+	<!-- day22文件下载	demo5开始 -->
+	<servlet>
+		<servlet-name>DownLoad1</servlet-name>
+		<servlet-class>day22.Demo5</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownLoad1</servlet-name>
+		<url-pattern>/DownLoad1</url-pattern>
+	</servlet-mapping>
+	<!-- day22文件下载	demo5结束 -->
 	
 	<servlet>
 		<servlet-name>Demo3Servlet1</servlet-name>

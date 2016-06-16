@@ -154,7 +154,46 @@ servlet规范	Servlet Filter Listener
 			4）按照文件名的hashcode进行目录分离
 				详情见FileUploadUtis.getRandomDirectory
 				
-			
+--------------------------------------------------------
+文件下载：
+	文件下载方式：
+		1.超链接下载（demo5）
+			注意：
+				1.如果文件可以直接被浏览器解析，那么会被浏览器直接打开，不能被浏览器直接解析的就是下载，
+					直接打开的要想下载，右键另存为
+				2.超链接下载必须能被浏览器直接访问
+				3.超链接下载本质也是通过servlet完成的，tomcat自带的默认servlet（缺省servlet）完成的
+					<servlet>
+				        <servlet-name>default</servlet-name>
+				        <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+				        <init-param>
+				            <param-name>debug</param-name>
+				            <param-value>0</param-value>
+				        </init-param>
+				        <init-param>
+				            <param-name>listings</param-name>
+				            <param-value>false</param-value>
+				        </init-param>
+				        <load-on-startup>1</load-on-startup>
+				    </servlet>
+		2. 服务器端通过流下载
+			本质：通过流往浏览器写
+				得到文件，判断文件是否存在，用流写向浏览器
+			注意：
+				1。要设置mimeType类型
+					resp.setContentType(String mimeType);
+					问题：怎样得到文件的mimeType
+						this.getServletContext().getMimeType(file.getName())
+					设置了mimeType，浏览器能解析的就直接展示，不能解析的就直接下载
+					resp.setContentType(this.getServletContext().getMimeType(file.getName()));
+				2.设置一个相应头。设置以后，无论浏览器是否能解析，都是下载
+					resp.setHeader("Content-Disposition", "attachment; filename="+file.getName());
+					
+			总结：服务器端下载
+				1.将要下载的文件通过response.getOutputStream()流写到浏览器端
+				2.设置mimeType	resp.setContentType(this.getServletContext().getMimeType(file.getName()));
+				3.设置响应头，目的是由于是下载
+					resp.setHeader("Content-Disposition", "attachment; filename="+file.getName());
 			
 */
 public class Doc1 {

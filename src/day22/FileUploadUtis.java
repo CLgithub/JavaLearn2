@@ -2,7 +2,6 @@ package day22;
 
 import java.util.Arrays;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
 public class FileUploadUtis {
 
@@ -27,7 +26,7 @@ public class FileUploadUtis {
 ////		return sBuffer.toString();
 		
 		String str="";
-		for(int i=8;i>0;i--){
+		for(int i=2;i>0;i--){
 			str="/"+Integer.toHexString(hashCode&0xf)+str;//0xf	十六进制1111，与hashCode做位与，即取出了hashCode的低4位
 			hashCode=hashCode>>>4;
 		}
