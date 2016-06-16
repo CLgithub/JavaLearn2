@@ -3,6 +3,7 @@ package day22;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -23,18 +24,20 @@ public class Demo5 extends HttpServlet{
 		//得到要下载的文件名称
 		String fileName = req.getParameter("fileName");
 		//得到文件
-		File file=new File("D:/XX-Net-3.1.4.zip");
-//		File file=new File("D:/stdout.log");
-		
+//		File file=new File("D:/XX-Net-3.1.4.zip");
+		File file=new File("D:/新建文本文档.txt");
+		System.out.println(file);
 		System.out.println(this.getServletContext().getMimeType(file.getName()));
 		resp.reset(); // 清空response
 		//设置mimeType类型，能解析的解析，不能解析的下载
-		resp.setContentType(this.getServletContext().getMimeType(file.getName()));
+//		resp.setContentType(this.getServletContext().getMimeType(file.getName()));
 		//设置一个响应头，全是下载
-//		resp.setHeader("Content-Disposition", "attachment; filename="+file.getName()); //设置响应头，下载文件名称
+		resp.setHeader("Content-Disposition", "attachment; filename="+URLEncoder.encode(file.getName(), "utf-8")); //设置响应头，下载文件名称
 		
 		
 		if(file.exists()){
+			String useragent=req.getHeader("user-agent");
+			System.out.println(useragent);
 			//下载，通过response得到输出流，把要下载的文件写到浏览器
 			ServletOutputStream outputStream = resp.getOutputStream();
 			FileInputStream fInputStream=new FileInputStream(file);

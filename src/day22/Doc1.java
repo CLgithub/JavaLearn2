@@ -2,6 +2,7 @@ package day22;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.net.URLEncoder;
 import java.util.List;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -195,6 +196,16 @@ servlet规范	Servlet Filter Listener
 				3.设置响应头，目的是由于是下载
 					resp.setHeader("Content-Disposition", "attachment; filename="+file.getName());
 			
+			文件下载时的乱码问题
+				下载文件时，文件名乱码问题
+						resp.setHeader("Content-Disposition", "attachment; filename="+file.getName());
+					ie、chrome、Edge:要求filename是utf-8
+						resp.setHeader("Content-Disposition", "attachment; filename="+URLEncoder.encode(file.getName(), "utf-8"));
+					firefox:要求filename必须是base64
+					问题：怎样判断浏览器？
+						string usereagent=request.getHeader("user-agent");
+				
+				
 */
 public class Doc1 {
 
