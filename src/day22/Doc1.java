@@ -204,8 +204,25 @@ servlet规范	Servlet Filter Listener
 					firefox:要求filename必须是base64
 					问题：怎样判断浏览器？
 						string usereagent=request.getHeader("user-agent");
-				
-				
+--------------------------------------------------------------	
+	作业：
+		网盘系统
+			create database day22;
+			
+			create table resources(
+			  id int primary key auto_increment,
+			  uuidname varchar(100) unique not null,
+			  realname varchar(40) not null,
+			  savepath varchar(100) not null,
+			  uploadtime timestamp ,
+			  description varchar(255)
+			);
+		
+----------------------------------------------------
+	扩展：使用队列来优化递归操作
+		
+		
+		
 */
 public class Doc1 {
 
