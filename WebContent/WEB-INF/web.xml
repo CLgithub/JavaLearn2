@@ -204,6 +204,16 @@
 		<url-pattern>/DownLoad1</url-pattern>
 	</servlet-mapping>
 	<!-- day22文件下载	demo5结束 -->
+	<!-- day23 dome1 ajax开始 -->
+	<servlet>
+		<servlet-name>ajax1</servlet-name>
+		<servlet-class>day23_ajax.Demo1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ajax1</servlet-name>
+		<url-pattern>/ajax1</url-pattern>
+	</servlet-mapping>
+	<!-- day23 dome1 ajax结束 -->
 	
 	<servlet>
 		<servlet-name>Demo3Servlet1</servlet-name>
