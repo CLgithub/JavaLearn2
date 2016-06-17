@@ -1,5 +1,6 @@
 package day23;
 
+import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -54,24 +55,45 @@ import java.util.ResourceBundle;
 	国际化登录页面（Demo2.jsp）
 	
 	-----------------------------------------------
-	关于日期国际化（Demo3）
+	Format
+			正向		format方法
+			反向解析	parse方法
+		--|DateFormat	（日期）Demo3
+		--|NumberFormat		（数值货币）Demo4
+		--|MessageFormat		（动态文本格式化）Demo5
+			可以对一个模板中的信息进行动态赋值
+			1.使用
+				String string = MessageFormat.format(Sring pattern, Object... params);
+			2.说明一下关于动态文本中的占位符
+				如：{0} is required {1}
+				1.占位符只能使用0～9之间
+				2.占位符的格式
+					1.{argumentIndex}: 0-9 之间的数字，表示要格式化对象数据在参数数组中的索引号
+					2.{argumentIndex,formatType}: 参数的格式化类型
+					3.{argumentIndex,formatType,FormatStyle}: 格式化的样式，它的值必须是与格式化类型相匹配的合法模式、或表示合法模式的字符串。
+	
+					formatType可以取的值有:number date time
+					formatStyle可以取的值有
+						number类型可以取:integer currency  percent 
+						date类型可以取的:short medium  full long
+						time类型可以取的:short medium  full long
+	
+	
+		关于日期国际化（Demo3）
 		DateFormat类
-		作用：
-			1.将一个Date对象格式化成一个指定效果的String 	format方法
-			2.将一个Sring解析成Date对象			parse方法
-		
-		1.DateFormat对象创建
-			
-	货币国际化
+			作用：
+				1.将一个Date对象格式化成一个指定效果的String 	format方法
+				2.将一个Sring解析成Date对象			parse方法
+				
+		货币国际化
 		NumberFormat类（Demo4）
-			Format
-				正向		format方法
-				反向解析	parse方法
-			--|DateFormat
-			--|NumberFormat
-				1.对数值进行格式化
-				2.对数值进行百分比
-				3.对数值进行以货币显示
+				--|NumberFormat
+					1.对数值进行格式化
+					2.对数值进行百分比
+					3.对数值进行以货币显示
+					
+		MessageFormat类（Demo5）
+		
 		
 		
 			
