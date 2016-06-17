@@ -48,8 +48,18 @@ ajax开发步骤：（demo1.jsp）
 		2.status属性，由服务器返回的http状态码，200（成功）
 			xmlhttpRequest.status==200
 		3.在回调函数中可以通过以下方式获取服务器返回的数据
-			1.responseText	相应的是文本
-			2.responseXML	相应的是xml？？？
+			1.responseText	响应的是文本
+			2.responseXML	响应的是xml？？？
+	--------------------------------------------
+	关于ajax操作中请求参数的设置（demo2）
+		1.对于get请求方式,参数设置
+			直接在url后面拼接
+			例如："${pageContext.request.contextPath}/ajax2?name=aaa"
+		2.对于post请求方式，参数设置
+			xmlhttpRequest.open("post", "${pageContext.request.contextPath}/ajax2");
+			xmlhttpRequest.send("name=abc");
+			注意：如果是post请求方式，还需要设置一个http请求头
+			xmlhttpRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 	 	
 	
 */
