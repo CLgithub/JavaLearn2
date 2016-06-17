@@ -61,6 +61,9 @@ ajax开发步骤：（demo1.jsp）
 			注意：如果是post请求方式，还需要设置一个http请求头
 			xmlhttpRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 	 	
+ 	-----------------------------------------------------
+ 	ajax案例1---验证用户名是否可以使用（demo3）
+ 	
 	
 */
 public class Doc1 {

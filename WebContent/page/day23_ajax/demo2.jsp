@@ -36,6 +36,7 @@
 		//xmlhttpRequest.open("get", "${pageContext.request.contextPath}/ajax2?name=aaa");
 		//4.发送请求
 		//xmlhttpRequest.send(null);
+
 		//post请求方式参数设置
 		xmlhttpRequest.open("post", "${pageContext.request.contextPath}/ajax2");
 		xmlhttpRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded");//post需要多设置一个请求头
