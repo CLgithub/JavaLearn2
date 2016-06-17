@@ -234,6 +234,16 @@
 		<url-pattern>/ajax3</url-pattern>
 	</servlet-mapping>
 	<!-- day23 dome3 ajax结束 -->
+	<!-- day23 dome4 ajax开始 -->
+	<servlet>
+		<servlet-name>ajax4</servlet-name>
+		<servlet-class>day23_ajax.Demo4</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ajax4</servlet-name>
+		<url-pattern>/ajax4</url-pattern>
+	</servlet-mapping>
+	<!-- day23 dome4 ajax结束 -->
 	
 	<servlet>
 		<servlet-name>Demo3Servlet1</servlet-name>
