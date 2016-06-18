@@ -1,5 +1,9 @@
 package day23_ajax;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+
 /*
 ajax
 	问题：ajax是什么，它有什么作用
@@ -63,7 +67,40 @@ ajax开发步骤：（demo1.jsp）
 	 	
  	-----------------------------------------------------
  	ajax案例1---验证用户名是否可以使用（demo3）
- 	
+ 	－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+ 	展示商品信息
+ 		版本1（demo4）
+ 			向浏览器输出页码及数据
+ 		版本2（demo5）(json)
+ 			在服务器端得到数据，只将要显示的数据返回，而不返回html代码，而html代码的拼接，在浏览器端完成
+ 			问题：服务器返回什么样的数据格式
+ 				json：一种轻量级的数据交换格式（Javascript的一个子集）
+ 				[{'id':'1','name':'洗衣机','price':'1800'},{'id':'2','name':'电视机','price':'3800'}]
+ 				在js中{name:value,name:value},这就是一个js对象
+ 				[{},{}]两个对象装入到了浏览器中
+			
+			json插件使用：
+				在java中，可以通过jsonlib插件，在java对象与json之间做转换
+				使用：
+					1.导jar包(6个)
+					
+					2.将java对象转换成json
+						1.对于数组，list集合，
+							JSONArray.fromObject(list)	["value1","value2","value3",...]
+						2.对于javaBean
+							JSONObject.fromObject(product)	{"name1":"value1","name2":"value2",...}
+					对于json数据，只有两种格式
+						1.["value1","value2","value3",...]	-----就是javascript中的数组
+ 						2.{"name1":"value1","name2":"value2",...}		---就是javascript中的对象
+ 						但是，这两种格式可以嵌套
+ 						[{},{},{}]
+ 						{name1:[],name2,[]}
+ 						
+					3.如果javaBean中有一个属性，不想生成在json中，怎样处理？
+						JsonConfig config=new JsonConfig();
+						config.setExcludes(new String[]{"type"});		//Exclude	拒绝…参加
+
+	
 	
 */
 public class Doc1 {
