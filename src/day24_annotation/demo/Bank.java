@@ -2,8 +2,6 @@ package day24_annotation.demo;
 
 import java.lang.reflect.Method;
 
-import day24_annotation.BankInfo;
-
 //银行最大转账金额为5000
 public class Bank {
 	

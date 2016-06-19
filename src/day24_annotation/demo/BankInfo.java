@@ -1,4 +1,4 @@
-package day24_annotation;
+package day24_annotation.demo;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

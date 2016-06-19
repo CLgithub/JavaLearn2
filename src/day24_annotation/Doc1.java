@@ -139,6 +139,8 @@ package day24_annotation;
 				
 				这时就出现了注解，因为注解可以直接写在代码上，并且，通过注解也可以解耦合。
 				
+		注解案例2-－－－jdbc连接
+				
 
 */
 public class Doc1 {
