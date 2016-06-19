@@ -1,5 +1,6 @@
 package day24_servlet3;
 
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.annotation.WebServlet;
@@ -44,8 +45,21 @@ servlet3特性（了解）
 			
 		注意：
 			web.xml中的属性：metadata-complete="false"		false可以使用注解，true不能使用注解
-	2.servlet3.0中的文件上传
-	
+	2.servlet3.0中的文件上传(Demo2_upload.jsp)（之前day22）
+		浏览器端：
+			1.method=post 只要post才可以携带大数据
+			2.必须使用<input type='file' name='f'> 要有name属性
+			3.form表单要带上  enctype="multipart/form-data"属性
+				能把文件的内容上传到服务器
+		服务器端：
+			1.在servlet上添加注解	@MultipartConfig
+			2.通过request对象获取part对象
+			
+			问题：1.关于上传文件中文名称乱码
+					直接使用post乱码解决方法解决
+				2.多文件上传这么处理
+					request.getParts();
+		
 	3.servlet3.0中异步处理
 	
 	
