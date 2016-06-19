@@ -1,5 +1,6 @@
 package day24_annotation;
 
+
 /*
 
 1.注解
@@ -69,7 +70,6 @@ package day24_annotation;
 					4.enum
 					5.Annotation
 					6.以上类型的一维数组
-					
 				
 			2.关于注解中有属性（方法），使用的问题(demo3)
 				如果一个注解中有属性，并且属性没用默认值，那么我们在使用注解时，必须给属性赋值（类似实现接口）
@@ -90,7 +90,55 @@ package day24_annotation;
 						如果value属性是一个数组
 							String[] value();
 							@MyAnnotation4({"a","b"})
-						
+			3.元注解	(demo5)
+				修饰注解的注解
+				1.@Retention	（保留）
+					作用：指定注解给谁使用。
+					它的属性值只能是以下三个：
+						RetentionPolicy.SOURCE  给编译器使用  使用后抛弃
+						RetentionPolicy.CLASS   给解析器使用。当jvm加载完成后，就抛弃.			  			
+						RetentionPolicy.RUNTIME	jvm加载完成后，还存在。开发人员可以通过反射来获取注解相关信息.
+				2.@Target		（目标）
+					作用：定义注解在什么位置使用
+				3.@Documented	（文档）
+					作用：通过javadoc生成的文档中是否抽取注解描述。
+				4.@Inherited	（继承）
+					作用：描述当前注解是否具有继承性
+					
+				想要开发有功能的注解，对于我们，一定会使用的元注解是：
+					@Retention
+					@Target
+		－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+		注解案例－－银行最大转账金额：（BankTest）
+			这个案例的目的：
+				1.怎样通过反射来操作注解
+				2.注解可以替换配置文件
+				
+			代码实现：
+				1.将银行最大转账金额定义在配置文件中，使用时，读取配置文件
+				2.使用注解来替换配置文件
+					1.定义一个注解
+						@Target(value=ElementType.METHOD)	//该注解在方法上使用
+						@Retention(value=RetentionPolicy.RUNTIME)	//运行时，可反射
+						public @interface BankInfo {
+							int maxMoney();
+						}
+					2.通过反射来获取注解信息
+						1.获取当前方法的method对象
+							1.得到class对象
+								1.类名.class
+								2.对象.getClass()
+								3.Class.forName(String className)
+							2.通过class对象的到Method对象
+								getDeclaredMethod
+						2.通过method对象的getAnnotation(Class<T> annotationClass)方法，获取该方法注解对象
+						3.通过注解对象来调用其属性
+			
+			注解可以替换配置文件，替换的是什么
+				配置文件的出现，它的主要目的就是解耦合，但是随着现在开发程序越来越庞大，配置文件的缺点就出现了，配置文件内容越来越庞大，就不利于开发与阅读
+				
+				这时就出现了注解，因为注解可以直接写在代码上，并且，通过注解也可以解耦合。
+				
 
 */
 public class Doc1 {
