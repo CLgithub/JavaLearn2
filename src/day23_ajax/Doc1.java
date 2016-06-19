@@ -99,7 +99,43 @@ ajax开发步骤：（demo1.jsp）
 					3.如果javaBean中有一个属性，不想生成在json中，怎样处理？
 						JsonConfig config=new JsonConfig();
 						config.setExcludes(new String[]{"type"});		//Exclude	拒绝…参加
+	-------------------------------------------------------------------------------------------------
+	ajax操作中服务器端返回xml处理
+		XMHttpRequest.resposneXML;----->得到的是一个Document对象.
+		
+		操作：可以自己将xml文件中的内容取出来，写回到浏览器端。也可以请求转发到一个xml文件，将这个文件信息写回到
+		      浏览器端.注意   response.setContextType("text/xml;charset=utf-8");
+			  
+		问题:如果没有xml文件，我们的数据是从数据库中查找到了，想要将其以xml格式返回怎样处理?
+			
+			可以使用xml插件处理  xstream，它可以在java对象与xml之间做转换.
+			
+		xstream使用:
+			1.导包
+				2个.
+			2.使用
+				1.将java对象转换成xml
+					XStream xs=new XStream();
+					String xml=xs.toXML(java对象);
+				问题:生成的xml中的名称是类的全名.
+					两种方式:
+						1.编码实现
+							xs.alias("person", Person.class);
+						2.使用注解(Annotation)
+							@XStreamAlias(别名) 对类和变量设置别名
+							@XStreamAsAttribute  设置变量生成属性
+							@XStreamOmitField  设置变量 不生成到XML
+							@XStreamImplicit(itemFieldName = “hobbies”) 设置集合类型变量 别名
 
+							使注解生效 
+							xStream.autodetectAnnotations(true);
+							
+		--------------------------------------------
+		作业：
+			1.用json格式完成省市联动下拉框(demo6)
+				注意：var citys=eval(xmlhttpRequest.responseText);有时候会出问题
+					解决：var citys=eval("("+xmlhttpRequest.responseText+")");
+			2.用xml格式完成省市联动下拉框（待完成）
 	
 	
 */
