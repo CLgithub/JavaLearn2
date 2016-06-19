@@ -8,7 +8,7 @@ package day24_annotation;
 		注释：描述代码功能，给人看的
 		注解：描述程序如何运行，是给编译器，解释器，jvm使用的
 	
-	jdk中自带的三个注解
+	jdk中自带的三个注解（demo1）
 		1.@Override
 			给编译器使用，用于描述当前的方法是一个重写的方法
 			注意：在jdk1.5和jdk1.6中有区别
@@ -29,6 +29,22 @@ package day24_annotation;
 			serial 当在可序列化的类上缺少 serialVersionUID 定义时的警告。?
 			finally 任何 finally 子句不能正常完成时的警告。
 			all 关于以上所有情况的警告。
+			
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	关于自定义注解（demo2）
+		1.定义注解
+			声明一个注解：@interface 注解名{}
+			
+			问题：声明一个注解的本质是什么
+				@interface MyAnnotation{}
+				它的本质就是（反编译）
+				import java.lang.annotation.Annotation;
+				interface MyAnnotation extends Annotation{
+				}
+				注解的本质就是一个接口，继承了Annotation
+				所有的注解都实现了这个接口，但是不能手动实现
+				注解是jdk1.5以后的新特性
+	
 
 */
 public class Doc1 {
