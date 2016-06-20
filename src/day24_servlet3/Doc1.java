@@ -1,5 +1,6 @@
 package day24_servlet3;
 
+import javax.servlet.AsyncContext;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebListener;
@@ -60,9 +61,15 @@ servlet3特性（了解）
 				2.多文件上传这么处理
 					request.getParts();
 		
-	3.servlet3.0中异步处理
-	
-	
+	3.servlet3.0中异步处理(demo3)
+		本质：在服务器端开启一个线程，来完成其他操作
+		1.@WebServlet(value="/day24_reg",asyncSupported=true)
+			代表servlet支持异步操作
+		2.需要一个异步上下文对象，通过这个对象，可以获取request.response对象
+			AsyncContext asyncContext = req.getAsyncContext();
+			还可以对异步上下文进行监听，判断新开的线程是否结束
+			
+			
 */
 public class Doc1 {
 
