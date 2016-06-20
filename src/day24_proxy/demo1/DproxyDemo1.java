@@ -1,14 +1,9 @@
-package day24_proxy;
+package day24_proxy.demo1;
 
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-
-import day24_proxy.demo1.KindMan;
-import day24_proxy.demo1.KindWoman;
-import day24_proxy.demo1.Pjl;
-import day24_proxy.demo1.Wp;
 
 //动态代理
 public class DproxyDemo1 {

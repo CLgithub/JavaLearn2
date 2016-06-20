@@ -1,6 +1,4 @@
-package day24_proxy;
-
-import day24_proxy.demo1.KindMan;
+package day24_proxy.demo1;
 
 public class Cgx implements KindMan{
 
