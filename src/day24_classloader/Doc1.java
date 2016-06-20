@@ -52,6 +52,17 @@ import sun.security.ec.CurveDB;
 		委托机制:先让parent(父)类加载器寻找,只有 在parent找不到的时候才从自己的类路径中去寻找
 		类加载还采⽤用了cache机制:如果 cache中保存了这 个Class就直接返回它,如果没有才从⽂文件中读取和转
 			换成Class,并存入cache,这就是为什么修改了Class但是必须重新启动JVM才能生效,并且类只加载一次的原因
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	自定义类加载器
+		创建了一个类javax.activation.MimeType,在这个类有一个方法show();
+		当jvm加载这个类时，因为在rt.jar报包下也存在一个javax.activation.MimeType类，
+		这时jvm就会使用引导加载器加载这个类，而我们想得到的其实是由应用类加载器加载的Class
+	解决方案：	
+		自定义加载器
+		1.创建一个类，基础ClassLoader
+		2.重写findClass()方法	
+		
 		
 			
 */
