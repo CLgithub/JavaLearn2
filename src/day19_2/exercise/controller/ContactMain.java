@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import day19_2.exercise.base.BaseController;
+import day19_2.exercise.common.LogProxy;
 import day19_2.exercise.common.PageBean;
 import day19_2.exercise.entity.Contact19_2;
 import day19_2.exercise.entity.Users;
@@ -24,7 +25,7 @@ public class ContactMain extends BaseController {
 			req.setAttribute("msg", "请重新登录");
 			req.getRequestDispatcher("/page/day19_2/exercise/login.jsp").forward(req, resp);
 		}else {
-			ContactService contactService = new ContactServiceImpl();
+			ContactService contactService = LogProxy.getInstance();
 			String mark = req.getParameter("mark");
 			if ("toAddOrU".equals(mark)) {// 到达新增或修改页面
 				toAddorU(req, resp, contactService);

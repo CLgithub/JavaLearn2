@@ -24,7 +24,7 @@ public class BaseDaoImal<T> implements BaseDao<T> {
 //		this.clazz = (Class<T>) type.getActualTypeArguments()[0];
 		ComboPooledDataSource cpds=new ComboPooledDataSource();
 		cpds.setJdbcUrl("jdbc:mysql://localhost:3306/jdbc1?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&useServerPrepStmts=true&cachePrepStmts=true&rewriteBatchedStatements=true");
-		cpds.setUser("root");
+		cpds.setUser("L");
 		cpds.setPassword("123456");
 		this.runner=new QueryRunner(cpds);
 	}
