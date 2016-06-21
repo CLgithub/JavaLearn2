@@ -75,6 +75,19 @@ struts2配置（重点）
 		struts-default.xml
 		struts.xml
 		
+	2.关于Action的配置
+		1.<package>  作用:是用于声明一个包。用于管理action。
+			1.name     它用于声明一个包名，包名不能重复，也就是它是唯一的。 
+			2.namespace  它与action标签的name属性合并确定了一个唯一访问action的路径。
+			3.extends  它代表继承的包名。
+			4.abstrace 它可以取值为true/false,如果为true,代表这个包是用于被继承的。
+		2<action>  用于声明 一个action
+			1.name  就是action的一个名称，它是唯一的(在同包内) 它与package中的namespace确定了访问action的路径。
+			2.class Action类的全名
+			3.method 要访问的Action类中的方法的名称,方法无参数 ，返回值为String.
+		3.<result> 用于确定返回结果类型
+			1.name  它与action中的方法返回值做对比，确定跳转路径。
+		
 		
 
 
