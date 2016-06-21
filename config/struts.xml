@@ -4,8 +4,17 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
 	<package name="default" namespace="/" extends="struts-default">
+		
+		<!-- struts2Demo1 -->
 		<action name="struts2Demo1" class="day29_struts2.Demo1Action" method="say" >
 			<result name="good">/page/day29_struts2/struts2Demo1.jsp</result>
 		</action>
+		
+		<!-- struts2Demo1 -->
+		<action name="struts2Demo2" class="day29_struts2.Demo1Action" method="say" >
+			<result name="good">/page/day29_struts2/struts2Demo1.jsp</result>
+		</action>
+		
+		
 	</package>
 </struts>
