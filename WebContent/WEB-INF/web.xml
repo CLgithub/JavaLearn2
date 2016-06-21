@@ -17,6 +17,19 @@
 		<param-value>BBB值</param-value>
 	</context-param>
 	
+	<!-- struts2 demo1 开始 -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<!-- <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class> -->
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+		
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/struts2Demo1</url-pattern>
+	</filter-mapping>
+	<!-- struts2 demo1 开始 -->
+	
 	<!-- filter在context之后 -->
 	<!-- filter，listener，servlet都将了，讲完filter后总结一下三者 -->
 	<!-- <filter>配置一个filter
