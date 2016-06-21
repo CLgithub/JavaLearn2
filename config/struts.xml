@@ -3,7 +3,12 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-	<package name="default" namespace="/" extends="struts-default">
+	<package name="default" namespace="/" extends="struts-default"><!-- namespace的默认值是 "" -->
+	
+		<!-- 3.配置查找不到action是，默认使用struts2Demo1 -->
+		<default-action-ref name="struts2Demo1" />
+		<!-- 4.配置action默认处理类 -->
+		<!-- <default-class-ref class="day29_struts2.Demo1Action" /> -->
 		
 		<!-- struts2Demo1 -->
 		<action name="struts2Demo1" class="day29_struts2.Demo1Action" method="say" >
@@ -13,6 +18,18 @@
 		<!-- struts2Demo1 -->
 		<action name="struts2Demo2" class="day29_struts2.Demo1Action" method="say" >
 			<result name="good">/page/day29_struts2/struts2Demo1.jsp</result>
+		</action>
+		
+		<!-- struts2Demo3 -->
+		<!-- 1.class的默认值 com.opensymphony.xwork2.ActionSupport method的默认值是execute-->
+		<action name="struts2Demo3" >
+			<!-- result的name属性默认值是 success -->
+			<result>/page/day29_struts2/struts2Demo3.jsp</result>
+		</action>
+		
+		<!-- -->
+		<action name="struts2Demo4" class="day29_struts2.Demo1Action" method="say" >
+			<result name="good">/page/day29_struts2/struts2Demo3.jsp</result>
 		</action>
 		
 	</package>

@@ -25,19 +25,28 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
-		<url-pattern>/struts2Demo1</url-pattern>
+		<url-pattern>*.action</url-pattern>
 	</filter-mapping>
 	<!-- struts2 demo1 开始 -->
 	<!-- struts2 demo2 Mystruts2 开始 -->
-	<filter>
+	<!-- <filter>
 		<filter-name>Mystruts2</filter-name>
 		<filter-class>day29_struts2.demo2.MyStrutsFilter</filter-class>
-		<!-- <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class> -->
 	</filter>
 	<filter-mapping>
 		<filter-name>Mystruts2</filter-name>
 		<url-pattern>/struts2Demo2</url-pattern>
-	</filter-mapping>
+	</filter-mapping> -->
+	<!-- struts2 demo2 Mystruts2 开始 -->
+	<!-- struts2 demo2 Mystruts2 开始 -->
+	<!-- <filter>
+		<filter-name>struts2Demo3</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2Demo3</filter-name>
+		<url-pattern>/struts2Demo3</url-pattern>
+	</filter-mapping> -->
 	<!-- struts2 demo2 Mystruts2 开始 -->
 	
 	<!-- filter在context之后 -->

@@ -88,8 +88,37 @@ struts2配置（重点）
 		3.<result> 用于确定返回结果类型
 			1.name  它与action中的方法返回值做对比，确定跳转路径。
 		
-		
-
+		关于action配置其它细节：
+			1.关于默认值问题
+				<package namespace="默认值"> namespace的默认值是""
+				<action class="默认值"  method="默认值">
+					class的默认值是  com.opensymphony.xwork2.ActionSupport
+					method的默认值是  execute
+				<resultd	X name="默认值"> name的默认值是 "success"  
+			2.关于访问action的路径问题
+				现在的action配置是
+				<action name="struts2Demo1" class="day29_struts2.Demo1Action" method="say" >
+					<result name="good">/page/day29_struts2/struts2Demo1.jsp</result>
+				</action>
+				当我们输入：
+					http://localhost:8090/JavaLearn2/a/b/c/struts2Demo1
+					也能访问action
+				原因：struts2中action中的action被访问是，它会首先查找
+					1.namespace="/a/b/c"	action的name=struts2Demo1	没有
+					2.namespace="/a/b"		action的name=struts2Demo1	没有
+					3.namespace="/a"		action的name=struts2Demo1	没有
+					4.namespace="/"			action的name=struts2Demo1	找到了
+					
+					如果最后也查找不到，就会404
+			3.默认的action
+				作用：处理其他action处理不了的路径
+				<!-- 配置查找不到action是，默认使用struts2Demo1 -->
+				<default-action-ref name="action名称" />
+			
+			4。action的默认处理类
+				在action配置时，如果class不写，默认处理下是com.opensymphony.xwork2.ActionSupport
+				<!-- 配置action默认处理类 -->
+				<default-class-ref class="day29_struts2.Demo1Action" />
 
 */
 public class Doc1 {

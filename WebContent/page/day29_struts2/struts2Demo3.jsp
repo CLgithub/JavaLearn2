@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>struts2Demo1</title>
+<title>struts2Demo3</title>
 </head>
 <body>
-	struts2Demo1
+	struts2Demo3
 </body>
 </html>
