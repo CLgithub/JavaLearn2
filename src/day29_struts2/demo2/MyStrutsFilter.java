@@ -2,7 +2,6 @@ package day29_struts2.demo2;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -11,14 +10,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Element;
-import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
-import com.sun.accessibility.internal.resources.accessibility;
 
 public class MyStrutsFilter implements Filter{
 
