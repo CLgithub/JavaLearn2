@@ -75,7 +75,7 @@ public interface BaseService<T> {
 	 * @param objects
 	 * @return
 	 */
-	List<T> findListT(Class<T> clazz,String sql,Object... objects);
+	List<T> findListT(String sql,Object... objects);
 	
 	/**
 	 * 查询listMap
@@ -96,7 +96,7 @@ public interface BaseService<T> {
 	 * @author L
 	 * @date 2016年6月11日
 	 */
-	PageBean getPageBean(Class<T> clazz,String sql, Integer page, Integer pageSize, Object...objects);
+	PageBean getPageBean(String sql, Integer page, Integer pageSize, Object...objects);
 	
 	/**
 	 * 根据sql得到mysql的分页sql

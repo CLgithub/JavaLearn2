@@ -1,34 +1,44 @@
-package day19_2.exercise.base;
+package day24_fanxinfanshe.demo1;
 
 import java.lang.reflect.ParameterizedType;
-import java.sql.Connection;
+import java.lang.reflect.Type;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
-import org.apache.commons.dbutils.handlers.ColumnListHandler;
-import org.apache.commons.dbutils.handlers.MapHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
+/*
+
+问题：如何得到T泛型的Class对象
+	
+
+*/
 public class BaseDaoImal<T> implements BaseDao<T> {
 
 	private Class<T> clazz;
 	private QueryRunner runner;
 
 	public BaseDaoImal() {
-		// 获取泛型参数
-		ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
-		this.clazz = (Class<T>) type.getActualTypeArguments()[0];
-		
 		ComboPooledDataSource cpds=new ComboPooledDataSource();
 		cpds.setJdbcUrl("jdbc:mysql://localhost:3306/jdbc1?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&useServerPrepStmts=true&cachePrepStmts=true&rewriteBatchedStatements=true");
-		cpds.setUser("root");
+		cpds.setUser("L");
 		cpds.setPassword("123456");
 		this.runner=new QueryRunner(cpds);
+		
+		
+		//得到当前类上的泛型--父类型
+		//getGenericSuperclass得到泛型的父，type
+		//这里的this相当于具体的某个dao（UserDao），他的父的泛型BaseDaoImal<User>，即User
+		Type type = this.getClass().getGenericSuperclass();
+		//得到当前类上所有的泛型类型Class
+		Type[] params = ((ParameterizedType) type).getActualTypeArguments();		
+		clazz=(Class<T>) params[0];
+		
 	}
 
 	@Override
@@ -48,6 +58,7 @@ public class BaseDaoImal<T> implements BaseDao<T> {
 
 	@Override
 	public T findById(Integer id) {
+		System.out.println(clazz);
 		return null;
 	}
 

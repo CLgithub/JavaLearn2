@@ -1,4 +1,4 @@
-package day19_2.exercise.controller;
+package day19_2.exercise.common;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;

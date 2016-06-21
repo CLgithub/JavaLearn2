@@ -3,8 +3,8 @@ package day19_2.exercise.service;
 import java.util.List;
 
 import day19_2.exercise.base.BaseService;
+import day19_2.exercise.common.LogAnnotation;
 import day19_2.exercise.common.PageBean;
-import day19_2.exercise.controller.LogAnnotation;
 import day19_2.exercise.entity.Contact19_2;
 
 

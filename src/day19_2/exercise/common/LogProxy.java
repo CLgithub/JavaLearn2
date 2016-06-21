@@ -4,7 +4,6 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-import day19_2.exercise.controller.LogAnnotation;
 import day19_2.exercise.service.ContactService;
 import day19_2.exercise.service.ContactServiceImpl;
 

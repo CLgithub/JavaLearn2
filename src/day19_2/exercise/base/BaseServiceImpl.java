@@ -1,15 +1,21 @@
 package day19_2.exercise.base;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
 
 import day19_2.exercise.common.PageBean;
+import day19_2.exercise.dao.UserDao;
 import day19_2.exercise.entity.Contact19_2;
 
 public class BaseServiceImpl<T> implements BaseService<T>{
-
-	BaseDao<T> baseDao=new BaseDaoImal<>();
 	
+	private BaseDao<T> baseDao;
+
+	public void setBaseDao(BaseDao<T> baseDao) {
+		this.baseDao = baseDao;
+	}
+
 	@Override
 	public void saveEntity(T t) {
 		baseDao.saveEntity(t);
@@ -46,8 +52,8 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 	}
 
 	@Override
-	public List<T> findListT(Class<T> clazz,String sql, Object... objects) {
-		return baseDao.findListT(clazz,sql, objects);
+	public List<T> findListT(String sql, Object... objects) {
+		return baseDao.findListT(sql, objects);
 	}
 
 	@Override
@@ -56,9 +62,9 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 	}
 	
 	@Override
-	public PageBean getPageBean(Class<T> clazz,String sql, Integer page, Integer pageSize, Object...objects) {
+	public PageBean getPageBean(String sql, Integer page, Integer pageSize, Object...objects) {
 		String pageSql=this.getMysqlPageSql(sql, page, pageSize);
-		List<T> list = this.findListT(clazz, pageSql, objects);
+		List<T> list = this.findListT(pageSql, objects);
 		Integer allRow = this.getTotlaBySql(sql, objects);// 得到总的记录长度
 		PageBean pageBean = new PageBean();
 		pageBean.setTotal(allRow);

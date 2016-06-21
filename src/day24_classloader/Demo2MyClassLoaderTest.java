@@ -13,6 +13,7 @@ public class Demo2MyClassLoaderTest {
 		
 		//使用自定义类加载器
 		String rootDir = Demo1ClassLoaderTest.class.getResource("/").getPath();
+		System.out.println(rootDir);
 		Demo2MyClassLoader mcl=new Demo2MyClassLoader(rootDir);
 		Class<?> clazz = mcl.findClass("javax.activation.MimeType");
 		

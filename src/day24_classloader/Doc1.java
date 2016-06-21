@@ -2,9 +2,6 @@ package day24_classloader;
 
 import java.net.URL;
 
-import sun.misc.Launcher;
-import sun.misc.URLClassPath;
-import sun.security.ec.CurveDB;
 
 /*
 类加载器
@@ -50,7 +47,7 @@ import sun.security.ec.CurveDB;
 		全盘负责:即是当一个classloader加载一个Class的时候,这个Class所依赖的和引⽤用的其它Class通常也
 			由这个classloader负责载⼊
 		委托机制:先让parent(父)类加载器寻找,只有 在parent找不到的时候才从自己的类路径中去寻找
-		类加载还采⽤用了cache机制:如果 cache中保存了这 个Class就直接返回它,如果没有才从⽂文件中读取和转
+		类加载还采用了cache机制:如果 cache中保存了这 个Class就直接返回它,如果没有才从⽂文件中读取和转
 			换成Class,并存入cache,这就是为什么修改了Class但是必须重新启动JVM才能生效,并且类只加载一次的原因
 
 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－

@@ -3,17 +3,24 @@ package day19_2.exercise.service;
 import java.util.Arrays;
 import java.util.List;
 
+import day19_2.exercise.base.BaseDao;
 import day19_2.exercise.base.BaseServiceImpl;
 import day19_2.exercise.common.PageBean;
+import day19_2.exercise.dao.ContactDao;
+import day19_2.exercise.dao.UserDao;
 import day19_2.exercise.entity.Contact19_2;
 
 
 public class ContactServiceImpl extends BaseServiceImpl<Contact19_2> implements ContactService {
 
+	public ContactServiceImpl() {
+		setBaseDao(new ContactDao());
+	}
+
 	@Override
 	public Contact19_2 findCById(Integer id) {
 		String sql="select * from contact17 where id=?";
-		return this.findListT(Contact19_2.class,sql, id).get(0);
+		return this.findListT(sql, id).get(0);
 	}
 	
 	@Override
@@ -40,7 +47,7 @@ public class ContactServiceImpl extends BaseServiceImpl<Contact19_2> implements 
 	@Override
 	public List<Contact19_2> findAllC() {
 		String sql="select * from contact17";
-		return this.findListT(Contact19_2.class,sql);
+		return this.findListT(sql);
 	}
 
 	@Override
@@ -69,7 +76,7 @@ public class ContactServiceImpl extends BaseServiceImpl<Contact19_2> implements 
 		String sql="select * from contact17 ";
 		if(s!=null&&!"".equals(s)){
 			sql+=" where "+s+" like ? ";
-			return this.findListT(Contact19_2.class, sql, "%"+msg+"%");
+			return this.findListT(sql, "%"+msg+"%");
 		}else {
 			return this.findAllC();
 		}
@@ -80,9 +87,9 @@ public class ContactServiceImpl extends BaseServiceImpl<Contact19_2> implements 
 		String sql="select * from contact17 ";
 		if(s!=null&&!"".equals(s)){
 			sql+=" where "+s+" like ? ";
-			return getPageBean(Contact19_2.class, sql, page, pageSize, "%"+msg+"%");
+			return getPageBean(sql, page, pageSize, "%"+msg+"%");
 		}else {
-			return getPageBean(Contact19_2.class, sql, page, pageSize);
+			return getPageBean(sql, page, pageSize);
 		}
 	}
 
