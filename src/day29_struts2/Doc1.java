@@ -47,6 +47,37 @@ struts2流程
 			如果不能上网，也可以配置本地DTD提示 
 
 		*** 导入DTD时，应该和配置DTD版本一致 
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+struts2配置（重点）
+	1.struts2配置文件加载顺序
+		struts2框架要能执行，必须先加载StrutsPrepareAndExecuteFilter
+		在StrutsPrepareAndExecuteFilter的init方法中对Dispatcher对象进行初始化
+		在Dispatcher类中定义的init方法内就描述类struts2配置文件的加载顺序
+			init_FileManager();
+            init_DefaultProperties(); // [1]		org/apache/struts2/default.properties 
+            init_TraditionalXmlConfigurations(); // [2]		struts-default.xml,struts-plugin.xml,struts.xml
+            init_LegacyStrutsProperties(); // [3]			自定义配置struts.properties
+            init_CustomConfigurationProviders(); // [5]		自定义配置常量
+            init_FilterInitParameters() ; // [6]			web.xml
+            init_AliasStandardObjects() ; // [7]			Bean加载
+        
+        1.default.properties文件
+         	作用：定义类struts2框架中所有常量
+		2.struts-default.xml,	配置类bean，interceptor，result等
+			struts-plugin.xml,		struts2中所使用的插件的配置文件
+			struts.xml				我们自己的配置文件
+		3.自定义的struts.properties		
+			可以自定义常量
+		4.web.xml
+		
+		在开发中，后加载文件中的配置会将先加载文件中的配置覆盖
+		default.properties
+		struts-default.xml
+		struts.xml
+		
+		
+
+
 */
 public class Doc1 {
 
