@@ -180,6 +180,24 @@ Action
 			缺点：耦合度高
 		
 		在开发中，第三种会使用得比较多
+		
+------------------------------------------------------------------------------
+	关于action的访问:
+		1.通过设置method的值，来确定action类中访问哪个方法
+		2.设置通配符类简化配置
+			<action name="book_*" class="day29_struts2.BookAction"	method="{1}"></action>
+			当输入：http://localhost:8090/JavaLearn2/book_add时，便会访问BookAction里的add方法
+			
+			使用通配符注意事项：
+				1.必须定义一个统一的命名规范
+				2.不建议使用过多的通配符
+		
+		3.动态方法调用
+			<!-- 开启动态方法调用 -->
+			<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+			<!-- 动态方法调用 -->
+			<action name="book" class="day29_struts2.BookAction" ></action>
+			
 			
 */
 public class Doc1 {

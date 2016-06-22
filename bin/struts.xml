@@ -1,15 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
-        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
-        "http://struts.apache.org/dtds/struts-2.5.dtd">
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	
 	<!-- 在struts.xml中配置常量  该常量设置struts2默认后缀-->
-	<constant name="struts.action.extension" value="action,," />
+	<!-- <constant name="struts.action.extension" value="action,," /> -->
 	
 	<!-- 提供详细报错页面，修改struts.xml后不需要重启服务器 -->
 	<!-- <constant name="struts.devMode" value="true" /> -->
 	
 	<!-- 引入struts_0.xml -->
-	<include file="struts_0.xml"></include>
+	<!-- <include file="struts_0.xml"></include> -->
+	
+	<!-- 开启动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+	<package name="default" namespace="/" extends="struts-default"><!-- namespace的默认值是 "" -->
+		
+		<!-- 
+		<action name="book_add" class="day29_struts2.BookAction" method="add">
+		</action>
+		<action name="book_update" class="day29_struts2.BookAction" method="update">
+		</action>
+		<action name="book_delete" class="day29_struts2.BookAction" method="delete">
+		</action>
+		<action name="book_query" class="day29_struts2.BookAction" method="query">
+		</action> 
+		-->
+		
+		<!-- struts2.5,动态方法调用要添加这句话 -->
+		<!-- <global-allowed-methods>update,query</global-allowed-methods> -->
+		<!-- 使用通配符来确定访问哪个方法{1}代表第几个* -->
+		<!-- <action name="book_*" class="day29_struts2.BookAction"	method="{1}">
+		</action> -->
+		
+		
+		<!-- 动态方法调用 -->
+		<action name="book" class="day29_struts2.BookAction" ></action>
+		
+	</package>
 </struts>
