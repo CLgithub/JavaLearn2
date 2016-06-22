@@ -40,4 +40,7 @@
 		<action name="book" class="day29_struts2.BookAction" ></action>
 		
 	</package>
+	
+	<!-- demo5 -->
+	<include file="demo5_struts.xml" />
 </struts>

@@ -1,5 +1,7 @@
 package day29_struts2;
 
+import java.util.Map;
+
 /*
 1.介绍struts2框架
 	问题：什么是框架，框架有什么用？
@@ -197,7 +199,25 @@ Action
 			<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 			<!-- 动态方法调用 -->
 			<action name="book" class="day29_struts2.BookAction" ></action>
-			
+
+---------------------------------------------------------------------------------
+在struts2框架中获取servlet api
+	对于struts2框架，不建议直接使用servlet api；
+	在struts2中获取servlet api有三种方式
+		1.通过ActionContext来获取（demo5）
+			1.获取ActionContext对象
+			2.通过actionContext对象获取servlet api
+				注意：通过actioncontext对象获取的servlet api是一个map集合
+				
+				1.Map<String, Object> application = aContext.getApplication();	//appliction
+				2.Map<String, Object> session = aContext.getSession();			//session
+				3.Map<String, Object> parameters = aContext.getParameters();	//获取请求参数,相当于request.getParameters()
+				4.aContext.put("userName", "小明");	//相当于request.setAttribute(String,value);
+				
+		2.注入方式获取
+		3.通过ServletActionContext获取
+
+
 			
 */
 public class Doc1 {

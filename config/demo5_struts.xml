@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<package name="default" namespace="/" extends="struts-default">
+		
+		<action name="struts2Demo5_*" class="day29_struts2.Demo5" method="{1}" >
+			<!-- 这里肯定是请求转发，因为request域对象中的值可以被传递到页面上 -->
+			<result name="success">/page/day29_struts2/Demo5.jsp</result>
+		</action>
+		
+	</package>
+</struts>
