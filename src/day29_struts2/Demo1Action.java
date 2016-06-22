@@ -1,5 +1,8 @@
 package day29_struts2;
 
+import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
+
 /*
 struts2快速入门
 	以前：		index.jsp--->Demo1Servlet--->demo1.jsp
@@ -23,9 +26,14 @@ struts2快速入门
 	
 */
 
-public class Demo1Action {
+public class Demo1Action extends ActionSupport {
 	
 	public String say(){
-		return "good";
+		return this.SUCCESS;
+	}
+
+	@Override
+	public String execute() throws Exception {
+		return null;
 	}
 }

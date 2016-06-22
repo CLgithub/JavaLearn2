@@ -149,8 +149,38 @@ struts2配置（重点）
 	struts配置文件的分离
 		<!-- 引入struts_0.xml -->
 		<include file="struts_0.xml"></include>
-				
-				
+
+----------------------------------------------------------------------
+Action
+	1.关于cation类的创建方式介绍
+		有三种方式
+		1.创建一个POJO类
+			朴素的java对象（plain old java object）
+			指的是没有实现任何借口，没有基础任何父类（除object）
+			优点：无耦合
+			缺点：所有工作都要自己实现
+			
+			在struts2框架底层是通过反射来操作:
+				* struts2框架 读取struts.xml 获得 完整Action类名 
+				* obj = Class.forName("完整类名").newInstance();
+				* Method m = Class.forName("完整类名").getMethod("execute");  m.invoke(obj); 通过反射 执行 execute方法
+			
+		2.创建一个类，实现Action接口	com.opensymphony.xwork2.Action
+			优点：耦合低，提供了五种结果视图，定义了一个行为方法
+			缺点：所有工作都要自己实现，但是有规范
+			
+			public static final String SUCCESS = "success";  // 数据处理成功 （成功页面）
+			public static final String NONE = "none";  // 页面不跳转  return null; 效果一样
+			public static final String ERROR = "error";  // 数据处理发送错误 (错误页面)
+			public static final String INPUT = "input"; // 用户输入数据有误，通常用于表单数据校验 （输入页面）
+			public static final String LOGIN = "login"; // 主要权限认证 (登陆页面)
+			
+		3.创建一个类，继承ActionSupport类	 com.opensymphony.xwork2.ActionSupport  该类实现了Action接口
+			优点:表单校验、错误信息设置、读取国际化信息 三个功能都支持.
+			缺点：耦合度高
+		
+		在开发中，第三种会使用得比较多
+			
 */
 public class Doc1 {
 
