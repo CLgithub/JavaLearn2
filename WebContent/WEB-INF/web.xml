@@ -21,11 +21,15 @@
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
-		<!-- <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class> -->
+		<!-- 在web.xml中配置struts常量，使用filter初始化参数方式配置 -->
+		<init-param>
+			<param-name>struts.action.extension</param-name>
+			<param-value>do,,</param-value>
+		</init-param>				
 	</filter>
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
-		<url-pattern>*.action</url-pattern>
+		<url-pattern>*</url-pattern>
 	</filter-mapping>
 	<!-- struts2 demo1 开始 -->
 	<!-- struts2 demo2 Mystruts2 开始 -->

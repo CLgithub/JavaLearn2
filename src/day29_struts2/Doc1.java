@@ -119,7 +119,38 @@ struts2配置（重点）
 				在action配置时，如果class不写，默认处理下是com.opensymphony.xwork2.ActionSupport
 				<!-- 配置action默认处理类 -->
 				<default-class-ref class="day29_struts2.Demo1Action" />
+	
+	关于常量配置
+		default.properties 他声明了struts中的常量
+		问题：人为设置常量，可以在那些位置设置？
+			1.struts.xml（应用最多）
+				<!-- 在struts.xml中配置常量 -->
+				<constant name="struts.action.extension" value="abc,," />
+			2.struts.properties（基本不使用）
+			3.web.xml（了解）
+				<!-- 在web.xml中配置struts常量，使用filter初始化参数方式配置 -->
+				<init-param>
+					<param-name>struts.action.extension</param-name>
+					<param-value>do,,</param-value>
+				</init-param>
 
+		常用常量：
+			（/org/apache/struts2/default.properties下）
+			struts.action.extension=action,,
+				用于指定struts2框架默认拦截的后缀
+			<constant name="struts.i18n.encoding" value="UTF-8"/>  
+				相当于request.setCharacterEncoding("UTF-8"); 解决post请求乱码
+			<constant name="struts.serve.static.browserCache" value="false"/> 
+				false不缓存，true浏览器会缓存静态内容，产品环境设置true、开发环境设置false
+			<constant name="struts.devMode" value="true" />  
+				提供详细报错页面，修改struts.xml后不需要重启服务器 （要求）
+				
+----------------------------------------------------------------------
+	struts配置文件的分离
+		<!-- 引入struts_0.xml -->
+		<include file="struts_0.xml"></include>
+				
+				
 */
 public class Doc1 {
 
