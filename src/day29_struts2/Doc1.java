@@ -2,6 +2,15 @@ package day29_struts2;
 
 import java.util.Map;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.PageContext;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.ServletResponseAware;
+
 /*
 1.介绍struts2框架
 	问题：什么是框架，框架有什么用？
@@ -214,10 +223,36 @@ Action
 				3.Map<String, Object> parameters = aContext.getParameters();	//获取请求参数,相当于request.getParameters()
 				4.aContext.put("userName", "小明");	//相当于request.setAttribute(String,value);
 				
-		2.注入方式获取
-		3.通过ServletActionContext获取
-
-
+		2.注入方式获取(这种方式是真正的获取到了servlet api)（demo6）
+			1.要求action必须实现指定的接口
+				ServletContextAware ： 注入ServletContext对象
+				ServletRequestAware ：注入 request对象
+				ServletResponseAware ： 注入response对象
+			2.重写方法
+		
+			3.声明web对象，使用接口中的方法对声明的参数赋值
+				private HttpServletRequest request;
+				@Override
+				public void setServletRequest(HttpServletRequest request) {
+					this.request=request;
+				}
+			扩展：分析其实现
+				是使用struts2中的一个拦截器interceptor完成的
+				类似经典ssh中user的获取方式，这种方式就是注入
+				<interceptor name="servletConfig" class="org.apache.struts2.interceptor.ServletConfigInterceptor"/>
+				
+				if (action instanceof ServletResponseAware) {	//判断该action是否实现了ServletResponseAware接口，如果实现了
+		            HttpServletResponse response = (HttpServletResponse) context.get(HTTP_RESPONSE);//得到request对象
+		            ((ServletResponseAware) action).setServletResponse(response);//调用注入方法
+		        }
+		3.通过ServletActionContext获取（demo7）
+			四大域对象
+				HttpServletRequest request = ServletActionContext.getRequest();
+				HttpServletResponse response = ServletActionContext.getResponse();
+				PageContext pageContext = ServletActionContext.getPageContext();
+				ServletContext servletContext = ServletActionContext.getServletContext();
+				ServletConfig servletConfig = ServletActionContext.getPageContext().getServletConfig();
+			
 			
 */
 public class Doc1 {
