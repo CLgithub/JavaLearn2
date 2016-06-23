@@ -24,6 +24,7 @@
 			method="{1}">
 			<result type="redirect">http://www.google.com</result>	<!-- 局部视图，局部结果页面 -->
 		</action>
+		
 
 	</package>
 </struts>

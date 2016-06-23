@@ -16,10 +16,6 @@ public class Demo7 extends ActionSupport {
 	public String execute() throws Exception {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpServletResponse response = ServletActionContext.getResponse();
-		PageContext pageContext = ServletActionContext.getPageContext();
-		System.out.println("pageContext:"+pageContext);
-		ServletContext servletContext = ServletActionContext.getServletContext();
-		
 		
 		System.out.println(request.getParameter("userName"));
 		return SUCCESS;

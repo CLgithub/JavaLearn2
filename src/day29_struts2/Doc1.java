@@ -249,9 +249,7 @@ Action
 			四大域对象
 				HttpServletRequest request = ServletActionContext.getRequest();
 				HttpServletResponse response = ServletActionContext.getResponse();
-				PageContext pageContext = ServletActionContext.getPageContext();
 				ServletContext servletContext = ServletActionContext.getServletContext();
-				ServletConfig servletConfig = ServletActionContext.getPageContext().getServletConfig();
 ---------------------------------------------------------------
 struts2 结果类型
 	<result>标签

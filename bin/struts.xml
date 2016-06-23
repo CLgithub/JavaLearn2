@@ -43,4 +43,6 @@
 	
 	<!-- demo5 -->
 	<include file="demo5_struts.xml" />
+	
+	<include file="day30_struts2.xml"></include>
 </struts>
