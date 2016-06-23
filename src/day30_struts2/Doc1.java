@@ -88,7 +88,13 @@ struts中提供的类型转换
 			就会出现问题.
 		关于struts2中的类型转换器:
 			struts2中的类型转换器根接口是：com.opensymphony.xwork2.conversion.TypeConverter。
-
+-------------------------------------------------------
+	自定义类型转换器:
+		
+		步骤:
+			1.创建一个类实现TypeConverter接口.
+			2.重写接口中方法，实现类型转换操作.
+			3.注册类型转换器.
 
 */
 public class Doc1 {
