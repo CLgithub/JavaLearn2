@@ -22,5 +22,6 @@
 		<action name="Demo2MapAction_*" class="day30_struts2.Demo2MapAction" method="{1}" >
 		</action>
 		
+		
 	</package>
 </struts>

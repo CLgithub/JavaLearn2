@@ -39,6 +39,16 @@
 		<!-- 动态方法调用 -->
 		<action name="book" class="day29_struts2.BookAction" ></action>
 		
+		<!-- mystruts属性驱动封装参数 -->
+		<action name="Demo3MyStrutsAction_say" class="day30_struts2.Demo3MyStrutsAction" method="say" >
+			<result name="aa">/page/day30_struts2/Demo3myStruts.jsp</result>
+		</action>
+		
+		<!-- mystruts模型驱动封装参数 -->
+		<action name="Demo3MyStrutsAction2_say" class="day30_struts2.Demo3MyStrutsAction2" method="say" >
+			<result name="aa">/page/day30_struts2/Demo3myStruts.jsp</result>
+		</action>
+		
 	</package>
 	
 	<!-- demo5 -->

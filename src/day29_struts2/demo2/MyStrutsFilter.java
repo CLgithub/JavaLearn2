@@ -10,9 +10,13 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.beanutils.BeanUtils;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+
+import com.opensymphony.xwork2.ModelDriven;
 
 
 public class MyStrutsFilter implements Filter{
@@ -45,10 +49,20 @@ public class MyStrutsFilter implements Filter{
 				String methodName = acitonE.attributeValue("method");
 				//通过反射得到action类对象，调用其对应方法
 				Class<?> clazz = Class.forName(className);
-				Object object = clazz.newInstance();
+				Object actionObject = clazz.newInstance();
 				Method method = clazz.getMethod(methodName);
+				//处理请求参数封装
+				//2.模型驱动
+				if(actionObject instanceof ModelDriven){
+					ModelDriven aDriven=(ModelDriven) actionObject;
+					//执行getModel方法得到要封装的对象，将request里的数据封装到这个对象中
+					BeanUtils.populate(aDriven.getModel(), request.getParameterMap());
+				}else {
+					//1.属性驱动，利用beanutils封装
+					BeanUtils.populate(actionObject, request.getParameterMap());
+				}
 				//执行方法得到返回值
-				String ret = (String) method.invoke(object);
+				String ret=(String) method.invoke(actionObject);
 //				System.out.println("方法返回值："+ret);
 				//通过返回值得到要跳转的目标页面
 				Element resultE = (Element) acitonE.selectSingleNode("//result[@name='"+ret+"']");

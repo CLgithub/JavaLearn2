@@ -21,7 +21,8 @@
 	<filter>
 		<filter-name>struts2</filter-name>
 		<!-- <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class> -->
-		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+		<!-- <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class> -->
+		<filter-class>day29_struts2.demo2.MyStrutsFilter</filter-class>
 		<!-- 在web.xml中配置struts常量，使用filter初始化参数方式配置 -->
 		<!-- <init-param>
 			<param-name>struts.action.extension</param-name>
