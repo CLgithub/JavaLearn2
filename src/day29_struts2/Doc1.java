@@ -252,8 +252,38 @@ Action
 				PageContext pageContext = ServletActionContext.getPageContext();
 				ServletContext servletContext = ServletActionContext.getServletContext();
 				ServletConfig servletConfig = ServletActionContext.getPageContext().getServletConfig();
-			
-			
+---------------------------------------------------------------
+struts2 结果类型
+	<result>标签
+		1.name 与action的方法的返回值匹配，进行跳转
+		2.type 作用：用于定义跳转方式
+			对于type属性，它的值有以下几种：
+				在struts-default.xml中定义了type可以取的值
+					<result-type name="chain" class="com.opensymphony.xwork2.ActionChainResult"/>
+					<result-type name="dispatcher" class="org.apache.struts2.dispatcher.ServletDispatcherResult" default="true"/>
+					<result-type name="freemarker" class="org.apache.struts2.views.freemarker.FreemarkerResult"/>
+					<result-type name="httpheader" class="org.apache.struts2.dispatcher.HttpHeaderResult"/>
+					<result-type name="redirect" class="org.apache.struts2.dispatcher.ServletRedirectResult"/>
+					<result-type name="redirectAction" class="org.apache.struts2.dispatcher.ServletActionRedirectResult"/>
+					<result-type name="stream" class="org.apache.struts2.dispatcher.StreamResult"/>
+					<result-type name="velocity" class="org.apache.struts2.dispatcher.VelocityResult"/>
+					<result-type name="xslt" class="org.apache.struts2.views.xslt.XSLTResult"/>
+					<result-type name="plainText" class="org.apache.struts2.dispatcher.PlainTextResult" />
+				必会：chain  dispatcher  redirect redirectAction  stream
+					despatcher：请求转发，默认，他一般用于从action到jsp
+					chain：相当于请求转发，他一边情况先用于冲一个action跳转的另一个action
+					redirect：重定向，一般用于从action跳转到jsp
+					redirectAction：重定向，一般用于从一个action跳转到另一个action(之前用的是这个)
+					stream：服务器端返回的是流，一般用于下载
+				了解 ：freemarker  velocity（模板）
+				
+				局部结果页面，全局结果页面
+					<!-- 定义全视图 ，全局结果页面 -->
+					<global-results>
+						<result name="login">/page/onRight.jsp</result>
+						<result name="noRight">/page/onRight.jsp</result>
+					</global-results>
+				
 */
 public class Doc1 {
 

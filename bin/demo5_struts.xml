@@ -5,7 +5,12 @@
 <struts>
 
 	<package name="default" namespace="/" extends="struts-default">
-
+		<!-- 定义全视图 ，全局结果页面 -->
+		<global-results>
+			<result name="login">/page/onRight.jsp</result>
+			<result name="noRight">/page/onRight.jsp</result>
+		</global-results>
+		
 		<action name="struts2Demo5_*" class="day29_struts2.Demo5"
 			method="{1}">
 			<!-- 这里肯定是请求转发，因为request域对象中的值可以被传递到页面上 -->
@@ -17,6 +22,7 @@
 		</action>
 		<action name="struts2Demo7_*" class="day29_struts2.Demo7"
 			method="{1}">
+			<result type="redirect">http://www.google.com</result>	<!-- 局部视图，局部结果页面 -->
 		</action>
 
 	</package>

@@ -1,5 +1,6 @@
 package day29_struts2;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,9 +17,11 @@ public class Demo7 extends ActionSupport {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpServletResponse response = ServletActionContext.getResponse();
 		PageContext pageContext = ServletActionContext.getPageContext();
+		System.out.println("pageContext:"+pageContext);
 		ServletContext servletContext = ServletActionContext.getServletContext();
 		
+		
 		System.out.println(request.getParameter("userName"));
-		return null;
+		return SUCCESS;
 	}
 }
