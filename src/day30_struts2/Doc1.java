@@ -48,7 +48,7 @@ struts2中获取请求参数
 			缺点：一次只能封装一个model对象
 		struts2 有很多围绕模型驱动的特性 
 			* <interceptor name="modelDriven" class="com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor"/> 为模型驱动提供了更多特性
-	--------------------------------------------------------------
+--------------------------------------------------------------
 	扩展：
 		1.将数据封装到list集合
 			jsp页面：
@@ -69,7 +69,25 @@ struts2中获取请求参数
 			action类：
 				private Map<String, User> map;
 				get/set方法
-
+----------------------------------------------------------------
+struts中提供的类型转换
+	在web中文名使用beanUtils直接将表单数据封装到javaBean中，---类型转换
+	struts2中action得到请求参数，也可以直接封装到javaBean
+		struts2 内部提供大量类型转换器，用来完成数据类型转换问题 
+		boolean 和 Boolean
+		char和 Character
+		int 和 Integer
+		long 和 Long
+		float 和 Float
+		double 和 Double
+		Date 可以接收 yyyy-MM-dd格式字符串
+		数组  可以将多个同名参数，转换到数组中
+		集合  支持将数据保存到 List 或者 Map 集合
+		
+		例如:日期类型，我们传递  yyyy-MM-dd  yyyy年MM月dd日格式都可以，但是如果是yyyy/MM/dd
+			就会出现问题.
+		关于struts2中的类型转换器:
+			struts2中的类型转换器根接口是：com.opensymphony.xwork2.conversion.TypeConverter。
 
 
 */
