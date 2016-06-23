@@ -16,5 +16,11 @@
 			<result name="uSuccess">/page/day30_struts2/Demo1Login2.jsp</result>
 		</action>
 		
+		<action name="Demo2ListAction_*" class="day30_struts2.Demo2LIstAction" method="{1}" >
+		</action>
+		
+		<action name="Demo2MapAction_*" class="day30_struts2.Demo2MapAction" method="{1}" >
+		</action>
+		
 	</package>
 </struts>
