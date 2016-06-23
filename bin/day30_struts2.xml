@@ -5,9 +5,15 @@
 <struts>
 
 	<package name="day30" namespace="/" extends="struts-default">
+		
 		<action name="Demo1LoginAction_*" class="day30_struts2.Demo1LoginAction" method="{1}" >
 			<result name="success">/page/day30_struts2/Demo1index.jsp</result>
 			<result name="uSuccess">/page/day30_struts2/Demo1Login.jsp</result>
+		</action>
+		
+		<action name="Demo1LoginAction2_*" class="day30_struts2.Demo1LoginAction2" method="{1}" >
+			<result name="success">/page/day30_struts2/Demo1index.jsp</result>
+			<result name="uSuccess">/page/day30_struts2/Demo1Login2.jsp</result>
 		</action>
 		
 	</package>

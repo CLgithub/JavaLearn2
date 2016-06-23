@@ -31,7 +31,21 @@ struts2中获取请求参数
 					通过struts中的一个拦截器interceptor
 					<interceptor name="params" class="com.opensymphony.xwork2.interceptor.ParametersInterceptor"/>
 					
-		2.模型驱动
+		2.模型驱动（在开发中应用比较多）
+			步骤：
+				1.让action实现ModelDriven接口
+				2.重写getModel方法
+				3.在action中实例化一个model对象，让getModel方法返回这个对象
+				private User user = new User();
+				@Override
+				public User getModel() {
+					return user;
+				}
+			优点：解决了属性驱动存在的问题
+			缺点：一次只能封装一个model对象
+		struts2 有很多围绕模型驱动的特性 
+			* <interceptor name="modelDriven" class="com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor"/> 为模型驱动提供了更多特性
+
 
 */
 public class Doc1 {
