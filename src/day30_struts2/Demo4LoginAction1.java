@@ -8,7 +8,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class Demo1LoginAction2 extends ActionSupport implements ModelDriven<User> {
+public class Demo4LoginAction1 extends ActionSupport implements ModelDriven<User> {
 
 	private User user = new User();
 
@@ -20,7 +20,7 @@ public class Demo1LoginAction2 extends ActionSupport implements ModelDriven<User
 	public String doLogin() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
-
+		System.out.println(user);
 		if (serviceDoLogin(user)) {
 			session.setAttribute("user", user);
 			return SUCCESS;

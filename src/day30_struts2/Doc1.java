@@ -95,7 +95,58 @@ struts中提供的类型转换
 			1.创建一个类实现TypeConverter接口.
 			2.重写接口中方法，实现类型转换操作.
 			3.注册类型转换器.
-
+		详解说明:
+			1.创建一个自定义类型转换器
+				1.实现TypeConverter需要重写
+					public Object convertValue(Map<String, Object> context, Object target, Member member, String propertyName, Object value, Class toType);
+					如果实现接口，这个方法参数太多(6个)
+					
+				2.不推荐实现接口，可以继承 DefaultTypeConverter类
+					优点:重写的方法参数没有那么多
+					@Override
+					public Object convertValue(Map<String, Object> context, Object value, Class toType) {
+						return super.convertValue(context, value, toType);
+					}
+				3.继承DefaultTypeConverter类的一个子类，StrutsTypeConverter
+					原因：在这个类中将从页面传递的数据怎样封装，以及在action中的数据怎样在页面上显示做类分离
+						public abstract Object convertFromString(Map context, String[] values, Class toClass);
+						public abstract String convertToString(Map context, Object o);
+						
+			2.怎样注册一个自定义类型转换器
+				1.局部－－－针对action
+					配置文件所在位置以及名称:  在Action类所在包 创建 Action类名-conversion.properties , 
+					配置文件书写:    格式 ： 属性名称=类型转换器的全类名 
+				2.局部－－－针对model
+				 	配置文件所在位置以及名称:  在model类所在包 创建 model类名-conversion.properties , 
+					配置文件书写:    格式 ： 属性名称=类型转换器的全类名 
+				3.全局
+					配置文件所在位置以及名称:在src下创建一个xwork-conversion.properties
+					配置文件书写:  格式:  要转换的类型全名=类型转换器的全类名 
+-----------------------------------------------------------------------------
+				注意:
+					对于struts2中类型转换器，如果表单数据提交时，将数据向model封装，出现了问题，会报错:
+					No result defined for action cn.itcast.action.RegistAction and result input
+					
+					上面的意思是说，在RegistAction的配置中没有配置input结果视图.
+					<action name="regist" class="cn.itcast.action.RegistAction">
+						<result name="input">/success.jsp</result>
+					</action>
+					如果配置了，出现类型转换问题，就会跳转到input指定的视图。
+				问题:为什么会向input视图跳转?
+					是因为struts2中的拦截器(interceptor).
+					在struts2中的
+						<interceptor name="conversionError" class="org.apache.struts2.interceptor.StrutsConversionErrorInterceptor"/>
+					用于记录类型转换问题
+					在struts2中
+						<interceptor name="workflow" class="com.opensymphony.xwork2.interceptor.DefaultWorkflowInterceptor"/>
+					用于得到问题，向input视图跳转。
+				关于错误信息展示:
+					通过分析拦截器作用，得知当类型转换出错时，自动跳转input视图 ，在input视图页面中 <s:fieldError/> 显示错误信息	
+					* 在Action所在包中，创建 ActionName.properties，在局部资源文件中配置提示信息 ： invalid.fieldvalue.属性名= 错误信息
+					
+					如果是自定义类型转换器，出现类型转换问题，要跳转到input视图，在类型转换器中，必须抛出异常才可以。
+				
+				
 */
 public class Doc1 {
 

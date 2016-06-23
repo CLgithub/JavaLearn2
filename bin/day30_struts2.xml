@@ -22,6 +22,12 @@
 		<action name="Demo2MapAction_*" class="day30_struts2.Demo2MapAction" method="{1}" >
 		</action>
 		
+		<!-- 自定义类型转换器 -->
+		<action name="Demo4LoginAction1_*" class="day30_struts2.Demo4LoginAction1" method="{1}" >
+			<result name="success">/page/day30_struts2/Demo1index.jsp</result>
+			<result name="uSuccess">/page/day30_struts2/Demo4Login1.jsp</result>
+			<result name="input">/success.jsp</result>
+		</action>
 		
 	</package>
 </struts>

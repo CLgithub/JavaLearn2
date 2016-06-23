@@ -1,5 +1,6 @@
 package day30_struts2;
 
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -63,9 +64,9 @@ public class Demo1LoginAction extends ActionSupport {
 		
 	}
 
-	public User serviceDoLogin(String name, String password) {
+	public User serviceDoLogin(String name, String password, Date date) {
 		if ("aa".equals(name) && "123".equals(password)) {
-			return new User(name, password);
+			return new User(name, password, date);
 		} else {
 			return null;
 		}
