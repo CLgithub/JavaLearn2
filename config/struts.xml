@@ -16,6 +16,9 @@
 	<!-- 开启动态方法调用 -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	
+	<!-- 设置上传文件大小 为20m-->
+	<constant name="struts.multipart.maxSize" value="20971520" />
+	
 	<package name="default" namespace="/" extends="struts-default"><!-- namespace的默认值是 "" -->
 		
 		<!-- 

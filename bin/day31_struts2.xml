@@ -3,7 +3,7 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-
+	
 	<package name="day31" namespace="/day31" extends="struts-default">
 		<interceptors>
 			<!-- 声明一个自定义拦截器 -->
@@ -28,8 +28,11 @@
 		</action>
 		
 		<action name="Demo3UpLoadFile_" class="day31_struts2.Demo3UplocadFile">
-			<interceptor-ref name="fileUpload"/>
-			<interceptor-ref name="basicStack"/>
+			<!-- <interceptor-ref name="fileUpload"/>
+			<interceptor-ref name="basicStack"/> -->
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.allowedExtensions">txt,mp3,doc</param>
+			</interceptor-ref>
 			<result name="success">good_result.jsp</result>
 		</action>
 	</package>
