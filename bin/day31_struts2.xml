@@ -5,7 +5,6 @@
 <struts>
 
 	<package name="day31" namespace="/day31" extends="struts-default">
-
 		<interceptors>
 			<!-- 声明一个自定义拦截器 -->
 			<interceptor name="Demo1MyInterceptor" class="day31_struts2.Demo1MyInterceptor"/>
@@ -19,15 +18,42 @@
 		</interceptors>
 		
 		<!-- 声明这个包中的action都使用自定义拦截器栈myStack -->
-		<default-interceptor-ref name="myStack"/>
-		
+		<!-- <default-interceptor-ref name="myStack"/> -->
 		<action name="Demo1Action_*" class="day31_struts2.Demo1Action">
 			<!-- 这个action使用Demo1MyInterceptor拦截器 -->
 			<!-- <interceptor-ref name="Demo1MyInterceptor" />
 			<interceptor-ref name="defalutStack" /> -->
 			<!-- 这个action使用自定义拦截器栈myStack -->
-			<!-- <interceptor-ref name="myStack"></interceptor-ref> -->
+			<interceptor-ref name="myStack"></interceptor-ref>
 		</action>
+	</package>
+	
+	<package name="day31_2" namespace="/day31_2" extends="struts-default">
+		<interceptors>
+			<!-- 声明一个自定义拦截器 -->
+			<interceptor name="Demo2MyRightInter" class="day31_struts2.demo2.Demo2MyRightInter"/>
+			<!-- 声明一个拦截器栈 -->
+			<interceptor-stack name="myStack">
+				<!-- 引入自定义拦截器 -->
+				<interceptor-ref name="Demo2MyRightInter" />
+				<!-- 引入默认拦截器拦截器 -->
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
 		
+		<!-- noRight全局页面 -->
+		<global-results>
+			<result name="noRight">/page/day31_struts2/Demo2noRight.jsp</result>
+		</global-results>
+		
+		<action name="Demo2LoginAction1_*" class="day31_struts2.demo2.Demo2LoginAction" method="{1}">
+			<result name="success">/page/day31_struts2/Demo2BookList.jsp</result>
+			<result name="uSuccess">/page/day31_struts2/Demo2Login2.jsp</result>
+		</action>
+		<!-- demo2BookAction -->
+		<action name="Demo2BookAction_*" class="day31_struts2.demo2.Demo2BookAction" method="{1}">
+			<result name="success">/page/day31_struts2/Demo2BookList.jsp</result>
+			<interceptor-ref name="myStack" />
+		</action>
 	</package>
 </struts>

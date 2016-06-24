@@ -64,7 +64,24 @@ import com.opensymphony.xwork2.util.profiling.UtilTimerStack;
 				递归结束条件：没有下一个拦截器，得到结果视图invokeActionOnly
 				
 	3.案例
-	
+		权限控制
+			1.login.jsp---->LoginAction----------book.jsp
+			2.在book.jsp中提供crud链接
+				每一关连接访问一个bookaction中的方法
+			要求：对于bookaction中的add，update，delete方法要求admin用户才能访问，search为普通用户登录就可以访问
+			
+			怎样解决只控制action中某些方法的拦截？
+			1.创建类不在实现Interceptor接口，而是继承其下的一个子类.MethodFilterInterceptor
+				不用在重写intercept方法，而是重写 doIntercept方法。
+				
+			2.在struts.xml文件中声明
+				<interceptors>
+					<intercept name="" class="">
+						<param name="includeMethods">add,update,delete</param>
+						<param name="excludeMethods">search</param>
+					</intercept>
+				</interceptors>
+			
 --------------------------------------------------------------
 拦截器interceptor和过滤器filter的区别
 	1.拦截器interceptor基于java反射机制，过滤器filter基于函数回调
