@@ -27,6 +27,7 @@
 			<interceptor-ref name="myStack"></interceptor-ref>
 		</action>
 		
+		<!-- 文件上传 -->
 		<action name="Demo3UpLoadFile_" class="day31_struts2.Demo3UplocadFile">
 			<!-- <interceptor-ref name="fileUpload"/>
 			<interceptor-ref name="basicStack"/> -->
@@ -35,6 +36,19 @@
 			</interceptor-ref>
 			<result name="success">good_result.jsp</result>
 		</action>
+		
+		<!-- 文件下载 -->
+		<action name="Demo4Download_" class="day31_struts2.Demo4Download">
+			<result type="stream">
+				<!-- 调用当前action中的getContentType()方法 -->
+				<param name="contentType">${contentType}</param>
+				<!-- 会调用action里的getDownloadFileName方法得到文件名 -->
+				<param name="contentDisposition">attachment;filename=${downloadFileName}</param>
+				<!-- 会调用action中的getInputStream方法 -->
+				<param name="inputStream">${inputStream}</param>
+			</result>
+		</action>
+		
 	</package>
 	
 	<package name="day31_2" namespace="/day31_2" extends="struts-default">

@@ -1,5 +1,13 @@
 package day31_struts2;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+import org.apache.struts2.ServletActionContext;
+
 /*
 struts2中文件上传与下载
 	1.上传
@@ -72,6 +80,50 @@ struts2中文件上传与下载
 					</interceptor-ref>
 					<result name="success">good_result.jsp</result>
 				</action>
+	2.下载
+		文件下载方式：（以前，day22）
+			1.超链接
+			2.服务器编码，通过流向客户端写回
+			
+		struts2中文件下载
+			通过<result type="stream"><result>完成
+			
+			 <result-type name="stream" class="org.apache.struts2.dispatcher.StreamResult"/>
+			 在streamResult类中有三个属性需要设置：
+			 	protected String contentType = "text/plain";	//设置下载文件的mimeType类型
+			 	protected String contentDisposition = "inline";		//用于设置下载操作以及下载文件的名称
+			 	protected InputStream inputStream;				//用于读取要下载的文件
+			 	
+		 	action中配置
+		 		//返回contentType
+				public String getContentType() {
+					return ServletActionContext.getServletContext().getMimeType(fileName);
+				}
+				
+			 	//返回downloadFileName
+				public String getDownloadFileName() throws UnsupportedEncodingException{
+					return URLEncoder.encode(fileName, "utf-8");
+				}
+			
+				//返回文件流
+				public InputStream getInputStream() throws FileNotFoundException {
+					FileInputStream fis = new FileInputStream("/Users/L/Downloads/aaa/"+fileName);
+					return fis;
+				}
+				
+			struts.xml中配置
+				<!-- 文件下载 -->
+				<action name="Demo4Download_" class="day31_struts2.Demo4Download">
+					<result type="stream">
+						<!-- 调用当前action中的getContentType()方法 -->
+						<param name="contentType">${contentType}</param>
+						<!-- 会调用action里的getDownloadFileName方法得到文件名 -->
+						<param name="contentDisposition">attachment;filename=${downloadFileName}</param>
+						<!-- 会调用action中的getInputStream方法 -->
+						<param name="inputStream">${inputStream}</param>
+					</result>
+				</action>
+			
 
 */
 public class Doc2 {
