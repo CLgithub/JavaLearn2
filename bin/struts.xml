@@ -52,7 +52,9 @@
 	</package>
 	
 	<!-- demo5 -->
-	<include file="demo5_struts.xml" />
+	<!-- <include file="demo5_struts.xml" /> -->
 	
-	<include file="day30_struts2.xml"></include>
+	<include file="day30_struts2.xml" />
+	
+	<include file="day31_struts2.xml" />
 </struts>
