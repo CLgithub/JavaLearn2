@@ -26,6 +26,12 @@
 			<!-- 这个action使用自定义拦截器栈myStack -->
 			<interceptor-ref name="myStack"></interceptor-ref>
 		</action>
+		
+		<action name="Demo3UpLoadFile_" class="day31_struts2.Demo3UplocadFile">
+			<interceptor-ref name="fileUpload"/>
+			<interceptor-ref name="basicStack"/>
+			<result name="success">good_result.jsp</result>
+		</action>
 	</package>
 	
 	<package name="day31_2" namespace="/day31_2" extends="struts-default">
