@@ -17,7 +17,7 @@ public class Demo4TypeConverter extends StrutsTypeConverter{
 //		System.out.println(context);	//ognl.OgnlContext@1f4243e1
 //		System.out.println(Arrays.toString(values));		//[2016/06/23]
 //		System.out.println(toClass);	//class java.util.Date
-		//很奇怪的一个问题，再这方法里只能访问一次三个参数，不如就会不进来
+		//很奇怪的一个问题，再这方法里只能访问一次三个参数，不然就会不进来
 		
 		Date date=null;
 		try {
