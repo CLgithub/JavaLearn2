@@ -65,6 +65,14 @@ import com.opensymphony.xwork2.util.profiling.UtilTimerStack;
 				
 	3.案例
 	
+--------------------------------------------------------------
+拦截器interceptor和过滤器filter的区别
+	1.拦截器interceptor基于java反射机制，过滤器filter基于函数回调
+	2.拦截器interceptor不依赖依赖servlet容器（是一种思想，不一定在web应用中用），过滤器filter依赖于servlet容器
+	3.拦截器interceptor只能对action起作用，过滤器filter几乎可以对所有请求起作用。
+	4.拦截器interceptor可以访问action上下文、值栈里的对象，而过滤器filter不行
+	5.在action生命周期中，拦截器interceptor可以多次调用，而过滤器只能在容器初始化时被调用一次。
+
 
 */
 public class Doc1 {
