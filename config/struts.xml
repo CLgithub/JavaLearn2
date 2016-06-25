@@ -19,6 +19,9 @@
 	<!-- 设置上传文件大小 为20m-->
 	<constant name="struts.multipart.maxSize" value="20971520" />
 	
+	<!-- 允许struts2使用ognl表达式是使用静态成员访问 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	
 	<package name="default" namespace="/" extends="struts-default"><!-- namespace的默认值是 "" -->
 		
 		<!-- 
@@ -58,6 +61,6 @@
 	<!-- <include file="demo5_struts.xml" /> -->
 	
 	<include file="day30_struts2.xml" />
-	
 	<include file="day31_struts2.xml" />
+	<include file="day32_struts2.xml" />
 </struts>
