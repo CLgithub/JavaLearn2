@@ -123,7 +123,12 @@ struts2中文件上传与下载
 						<param name="inputStream">${inputStream}</param>
 					</result>
 				</action>
-			
+		
+		在struts2中进行下载时，如果使用<result type="stream">它有缺陷，例如：下载点击后，取消下载，服务器端会产生异常。
+		在开发中，解决方案:可以下载一个struts2下载操作的插件，它解决了stream问题。
+		
+
+		
 
 */
 public class Doc2 {
