@@ -8,6 +8,13 @@
 		
 		<!-- Demo3Action -->
 		<action name="Demo3Action_" class="day32_struts2.Demo3Action" />
+		
+		<!-- Demo4Action -->
+		<action name="Demo4Action_" class="day32_struts2.Demo4Action" >
+			<result>/page/day32_struts2/Demo4.jsp</result>
+		</action>
+		
+		
 	</package>
 	
 </struts>

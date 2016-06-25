@@ -108,6 +108,33 @@ ognl与valueStack
 				ValueStack vs=(ValueStack) ServletActionContext.getRequest().getAttribute(ServletActionContext.STRUTS_VALUESTACK_KEY);
 			2.从ActionContext中获取（问题3）
 				ValueStack vs=ActionContext.getContext().getValueStack();
+				
+	问题5:如何向valuesStack中存储数据（主要是向root（list）中保存）
+		主要有两个方法
+			public void push(Object o);
+				底层是奖数据存入root(list)的第0个位置,奖数据存入栈顶,下一个数据来时这个数据向下移动（ArraylistTest）		add(0, o);
+			public void set(String key, Object o);	
+				底层：将数据存储进一个HeshMap，将这个HeshMap又压入root的栈顶
+				
+		也就是说，push进去的数据，通过栈顶取，set进去的数据，通过栈顶去出来时一个map，
+		
+		在啊jsp页面通过<s:debug />可以调试查看
+		
+	问题6:在jsp页面如何获取valuesStack中存储的数据
+		1.根据map的key依次查找数据
+			<s:property value="#root"/><br>
+			<s:property value="#root.userName"/><br><!-- #root不省略，相当于是取出context中的root，再从root中去取 -->
+			<s:property value="userName"/><br><!-- #root省略,相当于时从root中去取  -->
+		2.从某个位置开始查找数据，top只查找某个位置的数据
+			<s:property value="[0]"/>	从0的位置向下查找所有
+			<s:property value="[0].top"/>	只查找0位置上的数据
+		
+		如何获取context中的数据
+			1.request数据	
+			2.session数据	
+			3.appliction数据		
+			4.attr		从小到大依次查找request,session,application中查找
+			4.parameters数据		获取请求参数
 	
 	   	
 	
