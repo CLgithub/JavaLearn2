@@ -87,12 +87,28 @@ ognl与valueStack
 		CompoundRoot在OgnlContext中也有一份
 		ognl表达式访问root中的数据是，不需要＃，访问request，session，application，attr，parameters对象数据必须写＃
 		操作值栈默认指root元素
-		
+
 		结论：
 			ValuesStack中有两部分 List Map		（在map中存有一份list）
 			在struts2中List就是root	Map就是ognlContext
 			在默认情况下struts2中的ValueStack获取数据从root中获取
+	
+	问题3:值栈对象的创建 ，ValueStack 和 ActionContext 是什么关系 ？
+		ActionContext ctx = ActionContext.getContext();
+            if (ctx != null) {
+                stack = ctx.getValueStack();
+            }
+			
+		valueStack是每一次请求时，都会创建.
+		在ActionContext中持有了valueStack的引用。
 		
+	问题4:如何获取valueStack对象（Demo3Action.java）
+		两种方式：
+			1.从request中获取（问题1）
+				ValueStack vs=(ValueStack) ServletActionContext.getRequest().getAttribute(ServletActionContext.STRUTS_VALUESTACK_KEY);
+			2.从ActionContext中获取（问题3）
+				ValueStack vs=ActionContext.getContext().getValueStack();
+	
 	   	
 	
 */

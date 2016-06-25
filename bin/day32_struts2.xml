@@ -6,6 +6,8 @@
 	
 	<package name="day32" namespace="/day32" extends="struts-default">
 		
+		<!-- Demo3Action -->
+		<action name="Demo3Action_" class="day32_struts2.Demo3Action" />
 	</package>
 	
 </struts>
