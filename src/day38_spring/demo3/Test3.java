@@ -19,6 +19,5 @@ public class Test3 {
 		System.out.println(customer1==customer2);	
 		//true说明是同一个对象，单例的
 		//false说明不是同一个对象，原型的
-		
 	}
 }
