@@ -9,7 +9,7 @@ public class Demo1MyInterceptor implements Interceptor{
 	//初始化
 	@Override
 	public void init() {
-		System.out.println("自定义拦截器1初始化");
+	//	System.out.println("自定义拦截器1初始化");
 	}
 
 	//拦截
@@ -25,6 +25,6 @@ public class Demo1MyInterceptor implements Interceptor{
 	//销毁
 	@Override
 	public void destroy() {
-		System.out.println("自定义拦截器1销毁");
+	//	System.out.println("自定义拦截器1销毁");
 	}
 }

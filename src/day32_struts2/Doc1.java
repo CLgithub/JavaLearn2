@@ -109,7 +109,7 @@ ognl与valueStack
 			2.从ActionContext中获取（问题3）
 				ValueStack vs=ActionContext.getContext().getValueStack();
 				
-	问题5:如何向valuesStack中存储数据（主要是向root（list）中保存）
+	问题5:如何向valuesStack中存储数据（主要是向root（list）中保存）（Demo4）
 		主要有两个方法
 			public void push(Object o);
 				底层是奖数据存入root(list)的第0个位置,奖数据存入栈顶,下一个数据来时这个数据向下移动（ArraylistTest）		add(0, o);
@@ -120,7 +120,7 @@ ognl与valueStack
 		
 		在啊jsp页面通过<s:debug />可以调试查看
 		
-	问题6:在jsp页面如何获取valuesStack中存储的数据
+	问题6:在jsp页面如何获取valuesStack中存储的数据（Demo4）
 		1.根据map的key依次查找数据
 			<s:property value="#root"/><br>
 			<s:property value="#root.userName"/><br><!-- #root不省略，相当于是取出context中的root，再从root中去取 -->
@@ -136,6 +136,28 @@ ognl与valueStack
 			4.attr		从小到大依次查找request,session,application中查找
 			4.parameters数据		获取请求参数
 	
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+valueStack主流应用：解决将action中的数据携带到jsp页面的问题
+	问题：action向jsp携带的数据，都是什么样的数据
+		1.文本（字符串）
+			1.fieldError	校验数据错误信息提示
+			2.actionError	关于逻辑操作时的错误信息（例如登录失败）
+			3.message		就是一个信息.
+				
+				this.addFieldError("msg", "字段错误信息");
+				this.addActionError("Action全局错误信息");
+				this.addActionMessage("Action的消息信息");
+
+				* fieldError 针对某一个字段错误信息 （常用于表单校验）、actionError (普通错误信息，不针对某一个字段 登陆失败)、 actionMessage 通用消息 	
+
+				在jsp中使用 struts2提供标签 显示消息信息
+					<s:fielderror fieldName="msg"/>
+					<s:actionerror/>
+					<s:actionmessage/>
+		2.复杂数据（demo5）
+			可以使用valueStack存储(详细看demo5)
+				
+		
 	   	
 	
 */
