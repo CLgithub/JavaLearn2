@@ -43,6 +43,37 @@ Spring框架概述
 		降低JavaEE API的使用难度
 		* Spring 对JavaEE开发中非常难用的一些API（JDBC、JavaMail、远程调用等），都提供了封装，使这些API应用难度大大降低
 		
+--------------------------------------------------------------------------------------------------------
+	Spring入门程序(day38_spring.demo1)
+		下载jar包：（或maven）
+				https://repo.spring.io/release/
+			spring-framework-3.xxx.RELEASE-dist.zip				---Spring开发包
+			* docs		:spring框架api和规范
+			* libs		:spring开发的jar包
+			* schema		:XML的约束文档.
+			spring-framework-3.xx.RELEASE-dependencies.zip		---Spring开发中的依赖包
+		
+		引入相应jar包:（版本忽略）
+			spring-beans-3.2.0.RELEASE.jar
+			spring-context-3.2.0.RELEASE.jar
+			spring-core-3.2.0.RELEASE.jar
+			spring-expression-3.2.0.RELEASE.jar
+			开发的日志记录的包:
+			com.springsource.org.apache.commons.logging-1.1.1.jar		--- 用于整合其他的日志的包(类似Hibernate中slf4j)
+			com.springsource.org.apache.log4j-1.2.15.jar
+		
+		创建Spring的配置文件:
+			在src下创建一个applicationContext.xml
+		引入约束
+			<beans xmlns="http://www.springframework.org/schema/beans" 
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+			">
+			
+		
+	
 		
 
 */
