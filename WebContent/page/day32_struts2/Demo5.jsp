@@ -22,12 +22,25 @@
 		<br>
 	</s:iterator>
 	<hr>
-	2获取push方式存储的数据<br>
+	2获取set方式存储的数据<br>
 	<s:property value="#root[0].top.users2" /><br>
 	<s:iterator value="#root[0].top.users2" var="user">
 		userName:<s:property value="#user.userName" />
 		password:<s:property value="#user.password" />
 		<br>
 	</s:iterator>
+	<hr>
+	3获取默认压入的action中成员变量数据<br>
+	<s:property value="#action.users3" /><br>
+	<s:iterator value="#action.users3" var="user">
+		userName:<s:property value="#user.userName" />
+		password:<s:property value="#user.password" />
+		<br>
+	</s:iterator>
+	<hr>
+	4模型驱动<br>
+	userName:<s:property value="#root.userName" />
+	&nbsp;password:<s:property value="#root.password" /><br>
+	<s:property value="#root.model" />
 </body>
 </html>

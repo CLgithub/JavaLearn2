@@ -156,6 +156,21 @@ valueStack主流应用：解决将action中的数据携带到jsp页面的问题
 					<s:actionmessage/>
 		2.复杂数据（demo5）
 			可以使用valueStack存储(详细看demo5)
+			
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+关于默认压入到valueStack中的数据
+	1.访问的action对象会被压入valueStack中
+		在com.opensymphony.xwork2.DefaultActionInvocation.class的初始化方法中压入的,(所有拦截器执行之前)
+		action如果想传递数据给jsp，只要将数据保存到成员变量，并且提供get方法就可以了（demo5）
+	2.ModelDriveInterceptor会执行下面操作
+		ModelDriven modelDriven = (ModelDriven) action;
+		ValueStack stack = invocation.getStack();
+		Object model = modelDriven.getModel();
+		if (model !=  null) {
+			stack.push(model);
+		}
+		将实现了ModelDrive接口的action中getModel方法的返回值，也就是我们所说的model对象压入到了
+		valueStack.
 				
 		
 	   	
