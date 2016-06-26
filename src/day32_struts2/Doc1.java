@@ -171,7 +171,12 @@ valueStack主流应用：解决将action中的数据携带到jsp页面的问题
 		}
 		将实现了ModelDrive接口的action中getModel方法的返回值，也就是我们所说的model对象压入到了
 		valueStack.
-				
+		
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	问题7：为什么el可以访问valueStack中数据
+		struts2框架中所使用的request对象，时增强后request对象
+		${userName}--->request.getAttribute("userName");
+		增强后的request，会首先在request域范围查找，如果查找不到，会在valuesStack中查找
 		
 	   	
 	

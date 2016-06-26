@@ -19,6 +19,11 @@
 			<result>/page/day32_struts2/Demo5.jsp</result>
 		</action>
 		
+		<!-- Demo6Action -->
+		<action name="Demo6Action_" class="day32_struts2.Demo6Action" >
+			<result>/page/day32_struts2/Demo6.jsp</result>
+		</action>
+		
 		
 	</package>
 	

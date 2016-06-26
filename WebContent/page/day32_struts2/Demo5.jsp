@@ -41,6 +41,6 @@
 	4模型驱动<br>
 	userName:<s:property value="#root.userName" />
 	&nbsp;password:<s:property value="#root.password" /><br>
-	<s:property value="#root.model" />
+	<s:property value="#action.model" />
 </body>
 </html>
