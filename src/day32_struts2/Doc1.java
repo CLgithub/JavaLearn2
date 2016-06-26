@@ -245,6 +245,73 @@ valueStack主流应用：解决将action中的数据携带到jsp页面的问题
 					username=${#request.username}
 				在jsp页面
 					<s:text name="username">
+	----------------------------------------------------------
+		总结: #就是用于获取数据  %就是用于设置是否是ognl表达式  $就是在配置文件中使用ognl.
+		
+----------------------------------------------------------------------
+2.防止表单重复提交
+		问题:什么是表单重复提交？			
+		regist.jsp----->RegistServlet
+		表单重复提交 危害： 刷票、 重复注册、带来服务器访问压力（拒绝服务）	
+		
+	解决方案:
+		在页面上生成一个令牌(就是一个随机字符串),将其存储到session中，并在表单中携带.
+		在服务器端，获取数据时，也将令牌获取，将它与session中存储的token对比，没问题，
+		将session中令牌删除。
+		
+	struts2中怎样解决表单重复提交:
+		在struts2中解决表单重复提交，可以使用它定义的一个interceptor。
+		 <interceptor name="token" class="org.apache.struts2.interceptor.TokenInterceptor"/>
+		 
+		步骤:
+			1.在页面上需要使用一个token tag
+				在表单中添加一个标签 	<s:token/>
+					
+				就会在页面上生成一个令牌，并存在于表单中。
+		
+			2.需要在action中引入token拦截器
+				<interceptor-ref name="token"/>
+			
+			3.需要配置视图
+				<result name="invalid.token">/token.jsp</result>
+				
+		 通过 <s:actionError/> 显示错误信息 
+		 覆盖重复提交信息  struts.messages.invalid.token=您已经重复提交表单，请刷新后重试
+		 
+===============================================================================================
+3。struts2中json插件使用
+	
+	1.struts2中怎样处理异步提交(ajax)
+	
+		原始:
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.getWriter().write("hello " + msg);
+		response.getWriter().close();
+		
+		还可以使用struts2中提供的json插件:
+		
+			1.导入json插件包
+				在struts2的lib包下  struts2-json-plugin-2.3.15.1.jar。
+				
+			2.在struts.xml文件中配置
+				1.<package extends="json-default">
+				2.设置视图<result type="json">
+				
+			这样设置后，会将valueStack栈顶数据变成json。
+			对于我们的程序，也就是会将action对象转换成json。
+			
+			
+			<param name="root">p</param> 如果没有设置，可以理解成将整个action都转换成json的数据。也就是
+			 在action中提供的getXxx方法，就是json中的一个属性。
+			 
+			如果设置了root,那么，只将指定数据转换成json.
+			
+--------------------------------------------------------
+	怎样设置转换成json的对象中不包含特定的属性?
+	
+		1. @JSON(serialize=false) 在getXxx方法上设置 
+		2. 还可以通过json插件的interceptor完成.
+			<param name="includeProperties">ps\[\d+\]\.name,ps\[\d+\]\.price,ps\[\d+\]\.count</param>
 					
 */
 public class Doc1 {
