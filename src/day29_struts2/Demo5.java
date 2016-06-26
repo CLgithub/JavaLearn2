@@ -16,7 +16,7 @@ public class Demo5 extends ActionSupport{
 		Map<String, Object> session = aContext.getSession();			//session
 		
 		Map<String, Object> parameters = aContext.getParameters();	//获取请求参数,相当于request.getParameters()
-		
+
 		
 		System.out.println(application.get("msg1"));
 		System.out.println(session);

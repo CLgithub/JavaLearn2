@@ -173,13 +173,79 @@ valueStack主流应用：解决将action中的数据携带到jsp页面的问题
 		valueStack.
 		
 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
-	问题7：为什么el可以访问valueStack中数据
+	问题7：为什么el可以访问valueStack中数据（demo6）
 		struts2框架中所使用的request对象，时增强后request对象
 		${userName}--->request.getAttribute("userName");
 		增强后的request，会首先在request域范围查找，如果查找不到，会在valuesStack中查找
 		
-	   	
-	
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	ognl表达式常见使用（$ % #）
+	   	1.#
+	   		用法一  
+	   			# 代表 ActionContext.getContext() 上下文
+					<s:property value="#request.name" />  
+					#request
+					#session
+					#application
+					#attr
+					#parameters 
+		  	用法二
+			  	不写#,默认在root中查找数据
+			 		或写成#root在root中查找
+	 		用法三 ：进行投影映射 （结合复杂对象遍历 ）(demo7)
+				1）集合的投影(只输出部分属性)
+		 			集合的投影(只输出部分属性)<br>
+					<s:iterator value="users.{userName}" var="user">
+						<s:property value="#user"/>	<br>
+					</s:iterator>
+				2）将年龄下于24岁的人得到<br>
+					<s:iterator value="users.{?#this.age<24}" var="user">
+						<s:property value="#user"/>
+						<br>
+					</s:iterator>
+				3）将年龄下于24岁的人的名称得到<br>
+					<s:iterator value="users.{?#this.age<24}.{userName}" var="un">
+						<s:property value="#un"/>
+						<br>
+					</s:iterator>
+				4)使用＃来构建map集合<br>
+					<s:iterator value="#{'name':'tom','age':20}" var="entry">
+						<s:property value="#entry.key"/>=<s:property value="#entry.value"/>
+						<br>
+					</s:iterator>
+					构建list集合<br>
+					<s:iterator value="{'aa','bb','cc'}" var="v">
+						<s:property value="#v"/>
+						<br>
+					</s:iterator>
+					手动构建集合，经常结合 struts2 标签用来生成 select、checkbox、radio
+					<s:form>
+						<s:radio list="{'男','女'}" name="gerden" /><br>
+						<s:radio list="#{'male':'男','female':'女'}" name="gerden2" />
+						<s:select list="{'aa','bb','cc'}" />
+					</s:form>
+	   	2.%
+	   		作用：就是用于设定当前是否要解析其为 ognl表达式.(demo8)
+	   			%{表达式}  当前表达式会被做为ognl解析.
+				%{'表达式'} 当前表达式不会被做为ognl解析。
+				
+		   		<s:property value="表达式"> 对于s:property标签，它的value属性会被默认做为ognl.
+				以后，所有表达式如果想要让其是ognl  %｛表达式｝
+		3.$
+			作用：就是在配置文件中使用ognl表达式来获取valueStack中数据.
+			1.struts.xml（demo9）
+				<result type="stream">
+					<param name="contentType">${contentType}</param>(以前也使用过)
+				</result>
+			2.在校验文件中使用
+				${min}  ${max}
+				${minLength} ${maxLength}
+			3.在国际化文件中使用
+				在properties文件中
+					username=${#request.username}
+				在jsp页面
+					<s:text name="username">
+					
 */
 public class Doc1 {
 
