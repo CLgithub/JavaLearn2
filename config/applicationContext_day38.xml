@@ -7,6 +7,9 @@
 	">
 
 	<!-- 通过一个<bean>标签所在类的信息，通过id属性为类起个标识 -->
-	<bean id="HelloService" class="day38_spring.demo1.HelloServiceImpl" />
+	<bean id="HelloService" class="day38_spring.demo1.HelloServiceImpl" >
+		<!-- 使用property标签来为这个bean注入属性 -->
+		<property name="info" value="spring学习" />
+	</bean>
 
 </beans>

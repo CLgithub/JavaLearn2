@@ -72,7 +72,19 @@ Spring框架概述
 			http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 			">
 			
-		
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+IOC和DI的区别?
+	IOC:控制反转:将对象的创建权,由Spring管理.
+	DI:依赖注入:在Spring创建对象的过程中,把对象依赖的属性注入到类中.
+		面向对象中对象之间的关系;
+		依赖:
+			public class A{
+				private B b;
+			}
+		继承:is a
+		聚合:
+			聚集:
+			组合:
 	
 		
 
