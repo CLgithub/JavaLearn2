@@ -55,11 +55,11 @@ struts2 + javabean + DAO + C3P0 + DBUtils + MySQL
 导入jar包 和 配置文件 
 
 创建包结构
-cn.itcast.user.domain
-cn.itcast.user.dao
-cn.itcast.user.service
-cn.itcast.user.web.action
-cn.itcast.user.utils
+cn.l.user.domain
+cn.l.user.dao
+cn.l.user.service
+cn.l.user.web.action
+cn.l.user.utils
 ===============================================================================================
 功能实现:
 	1.登录操作
@@ -388,7 +388,7 @@ cn.itcast.user.utils
 	在struts.xml文件中
 		<global-exception-mappings>
 			<exception-mapping result="login"
-				exception="cn.itcast.user.exception.FindByIdException"></exception-mapping>
+				exception="cn.l.user.exception.FindByIdException"></exception-mapping>
 		</global-exception-mappings>
 	这就可以让特定的异常，跳转到自定的页面。
 
