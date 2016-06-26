@@ -6,10 +6,22 @@
 	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 	">
 
+	<!-- demo1快速入门开始 -->
 	<!-- 通过一个<bean>标签所在类的信息，通过id属性为类起个标识 -->
 	<bean id="HelloService" class="day38_spring.demo1.HelloServiceImpl" >
 		<!-- 使用property标签来为这个bean注入属性 -->
 		<property name="info" value="spring学习" />
 	</bean>
+	<!-- demo1快速入门结束 -->
+	
+	<!-- demo2	Bean的实例化 开始-->
+	<!-- 默认情况下使用无参数构造方法 -->
+	<bean id="bean1" class="day38_spring.demo2.Bean1" />
+	<!-- 静态工厂实例化来实例化bean -->
+	<bean id="bean2" class="day38_spring.demo2.Bean2Factory" factory-method="getBean2" />
+	<!-- 实例工厂实例化来实例化bean -->
+	<bean id="bean3Factory" class="day38_spring.demo2.Bean3Factory" /><!-- 先实例化bean3Factory -->
+	<bean id="bean3" factory-bean="bean3Factory" factory-method="getBean3" />
+	<!-- demo2	Bean的实例化 结束-->
 
 </beans>

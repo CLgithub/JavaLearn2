@@ -85,7 +85,38 @@ IOC和DI的区别?
 		聚合:
 			聚集:
 			组合:
+			
+Spring框架加载配置文件:
+	ApplicationContext 应用上下文，加载Spring 框架配置文件
+	加载classpath：
+	     new ClassPathXmlApplicationContext("applicationContext.xml");		:加载classpath下面配置文件.
+	加载磁盘路径：
+     	new FileSystemXmlApplicationContext("applicationContext.xml");		:加载磁盘下配置文件.
 	
+BeanFactory与ApplicationContext区别?
+	ApplicationContext类继承了BeanFactory.
+	BeanFactory在使用到这个类的时候,getBean()方法的时候才会加载这个类.（延时加载）
+	ApplicationContext类加载配置文件的时候,创建所有的类.
+	ApplicationContext对BeanFactory提供了扩展:
+		国际化处理
+		事件传递
+		Bean自动装配
+		各种不同应用层的Context实现
+	早期开发使用BeanFactory.
+	
+IOC装配Bean:（day38_spring.demo2）
+	Spring框架Bean实例化的方式:
+	提供了三种方式来实例化Bean
+		1.构造方法实例话（默认无参数）（反射）
+			<!-- 默认情况下使用无参数构造方法 -->
+			<bean id="bean1" class="day38_spring.demo2.Bean1" />
+		2.静态工厂实例化
+			<!-- 静态工厂实例化来实例化bean -->
+			<bean id="bean2" class="day38_spring.demo2.Bean2Factory" factory-method="getBean2" />
+		3.实例工厂实例化
+			<!-- 实例工厂实例化来实例化bean -->
+			<bean id="bean3Factory" class="day38_spring.demo2.Bean3Factory" /><!-- 先实例化bean3Factory -->
+			<bean id="bean3" factory-bean="bean3Factory" factory-method="getBean3" />
 		
 
 */
