@@ -118,6 +118,22 @@ IOC装配Bean:（day38_spring.demo2）
 			<bean id="bean3Factory" class="day38_spring.demo2.Bean3Factory" /><!-- 先实例化bean3Factory -->
 			<bean id="bean3" factory-bean="bean3Factory" factory-method="getBean3" />
 		
+Bean标签的其他配置:
+	id和name的区别：
+		id遵守了xml约束中的id的也是，id约束保证这个属性的值是唯一的,而且必须以字母开始，可以使用字母、数字、连字符、下划线、句话、冒号
+		name没有这些要求
+		注意：如果bean标签上没有配置id，那么name开源作为id。
+		
+	scope属性：
+		配置类的作用范围
+			singleton		单例的.(默认的值.)
+			prototype		原型的.
+			request			web开发中.创建了一个对象,将这个对象存入request范围,request.setAttribute();
+			session			web开发中.创建了一个对象,将这个对象存入session范围,session.setAttribute();
+			globalSession	一般用于Porlet应用环境.指的是分布式开发.如果不是porlet环境,那么globalSession等同于session;（全局session）
+			
+		实际开发中主要使用singleton,prototype
+		
 
 */
 public class Doc1 {
