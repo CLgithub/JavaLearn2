@@ -8,7 +8,7 @@ public class SpringTest6 {
 
 	@Test
 	public void test1(){
-		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext_day38.xml");
+		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
 		CollectionBean collectionBean = (CollectionBean) applicationContext.getBean("collectionBean");
 		System.out.println(collectionBean);
 	}

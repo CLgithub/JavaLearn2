@@ -204,7 +204,7 @@ Bean中属性注入:(day38_spring.demo5)
 				<property name="name" value="小黑" />
 			</bean>
 			
-		集合属性的注入
+		集合属性的注入（day38_spring.demo6）
 			详情看demo6
 			<bean id="collectionBean" class="day38_spring.demo6.CollectionBean">
 				<!-- 注入list集合 -->
@@ -240,7 +240,25 @@ Bean中属性注入:(day38_spring.demo5)
 					</props>
 				</property>
 			</bean>
+------------------------------------------------------------------------------------------------------
+加载配置文件:
+一种写法:
+	ApplicationContext applicationContext = new ClassPathXmlApplicationContext("bean1.xml","bean2.xml");
+二种方法:
+	<import resource="applicationContext2.xml"/>
 
+
+IOC装配Bean(注解方式)（day38_spring.demo7）
+	Spring的注解装配Bean
+		Spring2.5 引入使用注解去定义Bean
+		@Component  描述Spring框架中Bean
+	在spring框架中提供了与@Component注解等效的三个注解:
+		@Repository 用于对DAO实现类进行标注
+		@Service 用于对Service实现类进行标注
+		@Controller 用于对Controller实现类进行标注
+	三个注解为了后续版本进行增强的.
+	
+	
 	
 */
 public class Doc1 {
