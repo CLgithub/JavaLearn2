@@ -204,6 +204,42 @@ Bean中属性注入:(day38_spring.demo5)
 				<property name="name" value="小黑" />
 			</bean>
 			
+		集合属性的注入
+			详情看demo6
+			<bean id="collectionBean" class="day38_spring.demo6.CollectionBean">
+				<!-- 注入list集合 -->
+				<property name="list1">
+					<list>
+						<!-- 如果是普通值用value，如果是对象用ref -->
+						<value>aaa</value>
+						<value>bbb</value>
+						<value>付费电视</value>
+					</list>
+				</property>
+				<!-- 注入set集合 -->
+				<property name="set1">
+					<set>
+						<value>123</value>
+						<value>864</value>
+						<value>1585</value>
+					</set>
+				</property>
+				<!-- 注入map集合 -->
+				<property name="map1">
+					<map>
+						<entry key="aaa" value="111" />
+						<entry key="bbb" value="1531" />
+						<entry key="ccc" value="334" />
+					</map>
+				</property>
+				<!-- 注入properties -->
+				<property name="properties1">
+					<props>
+						<prop key="userName">root</prop>
+						<prop key="password">123</prop>
+					</props>
+				</property>
+			</bean>
 
 	
 */
