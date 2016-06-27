@@ -9,9 +9,12 @@ import day38_spring.demo1.HelloService;
 public class SpringTest7 {
 	@Test
 	public void test1(){
-		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext_day38_2.xml");
+		ClassPathXmlApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext_day38_2.xml");
 		UserService userService = (UserService) applicationContext.getBean("userService");
+		UserService userService2 = (UserService) applicationContext.getBean("userService");
 //		userService.sayHello();
 		System.out.println(userService);
+		System.out.println("两个service是同一个对象吗："+(userService==userService2));
+		applicationContext.close();
 	}
 }

@@ -17,5 +17,7 @@
 	<!-- 注解和配置扫描混搭是，配置通过注释方式注入 -->
 	<!-- <context:annotation-config /> -->
 	<!-- demo7 注解方式装配bean 结束-->
+	
+	
 
 </beans>

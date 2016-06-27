@@ -261,6 +261,41 @@ IOC装配Bean(注解方式)（day38_spring.demo7）
 注解方式注入属性
 	详细看
 		day38_spring.demo7.UserService
+		
+Bean其他的属性的配置:
+	配置Bean初始化方法和销毁方法:
+	init-method 和 destroy-method.
+	@PostConstruct 初始化
+	@PreDestroy  销毁
+配置Bean的作用范围:
+	@Scope
+	
+Spring3.0提供使用Java类定义Bean信息的方法(用得比较少)
+	自定义一个类，让spring扫描这个类所在包，就相当于这里面得类都装置进了spring
+	@Configuration
+	public class BeanConfig {
+		@Bean(name="car")
+		public Car showCar(){
+			Car car = new Car();
+			car.setName("长安");
+			car.setPrice(40000d);
+			return car;
+		}
+		@Bean(name="product")
+		public Product initProduct(){
+			Product product = new Product();
+			product.setName("空调");
+			product.setPrice(3000d);
+			return product;
+		}
+	}
+	
+实际开发中使用XML还是注解?
+	XML:
+		bean管理
+	注解;
+		注入属性的时候比较方便.
+	两种方式结合;一般使用XML注册Bean,使用注解进行属性的注入.
 	
 	
 	
