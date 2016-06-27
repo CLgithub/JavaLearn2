@@ -134,6 +134,30 @@ Bean标签的其他配置:
 			
 		实际开发中主要使用singleton,prototype
 		
+Spring 中Bean的生命周期：
+	配置bean的初始化和销毁的方法
+	配置初始化和销毁的方法：
+	在bean标签内设置init-method和destroy-method属性
+	<bean id="product" scope="prototype" class="day38_spring.demo3.Product"
+		init-method="setup" destroy-method="teardown"	 />
+	执行销毁的时候，必须手动关闭工厂，而且只对scope="singleton"（单例）有效
+	
+	bean的生命周期的11个步骤：
+		1.instantiate bean对象实例化
+		2.populate properties 封装属性
+		3.如果Bean实现BeanNameAware 执行 setBeanName
+		4.如果Bean实现BeanFactoryAware 或者 ApplicationContextAware 设置工厂 setBeanFactory 或者上下文对象 setApplicationContext
+		5.如果存在类实现 BeanPostProcessor（后处理Bean） ，执行postProcessBeforeInitialization
+		6.如果Bean实现InitializingBean 执行 afterPropertiesSet 
+		7.调用<bean init-method="init"> 指定初始化方法 init
+		8.如果存在类实现 BeanPostProcessor（处理Bean） ，执行postProcessAfterInitialization
+		9.执行业务处理
+		10.如果Bean实现 DisposableBean 执行 destroy
+		11.调用<bean destroy-method="customerDestroy"> 指定销毁方法 customerDestroy
+		
+		
+		在CustomerService类的add方法之前进行权限校验
+
 
 */
 public class Doc1 {

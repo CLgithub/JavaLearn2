@@ -25,7 +25,22 @@
 	<!-- demo2	Bean的实例化 结束-->
 	
 	<!-- demo3	Bean的作用范围 开始-->
-	<bean id="customer" scope="prototype" class="day38_spring.demo3.Customer" />
+	<!-- <bean id="customer" scope="prototype" class="day38_spring.demo3.Customer" /> -->
+	<!-- bean的生命周期 -->
+	<!-- <bean id="product" class="day38_spring.demo3.Product"
+		init-method="setup" destroy-method="teardown"	 >
+		<property name="name" value="手机" />
+		</bean> -->
 	<!-- demo3	Bean的作用范围 结束-->
+	
+	<!-- demo3	Bean的生命周期 开始-->
+	<bean id="customerService" class="day38_spring.demo4.CustomerServiceImpl" 
+		init-method="setup"  destroy-method="customerDestroy">
+		<property name="customerName" value="aaa" />
+	</bean>
+	<!-- 配置后处理bean -->
+	<bean class="day38_spring.demo4.MyBeanPostProcessor" />
+	
+	<!-- demo3	Bean的生命周期 结束-->
 
 </beans>

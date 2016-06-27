@@ -20,4 +20,15 @@ public class Test3 {
 		//true说明是同一个对象，单例的
 		//false说明不是同一个对象，原型的
 	}
+	
+	//测试初始化和销毁
+	@Test
+	public void test2() {
+		ClassPathXmlApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext_day38.xml");
+		Product product = (Product) applicationContext.getBean("product");
+		System.out.println(product);
+		applicationContext.close();
+	}
+	
+	
 }
