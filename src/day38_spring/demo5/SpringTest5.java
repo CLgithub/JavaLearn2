@@ -19,4 +19,12 @@ public class SpringTest5 {
 		Car2 car2 = (Car2) applicationContext.getBean("car2");
 		System.out.println(car2);
 	}
+	
+	@Test
+	public void test3(){
+		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext_day38.xml");
+		Person person = (Person) applicationContext.getBean("person");
+		System.out.println(person);
+	}
+	
 }

@@ -164,11 +164,47 @@ Bean中属性注入:(day38_spring.demo5)
 		1.定义一个接口，实现这个接口，实现注入方法注入
 		2.构造方法里注入
 		3.set方法注入
+	
 	在spring中，支持构造方法注入和set方法注入 
 		1.构造器的注入
 			使用标签：constructor-arg
 		2.set方法注入
+			<property name="name" value="奥迪" />
+		3.set方法注入对象属性
+			<property name="myCar2" ref="car2"  />
 			
+			当类的属性非常多的时候，可以使用名称空间p注入属性
+		4.名称空间p:注入属性
+			Spring2.5版本引入了名称空间p.
+				p:<属性名>="xxx" 引入常量值
+				p:<属性名>-ref="xxx" 引用其它Bean对象
+			1.引入名称空间:
+				xmlns:p="http://www.springframework.org/schema/p"
+				http://www.springframework.org/schema/beans/spring-beans.xsd
+			2
+				<bean id="person" class="day38_spring.demo5.Person" p:name="小红" p:myCar2-ref="car2" />
+		
+		5.SpEL:属性的注入：
+			Spring3.0提供注入属性方式:
+			语法：#{表达式}
+			<bean id="" value="#{表达式}">
+
+			<bean id="car2" class="day38_spring.demo5.Car2" >
+				<property name="name" value="#{'大众'}" />
+				<property name="price" value="#{'200000'}" />
+			</bean>
+			
+			
+			<bean id="person" class="day38_spring.demo5.Person">
+				<!-- <property name="name" value="#{personInfo.name}" /> -->
+				<property name="name" value="#{personInfo.showName()}" />
+				<property name="myCar2" value="#{car2}"  />
+			</bean>
+			<bean id="personInfo" class="day38_spring.demo5.PersinInfo" >
+				<property name="name" value="小黑" />
+			</bean>
+			
+
 	
 */
 public class Doc1 {
