@@ -34,13 +34,27 @@
 	<!-- demo3	Bean的作用范围 结束-->
 	
 	<!-- demo3	Bean的生命周期 开始-->
-	<bean id="customerService" class="day38_spring.demo4.CustomerServiceImpl" 
+	<!-- <bean id="customerService" class="day38_spring.demo4.CustomerServiceImpl" 
 		init-method="setup"  destroy-method="customerDestroy">
 		<property name="customerName" value="aaa" />
-	</bean>
+	</bean> -->
 	<!-- 配置后处理bean -->
-	<bean class="day38_spring.demo4.MyBeanPostProcessor" />
-	
+	<!-- <bean class="day38_spring.demo4.MyBeanPostProcessor" /> -->
 	<!-- demo3	Bean的生命周期 结束-->
+	
+	<!-- demo5	Bean的属性注入 开始-->
+	<bean id="car" class="day38_spring.demo5.Car">
+		<!-- constructor-arg是构造方法注入 -->
+		<!-- <constructor-arg name="name" value="宝马" />
+		<constructor-arg name="price" value="1000000" /> -->
+		<constructor-arg index="0" type="java.lang.String" value="奔驰" />
+		<constructor-arg index="1" type="java.lang.Double" value="1000000" />
+	</bean>
+	<bean id="car2" class="day38_spring.demo5.Car2">
+		<!-- <property>标签name是属性名称，value是属性值，ref是引用其他对象 -->
+		<property name="name" value="奥迪" />
+		<property name="price" value="800000" />
+	</bean>
+	<!-- demo5	Bean的属性注入 结束-->
 
 </beans>

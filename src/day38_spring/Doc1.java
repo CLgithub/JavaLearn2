@@ -134,7 +134,7 @@ Bean标签的其他配置:
 			
 		实际开发中主要使用singleton,prototype
 		
-Spring 中Bean的生命周期：
+Spring 中Bean的生命周期：(day38_spring.demo4)
 	配置bean的初始化和销毁的方法
 	配置初始化和销毁的方法：
 	在bean标签内设置init-method和destroy-method属性
@@ -157,8 +157,19 @@ Spring 中Bean的生命周期：
 		
 		
 		在CustomerService类的add方法之前进行权限校验
-
-
+		
+		
+Bean中属性注入:(day38_spring.demo5)
+	通常，有三种注入方式
+		1.定义一个接口，实现这个接口，实现注入方法注入
+		2.构造方法里注入
+		3.set方法注入
+	在spring中，支持构造方法注入和set方法注入 
+		1.构造器的注入
+			使用标签：constructor-arg
+		2.set方法注入
+			
+	
 */
 public class Doc1 {
 
