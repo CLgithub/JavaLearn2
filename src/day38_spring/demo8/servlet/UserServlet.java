@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.lang.UsesSunHttpServer;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import day32_struts2.User;
 import day38_spring.demo8.service.UserService;
 
 /*
@@ -43,8 +45,13 @@ import day38_spring.demo8.service.UserService;
 
 //1配置通过"/day38_UserServlet"来访问该servlet
 @WebServlet(urlPatterns="/day38_UserServlet")
+//@Controller
 public class UserServlet extends HttpServlet{
 	
+	//servlet的创建和spring的@Controller的创建还没有整合，所有不能注入属性
+//	@Resource
+//	private UserService userService;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext_day38_3.xml");

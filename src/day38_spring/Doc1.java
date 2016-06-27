@@ -298,6 +298,42 @@ Spring3.0提供使用Java类定义Bean信息的方法(用得比较少)
 	两种方式结合;一般使用XML注册Bean,使用注解进行属性的注入.
 --------------------------------------------------------------------------------
 Spring整合web开发:（day38_spring.demo8）
+
+------------------------------------------------------------------------------------
+今天的内容总结:
+	Struts2:
+	Hibernate:知识点比较多.
+	Spring:AOP. 面向切面的思想.
+	Spring框架 IOC. AOP . 数据访问 . 集成 . Web
+		IOC:控制反转.将对象的创建权交给Spring.
+		DI:依赖注入.DI需要有IOC环境的,DI在创建对象的时候,将对象的依赖的属性,一并注入到类中.
+		IOC装配Bean:(XML)
+			<bean id=”” class=””/>
+			配置Bean其他的属性:
+				init-method destroy-method scope
+			DI注入属性:
+				普通属性:
+				<property name=”属性名” value=”属性值”>
+				对象属性:
+				<property name=”属性名” ref=”其他类的id或name”>
+			集合属性的注入:
+	IOC装配Bean:(注解)
+		@Component  描述Spring框架中Bean 
+		@Repository 用于对DAO实现类进行标注
+		@Service 用于对Service实现类进行标注
+		@Controller 用于对Controller实现类进行标注
+	DI属性注入
+		普通属性:
+	 	@Value
+		对象属性:
+		AutoWired
+		Resource
+	
+	Bean的生命周期:
+		后处理Bean.BeanPostProcessor类.
+	
+	Spring整合Web项目:
+	Spring整合Junit测试:
 	
 */
 public class Doc1 {

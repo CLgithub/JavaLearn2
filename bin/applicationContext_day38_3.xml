@@ -11,7 +11,7 @@
 	">
 
 	<!-- demo8 Spring整合web开发 开始 -->
-	<context:component-scan base-package="day38_spring.demo8.service" />
+	<context:component-scan base-package="day38_spring.demo8" />
 	<!-- demo8 Spring整合web开发 结束 -->
 
 </beans>
