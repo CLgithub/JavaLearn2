@@ -17,22 +17,39 @@
 		<param-value>BBB值</param-value>
 	</context-param>
 	
+	<!-- 通过全局初始化参数配置spring配置文件的位置 -->
+	<context-param>
+		<!-- 该值在org.springframework.web.context.ContextLoader中定义，用于设置spring配置文件的位置 -->
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext_day38_3.xml</param-value>
+	</context-param>
+	
+	<!-- spring整合web工程 开始 -->
+	<!-- 注册applicationListener监听器,使用spring内提供的，以便在application对象创建时加载spring中的bean-->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- spring整合web工程 结束 -->
+	
 	<!-- struts2 demo1 开始 -->
-	<filter>
+	<!-- <filter>
 		<filter-name>struts2</filter-name>
-		<!-- <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class> -->
+		<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-		<!-- <filter-class>day29_struts2.demo2.MyStrutsFilter</filter-class> -->
-		<!-- 在web.xml中配置struts常量，使用filter初始化参数方式配置 -->
-		<!-- <init-param>
+		<filter-class>day29_struts2.demo2.MyStrutsFilter</filter-class>
+		在web.xml中配置struts常量，使用filter初始化参数方式配置
+		<init-param>
 			<param-name>struts.action.extension</param-name>
 			<param-value>do,,</param-value>
-		</init-param> -->				
+		</init-param>				
 	</filter>
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping> -->
+	
+	
+	
 	<!-- struts2 demo1 开始 -->
 	<!-- struts2 demo2 Mystruts2 开始 -->
 	<!-- <filter>
@@ -115,7 +132,7 @@
 	<!-- filter链，demo2 结束 -->
 	
 	<!-- fiterdemo3 开始 -->
-	<filter>
+	<!-- <filter>
 		<filter-name>d21Demo3Filter</filter-name>
 		<filter-class>day21.Demo3Filter1</filter-class>
 	</filter>
@@ -131,7 +148,7 @@
 	<servlet-mapping>
 		<servlet-name>d21Demo3Servlet1</servlet-name>
 		<url-pattern>/d21Demo3Servlet1</url-pattern>
-	</servlet-mapping> 
+	</servlet-mapping>  -->
 	<!-- fiterdemo3 结束 -->
 	
 	<!-- fiterdemo4 开始 -->
@@ -164,7 +181,6 @@
 		<url-pattern>/Demo5LoginServlet</url-pattern>
 	</servlet-mapping> -->
 	<!-- fiterdemo5 自动登录 结束 -->
-	
 	
 	<!-- list在servleit之前，在context-param之后 -->
 	<!-- 注册监听application对象的创建与销毁监听器 -->
