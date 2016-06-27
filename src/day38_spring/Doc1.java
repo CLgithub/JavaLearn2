@@ -258,6 +258,10 @@ IOC装配Bean(注解方式)（day38_spring.demo7）
 		@Controller 用于对Controller实现类进行标注
 	三个注解为了后续版本进行增强的.
 	
+注解方式注入属性
+	详细看
+		day38_spring.demo7.UserService
+	
 	
 	
 */

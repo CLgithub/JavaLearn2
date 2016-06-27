@@ -11,6 +11,7 @@ public class SpringTest7 {
 	public void test1(){
 		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext_day38_2.xml");
 		UserService userService = (UserService) applicationContext.getBean("userService");
-		userService.sayHello();
+//		userService.sayHello();
+		System.out.println(userService);
 	}
 }
