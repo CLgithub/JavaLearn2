@@ -41,8 +41,6 @@
 	<!-- demo2  结束 -->
 	
 	<!-- demo3  开始 -->
-	
-	
 	<!-- 带有切点的切面 -->
 	<!-- 注册自定义环绕增强Advice(通知) -->
 	<bean id="myAroundAdvice" class="day39_spring.demo3.MyAroundAdvice" />

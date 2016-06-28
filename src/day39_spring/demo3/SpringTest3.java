@@ -16,8 +16,8 @@ import day39_spring.demo2.CustomeService;
 		
 		
 */
-public class SpringTest3 {
-private static ApplicationContext applicationContext;
+public class SpringTest3 {	
+	private static ApplicationContext applicationContext;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
