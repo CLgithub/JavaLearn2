@@ -11,9 +11,33 @@
 	">
 
 	<!-- demo1 aopDemo1 开始 -->
-	<context:component-scan base-package="day39_spring.demo1" />
+	<context:component-scan base-package="day39_spring" />
 	<!-- 配置后处理bean -->
-	<bean class="day39_spring.demo1.MyBeanPostProcessor" />
+	<!-- <bean class="day39_spring.demo1.MyBeanPostProcessor" /> -->
 	<!-- demo1 aopDemo1 结束 -->
 
+	<!-- demo2  开始 -->
+	<!-- 注册自定义前置增强Advice -->
+	<bean id="myBeoreAdvice" class="day39_spring.demo2.MyBeoreAdvice" />
+	<!-- 配置生产代理 -->
+	<bean id="customerDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
+		<!-- 属性:
+			target : 代理的目标对象
+			proxyInterfaces : 代理要实现的接口
+			如果多个接口可以使用以下格式赋值
+				<list> <value></value></list>
+			proxyTargetClass : 是否对类代理而不是接口，设置为true时，使用CGLib代理
+			interceptorNames : 需要织入目标的Advice
+			singleton : 返回代理是否为单实例，默认为单例
+			optimize : 当设置为true时，强制使用CGLib -->
+		<!-- 设置目标对象 -->
+		<property name="target" ref="customerService" />
+		<!-- 设置实现的接口 -->
+		<property name="proxyInterfaces" value="day39_spring.demo2.CustomeService" />
+		<!-- 配置需要织入目标的Advice -->
+		<property name="interceptorNames" value="myBeoreAdvice"/>
+	</bean>
+	<!-- demo2  开始 -->
+	
+	
 </beans>
