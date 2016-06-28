@@ -31,7 +31,7 @@
 	<bean id="myPointcutAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" >
 		<property name="pattern" value=".*add.*" />
 		<!-- 使用哪个增强 -->
-		<property name="advice" value="myAroundAdvice" />
+		<property name="advice" ref="myBeoreAdvice" />
 	</bean>
 	<!-- 自动生成代理 -->
 	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />

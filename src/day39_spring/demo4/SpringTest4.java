@@ -37,5 +37,6 @@ public class SpringTest4 {
 		orderService.delete();
 		customeService.update();
 		customeService.query();
+		customeService.add();
 	}
 }
