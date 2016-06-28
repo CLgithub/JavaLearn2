@@ -19,6 +19,11 @@ import day39_spring.demo3.OrderServiceImpl;
 		BeanNameAutoProxyCreator 根据Bean名称创建代理 
 		DefaultAdvisorAutoProxyCreator 根据Advisor本身包含信息创建代理
 			AnnotationAwareAspectJAutoProxyCreator 基于Bean中的AspectJ 注解进行自动代理
+			
+	
+	基于proxyFattoryBean代理与自动代理的区别？
+		proxyFattoryBean先有被代理对象，将被代理对象传入到代理类中生成代理
+		自动代理基于后处理bean，在bean生成的过程中，就产生了代理对象，spring返回的就是已经是代理对象
 
 */
 public class SpringTest4 {
