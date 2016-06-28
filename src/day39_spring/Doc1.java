@@ -28,14 +28,8 @@ AOP的术语:（结合图二 AOP的术语.bmp来看）
 		允许有多个切点和多个通知组合
 
 
-spring中的aop
-	aop之前在day19_2.exercise有用，得到的对象其实是个代理对象，在真正做事之前可以添加其他功能，
-		spring管理bean后,传过来的对象就是一个代理对象，day38_spring.demo4.MyBeanPostProcessor中就是横切面
-	Spring的AOP代理:
-		JDK动态代理:对实现了接口的类生成代理
-		CGLib代理机制:对类生成代理
-		
-		
+
+
 
 */
 public class Doc1 {
