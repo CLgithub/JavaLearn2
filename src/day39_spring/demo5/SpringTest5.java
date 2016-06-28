@@ -33,7 +33,7 @@ AspectJ表达式:
 	//参数			..参数类型任意，个数任意
 	 
 	  
-AspectJ增强
+AspectJ增强类型
 	@Before 前置通知，相当于BeforeAdvice
 	@AfterReturning 后置通知，相当于AfterReturningAdvice
 	@Around 环绕通知，相当于MethodInterceptor
@@ -52,6 +52,8 @@ AspectJ增强
 			在application.xml文件中引入aop约束
 			<!-- 配置自动生成代理 底层是AnnotationAwareAspectJAutoProxyCreator-->
 			<aop:aspectj-autoproxy />
+			<!-- 定义切面 -->
+			<bean id="myAspect" class="day39_spring.demo5.MyAspect" />
 		
 		
 */
@@ -65,7 +67,9 @@ public class SpringTest5 {
 	@Test
 	public void test1() {
 		UserService userService=(UserService) applicationContext.getBean("userService");
-		userService.add();
-		userService.update();
+//		userService.add();
+//		userService.update();
+//		userService.delete();
+		userService.query();
 	}
 }

@@ -5,8 +5,9 @@ import org.springframework.stereotype.Service;
 @Service(value="userService")
 public class UserServiceImpl implements UserService{
 
-	public void add() {
+	public int add() {
 		System.out.println("添加用户");
+		return 1;
 	}
 
 	public void delete() {
@@ -19,6 +20,7 @@ public class UserServiceImpl implements UserService{
 
 	public void query() {
 		System.out.println("查询用户");
+		int d=1/0;
 	}
 
 }
