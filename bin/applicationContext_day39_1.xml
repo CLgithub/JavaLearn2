@@ -17,9 +17,10 @@
 	<!-- demo1 aopDemo1 结束 -->
 
 	<!-- demo2  开始 -->
+	<!-- 不带有切点的切面 -->
 	<!-- 注册自定义前置增强Advice -->
 	<bean id="myBeoreAdvice" class="day39_spring.demo2.MyBeoreAdvice" />
-	<!-- 配置生产代理 -->
+	<!-- 配置生成代理 -->
 	<bean id="customerDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
 		<!-- 属性:
 			target : 代理的目标对象
@@ -37,7 +38,36 @@
 		<!-- 配置需要织入目标的Advice -->
 		<property name="interceptorNames" value="myBeoreAdvice"/>
 	</bean>
-	<!-- demo2  开始 -->
+	<!-- demo2  结束 -->
 	
+	<!-- demo3  开始 -->
+	
+	
+	<!-- 带有切点的切面 -->
+	<!-- 注册自定义环绕增强Advice(通知) -->
+	<bean id="myAroundAdvice" class="day39_spring.demo3.MyAroundAdvice" />
+	
+	<!-- 定义一个切面： -->
+	<bean id="myPointcutAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" >
+		<!-- 定义表达式，设定哪些方法需要执行拦截 -->
+		<!-- .任意字符，*任意个数 -->
+		<!-- <property name="pattern" value=".*" /> -->
+		<!-- <property name="pattern" value="day39_spring\.demo3\.OrderService\.add\.*" /> -->
+		<!-- <property name="pattern" value=".*add.*" /> -->
+		<property name="patterns" value=".*add.*,.*update.*" />
+		<!-- 应用增强 -->
+		<property name="advice" ref="myAroundAdvice" />
+	</bean>
+	
+	<!-- 配置生成代理 -->
+	<bean id="orderServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
+		<!-- 设置目标对象 -->
+		<property name="target" ref="orderService" />
+		<!-- 是否对类代理而不是接口 -->
+		<property name="proxyTargetClass" value="true"/>
+		<!-- 配置需要织入目标的Advice -->
+		<property name="interceptorNames" value="myPointcutAdvisor"/>
+	</bean>
+	<!-- demo3  结束 -->
 	
 </beans>

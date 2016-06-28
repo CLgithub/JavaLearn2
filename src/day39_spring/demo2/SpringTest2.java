@@ -42,7 +42,7 @@ Spring的AOP的开发:
 		CustomerServiceImpl
 	第三步：增强
 		MyBeoreAdvice
-	第四步：生产代理
+	第四步：生成代理
 		生成代理Spring基于ProxyFactoryBean类.底层自动选择使用JDK的动态代理还是CGLIB的代理.
 		属性:
 			target : 代理的目标对象
@@ -57,7 +57,7 @@ Spring的AOP的开发:
 			singleton : 返回代理是否为单实例，默认为单例
 			optimize : 当设置为true时，强制使用CGLib
 
-		
+
 
 */
 public class SpringTest2 {
