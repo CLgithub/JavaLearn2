@@ -20,16 +20,16 @@ public class SpringTest2 {
 		UserDao userDao = (UserDao) applicationContext.getBean("userDao");
 		User user = new User();
 		user.setName("小明1");
-		user.setId(1);
+		user.setId(2);
 		userDao.add(user);
 //		userDao.update(user);
-//		userDao.delete(user);
+		userDao.delete(user);
 	}
 	
 	@Test
 	public void test2(){
 		UserDao userDao = (UserDao) applicationContext.getBean("userDao");
-		User user = userDao.findByID(2);
+		User user = userDao.findByID(1);
 		System.out.println(user);
 	}
 	

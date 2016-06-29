@@ -44,8 +44,10 @@ public class UserDao /*extends JdbcDaoSupport*/{
 	
 	public User findByID(Integer id) {
 		String sql="select * from user where id=?";
-		List<User> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<User>(User.class), id);
-		return list.get(0);
+//		List<User> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<User>(User.class), id);
+//		return list.get(0);
+		User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), id);
+		return user;
 	}
 	
 	public Integer findCount() {
