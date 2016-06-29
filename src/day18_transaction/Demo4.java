@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbcp2.BasicDataSourceFactory;
 import org.junit.Test;
-
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 

@@ -1,4 +1,4 @@
-package day39_spring_jdbc;
+package day39_spring_jdbc.demo1;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -9,8 +9,8 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 /*
 配置连接池：
-	1.spring默认连接池（test1、test2）
-	2.dbcp连接池(test3)（之前day18_transaction.Demo4）
+	1.spring默认连接池
+	2.dbcp连接池（之前day18_transaction.Demo4）
 	3.c3po连接
 		
 */

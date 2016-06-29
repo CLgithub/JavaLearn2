@@ -12,6 +12,8 @@
 	http://www.springframework.org/schema/aop
 	http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
 	">
+	
+	<context:component-scan base-package="day39_spring_jdbc.demo2" />
 
 	<!-- 配置spring默认连接池 -->
 	<bean id="dataSource_default" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
