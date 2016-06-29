@@ -9,6 +9,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.DeclareParents;
+import org.aspectj.lang.annotation.Pointcut;
 
 /*
 
@@ -22,6 +23,23 @@ AspectJ增强类型
 	@AfterThrowing抛出通知，相当于ThrowAdvice
 	@After 最终final通知，不管是否异常，该通知都会执行
 	@DeclareParents 引介通知，相当于IntroductionInterceptor (不要求掌握)
+	
+切点的定义：
+	//@Pointcut	定义一个切点，在这个切点上可以定义一个通用的表达式，就不用每个增强（通知）都自己写一个表达式
+	@Pointcut(value="execution(* day39_spring.demo5.service.*Service.delete(..))")	//
+	private void myPointcut(){
+	}
+	
+	//使用通用切点，来设置一个增强
+	@AfterReturning("MyAspect.myPointcut()")
+	public void myAfterReturning2(){
+		System.out.println("使用通用切点，来设置一个后缀增强");
+	}
+	
+两种切面的区别	Advisor（顾问）和Aspect（方面）的区别?
+	Advisor:Spring传统意义上的切面:支持一个切点和一个通知的组合.
+	Aspect:可以支持多个切点和多个通知的组合.
+
 
 */
 
@@ -66,4 +84,16 @@ public class MyAspect {
 	public void myDeclareParents(){
 		System.out.println("最终增强");
 	}
+	
+	//@Pointcut	定义一个切点，在这个切点上可以定义一个通用的表达式，就不用每个增强（通知）都自己写一个表达式
+	@Pointcut(value="execution(* day39_spring.demo5.service.*Service.delete(..))")	//
+	private void myPointcut(){
+	}
+	
+	//使用通用切点，来设置一个增强
+	@AfterReturning("MyAspect.myPointcut()")
+	public void myAfterReturning2(){
+		System.out.println("使用通用切点，来设置一个后缀增强");
+	}
+	
 }

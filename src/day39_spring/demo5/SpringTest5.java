@@ -69,7 +69,7 @@ public class SpringTest5 {
 		UserService userService=(UserService) applicationContext.getBean("userService");
 //		userService.add();
 //		userService.update();
-//		userService.delete();
-		userService.query();
+		userService.delete();
+//		userService.query();
 	}
 }
