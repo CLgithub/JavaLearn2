@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+	">
+	
+	<context:component-scan base-package="day40_spring_tx.demo3" />
+	
+	<!-- 配置c3p0连接池 	使用配置文件存储4个值-->
+	<!-- 配置文件分离 -->
+	<context:property-placeholder location="classpath:jdbc_day30.properties"/>
+	<bean id="dataSource_c3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${driverClass}" />
+		<property name="jdbcUrl" value="${jdbcUrl}" />
+		<property name="user" value="${user}" />
+		<property name="password" value="${password}" />
+	</bean>
+	
+	<!-- 配置springjdbc模板 -->
+	<bean id="jdbcTemplate1" class="org.springframework.jdbc.core.JdbcTemplate">
+		<!-- 为该模板设置dataSource -->
+		 <property name="dataSource" ref="dataSource_c3p0" />
+	</bean>
+	
+	<!-- 注册事务管理器类 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_c3p0" />
+	</bean>
+	
+	<!-- 配置一个事务增强 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<!-- 事务增强的属性配置 -->
+		<tx:attributes>
+			<!-- 对什么方法进行增强 -->
+			<!-- 
+				isolation="DEFAULT"		事务隔离级别
+				propagation="REQUIRED"	事务传播行为
+				read-only="false"		是否是只读的
+				timeout="-1"			过期时间 		-1不过期
+				no-rollback-for=""		发送哪些异常不回滚
+				rollback-for=""			发送哪些异常回滚
+			 -->
+			<!-- <tx:method name="" isolation="DEFAULT" propagation="REQUIRED" read-only="false"
+				timeout="-1" no-rollback-for="" rollback-for=""	/> -->
+			<tx:method name="transfer"/>
+			<!-- 写 -->
+			<tx:method name="save*" propagation="REQUIRED" isolation="DEFAULT" />
+			<tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT" />
+			<tx:method name="delete*" propagation="REQUIRED" isolation="DEFAULT" />
+			<tx:method name="new*" propagation="REQUIRED" isolation="DEFAULT" />
+			<!-- 读 -->
+			<tx:method name="get*" propagation="REQUIRED" isolation="DEFAULT"
+				read-only="true" />
+			<tx:method name="load*" propagation="REQUIRED" isolation="DEFAULT"
+				read-only="true" />
+			<tx:method name="find*" propagation="REQUIRED" isolation="DEFAULT"
+				read-only="true" />
+			<!-- 通配 -->
+			<tx:method name="*" propagation="REQUIRED" isolation="DEFAULT" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置切面和切点信息 -->
+	<aop:config>
+		<!-- 配置切点 哪些类的哪些方法需要被切入（增强） -->
+		<aop:pointcut expression="execution(* day40_spring_tx.demo3.*Service.*(..))" id="pointcut1"/>
+		<!-- 配置切面 -->
+		<!-- 事务切面 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut1" />
+		<!-- <aop:aspect ></aop:aspect> -->
+	</aop:config>
+	
+</beans>

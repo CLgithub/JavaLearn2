@@ -10,7 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 使用原始的TransactionProxyFactoryBean完成事务
 	之前的编程式完成事务相当于是增强，是增强的话就可以用代理对象来增强
 
-
+缺点：每一个需要事务管理的类都需要进行配置
 
 */
 public class SpringTest2 {
