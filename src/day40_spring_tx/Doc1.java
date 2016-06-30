@@ -56,20 +56,25 @@ spring中的事务管理
 		ISOLATION_SERIALIZABLE
 		
 	事务的传播行为:(不是JDBC事务管理，用来解决实际开发的问题.)传播行为：解决业务层之间的调用的事务的关系.
-		PROPAGATION_REQUIRED		:支持当前事务，如果不存在 就新建一个
-		* A,B	如果A有事务，B使用A的事务，如果A没有事务，B就开启一个新的事务.(A,B是在一个事务中。)
-		PROPAGATION_SUPPORTS		:支持当前事务，如果不存在，就不使用事务
-		* A,B	如果A有事务，B使用A的事务，如果A没有事务，B就不使用事务.
-		PROPAGATION_MANDATORY	:支持当前事务，如果不存在，抛出异常
-		* A,B	如果A有事务，B使用A的事务，如果A没有事务，抛出异常.
-		PROPAGATION_REQUIRES_NEW	如果有事务存在，挂起当前事务，创建一个新的事务
-		* A,B	如果A有事务，B将A的事务挂起，重新创建一个新的事务.(A,B不在一个事务中.事务互不影响.)
-		PROPAGATION_NOT_SUPPORTED	以非事务方式运行，如果有事务存在，挂起当前事务
-		* A,B	非事务的方式运行，A有事务，就会挂起当前的事务.
-		PROPAGATION_NEVER 	以非事务方式运行，如果有事务存在，抛出异常
-		PROPAGATION_NESTED	如果当前事务存在，则嵌套事务执行
-		* 基于SavePoint技术.
-		* A,B	A有事务，A执行之后，将A事务执行之后的内容保存到SavePoint.B事务有异常的话，用户需要自己设置事务提交还是回滚.
+		PROPAGATION_REQUIRED：		支持当前事务，如果不存在 就新建一个
+			A调用B	如果A有事务，B使用A的事务，如果A没有事务，B就开启一个新的事务.(A,B是在一个事务中。)
+		PROPAGATION_SUPPORTS:		支持当前事务，如果不存在，就不使用事务
+			A调用B	如果A有事务，B使用A的事务，如果A没有事务，B就不使用事务.
+		PROPAGATION_MANDATORY：		支持当前事务，如果不存在，抛出异常
+			A调用B	如果A有事务，B使用A的事务，如果A没有事务，抛出异常.
+		PROPAGATION_REQUIRES_NEW：	如果有事务存在，挂起当前事务，创建一个新的事务
+			A调用B	如果A有事务，B将A的事务挂起，重新创建一个新的事务.(A,B不在一个事务中.事务互不影响.)
+		PROPAGATION_NOT_SUPPORTED：	以非事务方式运行，如果有事务存在，挂起当前事务
+			A调用B	非事务的方式运行，A有事务，就会挂起当前的事务.
+		PROPAGATION_NEVER：			以非事务方式运行，如果有事务存在，抛出异常
+		PROPAGATION_NESTED：			如果当前事务存在，则嵌套事务执行
+			基于SavePoint技术.
+			A调用B	A有事务，A执行之后，将A事务执行之后的内容保存到SavePoint.B事务有异常的话，用户需要自己设置A事务提交还是回滚.
+			
+		常用：
+			PROPAGATION_REQUIRED（传播_需求）
+			PROPAGATION_REQUIRES_NEW
+			PROPAGATION_NESTED（传播_嵌套）
 		
 
 */
