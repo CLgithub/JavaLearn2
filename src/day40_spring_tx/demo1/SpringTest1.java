@@ -49,7 +49,7 @@ public class SpringTest1 {
 	
 	@Test
 	public void test1(){
-		AccountServiceImpl accountService = (AccountServiceImpl) applicationContext.getBean("accountService");
+		AccountService accountService = (AccountService) applicationContext.getBean("accountService");
 		accountService.transfer("aaa", "bbb", 100.0);
 	}
 }
