@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace命名空间，为了对sql语句进行隔离，方便管理，mapper开发dao方式，使用namespace由特殊作用 -->
+<mapper namespace="test1">
+<!-- 在这个mapper.xml文件中配置很多sql语句，执行每个sql语句时，封装为MappedStatement对象mapper.xml以statement为单位管理sql语句 -->
+	
+	<!-- 根据id查询用户信息 -->
+	<!-- 
+		id：唯一标识这条sql 
+		#{}:标识一个占为符，如果#{}中要传入简单类型，那么#{}中的名称随意
+		parameterType:输入参数的类型，通过#{}来接收parameterType输入的参数
+		resultType:输出结果类型，指定单条记录映射的pojo（实体类）(不管返回的是T还是List<T>,都用T)
+	-->
+	<select id="findUserById" parameterType="int" resultType="day72_mybatis.demo.eneity.User">
+		select * from user where id=#{id};
+	</select>
+	
+	<!-- 根据用户模糊姓名，查询用户信息 -->
+	<!-- 
+		#{}标识一个占为符，项占位符输入参数，mybatis自动进行java类型和jdbc类型的转换
+			开发时不需要考虑参数的类型，比如：传入字符串，mybatis最终拼接好的sql就是参数两边加单引号
+		${}	标识sql的拼接，通过${}接收参数，将参数的内容不加修饰的拼接在sql中,但是存在sql注入风险
+	 -->
+	<select id="findUserByName" parameterType="java.lang.String" resultType="day72_mybatis.demo.eneity.User">
+		<!-- select * from user where username like #{userName} -->
+		select * from user where username like '%${value}%'
+	</select>
+	
+</mapper>
