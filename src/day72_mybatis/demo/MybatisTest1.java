@@ -1,5 +1,6 @@
 package day72_mybatis.demo;
 
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -93,4 +94,23 @@ public class MybatisTest1 {
 			sqlSession.close();
 		}
 	}
+	
+	//插入用户
+	@Test
+	public void testinsertUser() {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		User user = new User();
+		try {
+			user.setUserName("小红");
+			user.setBirthday(new Date());
+			sqlSession.insert("test1.insertUser", user);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			//关闭sqlSession
+			sqlSession.close();
+		}
+		System.out.println(user.getId());
+	}	
 }

@@ -28,4 +28,53 @@
 		select * from user where username like '%${value}%'
 	</select>
 	
+	<!-- 添加用户 -->
+	<!-- 
+		#{}要接收pojo的数据，可以使用ognl解析出pojo的属性值
+		#{username}标识从parameterType中获取pojo属性值
+		${}也可以
+		
+		主键返回
+			需求：user对象插入到数据库后，新记录的主键要通过user对象返回，通过user获取主键值。
+			解决思路：
+			通过LAST_INSERT_ID()获取刚插入记录的自增主键值，在insert语句执行后，执行select LAST_INSERT_ID()就可以获取自增主键
+		selectKey:用于进行主键返回，定义了获取主键值的sql
+			keyProperty：将主键值符给哪个属性
+			order:设置selectKey中sql时在主sql执行之前还是之后	BEFORE之前，AFTER之后
+			resultType:select LAST_INSERT_ID()的结果类型
+			
+		如果是使用uuid
+			思路：
+				先查询uuid得到主键，将主键设置到user对象中
+				<insert id="insertUser" parameterType="day72_mybatis.demo.eneity.User">
+					<selectKey keyProperty="id" order="BEFORE" resultType="string" >
+						select uuid()
+					</selectKey>
+					insert into user(username,birthday,sex,address) values(#{userName},#{birthday},#{sex},#{address})
+				</insert>
+	 -->
+	<insert id="insertUser" parameterType="day72_mybatis.demo.eneity.User">
+		<selectKey keyProperty="id" order="AFTER" resultType="int" >
+			select LAST_INSERT_ID()
+		</selectKey>
+		insert into user(username,birthday,sex,address) values(#{userName},#{birthday},#{sex},#{address})
+	</insert>
+	
+	<!-- oracle -->
+	<!-- 
+		如果要实现oracle数据库主键返回，如何做？？
+				oracle没有自增主键机制，使用序列完成主键生成
+			实现思路：
+				先查询序列得到主键，将主键设置到user对象中
+					查询序列	select 序列.nextval()
+		在执行insert之前执行select 序列.nextval() from dual取出序列最大值，将值设置到user对象的id属性中
+		
+	 -->
+	<!-- <insert id="insertUser" parameterType="day72_mybatis.demo.eneity.User">
+		<selectKey keyProperty="id" order="BEFORE" resultType="int" >
+			select 序列.nextval() from dual
+		</selectKey>
+		insert into user(id,username,birthday,sex,address) values(#{id},#{userName},#{birthday},#{sex},#{address})
+	</insert> -->
+	
 </mapper>
