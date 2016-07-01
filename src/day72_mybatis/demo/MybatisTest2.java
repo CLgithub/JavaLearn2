@@ -1,5 +1,6 @@
 package day72_mybatis.demo;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -32,6 +33,7 @@ SqlSession
 		mapper接口中的方法的参数类型	==			对于id的mapper.xml中的statement的parameterType
 		mapper接口中的返回值类型		==			对于id的mapper.xml中的statement的resultType
 	
+
 */
 public class MybatisTest2 {
 private static SqlSessionFactory sqlSessionFactory;
@@ -65,6 +67,48 @@ private static SqlSessionFactory sqlSessionFactory;
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 		User user = userMapper.findUserById(10);
 		System.out.println(user);
-		
+	}
+	
+	@Test
+	public void testMapperfindUserByName() throws Exception{
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		//创建代理对象
+		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+		List<User> list = userMapper.findUserByName("小明");
+		System.out.println(list);
+	}
+	
+	@Test
+	public void insertUser() throws Exception{
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		//创建代理对象
+		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+		User user = new User();
+		user.setBirthday(new Date());
+		user.setUsername("ooxx");
+		userMapper.insertUser(user);
+		sqlSession.commit();
+	}
+	
+	@Test
+	public void deleteUser() throws Exception{
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		//创建代理对象
+		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+		userMapper.deleteUser(36);
+		sqlSession.commit();
+	}
+	
+	@Test
+	public void updateUser() throws Exception{
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		//创建代理对象
+		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+		User user = new User();
+		user.setBirthday(new Date());
+		user.setUsername("ooxx");
+		user.setId(1);
+		userMapper.updateUser(user);
+		sqlSession.commit();
 	}
 }

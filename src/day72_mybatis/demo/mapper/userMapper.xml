@@ -9,6 +9,12 @@ mapper代理开发：
 	mapper接口中的方法的参数类型	==			对于id的mapper.xml中的statement的parameterType
 	mapper接口中的返回值类型		==			对于id的mapper.xml中的statement的resultType
 	
+mapper接口返回单个和集合类型
+	不管查询记录是单条还是多条，在 statement中resultType定义一致，都是单条记录映射的pojo类型。
+	mapper接口方法返回值，如果是返回的单个对象，返回值类型是pojo类型，生成的代理对象内部通
+	过selectOne获取记录，如果返回值类型是集合对象，生成的代理对象内部通过selectList获取记录。
+
+输入和输出映射
 -->
 <mapper namespace="day72_mybatis.demo.mapper.UserMapper">
 	
@@ -18,7 +24,8 @@ mapper代理开发：
 	</select>
 	
 	<!-- 根据用户模糊姓名，查询用户信息 -->
-	<select id="findUserByName" parameterType="java.lang.String" resultType="day72_mybatis.demo.eneity.User">
+	<!-- user是在sqlMapConfig.xml中定义的别名 -->
+	<select id="findUserByName" parameterType="java.lang.String" resultType="user">
 		<!-- select * from user where username like #{username} -->
 		select * from user where username like '%${value}%'
 	</select>

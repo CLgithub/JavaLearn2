@@ -23,5 +23,13 @@ public interface UserMapper {
 	 * @param userName
 	 * @return
 	 */
-	public List<User> findUserByName(String userName);
+	public List<User> findUserByName(String userName) throws Exception;
+	
+	public void insertUser(User user) throws Exception;
+	
+	public void deleteUser(int id) throws Exception;
+	
+	public void updateUser(User user) throws Exception;
+	
+	
 }

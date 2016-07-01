@@ -1,7 +1,86 @@
 <!DOCTYPE configuration
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 
+sqlMapConfig.xml
+	SqlMapConfig.xml中配置的内容和顺序如下：
+	properties（属性）
+	settings（全局配置参数）
+	typeAliases（类型别名）
+	typeHandlers（类型处理器）
+	objectFactory（对象工厂）
+	plugins（插件）
+	environments（环境集合属性对象）
+		environment（环境子属性对象）
+			transactionManager（事务管理）
+			dataSource（数据源）
+	mappers（映射器）
+	
+ -->
 <configuration>
+	<!-- 属性定义 ：可以用来定义资源文件-->
+	<properties resource="jdbc_day72.properties" >
+		<!-- 也可以在properties标签内配置属性 
+			注意： MyBatis 将按照下面的顺序来加载属性：
+				在 properties 元素体内定义的属性首先被读取。 
+				然后会读取properties 元素中resource或 url 加载的属性，它会覆盖已读取的同名属性。 
+				最后读取parameterType传递的属性，它会覆盖已读取的同名属性。
+			
+			建议使用properties，不要在properties中定义属性，只引用定义的properties文件中属性，
+			并且properties文件中定义的key要有一些特殊的规则。
+		-->
+		<!-- <property name="" value=""/> -->
+	</properties>
+	
+	<!-- 全局配置参数 -->
+	<!-- 
+	mybatis运行时可以调整一些全局参数（相当于软件的运行参数），参考：mybatis-settings.xlsx
+		根据使用需求进行参数配置。
+		注意：小心配置，配置参数会影响mybatis的执行。
+		
+		ibatis的全局配置参数中包括很多的性能参数（最大线程数，最大待时间。。。），
+		通过调整这些性能参数使ibatis达到高性能的运行，mybatis没有这些性能参数，由mybatis自动调节。
+	 -->
+	<!-- <settings></settings> -->
+	
+	<!-- 类型别名(常用) -->
+	<!-- 
+		可以将parameterType、resultType中指定的类型 通过别名引用
+		别名	映射的类型
+		_byte 	byte 
+		_long 	long 
+		_short 	short 
+		_int 	int 
+		_integer 	int 
+		_double 	double 
+		_float 	float 
+		_boolean 	boolean 
+		string 	String 
+		byte 	Byte 
+		long 	Long 
+		short 	Short 
+		int 	Integer 
+		integer 	Integer 
+		double 	Double 
+		float 	Float 
+		boolean 	Boolean 
+		date 	Date 
+		decimal 	BigDecimal 
+		bigdecimal 	BigDecimal 
+	 -->
+	<typeAliases>
+		<!-- 定义一个别名 -->
+		<!-- <typeAlias type="day72_mybatis.demo.eneity.User" alias="user" /> -->
+		<!-- 批量别名，会自动扫描该包下的实体类，来定义，别名名称默认为类名 -->
+		<package name="day72_mybatis.demo.eneity"/>
+	</typeAliases>
+	
+	<!-- 类型处理器:将java类型和jdbc类型进行映射 -->
+	<!-- <typeHandlers></typeHandlers> -->
+	
+	<!--  -->
+	
+	
 	<!-- 和spring整合后 environments配置将废除 -->
 	<environments default="development">
 		<environment id="development">
@@ -9,19 +88,31 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			<transactionManager type="JDBC" />
 			<!-- 数据库连接池 -->
 			<dataSource type="POOLED">
-				<property name="driver" value="com.mysql.jdbc.Driver" />
-				<property name="url" value="jdbc:mysql://localhost:3306/mybatis1?useSSL=false&amp;characterEncoding=UTF-8" />
-				<property name="username" value="root" />
-				<property name="password" value="123456" />
+				<property name="driver" value="${jdbc.driverClass}" />
+				<!-- jdbc:mysql://localhost:3306/mybatis1?useSSL=false&amp;characterEncoding=UTF-8 -->
+				<property name="url" value="${jdbc.jdbcUrl}" />
+				<property name="username" value="${jdbc.user}" />
+				<property name="password" value="${jdbc.password}" />
 			</dataSource>
 		</environment>
 	</environments>
 
+	<!-- mappers（映射器） -->
 	<!-- 加载mapper.xml -->
 	<mappers>
+		<!-- 通过resource来引用mapper映射文件 -->
 		<mapper resource="day72sqlmap/user.xml" />
-		<mapper resource="day72sqlmap/userMapper.xml" />
+		<!-- <mapper resource="day72sqlmap/userMapper.xml" /> -->
+		<!-- 通过class来引用mapper接口，全类名，
+			要求mapper.xml和mapper接口在同一目录下，并且同名	-->
+		<!-- <mapper class="day72_mybatis.demo.mapper.UserMapper"/> -->
+		<!-- 批量mapper配置 ，通过包名，会自动扫描该包下的mapper接口
+			要求mapper.xml和mapper接口在同一目录下，并且同名,
+			有点类似smm项目中的配置,不过smm项目是已经交给spring来管理，估计底层配置的是同一个参数-->
+		<package name="day72_mybatis.demo.mapper"/>
 	</mappers>
+	
+	
 	
 
 </configuration>
