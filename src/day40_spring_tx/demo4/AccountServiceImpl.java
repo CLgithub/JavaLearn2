@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 @Service(value="accountService")
-@Transactional(isolation=Isolation.DEFAULT)	//该类开启事务
+@Transactional(isolation=Isolation.DEFAULT,transactionManager="transactionManager1")	//该类开启事务
 public class AccountServiceImpl implements AccountService{
 
 	@Resource(name="accountDao")
@@ -21,7 +21,7 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public void transfer(String from, String to, Double money) {
 		accountDao.out(from, money);
-		int d=1/0;
+//		int d=1/0;
 		accountDao.in(to, money);
 	}
 

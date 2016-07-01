@@ -65,17 +65,12 @@ public class MybatisTest1 {
 	public void testFindUserById() {
 		//通过sqlsessionFactory创建sqlSession
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		try {
-			//通过sqlSession操作数据库
-			//selectOne查询一条记录	statement=namespace+"."+statement的id	parameter动态参数
-			User user = sqlSession.selectOne("test1.findUserById", 1);
-			System.out.println(user);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally{
-			//关闭sqlSession
-			sqlSession.close();
-		}
+		//通过sqlSession操作数据库
+		//selectOne查询一条记录	statement=namespace+"."+statement的id	parameter动态参数
+		Object object = sqlSession.selectOne("test1.findUserById", 10);
+		System.out.println(object);
+		//关闭sqlSession
+		sqlSession.close();
 	}
 	
 	@Test
@@ -101,7 +96,7 @@ public class MybatisTest1 {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		User user = new User();
 		try {
-			user.setUserName("小红");
+			user.setUsername("小红");
 			user.setBirthday(new Date());
 			sqlSession.insert("test1.insertUser", user);
 			sqlSession.commit();
@@ -112,5 +107,29 @@ public class MybatisTest1 {
 			sqlSession.close();
 		}
 		System.out.println(user.getId());
-	}	
+	}
+	
+	//删除用户
+	@Test
+	public void deleteUser() {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("test1.deleteUser", 32);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+	
+	//修改用户
+	@Test
+	public void updateUser() {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		User user = new User();
+		user.setId(1);
+		user.setUsername("abc");
+		user.setAddress("xxoo");
+		user.setBirthday(new Date());
+		user.setSex("0");
+		sqlSession.update("test1.updateUser", user);
+		sqlSession.commit();
+		sqlSession.close();
+	}
 }

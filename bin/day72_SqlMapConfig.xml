@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			<dataSource type="POOLED">
 				<property name="driver" value="com.mysql.jdbc.Driver" />
 				<property name="url" value="jdbc:mysql://localhost:3306/mybatis1?useSSL=false&amp;characterEncoding=UTF-8" />
-				<property name="username" value="L" />
+				<property name="username" value="root" />
 				<property name="password" value="123456" />
 			</dataSource>
 		</environment>
