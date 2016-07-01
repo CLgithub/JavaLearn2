@@ -15,8 +15,33 @@ mapper接口返回单个和集合类型
 	过selectOne获取记录，如果返回值类型是集合对象，生成的代理对象内部通过selectList获取记录。
 
 输入和输出映射
+	parameterType
+		可以定义pojo包装类型扩展mapper接口输入参数的内容
+	resultType
+		指定输出结果的类型（pojo，基本类型，hashmap）将sql查询结果映射为java对象
+		如果查询结果为一条记录且一列，再使用简单类型
+		sql查询的列名要和实体类的属性名相同，相同的属性可以映射成功
+	resultMap
+		将sql查询结果映射为java对象
+		如果sql查询的列名和实体类的属性名不相同，可以使用resultMap将列名和实体的属性名做一个对应关系
+		
 -->
 <mapper namespace="day72_mybatis.demo.mapper.UserMapper">
+	<!-- 定义resultMap -->
+	<!-- 
+		id:唯一标识这个resultMap
+		type：最终映射出来的实体类
+	 -->
+	<resultMap id="resultMap1" type="user" >
+		<!-- id：主键的映射
+			column：查询出来的别名
+			property：要映射到的type的哪个属性
+		-->
+		<id column="id_" property="id"/>
+		<!-- result：普通列的映射 -->
+		<result column="uName" property="username" />
+		<result column="gender" property="sex" />
+	</resultMap>
 	
 	<!-- 根据id查询用户信息 -->
 	<select id="findUserById" parameterType="int" resultType="day72_mybatis.demo.eneity.User">
@@ -29,6 +54,26 @@ mapper接口返回单个和集合类型
 		<!-- select * from user where username like #{username} -->
 		select * from user where username like '%${value}%'
 	</select>
+	
+	<!-- 自定义查询调节，查询用户信息 -->
+	<!-- 利用包装类型传递查询调节 userQueryVo是自动扫描到包装类的别名-->
+	<!-- ${userCustom.username}:拿到UserQueryVo里的userCustom的username -->
+	<select id="findUserList" parameterType="userQueryVo" resultType="user">
+		select * from user where username like '%${userCustom.username}%'
+	</select>
+	
+	<!-- 输出简单类型 -->
+	<!-- 自定义查询调节，返回查询记录条数 -->
+	<select id="findUserCount" parameterType="userQueryVo" resultType="int">
+		select count(1) from user where username like '%${userCustom.username}%'
+	</select>
+	
+	<!-- 查询listmap，测试resultMap -->
+	<!-- 如果定义的resultMap就在这当前namespace下，直接写其id便可，如果不在同一个namespace下，需要在resultMap id前加上其namespace. -->
+	<select id="findUserListMap" parameterType="userQueryVo" resultMap="resultMap1">
+		select id id_,username uName,birthday birthday,sex gender,address from user where username like '%${userCustom.username}%'
+	</select>
+	
 	
 	<!-- 添加用户 -->
 	<insert id="insertUser" parameterType="day72_mybatis.demo.eneity.User">
@@ -48,5 +93,8 @@ mapper接口返回单个和集合类型
 	<update id="updateUser" parameterType="day72_mybatis.demo.eneity.User" >
 		update user set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} where id=#{id}
 	</update>
+	
+	
+	
 	
 </mapper>

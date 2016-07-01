@@ -3,6 +3,7 @@ package day72_mybatis.demo;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.catalina.startup.UserConfig;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -12,6 +13,8 @@ import org.junit.Test;
 import day72_mybatis.demo.dao.UserDao;
 import day72_mybatis.demo.dao.UserDaoImpl;
 import day72_mybatis.demo.eneity.User;
+import day72_mybatis.demo.eneity.UserCustom;
+import day72_mybatis.demo.eneity.UserQueryVo;
 import day72_mybatis.demo.mapper.UserMapper;
 
 /*
@@ -110,5 +113,53 @@ private static SqlSessionFactory sqlSessionFactory;
 		user.setId(1);
 		userMapper.updateUser(user);
 		sqlSession.commit();
+	}
+	
+	//测试通过包装类型查询用户信息
+	@Test
+	public void testfindUserList() throws Exception{
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		//创建代理对象
+		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+		
+		UserQueryVo userQueryVo=new UserQueryVo();
+		UserCustom userCustom=new UserCustom();
+		userCustom.setUsername("小明");
+		userQueryVo.setUserCustom(userCustom);
+		
+		List<User> list = userMapper.findUserList(userQueryVo);
+		System.out.println(list);
+	}
+	
+	//测试通过包装类型查询用户条数
+	@Test
+	public void testfindUserCount() throws Exception{
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		//创建代理对象
+		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+		
+		UserQueryVo userQueryVo=new UserQueryVo();
+		UserCustom userCustom=new UserCustom();
+		userCustom.setUsername("小明");
+		userQueryVo.setUserCustom(userCustom);
+		
+		int i=userMapper.findUserCount(userQueryVo);
+		System.out.println(i);
+	}
+	
+	//测试输出到resultMap
+	@Test
+	public void testResultMap() throws Exception{
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		//创建代理对象
+		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+		
+		UserQueryVo userQueryVo=new UserQueryVo();
+		UserCustom userCustom=new UserCustom();
+		userCustom.setUsername("小明");
+		userQueryVo.setUserCustom(userCustom);
+		
+		List<User> list = userMapper.findUserListMap(userQueryVo);
+		System.out.println(list);
 	}
 }
