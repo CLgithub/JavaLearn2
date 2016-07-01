@@ -20,6 +20,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- 加载mapper.xml -->
 	<mappers>
 		<mapper resource="day72sqlmap/user.xml" />
+		<mapper resource="day72sqlmap/userMapper.xml" />
 	</mappers>
+	
 
 </configuration>

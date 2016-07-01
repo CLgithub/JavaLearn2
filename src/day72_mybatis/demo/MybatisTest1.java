@@ -46,6 +46,26 @@ mybatis开发过程小结
 		如果执行添加，更新，删除需要调用SqlSession.commit();
 	6.SqlSession使用完成要关闭
 	
+	
+mybatis与hibernate适用场景
+	mybatis：
+		mybatis需要程序员自己编写sql语句，是一个不完全的orm框架，
+			对sql的修改和优化非常容易实现
+		适合开发需求变更频繁的系统，比如：互联网项目
+	hibernate：
+		不用写sql语句，使用一个orm框架
+		需求固定，对象数据模型稳定，中小型项目，企业oa系统
+		
+sqlMapConfig.xml
+是mybatis全局配置文件：只有一个，名称不固定，主要mapper.xml mypper.xml中配置sql语句
+	mapper.xml
+	mapper.xml是以sttement为单位进行配置，（把一个sql封装为一个statement），statement中配置sql语句，
+	parameterType输入参数类型（完成输入映射），
+	resultType输出参数类型（完成输出映射），
+	parameterMap配置输入参数类型（过期）
+	resultMap配置输出结果类型，（一对多，多对多）
+	
+	
 
  */
 public class MybatisTest1 {

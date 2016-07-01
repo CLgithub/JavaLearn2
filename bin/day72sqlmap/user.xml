@@ -2,7 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<!-- namespace命名空间，为了对sql语句进行隔离，方便管理，mapper开发dao方式，使用namespace由特殊作用 -->
+<!-- namespace命名空间，为了对sql语句进行隔离，方便管理，mapper开发dao方式，使用namespace由特殊作用 
+mapper代理开发是
+	将namespace指定为mapper接口的完整类名
+-->
 <mapper namespace="test1">
 <!-- 在这个mapper.xml文件中配置很多sql语句，执行每个sql语句时，封装为MappedStatement对象mapper.xml以statement为单位管理sql语句 -->
 	
