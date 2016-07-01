@@ -25,6 +25,23 @@ mapper接口返回单个和集合类型
 		将sql查询结果映射为java对象
 		如果sql查询的列名和实体类的属性名不相同，可以使用resultMap将列名和实体的属性名做一个对应关系
 		
+动态sql
+	mybatis重点是对sql的灵活解析和处理
+		if
+		sql片段
+			通过sql片段可以将通用的sql语句抽取处理，单独定义，在其他statement中就可以引用sql片段
+			通用的sql语句，常用：
+				where条件，查询的列
+		foreach
+			在statement中可以通过foreach遍历parameterType中的集合类型
+			比如：
+				需求：根据多个用户id查询用户信息
+				解决：
+					在UserQueryVo中定义list<Integer> ids 存储多个id
+			
+		
+				
+		
 -->
 <mapper namespace="day72_mybatis.demo.mapper.UserMapper">
 	<!-- 定义resultMap -->
@@ -43,6 +60,35 @@ mapper接口返回单个和集合类型
 		<result column="gender" property="sex" />
 	</resultMap>
 	
+	<!-- 定义一个sql片段 建议对单表查询条件进行单独抽取，提高通用性-->
+	<!-- 注意：不要将where放在sql片段中，否则通用性差 -->
+	<sql id="user_sqlWhere1">
+		<!-- 如果userQueryVo中传入了查询条件，再进行条件拼接 -->
+		<if test="userCustom!=null">
+			<if test="userCustom.username!=null and userCustom.username!=''">
+				and username like '%${userCustom.username}%'
+			</if>
+			<if test="userCustom.sex!=null and userCustom.sex!=''">
+				and sex = #{userCustom.sex}
+			</if>
+			<if test="ids!=null and ids!=''">
+				<!-- 还有其他 -->
+				<!-- 根据id集合查询 -->
+				<!-- 
+					collection:集合
+					open:开始循环要拼接的串
+					close：介绍循环要拼接的串
+					item：每次循环取到的对象
+					separator：没两次循环之间的间隔串
+				 -->
+				<!-- 最终拼接效果：select id,username,birthday,sex,address from user where username like '%小明%' and id in(16,22,25); -->
+				<foreach collection="ids" open=" and id in(" close=")" item="myId" separator=",">
+					#{myId}
+				</foreach>
+			</if>
+		</if>
+	</sql>
+	
 	<!-- 根据id查询用户信息 -->
 	<select id="findUserById" parameterType="int" resultType="day72_mybatis.demo.eneity.User">
 		select * from user where id=#{id};
@@ -59,13 +105,25 @@ mapper接口返回单个和集合类型
 	<!-- 利用包装类型传递查询调节 userQueryVo是自动扫描到包装类的别名-->
 	<!-- ${userCustom.username}:拿到UserQueryVo里的userCustom的username -->
 	<select id="findUserList" parameterType="userQueryVo" resultType="user">
-		select * from user where username like '%${userCustom.username}%'
+		select * from user 
+		<!-- <where>相当于where关键字，它可以自动去除第一个and -->
+		<where>
+			<!-- 应用sql片段，如果引用的sql片段和当前文件不在统一namespace下，需要家namespace. -->
+			<include refid="user_sqlWhere1" />
+			<!-- <include refid="其他sql片段" /> -->
+		</where>
 	</select>
 	
 	<!-- 输出简单类型 -->
 	<!-- 自定义查询调节，返回查询记录条数 -->
 	<select id="findUserCount" parameterType="userQueryVo" resultType="int">
-		select count(1) from user where username like '%${userCustom.username}%'
+		<!-- select count(1) from user where username like '%${userCustom.username}%' -->
+		select count(1) from user 
+		<!-- <where>相当于where关键字，它可以自动去除第一个and -->
+		<where>
+			<!-- 如果userQueryVo中传入了查询条件，再进行条件拼接 -->
+			<include refid="user_sqlWhere1" />
+		</where>
 	</select>
 	
 	<!-- 查询listmap，测试resultMap -->

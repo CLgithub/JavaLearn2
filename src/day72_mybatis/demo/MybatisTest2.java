@@ -1,5 +1,6 @@
 package day72_mybatis.demo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -124,8 +125,13 @@ private static SqlSessionFactory sqlSessionFactory;
 		
 		UserQueryVo userQueryVo=new UserQueryVo();
 		UserCustom userCustom=new UserCustom();
-		userCustom.setUsername("小明");
+//		userCustom.setUsername("小");
+		userCustom.setSex("1");
 		userQueryVo.setUserCustom(userCustom);
+		List<Integer> ids=new ArrayList<>();
+		ids.add(16);
+		ids.add(22);
+		userQueryVo.setIds(ids);
 		
 		List<User> list = userMapper.findUserList(userQueryVo);
 		System.out.println(list);
@@ -140,8 +146,13 @@ private static SqlSessionFactory sqlSessionFactory;
 		
 		UserQueryVo userQueryVo=new UserQueryVo();
 		UserCustom userCustom=new UserCustom();
-		userCustom.setUsername("小明");
+//		userCustom.setUsername("小明");
+		userCustom.setSex("1");
 		userQueryVo.setUserCustom(userCustom);
+//		List<Integer> ids=new ArrayList<>();
+//		ids.add(16);
+//		ids.add(22);
+//		userQueryVo.setIds(ids);
 		
 		int i=userMapper.findUserCount(userQueryVo);
 		System.out.println(i);
