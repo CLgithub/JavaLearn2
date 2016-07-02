@@ -12,6 +12,7 @@ import day72_mybatis.demo.eneity.OrderCustom;
 import day72_mybatis.demo.eneity.Orders;
 import day72_mybatis.demo.eneity.User;
 import day72_mybatis.demo.mapper.OrdersMapper;
+import day72_mybatis.demo.mapper.UserMapper;
 
 /*
 	用户表user：
@@ -49,6 +50,15 @@ import day72_mybatis.demo.mapper.OrdersMapper;
 				<setting name="lazyLoadingEnabled" value="true"/>
 				<setting name="aggressiveLazyLoading" value="false"/>
 			</settings>
+			
+mybatis缓存
+	一级缓存是一个SqlSession级别，sqlsession只能访问自己的一级缓存的数据，
+	二级缓存是跨sqlSession，是mapper级别的缓存，对于mapper级别的缓存不同的sqlsession是可以共享的。（看图：一级缓存和二级缓存.png）
+	
+	一级缓存：
+		mybatis默认支持一级缓存不需要配置
+		注意：mybatis和spring整合后进行mapper代理开发，不支持一级缓存，因为mybatis和spring整合，spring按照mapper的模版生成mapper代理对象
+		模版中在最后统一关闭sqlsession
 
  */
 public class Doc2 {
@@ -133,6 +143,27 @@ public class Doc2 {
 		for(Orders orders:list){
 			System.out.println(orders);
 		}
+	}
+	
+	
+	//一级缓存测试
+	@Test
+	public void test7() throws Exception{
+		SqlSession sqlSession=sqlSessionFactory.openSession();
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		//第一次：查询id为1的用户
+		User user1 = mapper.findUserById(1);
+		System.out.println(user1);
+		//中间有commit操作	，会情况缓存，目的是为了避免脏数据
+		user1.setUsername("aa");
+		mapper.updateUser(user1);
+		sqlSession.commit();
+		
+		//第二次：查询id为1的用户
+		User user2 = mapper.findUserById(1);
+		System.out.println(user2);
+		
+		sqlSession.close();
 	}
 	
 
