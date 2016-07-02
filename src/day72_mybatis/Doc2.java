@@ -33,6 +33,22 @@ import day72_mybatis.demo.mapper.OrdersMapper;
 	订单明细orderdetail和商品信息items：
 		orderdetail-->items：一个订单明细对应一个商品信息 一（多）对一
 		items--> orderdetail：一个商品对应多个订单明细  一对多
+		
+		
+延时加载：
+	延时加载意义：
+		在进行数据查询时，为了提高数据库查询性能，尽量使用单表查询，因为单表查询比多表关联查询速度要快。
+		如果查询单表就可以满足需求，一开始先查询单表，当需要关联信息时，再关联查询，当需要关联信息再查询这个叫延迟加载。
+		mybatis中resultMap提供延迟加载功能，通过resultMap配置延迟加载
+		
+	配置延时加载：
+		在总配置中
+			打开延时加载开关：lazyLoadingEnabled
+			关闭立即加载开关：aggressiveLazyLoading
+			<settings>
+				<setting name="lazyLoadingEnabled" value="true"/>
+				<setting name="aggressiveLazyLoading" value="false"/>
+			</settings>
 
  */
 public class Doc2 {
@@ -65,7 +81,9 @@ public class Doc2 {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		OrdersMapper mapper = sqlSession.getMapper(OrdersMapper.class);
 		List<Orders> list= mapper.findOrderUserList2();
-		System.out.println(list);
+		for(Orders orders:list){
+			System.out.println(orders);
+		}
 	}
 	
 	//一对多查询	查询所有订单信息及订单下的订单明显信息
@@ -93,7 +111,30 @@ public class Doc2 {
 			System.out.println(orders);
 		}
 	}
-
+	
+	
+	//一对一延时加载
+	@Test
+	public void test5(){
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		OrdersMapper mapper = sqlSession.getMapper(OrdersMapper.class);
+		List<Orders> list= mapper.findOrderUserlazyLoading();
+		for(Orders orders:list){
+			System.out.println(orders);
+		}
+	}
+	
+	//一对多延时加载
+	@Test
+	public void test6(){
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		OrdersMapper mapper = sqlSession.getMapper(OrdersMapper.class);
+		List<Orders> list= mapper.findOrderOrderdetailListlazyLoading();
+		for(Orders orders:list){
+			System.out.println(orders);
+		}
+	}
+	
 
 
 

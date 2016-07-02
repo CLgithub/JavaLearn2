@@ -21,4 +21,10 @@ public interface OrdersMapper {
 	//一对多复杂查询	查询所有用户信息，关联查询订单及订单明细，订单明细信息中关联商品信息
 	public List<User> findUserOrderItems();
 	
+	//延时加载，一对一
+	public List<Orders> findOrderUserlazyLoading();
+	
+	//延时加载，一对多
+	public List<Orders> findOrderOrderdetailListlazyLoading();
+	
 }
