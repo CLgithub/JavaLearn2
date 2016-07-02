@@ -13,6 +13,17 @@ public class Orders {
 	// 关联user表
 	private User user;
 
+	//关联订单详情
+	private List<Orderdetail> orderdetails;
+
+	public List<Orderdetail> getOrderdetails() {
+		return orderdetails;
+	}
+
+	public void setOrderdetails(List<Orderdetail> orderdetails) {
+		this.orderdetails = orderdetails;
+	}
+
 	public User getUser() {
 		return user;
 	}
@@ -64,9 +75,9 @@ public class Orders {
 	@Override
 	public String toString() {
 		return "Orders [id=" + id + ", userId=" + userId + ", number=" + number + ", createtime=" + createtime
-				+ ", note=" + note + ", user=" + user + "]";
+				+ ", note=" + note + ", user=" + user + ", orderdetails=" + orderdetails + "]";
 	}
-	
+
 	
 
 }

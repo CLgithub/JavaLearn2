@@ -58,7 +58,7 @@ public class Doc2 {
 	}
 	
 	//一(多)对一查询	查询订单信息管理查询用户信息
-	//先使用restulType实现
+	//使用restulMap实现
 	@Test
 	public void test2(){
 		SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -66,5 +66,18 @@ public class Doc2 {
 		List<Orders> list= mapper.findOrderUserList2();
 		System.out.println(list);
 	}
+	
+	//一对多查询	查询所有订单信息及订单下的订单明显信息
+	//select orders.*,orderdetail.id orderdetail_id,orderdetail.items_id,orderdetail.items_num from orders left join orderdetail on orders.id=orderdetail.orders_id;
+	@Test
+	public void test3(){
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		OrdersMapper mapper = sqlSession.getMapper(OrdersMapper.class);
+		List<Orders> list= mapper.findOrderOrderdetailList();
+		for(Orders orders:list){
+			System.out.println(orders);
+		}
+	}
+	
 	
 }
