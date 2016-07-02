@@ -1,6 +1,7 @@
 package day72_mybatis.demo.eneity;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
 	private int id;
@@ -8,6 +9,16 @@ public class User {
 	private String sex;
 	private Date birthday;
 	private String address;
+
+	private List<Orders> orderss;
+
+	public List<Orders> getOrderss() {
+		return orderss;
+	}
+
+	public void setOrderss(List<Orders> orderss) {
+		this.orderss = orderss;
+	}
 
 	public int getId() {
 		return id;
@@ -52,7 +63,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", sex=" + sex + ", birthday=" + birthday + ", address="
-				+ address + "]";
+				+ address + ", orderss=" + orderss + "]";
 	}
 
 }

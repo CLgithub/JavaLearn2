@@ -46,5 +46,30 @@
 		select orders.*,orderdetail.id orderdetail_id,orderdetail.items_id,orderdetail.items_num 
 			from orders left join orderdetail on orders.id=orderdetail.orders_id;
 	</select>
+	
+	<!-- 查询所有用户信息，关联查询订单及订单明细，订单明细信息中关联商品信息 -->
+	<resultMap id="allmap" type="user">
+		<id column="id" property="id"/>
+		<result column="username" property="username"/>
+		<result column="sex" property="sex"/>
+		<result column="birthday" property="birthday"/>
+		<result column="address" property="address"/>
+		<collection property="orderss" ofType="orders">
+			<result column="number" property="number"/>
+			<result column="createtime" property="createtime"/>
+			<collection property="orderdetails" ofType="orderdetail">
+				<result column="items_num" property="itemsNum"/>
+				<result column="name" property="items.name"/>
+				<result column="price" property="items.price"/>
+				<result column="detail" property="items.detail"/>
+			</collection>
+		</collection>
+	</resultMap>
+	<select id="findUserOrderItems" resultMap="allmap">
+		select user.*,orders.number,orders.createtime,orderdetail.items_num,items.name,items.price,items.detail
+			from user left join orders on user.id=orders.user_id 
+				left join orderdetail on orders.id=orderdetail.orders_id 
+				left join items on orderdetail.items_id=items.id
+	</select>
 
 </mapper>

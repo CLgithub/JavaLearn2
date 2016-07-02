@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import day72_mybatis.demo.eneity.OrderCustom;
 import day72_mybatis.demo.eneity.Orders;
+import day72_mybatis.demo.eneity.User;
 import day72_mybatis.demo.mapper.OrdersMapper;
 
 /*
@@ -78,6 +79,24 @@ public class Doc2 {
 			System.out.println(orders);
 		}
 	}
+	
+	//一对多复杂查询	查询所有用户信息，关联查询订单及订单明细，订单明细信息中关联商品信息
+	//select user.*,orders.number,orders.createtime,orderdetail.items_num,items.name,items.price,items.detail
+	//	from user left join orders on user.id=orders.user_id left join orderdetail on orders.id=orderdetail.orders_id 
+	//left join items on orderdetail.items_id=items.id
+	@Test
+	public void test4(){
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		OrdersMapper mapper = sqlSession.getMapper(OrdersMapper.class);
+		List<User> list= mapper.findUserOrderItems();
+		for(User orders:list){
+			System.out.println(orders);
+		}
+	}
+
+
+
+
 	
 	
 }
