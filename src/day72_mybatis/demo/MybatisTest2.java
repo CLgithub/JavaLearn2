@@ -40,7 +40,7 @@ SqlSession
 
 */
 public class MybatisTest2 {
-private static SqlSessionFactory sqlSessionFactory;
+	private static SqlSessionFactory sqlSessionFactory;
 	
 	// 创建工厂
 	@Before
@@ -146,13 +146,13 @@ private static SqlSessionFactory sqlSessionFactory;
 		
 		UserQueryVo userQueryVo=new UserQueryVo();
 		UserCustom userCustom=new UserCustom();
-//		userCustom.setUsername("小明");
+		userCustom.setUsername("小明");
 		userCustom.setSex("1");
 		userQueryVo.setUserCustom(userCustom);
-//		List<Integer> ids=new ArrayList<>();
-//		ids.add(16);
-//		ids.add(22);
-//		userQueryVo.setIds(ids);
+		List<Integer> ids=new ArrayList<>();
+		ids.add(16);
+		ids.add(22);
+		userQueryVo.setIds(ids);
 		
 		int i=userMapper.findUserCount(userQueryVo);
 		System.out.println(i);

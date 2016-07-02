@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="day72_mybatis.demo.mapper.OrdersMapper">
+
+	<!-- 一(多)对一查询	查询订单信息关联查询用户信息 使用比较简单 -->
+	<!-- 先使用restulType实现 -->
+	<select id="findOrderUserList" resultType="orderCustom">
+		select orders.*,user.username,user.sex from orders left join user on orders.user_id=user.id
+	</select>
+	
+	<!-- 一(多)对一查询	查询订单信息关联查询用户信息 要做延时加载必须用这个-->
+	<resultMap  id="orderUser" type="orders">
+		<id column="id" property="id"/>
+		<result column="user_id" property="userId" />
+		<!-- 
+			<result column="username" property="user.username" />
+			<result column="sex" property="user.sex" />
+		-->
+		<!-- 用association关联信息映射 -->
+		<association property="user" javaType="user">
+			<id column="user_id" property="id"/>
+			<result column="username" property="username"/>
+			<result column="sex" property="sex"/>
+		</association>
+	</resultMap>
+	<!-- 
+		使用restulMap实现，将关联查询的信息映射到实体类order中，在order中创建一个user对象 
+	-->
+	<select id="findOrderUserList2" resultMap="orderUser">
+		select orders.*,user.username,user.sex from orders left join user on orders.user_id=user.id
+	</select>
+
+</mapper>

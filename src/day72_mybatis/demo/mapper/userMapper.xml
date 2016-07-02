@@ -71,7 +71,7 @@ mapper接口返回单个和集合类型
 			<if test="userCustom.sex!=null and userCustom.sex!=''">
 				and sex = #{userCustom.sex}
 			</if>
-			<if test="ids!=null and ids!=''">
+			<if test="ids!=null">
 				<!-- 还有其他 -->
 				<!-- 根据id集合查询 -->
 				<!-- 
@@ -82,8 +82,11 @@ mapper接口返回单个和集合类型
 					separator：没两次循环之间的间隔串
 				 -->
 				<!-- 最终拼接效果：select id,username,birthday,sex,address from user where username like '%小明%' and id in(16,22,25); -->
-				<foreach collection="ids" open=" and id in(" close=")" item="myId" separator=",">
+				<!-- <foreach collection="ids" open=" and id in(" close=")" item="myId" separator=",">
 					#{myId}
+				</foreach> -->
+				<foreach collection="ids" open=" and id in(" close=")" item="id" separator=",">
+					#{id}
 				</foreach>
 			</if>
 		</if>
