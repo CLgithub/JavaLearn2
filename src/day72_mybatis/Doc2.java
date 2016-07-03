@@ -82,6 +82,20 @@ mybatis缓存
 				<insert id="insertUser" parameterType="day72_mybatis.demo.eneity.User" flushCache="true" >
 				默认是true
 				
+mybatis和ehcache思路
+	通过mybatis和ehcache框架进行整合，就可以把缓存数据的管理托管给ehcache。
+
+	在mybatis中提供一个cache接口，只要实现cache接口就可以把缓存数据灵活的管理起来。
+		org.apache.ibatis.cache.Cache接口
+		mybatis默认实现类：org.apache.ibatis.cache.impl.PerpetualCache
+
+整合步骤：
+	1.导入jar包
+		ehcache-core-2.6.5.jar
+		mybatis-ehcache-1.0.2.jar
+	2.配置ehcache
+		ehcache.xml
+				
 
  */
 public class Doc2 {
