@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+	">
+	
+	<context:component-scan base-package="day72_mybatis.demo2_mybatisspring" />
+	
+	<!-- 配置c3p0连接池 	使用配置文件存储4个值-->
+	<!-- 配置文件分离 -->
+	<context:property-placeholder location="classpath:jdbc_day72.properties"/>
+	<bean id="dataSource_c3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClass}" />
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}" />
+		<property name="user" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	
+	<!-- 配置SqlSessionFactory -->
+	<bean id="sqlSessionFactory"  class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 数据源 -->
+		<property name="dataSource" ref="dataSource_c3p0" />
+		<!-- mybatis配置文件	configurationProperties -->
+		<property name="configurationProperties" value="classpath:day72_SqlMapConfig_spring.xml" />
+	</bean>
+	
+	<!-- 配置mapper 方法一 -->
+	<!-- <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		指定接口类型 mapperInterface
+		<property name="mapperInterface" value="day72_mybatis.demo2_mybatisspring.mapper.UserMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean> -->
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="day72_mybatis.demo2_mybatisspring.mapper" />
+	</bean>
+	
+</beans>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="day72_mybatis.demo2_mybatisspring.mapper.EntityTest1Mapper">
+
+	<!-- 添加用户 -->
+	<insert id="insertE" parameterType="day72_mybatis.demo2_mybatisspring.entity.EntityTest1" >
+		insert into entityTest1() values(null,#{name})
+	</insert>
+
+
+
+</mapper>
