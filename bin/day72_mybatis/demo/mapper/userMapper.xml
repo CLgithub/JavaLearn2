@@ -44,6 +44,10 @@ mapper接口返回单个和集合类型
 		
 -->
 <mapper namespace="day72_mybatis.demo.mapper.UserMapper">
+	<!-- 开启二级缓存 -->
+	<cache />
+
+
 	<!-- 定义resultMap -->
 	<!-- 
 		id:唯一标识这个resultMap
@@ -93,7 +97,8 @@ mapper接口返回单个和集合类型
 	</sql>
 	
 	<!-- 根据id查询用户信息 -->
-	<select id="findUserById" parameterType="int" resultType="day72_mybatis.demo.eneity.User">
+	<!-- useCache="false"	禁用二级缓存，默认是true -->
+	<select id="findUserById" parameterType="int" resultType="day72_mybatis.demo.eneity.User" useCache="true">
 		select * from user where id=#{id};
 	</select>
 	
@@ -137,7 +142,7 @@ mapper接口返回单个和集合类型
 	
 	
 	<!-- 添加用户 -->
-	<insert id="insertUser" parameterType="day72_mybatis.demo.eneity.User">
+	<insert id="insertUser" parameterType="day72_mybatis.demo.eneity.User" >
 		<selectKey keyProperty="id" order="AFTER" resultType="int" >
 			select LAST_INSERT_ID()
 		</selectKey>
@@ -151,7 +156,8 @@ mapper接口返回单个和集合类型
 	</delete>
 	
 	<!-- 修改用户 -->
-	<update id="updateUser" parameterType="day72_mybatis.demo.eneity.User" >
+	<!-- flushCache="true" 刷新缓存 -->
+	<update id="updateUser" parameterType="day72_mybatis.demo.eneity.User" flushCache="false" >
 		update user set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} where id=#{id}
 	</update>
 	

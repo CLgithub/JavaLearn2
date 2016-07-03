@@ -51,7 +51,12 @@ import day72_mybatis.demo.mapper.UserMapper;
 				<setting name="aggressiveLazyLoading" value="false"/>
 			</settings>
 			
+	
 mybatis缓存
+		mapper通过sqlsession去操作数据库，
+			一级缓存sqlSession级别，两次操作针对一个sqlSession，
+			二级缓存mapper级别，只要是同一个mapper，不同的sqlSession查询都可以缓存
+	
 	一级缓存是一个SqlSession级别，sqlsession只能访问自己的一级缓存的数据，
 	二级缓存是跨sqlSession，是mapper级别的缓存，对于mapper级别的缓存不同的sqlsession是可以共享的。（看图：一级缓存和二级缓存.png）
 	
@@ -59,6 +64,24 @@ mybatis缓存
 		mybatis默认支持一级缓存不需要配置
 		注意：mybatis和spring整合后进行mapper代理开发，不支持一级缓存，因为mybatis和spring整合，spring按照mapper的模版生成mapper代理对象
 		模版中在最后统一关闭sqlsession
+		
+	二级缓存：
+		范围是mapper级别，（mapper同一个命名空间），mapper以命名空间为单位创建缓存数据结构，结构是map<key,value>
+		配置二级缓存：
+			1.开启二级缓存总开关
+			2.在mapper映射文件上也配置开启
+			3.查询结果的实体类要序列化（原因：二级缓存可以将内存数据写到磁盘）
+			
+		每次查询，先看是否开启二级缓存，如果开启二级缓存，就查询二级缓存，如果没有取到，再从一级缓存中查询，如果没找到，就查询数据库
+		
+			禁用二级缓存
+				<select id="findUserById" parameterType="int" resultType="user" useCache="false">
+				默认是true，
+			刷新缓存
+				设置该方法commit的时候是否刷新缓存
+				<insert id="insertUser" parameterType="day72_mybatis.demo.eneity.User" flushCache="true" >
+				默认是true
+				
 
  */
 public class Doc2 {
@@ -155,9 +178,9 @@ public class Doc2 {
 		User user1 = mapper.findUserById(1);
 		System.out.println(user1);
 		//中间有commit操作	，会情况缓存，目的是为了避免脏数据
-		user1.setUsername("aa");
-		mapper.updateUser(user1);
-		sqlSession.commit();
+//		user1.setUsername("aa");
+//		mapper.updateUser(user1);
+//		sqlSession.commit();
 		
 		//第二次：查询id为1的用户
 		User user2 = mapper.findUserById(1);
@@ -166,7 +189,33 @@ public class Doc2 {
 		sqlSession.close();
 	}
 	
-
+	//二级缓存测试
+	@Test
+	public void test8() throws Exception{
+		SqlSession sqlSession1=sqlSessionFactory.openSession();
+		SqlSession sqlSession2=sqlSessionFactory.openSession();
+		SqlSession sqlSession3=sqlSessionFactory.openSession();
+//		System.out.println(sqlSession1==sqlSession2);	//false 两个不同的session
+		UserMapper mapper1 = sqlSession1.getMapper(UserMapper.class);
+		UserMapper mapper2 = sqlSession2.getMapper(UserMapper.class);
+		UserMapper mapper3 = sqlSession3.getMapper(UserMapper.class);
+//		System.out.println(mapper1==mapper2);	//false	两个不同的mapper对象
+		
+		User user1 = mapper1.findUserById(1);
+		System.out.println(user1);
+		sqlSession1.close();
+		
+		//提交commit的时候就会刷新缓存
+		user1.setUsername("aa");
+		mapper3.updateUser(user1);
+		sqlSession3.commit();
+		
+		
+		User user2 = mapper2.findUserById(1);
+		System.out.println(user2);
+		sqlSession2.close();
+	}
+	 
 
 
 	
