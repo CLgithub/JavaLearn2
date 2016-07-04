@@ -52,7 +52,7 @@
 		<!-- 扫描多个包 -->
 		<property name="basePackage" value="day72_mybatis.demo2_mybatisspring.mapper,day72_mybatis.demo.mapper" />
 		<!-- 使用sqlSessionFactoryBeanName配置sqlSessionFactory，避免和context:component-scan冲突，其实可以不配置这句 -->
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+		<!-- <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" /> -->
 	</bean>
 	
 </beans>

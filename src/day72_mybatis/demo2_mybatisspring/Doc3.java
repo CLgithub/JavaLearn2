@@ -19,7 +19,9 @@ import day72_mybatis.demo.eneity.User;
 import day72_mybatis.demo.mapper.OrdersMapper;
 import day72_mybatis.demo.mapper.UserMapper;
 import day72_mybatis.demo2_mybatisspring.entity.EntityTest1;
+import day72_mybatis.demo2_mybatisspring.entity.EntityTest2;
 import day72_mybatis.demo2_mybatisspring.mapper.EntityTest1Mapper;
+import day72_mybatis.demo2_mybatisspring.mapper.EntityTest2Mapper;
 
 
 /*
@@ -91,6 +93,15 @@ public class Doc3 {
 		UserMapper userMapper = (UserMapper) applicationContext.getBean("userMapper");
 		List<User> list = userMapper.findUserByName("小白");
 		System.out.println(list);
+	}
+	
+	//用spring管理mapper测试	逆向工程生成代码测试
+	@Test
+	public void test4_spirng() throws Exception{
+		EntityTest2Mapper entityTest2Mapper = (EntityTest2Mapper) applicationContext.getBean("entityTest2Mapper");
+//		System.out.println(entityTest2Mapper);
+		EntityTest2 entityTest2 = entityTest2Mapper.selectByPrimaryKey(3);
+		System.out.println(entityTest2);
 	}
 	
 	
