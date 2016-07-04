@@ -17,6 +17,7 @@ import day72_mybatis.demo.dao.UserDaoImpl2;
 import day72_mybatis.demo.eneity.Orders;
 import day72_mybatis.demo.eneity.User;
 import day72_mybatis.demo.mapper.OrdersMapper;
+import day72_mybatis.demo.mapper.UserMapper;
 import day72_mybatis.demo2_mybatisspring.entity.EntityTest1;
 import day72_mybatis.demo2_mybatisspring.mapper.EntityTest1Mapper;
 
@@ -57,10 +58,10 @@ public class Doc3 {
 		applicationContext = new ClassPathXmlApplicationContext("applicationContext_day72_mybatis.xml");
 		//加载配置文件 创建工厂
 				sqlSessionFactory = new SqlSessionFactoryBuilder()
-						.build(Doc3.class.getResourceAsStream("/day72_SqlMapConfig_spring.xml"));
+						.build(Doc3.class.getResourceAsStream("/day72_SqlMapConfig.xml"));
 	}
 	
-	
+	//原始dao测试，不使用spring
 	@Test
 	public void test1() throws Exception{
 		UserDao userDao=new UserDaoImpl(sqlSessionFactory);
@@ -68,17 +69,28 @@ public class Doc3 {
 		System.out.println(user);
 	}
 	
+	//原始dao测试，使用spring
 	@Test
-	public void testsqlSessionFactory(){
-		SqlSessionFactory sqlSessionFactory = (SqlSessionFactory) applicationContext.getBean("sqlSessionFactory");
-		System.out.println(sqlSessionFactory);
+	public void test1_spring() throws Exception{
+		UserDaoImpl2 userDao=(UserDaoImpl2) applicationContext.getBean("userDao");
+		User user = userDao.findUserById(10);
+		System.out.println(user);
 	}
 	
+	//用spring管理mapper测试
 	@Test
-	public void test2() throws Exception{
-		UserDaoImpl2 userDao=(UserDaoImpl2) applicationContext.getBean("userDao");
-//		User user = userDao.findUserById(10);
-		System.out.println(userDao.getSqlSession());
+	public void test2_spirng() throws Exception{
+		EntityTest1Mapper entityTest1Mapper = (EntityTest1Mapper) applicationContext.getBean("entityTest1Mapper");
+		EntityTest1 test1 = entityTest1Mapper.findById(1);
+		System.out.println(test1);
+	}
+	
+	//用spring管理mapper测试
+	@Test
+	public void test3_spirng() throws Exception{
+		UserMapper userMapper = (UserMapper) applicationContext.getBean("userMapper");
+		List<User> list = userMapper.findUserByName("小白");
+		System.out.println(list);
 	}
 	
 	

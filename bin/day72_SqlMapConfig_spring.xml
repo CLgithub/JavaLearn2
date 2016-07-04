@@ -2,34 +2,19 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<!-- <properties resource="jdbc_day72.properties" /> -->
 	
+	<!-- 如果mapper中不使用别名，这个文件可以省略 -->
 	<typeAliases>
+		<package name="day72_mybatis.demo2_mybatisspring.entity"/>
 		<package name="day72_mybatis.demo.eneity"/>
 	</typeAliases>
-	
-	<!-- 和spring整合后 environments配置将废除 -->
-	<!-- <environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC" />
-			<dataSource type="POOLED">
-				<property name="driver" value="${jdbc.driverClass}" />
-				jdbc:mysql://localhost:3306/mybatis1?useSSL=false&amp;characterEncoding=UTF-8
-				<property name="url" value="${jdbc.jdbcUrl}" />
-				<property name="username" value="${jdbc.user}" />
-				<property name="password" value="${jdbc.password}" />
-			</dataSource>
-		</environment>
-	</environments> -->
 
 	<!-- mappers（映射器） -->
 	<!-- 加载mapper.xml -->
-	<mappers>
+	<!-- <mappers>
 		<mapper resource="day72sqlmap/user.xml"/>
-		<!-- <package name="day72_mybatis.demo.mapper"/> -->
-	</mappers>
-	
-	
-	
+		<package name="day72_mybatis.demo2_mybatisspring.mapper"/>
+		<package name="day72_mybatis.demo.mapper"/>
+	</mappers> -->
 
 </configuration>

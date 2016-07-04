@@ -31,19 +31,28 @@
 	<bean id="sqlSessionFactory"  class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 数据源 -->
 		<property name="dataSource" ref="dataSource_c3p0" />
-		<!-- mybatis配置文件	configurationProperties -->
-		<property name="configurationProperties" value="classpath:day72_SqlMapConfig_spring.xml" />
+		<!-- mybatis配置文件	configurationProperties 其实如果不使用别名，可以不加载这个文件-->
+		<property name="configLocation" value="classpath:day72_SqlMapConfig_spring.xml" />
 	</bean>
 	
 	<!-- 配置mapper 方法一 -->
-	<!-- <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		指定接口类型 mapperInterface
-		<property name="mapperInterface" value="day72_mybatis.demo2_mybatisspring.mapper.UserMapper" />
+	<!-- <bean id="entityTest1Mapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		配置sqlSessionFactory
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		指定mapper接口类型 mapperInterface
+		<property name="mapperInterface" value="day72_mybatis.demo2_mybatisspring.mapper.EntityTest1Mapper" />
+	</bean>
+	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="day72_mybatis.demo.mapper.UserMapper" />
 	</bean> -->
 	
-	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="day72_mybatis.demo2_mybatisspring.mapper" />
-	</bean> -->
+	<!-- 配置mapper 方法二 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描多个包 -->
+		<property name="basePackage" value="day72_mybatis.demo2_mybatisspring.mapper,day72_mybatis.demo.mapper" />
+		<!-- 使用sqlSessionFactoryBeanName配置sqlSessionFactory，避免和context:component-scan冲突，其实可以不配置这句 -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
 	
 </beans>
