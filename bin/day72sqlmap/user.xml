@@ -16,7 +16,7 @@ mapper代理开发是
 		parameterType:输入参数的类型，通过#{}来接收parameterType输入的参数
 		resultType:输出结果类型，指定单条记录映射的pojo（实体类）(不管返回的是T还是List<T>,都用T)
 	-->
-	<select id="findUserById" parameterType="int" resultType="day72_mybatis.demo2_mybatisspring.entity.User">
+	<select id="findUserById" parameterType="int" resultType="day72_mybatis.demo.eneity.User">
 		select * from user where id=#{id};
 	</select>
 	
@@ -26,7 +26,7 @@ mapper代理开发是
 			开发时不需要考虑参数的类型，比如：传入字符串，mybatis最终拼接好的sql就是参数两边加单引号
 		${}	标识sql的拼接，通过${}接收参数，将参数的内容不加修饰的拼接在sql中,但是存在sql注入风险
 	 -->
-	<select id="findUserByName" parameterType="java.lang.String" resultType="day72_mybatis.demo2_mybatisspring.entity.User">
+	<select id="findUserByName" parameterType="java.lang.String" resultType="day72_mybatis.demo.eneity.User">
 		<!-- select * from user where username like #{username} -->
 		select * from user where username like '%${value}%'
 	</select>
@@ -49,14 +49,14 @@ mapper代理开发是
 		如果是使用uuid
 			思路：
 				先查询uuid得到主键，将主键设置到user对象中
-				<insert id="insertUser" parameterType="day72_mybatis.demo2_mybatisspring.entity.User">
+				<insert id="insertUser" parameterType="day72_mybatis.demo.eneity.User">
 					<selectKey keyProperty="id" order="BEFORE" resultType="string" >
 						select uuid()
 					</selectKey>
 					insert into user(username,birthday,sex,address) values(#{username},#{birthday},#{sex},#{address})
 				</insert>
 	 -->
-	<insert id="insertUser" parameterType="day72_mybatis.demo2_mybatisspring.entity.User">
+	<insert id="insertUser" parameterType="day72_mybatis.demo.eneity.User">
 		<selectKey keyProperty="id" order="AFTER" resultType="int" >
 			select LAST_INSERT_ID()
 		</selectKey>
@@ -73,7 +73,7 @@ mapper代理开发是
 		在执行insert之前执行select 序列.nextval() from dual取出序列最大值，将值设置到user对象的id属性中
 		
 	 -->
-	<!-- <insert id="insertUser" parameterType="day72_mybatis.demo2_mybatisspring.entity.User">
+	<!-- <insert id="insertUser" parameterType="day72_mybatis.demo.eneity.User">
 		<selectKey keyProperty="id" order="BEFORE" resultType="int" >
 			select 序列.nextval() from dual
 		</selectKey>
@@ -89,7 +89,7 @@ mapper代理开发是
 	<!-- 
 		要求传入的user必须有id属性
 	 -->
-	<update id="updateUser" parameterType="day72_mybatis.demo2_mybatisspring.entity.User" >
+	<update id="updateUser" parameterType="day72_mybatis.demo.eneity.User" >
 		update user set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} where id=#{id}
 	</update>
 	

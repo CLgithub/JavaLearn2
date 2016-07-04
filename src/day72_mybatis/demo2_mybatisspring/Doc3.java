@@ -1,10 +1,22 @@
 package day72_mybatis.demo2_mybatisspring;
 
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import day72_mybatis.demo.dao.UserDao;
+import day72_mybatis.demo.dao.UserDaoImpl;
+import day72_mybatis.demo.dao.UserDaoImpl2;
+import day72_mybatis.demo.eneity.Orders;
+import day72_mybatis.demo.eneity.User;
+import day72_mybatis.demo.mapper.OrdersMapper;
 import day72_mybatis.demo2_mybatisspring.entity.EntityTest1;
 import day72_mybatis.demo2_mybatisspring.mapper.EntityTest1Mapper;
 
@@ -38,17 +50,37 @@ mybatis和spring整合
 public class Doc3 {
 	
 	private static ApplicationContext applicationContext;
+	private static SqlSessionFactory sqlSessionFactory;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		applicationContext = new ClassPathXmlApplicationContext("applicationContext_day72_mybatis.xml");
+		//加载配置文件 创建工厂
+				sqlSessionFactory = new SqlSessionFactoryBuilder()
+						.build(Doc3.class.getResourceAsStream("/day72_SqlMapConfig_spring.xml"));
+	}
+	
+	
+	@Test
+	public void test1() throws Exception{
+		UserDao userDao=new UserDaoImpl(sqlSessionFactory);
+		User user = userDao.findUserById(10);
+		System.out.println(user);
 	}
 	
 	@Test
-	public void test1(){
-		EntityTest1Mapper entityTest1Mapper = (EntityTest1Mapper) applicationContext.getBean("entityTest1Mapper");
-		System.out.println(entityTest1Mapper);
-		entityTest1Mapper.insertE(new EntityTest1(2, "aa"));
+	public void testsqlSessionFactory(){
+		SqlSessionFactory sqlSessionFactory = (SqlSessionFactory) applicationContext.getBean("sqlSessionFactory");
+		System.out.println(sqlSessionFactory);
 	}
+	
+	@Test
+	public void test2() throws Exception{
+		UserDaoImpl2 userDao=(UserDaoImpl2) applicationContext.getBean("userDao");
+//		User user = userDao.findUserById(10);
+		System.out.println(userDao.getSqlSession());
+	}
+	
+	
 	
 }

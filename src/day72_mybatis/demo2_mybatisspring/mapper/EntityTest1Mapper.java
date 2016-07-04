@@ -9,4 +9,9 @@ public interface EntityTest1Mapper {
 	 * 增加
 	 */
 	public int insertE(EntityTest1 entityTest1);
+	
+	/**
+	 * 根据id查询
+	 */
+	public EntityTest1 findById(int id);
 }

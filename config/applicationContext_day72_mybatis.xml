@@ -15,7 +15,7 @@
 	http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
 	">
 	
-	<context:component-scan base-package="day72_mybatis.demo2_mybatisspring" />
+	<context:component-scan base-package="day72_mybatis.demo.dao" />
 	
 	<!-- 配置c3p0连接池 	使用配置文件存储4个值-->
 	<!-- 配置文件分离 -->
@@ -42,8 +42,8 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean> -->
 	
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="day72_mybatis.demo2_mybatisspring.mapper" />
-	</bean>
+	</bean> -->
 	
 </beans>

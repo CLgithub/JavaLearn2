@@ -59,9 +59,9 @@ public class MybatisTest2 {
 	
 	@Test
 	public void testFindByName() throws Exception{
-		UserDao userDao=new UserDaoImpl(sqlSessionFactory);
-		List<User> list = userDao.findListByName("小明");
-		System.out.println(list);
+//		UserDao userDao=new UserDaoImpl(sqlSessionFactory);
+//		List<User> list = userDao.findListByName("小明");
+//		System.out.println(list);
 	}
 	
 	@Test

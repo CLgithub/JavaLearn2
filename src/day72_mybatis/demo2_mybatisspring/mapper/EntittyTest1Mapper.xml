@@ -8,6 +8,10 @@
 	<insert id="insertE" parameterType="day72_mybatis.demo2_mybatisspring.entity.EntityTest1" >
 		insert into entityTest1() values(null,#{name})
 	</insert>
+	
+	<select id="findById" parameterType="int" resultType="day72_mybatis.demo2_mybatisspring.entity.EntityTest1">
+		select * from entityTest1 where id=#{id}
+	</select>
 
 
 
