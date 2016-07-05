@@ -45,8 +45,8 @@ public class Controller3 {
 //		request.setAttribute("itemsList", itemsList);
 		modelAndView.addObject("itemsList", itemsList);
 		
-		//转发到目标页面
-		modelAndView.setViewName("/page/day74_spingmvc/itemsList.jsp");
+		//转发到目标页面		逻辑视图名
+		modelAndView.setViewName("itemsList");
 		return modelAndView;
 	}
 

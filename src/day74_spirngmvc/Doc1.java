@@ -1,5 +1,12 @@
 package day74_spirngmvc;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.servlet.HandlerAdapter;
+import org.springframework.web.servlet.HandlerExecutionChain;
+
 /*
 springMVC是什么：
 	springmvc是spring的一个模块，提供web层解决方案（基于mvc设计架构）
@@ -47,7 +54,53 @@ spring执行流程
 			org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
 				RequestMappingHandlerAdapter不要求实现任何接口，但是要和RequestMappingHandlerMapping配对使用
 				配对使用主要是为了解析handler方法中的行参
+
+小结：
+	dispatcherServlet：前端控制器，相当于中央调度器，可以降低组件之间的耦合
+	HandlerMapping：处理器映射器，负责根据url查找handler
+	HandlerAdapter：处理器适配器，负责适配器规则执行handler，可以通过扩展适配器接口HandlerAdapter，让其支持不同的handler
+	viewResolver：视图解析器，根据逻辑视图名解析成真正的视图
+		真正视图地址=前缀+逻辑视图名+后缀
+		
+执行过程源码分析：
+	DispatcherServlet中，入口方法doDispatch
+	方法中对处理器映射器请求查找handler，放回HandlerExecutionChain
+	1.DispatcherServlet通过handlerMapping查找handler
+		HandlerExecutionChain mappedHandler = getHandler(processedRequest);
+			HandlerExecutionChain handler = hm.getHandler(request);
+	2.DispatcherServlet通过适配器去执行handler，得到modelandview
+		找到HandlerAdapter
+			HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
+		用HandlerAdapter去执行Handler得到ModelAndView
+			mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
+	3.视图解析
+		得到一个view
+	4.视图渲染
+		将模型数据填充到request域
+		view.render(mv.getModelInternal(), request, response);
+			protected void exposeModelAsRequestAttributes(Map<String, Object> model, HttpServletRequest request) throws Exception {
+				for (Map.Entry<String, Object> entry : model.entrySet()) {
+					String modelName = entry.getKey();
+					Object modelValue = entry.getValue();
+					if (modelValue != null) {
+						request.setAttribute(modelName, modelValue);
+						if (logger.isDebugEnabled()) {
+							logger.debug("Added model object '" + modelName + "' of type [" + modelValue.getClass().getName() +
+									"] to request in view with name '" + getBeanName() + "'");
+						}
+					}
+					else {
+						request.removeAttribute(modelName);
+						if (logger.isDebugEnabled()) {
+							logger.debug("Removed model object '" + modelName +
+									"' from request in view with name '" + getBeanName() + "'");
+						}
+					}
+				}
+			}
+		
 	
+
 */
 public class Doc1 {
 

@@ -68,9 +68,10 @@
 		在这个视图解析器中，要求将jstl的包加到classpath中
 	-->
 		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-			<!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-			<property name="prefix" value="/" />
-			<property name="suffix" value=".jsp"></property> -->
+			<!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
+			<!-- 配置前后缀 -->
+			<property name="prefix" value="/page/day74_spingmvc/" />
+			<property name="suffix" value=".jsp"></property>
 		</bean>
 		
 </beans>
