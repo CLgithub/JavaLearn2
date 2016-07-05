@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+	">
+	<!-- 这里需要配置执行流程中spirngMVC各个部件 -->
+	
+	<!-- 配置处理器映射器HandlerMapper -->
+		<!-- 早期用，根据请求url（xxx.action）匹配spirng容器中的bean的name，找到对应的bean（程序员编写的handler） 
+			所有的处理器映射器都实现了HandlerMapping接口
+			spingmvc框架根据是否是HandlerMapping接口判断是否是处理器映射器，所有不用加id
+		-->
+		<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+	
+	<!-- 配置处理器适配器HandlerAdapter -->
+		<!-- handler要根据适配器的要求来编写 ，所有的适配器都实现了HandlerAdapter接口（根据是否是这个接口判断是否是处理器适配器），
+			这接口下	有个boolean supports(Object handler)方法，通过这个方法可以知道handler必须要实现哪个接口
+		-->
+		<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+	
+	<!-- 配置后置处理器handler -->
+		<!-- 由于使用了BeanNameUrlHandlerMapping处理器映射器，name配置为url -->
+		<bean name="/controller1.action" class="day74_spirngmvc.demo1.controller.Controller1" />
+	
+	<!-- 配置视图解析器ViewResolver 
+		在这个视图解析器中，要求将jstl的包加到classpath中
+	-->
+		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+			<property name="prefix" value="/" />
+			<property name="suffix" value=".jsp"></property> -->
+		</bean>
+		
+</beans>

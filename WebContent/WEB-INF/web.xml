@@ -17,18 +17,42 @@
 		<param-value>BBB值</param-value>
 	</context-param>
 	
+	<!-- springMVC demo1  开始-->
+	<!-- 配置前端控制器 -->
+	<servlet>
+		<servlet-name>springMVC1</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 配置contextConfigLocation，上下文内容配置文件地址 -->
+		<!-- 如果过不配置，默认查找classpath下的："servlet名称"+"-servlet.xml"即：springMVC1-servelt.xml -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:springMVC1.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springMVC1</servlet-name>
+		<!-- 
+			可以配置/	此工程所有请求，都由这个springMVC解析，这种方式可以实现RESTful方式，需要特殊处理静态文件的解析不能由springMVC解析
+			还可以配置*.do或*.action			常用
+			不可以配置/*		如果这样，返回jsp时也由这个servlet类解析了
+		 -->
+		<url-pattern>*.action</url-pattern>
+	</servlet-mapping>
+	<!-- springMVC demo1  结束-->
+	
 	<!-- 通过全局初始化参数配置spring配置文件的位置 -->
-	<context-param>
-		<!-- 该值在org.springframework.web.context.ContextLoader中定义，用于设置spring配置文件的位置 -->
+	<!-- <context-param>
+		该值在org.springframework.web.context.ContextLoader中定义，用于设置spring配置文件的位置
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext_day38_3.xml</param-value>
-	</context-param>
+	</context-param> -->
 	
 	<!-- spring整合web工程 开始 -->
 	<!-- 注册applicationListener监听器,使用spring内提供的，以便在application对象创建时加载spring中的bean-->
-	<listener>
+	<!-- <listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+	</listener> -->
 	<!-- spring整合web工程 结束 -->
 	
 	<!-- struts2 demo1 开始 -->
