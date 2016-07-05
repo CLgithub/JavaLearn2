@@ -30,7 +30,24 @@ spring执行流程
 	view：				真正的视图页面需要有程序员编写
 	
 	
-
+注解映射器和适配器
+	文件：
+			/org/springframework/web/servlet/DispatcherServlet.properties
+		dispatcherServlet前端控制器会加载/DispatcherServlet.properties配置文件，从而默认加载各个组件
+			如果在上springmvc.xml配置了处理器映射器和适配器，那么以springmvc.xml为准
+	注解映射器：
+		在spring3.1之前，默认加载
+			org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping
+		在spring3.1之后
+			org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+	注解适配器
+		3.1之前
+			org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter
+		3.1之后
+			org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
+				RequestMappingHandlerAdapter不要求实现任何接口，但是要和RequestMappingHandlerMapping配对使用
+				配对使用主要是为了解析handler方法中的行参
+	
 */
 public class Doc1 {
 
