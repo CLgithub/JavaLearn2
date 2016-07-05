@@ -36,7 +36,7 @@ public class OrderCustom extends Orders {
 
 	@Override
 	public String toString() {
-		return super.toString()+",OrderCustom [username=" + username + ", sex=" + sex + ", address=" + address + "]";
+		return super.toString() + ",OrderCustom [username=" + username + ", sex=" + sex + ", address=" + address + "]";
 	}
-	
+
 }
