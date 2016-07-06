@@ -26,6 +26,30 @@ import day74_spirngmvc.demo2.entity.ItemsCustom;
 import day74_spirngmvc.demo2.entity.ItemsQueryVo;
 import day74_spirngmvc.demo2.service.ItemsService;
 
+/*
+此页面知识点总结：
+	使用@RequestMapping注解定义url路径，此注解还可以此方法的访问方法（get／post）
+	方法可以返回：
+		ModelAndView
+		String
+			可以直接返回逻辑视图名
+			return "redirect:toList.action";	//重定向
+			return "forward:toList.action";		//转发
+		void
+			和原始servlet开发类似，也可以用response返回json
+	方法参数绑定：
+		默认：request，response，session，model(用于将数据填充的request中的)
+		使用@RequestParam注解：用于绑定单个请求参数，常用于简单类型（integer，string，float。。。）参数绑定
+			不用这个注解，要求请求参数名称和方法形式参数名一致
+		对应简单类型的日期型：
+			需要使用
+				自定义属性编辑器（早期）
+				自定义类型转换器Converter
+		实体类，包装实体类
+	公共方法：
+		使用@ModelAttribute注解向model添加属性，在jsp各处就可以取出公共数据
+	
+*/
 @Controller
 @RequestMapping("/itemsController")	//定义url的根路径
 public class ItemsController {
