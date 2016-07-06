@@ -73,11 +73,11 @@ public class ItemsController {
 	}
 	
 	//修改商品信息
+	//方法返回字符串,redirect重定向，forward转发
 	@RequestMapping(value="/doEditOrAddItems")
-	public void doEditOrAddItems(Items items){
+	public String doEditOrAddItems(Items items){
 //		itemsService.doEditOrAddItems(items);
-//		this.toList();
-//		return "redirect:toList.action";
-//		return "forward:toList.action";
+//		return "redirect:toList.action";	//重定向
+		return "forward:toList.action";		//转发
 	}
 }
