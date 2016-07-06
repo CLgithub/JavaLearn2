@@ -10,34 +10,34 @@
 </head>
 <body>
 	<form action="${pageContext.request.contextPath }/itemsController/doEditOrAddItems.action" method="post">
-	<input type="hidden" name="id" value="${items.id}">
+	<input type="text" name="id" value="${itemsCustom.id}">
 	<table>
 		<tbody>
 			<tr>
 				<td>商品名称</td>
 				<td>
-					<input type="text" name="name" value="${items.name}">
+					<input type="text" name="name" value="${itemsCustom.name}">
 				</td>
 			</tr><tr>
 				<td>商品价格</td>
 				<td>
-					<input type="text" name="price" value="${items.price}">
+					<input type="text" name="price" value="${itemsCustom.price}">
 				</td>
 			</tr><tr>
 				<td>商品描述</td>
 				<td>
 					<%-- <input type="text" name="name" value="${items.detail}"> --%>
-					<textarea rows="3" cols="30" name="detail">${items.detail}</textarea>
+					<textarea rows="3" cols="30" name="detail">${itemsCustom.detail}</textarea>
 				</td>
 			</tr><tr>
 				<td>pic</td>
 				<td>
-					<input type="text" name="prc" value="${items.pic}">
+					<input type="text" name="prc" value="${itemsCustom.pic}">
 				</td>
 			</tr><tr>
 				<td>上架时间</td>
 				<td>
-					<input type="text" name="createtime" value="<fmt:formatDate value="${items.createtime}" pattern="yyyy-MM-dd HH-mm-ss"/>">
+					<input type="text" name="createtime" value="<fmt:formatDate value="${itemsCustom.createtime}" pattern="yyyy-MM-dd HH-mm-ss"/>">
 				</td>
 			</tr>
 			<tr>

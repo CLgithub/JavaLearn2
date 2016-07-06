@@ -13,7 +13,13 @@
 查询条件：
 <table width="100%" border=1>
 <tr>
-<td><input type="submit" value="查询"/></td>
+<td>
+	<select>
+		<c:forEach items="${itemsType}" var="item" >
+			<option value="${item.key}">${item.value}</option>
+		</c:forEach>
+	</select>
+<input type="submit" value="查询"/></td>
 </tr>
 </table>
 商品列表：
