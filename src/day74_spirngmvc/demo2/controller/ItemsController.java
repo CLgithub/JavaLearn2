@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import day74_spirngmvc.demo2.entity.Items;
@@ -60,8 +61,17 @@ public class ItemsController {
 	}
 
 	//方法返回void，可以用请求转发，数据存入request中，类似servlet开发
+	/*
+	 * @RequestParam 
+	 * 绑定单个请求参数,当不写这个注释时，  只有提交的参数名和方法形参名相同才能绑定.
+	 * 使用这个注解
+	 * value="id" 			指定绑定哪个提交参数
+	 * required=true		这个参数是必须要有
+	 * defaultValue="1"		默认1
+	 * 
+	 */
 	@RequestMapping(value="/toEditOrAddItemPage3",method={RequestMethod.GET,RequestMethod.POST})
-	public void toEditOrAddItemPage3(int id, HttpServletRequest request, HttpServletResponse response){
+	public void toEditOrAddItemPage3(@RequestParam(value="id",required=false,defaultValue="1")Integer id, HttpServletRequest request, HttpServletResponse response){
 		try {
 			Items items = itemsService.findbyId(id);
 			request.setAttribute("items", items);
