@@ -37,7 +37,7 @@ public class ItemsServiceImpl implements ItemsService{
 		if(null==id){
 			int i = itemsMapper.insert(items);
 		}else {
-			int i = itemsMapper.updateByPrimaryKey(items);
+			int i = itemsMapper.updateByPrimaryKeyWithBLOBs(items);
 		}
 	}
 

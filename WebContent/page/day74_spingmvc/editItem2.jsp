@@ -9,35 +9,35 @@
 <title>新增或修改商品</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath }/itemsController/doEditOrAddItems.action" method="post">
-	<input type="hidden" name="id" value="${items.id}">
+	<form action="${pageContext.request.contextPath }/itemsController/doEditOrAddItems2.action" method="post">
+	<input type="hidden" name="itemsCustom.id" value="${items.id}">
 	<table>
 		<tbody>
 			<tr>
 				<td>商品名称</td>
 				<td>
-					<input type="text" name="name" value="${items.name}">
+					<input type="text" name="itemsCustom.name" value="${items.name}">
 				</td>
 			</tr><tr>
 				<td>商品价格</td>
 				<td>
-					<input type="text" name="price" value="${items.price}">
+					<input type="text" name="itemsCustom.price" value="${items.price}">
 				</td>
 			</tr><tr>
 				<td>商品描述</td>
 				<td>
 					<%-- <input type="text" name="name" value="${items.detail}"> --%>
-					<textarea rows="3" cols="30" name="detail">${items.detail}</textarea>
+					<textarea rows="3" cols="30" name="itemsCustom.detail">${items.detail}</textarea>
 				</td>
 			</tr><tr>
 				<td>pic</td>
 				<td>
-					<input type="text" name="prc" value="${items.pic}">
+					<input type="text" name="itemsCustom.prc" value="${items.pic}">
 				</td>
 			</tr><tr>
 				<td>上架时间</td>
 				<td>
-					<input type="text" name="createtime" value="${items.createtime}">
+					<input type="text" name="itemsCustom.createtime" value="${items.createtime}">
 					<%-- <fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH-mm-ss"/> --%>
 				</td>
 			</tr>

@@ -41,6 +41,19 @@
 	</servlet-mapping> -->
 	<!-- springMVC demo1  结束-->
 	<!-- springMVC demo2  开始-->
+	<!-- post乱码处理 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	<!-- 配置sping配置文件地址 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -64,6 +77,7 @@
 		<servlet-name>springMVC2</servlet-name>
 		<url-pattern>*.action</url-pattern>
 	</servlet-mapping>
+	
 	<!-- springMVC demo2  结束-->
 	
 	<!-- 通过全局初始化参数配置spring配置文件的位置 -->

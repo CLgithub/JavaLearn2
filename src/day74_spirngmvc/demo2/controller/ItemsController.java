@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import day74_spirngmvc.demo2.entity.Items;
+import day74_spirngmvc.demo2.entity.ItemsCustom;
+import day74_spirngmvc.demo2.entity.ItemsQueryVo;
 import day74_spirngmvc.demo2.service.ItemsService;
 
 @Controller
@@ -84,10 +86,19 @@ public class ItemsController {
 	
 	//修改商品信息
 	//方法返回字符串,redirect重定向，forward转发
-	@RequestMapping(value="/doEditOrAddItems")
-	public String doEditOrAddItems(Items items){
-//		itemsService.doEditOrAddItems(items);
-//		return "redirect:toList.action";	//重定向
-		return "forward:toList.action";		//转发
+	@RequestMapping(value="/doEditOrAddItems",method={RequestMethod.POST})
+	public String doEditOrAddItems(ItemsCustom items/*简单实体类绑定*/,
+			ItemsQueryVo itemsQueryVo/*包装类型*/){
+		itemsService.doEditOrAddItems(items);
+		return "redirect:toList.action";	//重定向
+//		return "forward:toList.action";		//转发
+	}
+	
+	//修改商品信息2		包装类型绑定
+	@RequestMapping(value="/doEditOrAddItems2",method={RequestMethod.POST})
+	public String doEditOrAddItems2(ItemsQueryVo itemsQueryVo){
+		System.out.println(itemsQueryVo);
+//		itemsService.doEditOrAddItems(itemsQueryVo);
+		return "redirect:toList.action";	//重定向
 	}
 }
