@@ -2,20 +2,20 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://www.springframework.org/schema/beans" 
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:tx="http://www.springframework.org/schema/tx" 
-	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="
 	http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-4.2.xsd
-	http://www.springframework.org/schema/tx
-	http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
-	http://www.springframework.org/schema/aop
-	http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
 	">
 	<!-- 用扫描方式，配置后置处理器handler -->
 	<context:component-scan base-package="day74_spirngmvc.demo2.controller" />
+	
+	<!-- 通过这个，可以替代处理器映射器以及适配器的配置，但是其实不写也行，不知道为什么 -->
+	<!-- <mvc:annotation-driven conversion-service="conversionService" /> -->
 	
 	<!-- 配置处理器映射器HandlerMapper -->
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
@@ -23,7 +23,9 @@
 	<!-- 配置处理器适配器HandlerAdapter -->
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" >
 		<!-- 注入自定义属性编辑器,解决日期类型转换问题 -->
-		<property name="webBindingInitializer" ref="configurableWebBindingInitializer" />
+		<!-- <property name="webBindingInitializer" ref="configurableWebBindingInitializer1" /> -->
+		<!-- 注入自定义类型转换器,解决日期类型转换问题 -->
+		<property name="webBindingInitializer" ref="configurableWebBindingInitializer2" />
 	</bean>
 	
 	<!-- 配置视图解析器ViewResolver -->
@@ -34,14 +36,31 @@
 	</bean>
 	
 	
-	<!-- 自定义属性编辑器 -->
-	<bean id="myCustomPropertyEditor" class="day74_spirngmvc.demo2.common.MyCustomPropertyEditor" />
-	<bean id="configurableWebBindingInitializer" class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+	
+	
+	<!-- 注册自定义属性编辑器（早期使用） -->
+	<!-- <bean id="myCustomPropertyEditor" class="day74_spirngmvc.demo2.common.MyCustomPropertyEditor" />
+	<bean id="configurableWebBindingInitializer1" class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+		注入自定义属性编辑器
 		<property name="propertyEditorRegistrars">
 			<list>
 				<ref bean="myCustomPropertyEditor" />
 			</list>
 		</property>
+	</bean> -->
+	
+	<!-- 注册自定义类型转换器 -->
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<!-- 注入自定义类型转换器 -->
+				<bean class="day74_spirngmvc.demo2.common.MyCustomDateConverter" />
+			</list>
+		</property>
 	</bean>
-			
+	<bean id="configurableWebBindingInitializer2" class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+		<!-- 注入自定义类型转换器 -->
+		<property name="conversionService" ref="conversionService" />
+	</bean>
+
 </beans>
