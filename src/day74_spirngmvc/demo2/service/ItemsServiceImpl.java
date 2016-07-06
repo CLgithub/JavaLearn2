@@ -25,10 +25,20 @@ public class ItemsServiceImpl implements ItemsService{
 	@Override
 	public ItemsCustom findbyId(int id) throws Exception {
 		Items items = itemsMapper.selectByPrimaryKey(id);
-		//为例方便扩展
+		//为了方便扩展
 		ItemsCustom itemsCustom = new ItemsCustom();
 		BeanUtils.copyProperties(itemsCustom, items);
 		return itemsCustom;
+	}
+
+	@Override
+	public void doEditOrAddItems(Items items) {
+		Integer id = items.getId();
+		if(null==id){
+			int i = itemsMapper.insert(items);
+		}else {
+			int i = itemsMapper.updateByPrimaryKey(items);
+		}
 	}
 
 }
