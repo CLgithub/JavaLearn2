@@ -1,13 +1,18 @@
 package day74_spirngmvc.demo2.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -101,4 +106,12 @@ public class ItemsController {
 //		itemsService.doEditOrAddItems(itemsQueryVo);
 		return "redirect:toList.action";	//重定向
 	}
+	
+	//自定义属性编辑器	此方法只能在这个control中使用
+//	@InitBinder
+//	public void initBinder(WebDataBinder binder) throws Exception {
+//		//Date.class是实体类里的日期类型
+//		binder.registerCustomEditor(Date.class, 
+//				new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd HH-mm-ss"), true));	//是否允许为空
+//	}
 }

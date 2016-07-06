@@ -37,8 +37,7 @@
 			</tr><tr>
 				<td>上架时间</td>
 				<td>
-					<input type="text" name="createtime" value="${items.createtime}">
-					<%-- <fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH-mm-ss"/> --%>
+					<input type="text" name="createtime" value="<fmt:formatDate value="${items.createtime}" pattern="yyyy-MM-dd HH-mm-ss"/>">
 				</td>
 			</tr>
 			<tr>

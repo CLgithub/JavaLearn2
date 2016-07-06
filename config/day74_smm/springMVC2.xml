@@ -18,10 +18,13 @@
 	<context:component-scan base-package="day74_spirngmvc.demo2.controller" />
 	
 	<!-- 配置处理器映射器HandlerMapper -->
-	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" /> -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
 	
 	<!-- 配置处理器适配器HandlerAdapter -->
-	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" /> -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" >
+		<!-- 注入自定义属性编辑器,解决日期类型转换问题 -->
+		<property name="webBindingInitializer" ref="configurableWebBindingInitializer" />
+	</bean>
 	
 	<!-- 配置视图解析器ViewResolver -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -29,5 +32,16 @@
 		<property name="prefix" value="/page/day74_spingmvc/" />
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-		
+	
+	
+	<!-- 自定义属性编辑器 -->
+	<bean id="myCustomPropertyEditor" class="day74_spirngmvc.demo2.common.MyCustomPropertyEditor" />
+	<bean id="configurableWebBindingInitializer" class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+		<property name="propertyEditorRegistrars">
+			<list>
+				<ref bean="myCustomPropertyEditor" />
+			</list>
+		</property>
+	</bean>
+			
 </beans>
