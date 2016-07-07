@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>查询商品列表</title>
+<title>批量修改商品信息列表</title>
 </head>
 <body> 
 <form name="itemsForm" action="${pageContext.request.contextPath }/itemsController/queryItem.action" method="post">
@@ -19,45 +19,37 @@
 			<option value="${item.key}">${item.value}</option>
 		</c:forEach>
 	</select>
-<input type="submit" value="查询"/>
-<input type="button" value="批量删除" onclick="deleteItems()"/>
+<!-- <input type="submit" value="查询"/> -->
+<input type="button" value="提交批量修改" onclick="updateItems()"/>
 </td>
 </tr>
 </table>
 商品列表：
 <table width="100%" border=1>
 <tr>
-	<td>选择</td>
 	<td>商品名称</td>
 	<td>商品价格</td>
 	<td>生产日期</td>
 	<td>商品描述</td>
-	<td>操作</td>
 </tr>
-<c:forEach items="${itemsList }" var="item">
+<c:forEach items="${itemsList }" var="item" varStatus="s">
 	<tr>
-		<td><input type="checkbox" name="delete_id" value="${item.id}" ></td>
-		<td>${item.name }</td>
-		<td>${item.price }</td>
-		<td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH-mm-ss"/></td>
-		<td>${item.detail }</td>
-		<td><a href="${pageContext.request.contextPath }/itemsController/toEditOrAddItemPage.action?id=${item.id}">修改</a></td>
+		<td><input type="text" value="${item.name}" name="itemsCustoms[${s.index}].name"></td>
+		<td><input type="text" value="${item.price }" name="itemsCustoms[${s.index}].price"></td>
+		<td>
+			<input type="text" value="<fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH-mm-ss"/>" 
+				name="itemsCustoms[${s.index}].createtime">
+			</td>
+		<td><input type="text" value="${item.detail}" name="itemsCustoms[${s.index}].detail"></td>
 	</tr>
 </c:forEach>
 </table>
 </form>
 </body>
 <script type="text/javascript">
-	function deleteItems(){
-		/* var delete_ids=document.getElementsByName("delete_id");
-		for(var i=0;i<delete_ids.length;i++){
-			if(delete_ids[i].checked){
-				alert(delete_ids[i].value);
-			}
-		} */
-		
+	function updateItems(){
 		//设置itemsForm的action为删除商品的地址
-		document.itemsForm.action="${pageContext.request.contextPath }/itemsController/delteItems.action";
+		document.itemsForm.action="${pageContext.request.contextPath }/itemsController/doEditList.action";
 		//提交form
 		document.itemsForm.submit();
 	}

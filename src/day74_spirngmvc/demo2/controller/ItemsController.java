@@ -1,6 +1,7 @@
 package day74_spirngmvc.demo2.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +29,7 @@ import day74_spirngmvc.demo2.service.ItemsService;
 
 /*
 此页面知识点总结：
-	使用@RequestMapping注解定义url路径，此注解还可以此方法的访问方法（get／post）
+	使用@RequestMapping注解定义url路径，此注解还可以此方法的访问方法（get/post）
 	方法可以返回：
 		ModelAndView
 		String
@@ -46,6 +47,9 @@ import day74_spirngmvc.demo2.service.ItemsService;
 				自定义属性编辑器（早期）
 				自定义类型转换器Converter
 		实体类，包装实体类
+		绑定集合类型：
+			数组，list，map...
+		
 	公共方法：
 		使用@ModelAttribute注解向model添加属性，在jsp各处就可以取出公共数据
 	
@@ -68,13 +72,23 @@ public class ItemsController {
 		return itemsType;
 	}
 	
-	//到达商品列表也
+	//到达商品列表页
 	@RequestMapping("/toList")
 	public ModelAndView toList(){
 		List<Items> itemsList = itemsService.findAll();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("itemsList", itemsList);
 		modelAndView.setViewName("itemsList");
+		return modelAndView;
+	}
+	
+	//到达批量修改商品列表页
+	@RequestMapping("/toEditList")
+	public ModelAndView toEditList(){
+		List<Items> itemsList = itemsService.findAll();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("itemsList", itemsList);
+		modelAndView.setViewName("editList");
 		return modelAndView;
 	}
 	
@@ -158,4 +172,31 @@ public class ItemsController {
 //		binder.registerCustomEditor(Date.class, 
 //				new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd HH-mm-ss"), true));	//是否允许为空
 //	}
+	
+	//参数绑定集合类型
+	//批量删除
+	@RequestMapping("/delteItems")
+	public String delteItems(Integer[] delete_id){
+		System.out.println(Arrays.toString(delete_id));
+		//调用service里的方法批量删除商品
+		return "success";
+	}
+	
+	//批量修改商品，使用包装类型接收参数，绑定集合类型
+	@RequestMapping("doEditList")
+	public String doEditList(ItemsQueryVo itemsQueryVo){
+		System.out.println(itemsQueryVo);
+		
+		return "success";
+	}
+	
+	//如果是绑定map
+	/*
+	 * 页面上属性名		name="itemsMap['price']"
+	 * 
+	 * */
+	
+	
+	
+	
 }
