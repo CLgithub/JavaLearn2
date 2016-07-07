@@ -9,7 +9,8 @@
 <title>新增或修改商品</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath }/itemsController/doEditOrAddItems.action" method="post">
+	<form action="${pageContext.request.contextPath }/itemsController/doEditOrAddItems.action" 
+		method="post" enctype="multipart/form-data" >
 	<input type="text" name="id" value="${itemsCustom.id}">
 	<table>
 		<tbody>
@@ -30,17 +31,20 @@
 					<textarea rows="3" cols="30" name="detail">${itemsCustom.detail}</textarea>
 				</td>
 			</tr><tr>
-				<td>pic</td>
+				<td>商品图片</td>
 				<td>
-					<input type="text" name="prc" value="${itemsCustom.pic}">
+					<c:if test="${itemsCustom.pic!=null}">
+						<img width=100 height=100 src="${itemsCustom.pic}">
+						<br />
+					</c:if>
+					<input type="file" name="pictureFile" />
 				</td>
 			</tr><tr>
 				<td>上架时间</td>
 				<td>
 					<input type="text" name="createtime" value="<fmt:formatDate value="${itemsCustom.createtime}" pattern="yyyy-MM-dd HH-mm-ss"/>">
 				</td>
-			</tr>
-			<tr>
+			</tr><tr>
 				<td></td>
 				<td><input type="submit" value="保存" /></td>
 			</tr>

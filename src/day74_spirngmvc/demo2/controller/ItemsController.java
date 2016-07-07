@@ -1,25 +1,24 @@
 package day74_spirngmvc.demo2.controller;
 
-import java.text.SimpleDateFormat;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import day74_spirngmvc.demo2.entity.Items;
@@ -160,12 +159,33 @@ public class ItemsController {
 	//修改商品信息
 	//方法返回字符串,redirect重定向，forward转发
 	//回显方法二：@ModelAttribute将请求的实体类数据放到model中回显到页面,如果不加，那么name需要各处保存一致才行
+	//上传商品图片
+	//实际开发中使用专门的图片服务器（http）
+	//这里使用图片虚拟目录，通过虚拟目录，访问硬盘上存储的图片目录、
 	@RequestMapping(value="/doEditOrAddItems",method={RequestMethod.POST})
-	public String doEditOrAddItems(@ModelAttribute(value="itemsCustom") ItemsCustom itemsCustom/*,Model model*/){	
-		itemsService.doEditOrAddItems(itemsCustom);
-		
+	public String doEditOrAddItems(@ModelAttribute(value="itemsCustom") ItemsCustom itemsCustom/*,Model model*/
+			//上传图片	用MultipartFile接收
+			,MultipartFile pictureFile
+			) throws Exception{
 		//回显方法一：进行数据回显,提交保存或如果修改不成功，需要返回修改页面
 //		model.addAttribute("items", items);
+		
+		//图片上传
+		if(pictureFile!=null){
+			//图片上传成功后，要将图片的地址存储到数据库
+			String filePaht="E:/develop/upload/";
+			//获取图片原始名称
+			String originalFilename = pictureFile.getOriginalFilename();
+			String newFileNmae=UUID.randomUUID()+originalFilename.substring(originalFilename.lastIndexOf("."));
+			File file=new File(filePaht+newFileNmae);
+			//将内存中的文件写入磁盘
+			pictureFile.transferTo(file);
+			//保存图片地址写入数据库
+			itemsCustom.setPic("/pic/"+newFileNmae);
+			
+			
+		}
+		itemsService.doEditOrAddItems(itemsCustom);
 		
 //		return "editItem";
 		return "redirect:toList.action";	//重定向
@@ -211,6 +231,9 @@ public class ItemsController {
 	 * 页面上属性名		name="itemsMap['price']"
 	 * 
 	 * */
+	
+	
+	
 	
 	
 	

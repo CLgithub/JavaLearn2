@@ -36,8 +36,6 @@
 	</bean>
 	
 	
-	
-	
 	<!-- 注册自定义属性编辑器（早期使用） -->
 	<!-- <bean id="myCustomPropertyEditor" class="day74_spirngmvc.demo2.common.MyCustomPropertyEditor" />
 	<bean id="configurableWebBindingInitializer1" class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
@@ -61,6 +59,14 @@
 	<bean id="configurableWebBindingInitializer2" class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
 		<!-- 注入自定义类型转换器 -->
 		<property name="conversionService" ref="conversionService" />
+	</bean>
+	
+	<!-- 配置图片上传解析器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置上传文件的最大尺寸为5m -->
+		<property name="maxUploadSize">
+			<value>5242880</value>
+		</property>
 	</bean>
 
 </beans>
