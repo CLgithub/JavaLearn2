@@ -11,7 +11,10 @@ import day74_spirngmvc.demo2.entity.ItemsCustom;
 
 JSON数据交互
 		依赖jar包
+			jackson-annotations-2.6.0.jar
+			jackson-core-2.6.3.jar
 			jackson-core-lgpl-1.2.1.jar
+			jackson-databind-2.6.3.jar
 			jackson-mapper-lgpl-1.2.1.jar
 		请求json			响应json
 		请求key/value	响应json
