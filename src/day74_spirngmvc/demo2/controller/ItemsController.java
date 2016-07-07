@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,7 +52,12 @@ import day74_spirngmvc.demo2.service.ItemsService;
 		
 	公共方法：
 		使用@ModelAttribute注解向model添加属性，在jsp各处就可以取出公共数据
-	
+		
+		
+	springMVC上传图片：
+		配置图片上传解析器
+		使用MultipartFile接收图片
+		
 	
 springMVC和struts2的区别：
 	spingMVC
@@ -182,8 +188,6 @@ public class ItemsController {
 			pictureFile.transferTo(file);
 			//保存图片地址写入数据库
 			itemsCustom.setPic("/pic/"+newFileNmae);
-			
-			
 		}
 		itemsService.doEditOrAddItems(itemsCustom);
 		
@@ -231,7 +235,6 @@ public class ItemsController {
 	 * 页面上属性名		name="itemsMap['price']"
 	 * 
 	 * */
-	
 	
 	
 	

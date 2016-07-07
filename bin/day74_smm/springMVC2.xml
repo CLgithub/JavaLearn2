@@ -26,6 +26,14 @@
 		<!-- <property name="webBindingInitializer" ref="configurableWebBindingInitializer1" /> -->
 		<!-- 注入自定义类型转换器,解决日期类型转换问题 -->
 		<property name="webBindingInitializer" ref="configurableWebBindingInitializer2" />
+		<!-- 加入son数据的消息转换器
+			MappingJackson2HttpMessageConverter依赖jackson包
+		 -->
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+			</list>
+		</property>
 	</bean>
 	
 	<!-- 配置视图解析器ViewResolver -->
