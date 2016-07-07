@@ -53,6 +53,22 @@ import day74_spirngmvc.demo2.service.ItemsService;
 	公共方法：
 		使用@ModelAttribute注解向model添加属性，在jsp各处就可以取出公共数据
 	
+	
+springMVC和struts2的区别：
+	spingMVC
+		通过方法接收参数，在使用时可以以单例方式使用，建议使用单例
+		基于方法开发，一个请求的一个method和handler进行绑定
+		方法更贴近service（业务方法）
+	
+	struts2
+		是通过成员变量接收参数，在霍思燕时不能以单例方式使用
+		基于类开发
+		
+		经过测试，struts标签解析速度比较慢
+	
+	
+	
+	
 */
 @Controller
 @RequestMapping("/itemsController")	//定义url的根路径
