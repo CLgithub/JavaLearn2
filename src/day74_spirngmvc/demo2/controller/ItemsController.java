@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import day74_spirngmvc.demo2.entity.Items;
 import day74_spirngmvc.demo2.entity.ItemsCustom;
 import day74_spirngmvc.demo2.entity.ItemsQueryVo;
+import day74_spirngmvc.demo2.exception.CustomException;
 import day74_spirngmvc.demo2.service.ItemsService;
 
 /*
@@ -116,15 +117,12 @@ public class ItemsController {
 	//到达新增或修改商品页面
 	//method={RequestMethod.GET,RequestMethod.POST}限制只能使用get和post提交
 	@RequestMapping(value="/toEditOrAddItemPage",method={RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView toEditOrAddItemPage(int id){
+	public ModelAndView toEditOrAddItemPage(int id) throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
-		try {
-			ItemsCustom itemsCustom = itemsService.findbyId(id);
-			modelAndView.addObject("itemsCustom", itemsCustom);
-			modelAndView.setViewName("editItem");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		ItemsCustom itemsCustom = itemsService.findbyId(id);
+		//测试统一异常处理
+		modelAndView.addObject("itemsCustom", itemsCustom);
+		modelAndView.setViewName("editItem");
 		return modelAndView;
 	}
 	
@@ -179,7 +177,7 @@ public class ItemsController {
 		//图片上传
 		if(pictureFile!=null){
 			//图片上传成功后，要将图片的地址存储到数据库
-			String filePaht="E:/develop/upload/";
+			String filePaht="/Users/L/develop/";
 			//获取图片原始名称
 			String originalFilename = pictureFile.getOriginalFilename();
 			String newFileNmae=UUID.randomUUID()+originalFilename.substring(originalFilename.lastIndexOf("."));
