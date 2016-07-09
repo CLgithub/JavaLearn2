@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery对象与dom对象之间的区别与联系</title>
+<script type="text/javascript" src="../../js/jquery-1.4.2.js"></script>
+<script type="text/javascript">
+	//页面加载的时候执行的函数
+//	window.onload=function(){
+//	}
+	//页面加载的时候执行的函数
+//	$(document).ready(function(){
+//	})
+	//页面加载的时候执行的函数
+	$(function(){
+		//document.getElementById("dombutton")
+		$("#dombutton").click(function(){
+			//dom对象
+		//	var username=document.getElementById("username");
+			//dom对象可以调用dom里面的属性和方法
+		//	alert(username.value);
+			//jquery对象
+		//	var $username=$("#username");
+		//	alert($username.val());
+		
+			//dom对象要使用jquery里面的东西，可以将dom转换成jquery对象
+		//	var username=document.getElementById("username");
+		//	var $username=$(username);//将dom对象转换成jquery对象
+		//	alert($username.val());
+			
+			//jquery---->dom
+			var $username=$("#username");
+			alert($username.length);
+			
+			//转换方式一：
+		//	var username=$username[0];
+		//	alert(username.value);
+			//转换方式二
+		//	var username=$username.get(0);
+		//	alert(username.value);
+			
+			//结论：jquery对象是一个数组
+		})
+	})
+	
+	
+	$()		//方法调用
+	$(function(){})		//如果传一个方法，会调ready()
+	$(#)				//
+	
+	/* 
+	dom对象：是浏览器自带的对象，只能调用dom里面的属性和方法，dom对象值能调用dom里面的属性和方法，不能调用jquery对象的属性和方法
+	jquery对象：是通过jquery包装页面上的元素或者dom而产生的一个新的对象
+		jquery对象是jquery独有的，不能调用dom对象的属性和方法，jquery对象是一个数组
+		
+	jquery对象与dom对象是可以相互转换的，转换后就可以相互调用了
+	*/
+	
+	
+</script>
+</head>
+<body>
+	<input type="text" id="username">
+	<input type="button" id="dombutton" value="dom vs jquery 对象">
+</body>
+</html>

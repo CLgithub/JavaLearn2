@@ -9,6 +9,8 @@ java就业学习及零散<br>
 	mysql数据库
 	jdbc
 	事务
+	连接池
+	元数据
 	监听器listener
 	过滤器filter
 	ajax，注解，类加载器，范型反射，动态代理，servlet3...

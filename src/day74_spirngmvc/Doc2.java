@@ -49,6 +49,16 @@ spirngMVC知识点梳理回顾
 			controller，service，dao异常都往上抛，最后配置一个统一异常处理器处理
 		静态资源解析
 			如果配置了restful，会拦截所有/请求，需要配置静态资源解析
+	post乱码处理：
+		<!-- post乱码处理 -->
+		<filter>
+			<filter-name>CharacterEncodingFilter</filter-name>
+			<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+			<init-param>
+				<param-name>encoding</param-name>
+				<param-value>utf-8</param-value>
+			</init-param>
+		</filter>
 			
 	方法可以返回：
 		ModelAndView
