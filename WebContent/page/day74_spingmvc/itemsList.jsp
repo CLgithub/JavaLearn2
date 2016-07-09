@@ -10,7 +10,8 @@
 </head>
 <body> 
 <form name="itemsForm" action="${pageContext.request.contextPath }/itemsController/queryItem.action" method="post">
-查询条件：
+${loginName }	<a href="${pageContext.request.contextPath }/loginController/logout.action">退出</a>
+<br>查询条件：
 <table width="100%" border=1>
 <tr>
 <td>

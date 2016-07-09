@@ -19,6 +19,22 @@
 	
 	<!-- 配置处理器映射器HandlerMapper -->
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+
+	<!-- 配置全局拦截器，其实只是个快捷方式，springmvc自动将这里配置的拦截器添加到各个handlerMapping中 -->
+	<mvc:interceptors>
+		<!-- <mvc:interceptor>
+			/**可以拦截多层路径
+			<mvc:mapping path="/**"/>
+			<bean id="myInterceptor1" class="day74_spirngmvc.demo2.interceptor.MyInterceptor1" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean id="myInterceptor2" class="day74_spirngmvc.demo2.interceptor.MyInterceptor2" />
+		</mvc:interceptor> -->
+		<!-- <bean id="myInterceptor1" class="day74_spirngmvc.demo2.interceptor.MyInterceptor1" />
+		<bean id="myInterceptor2" class="day74_spirngmvc.demo2.interceptor.MyInterceptor2" /> -->
+		<bean id="urlInterceptor" class="day74_spirngmvc.demo2.interceptor.UrlInterceptor" />
+	</mvc:interceptors>	
 	
 	<!-- 配置处理器适配器HandlerAdapter -->
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" >

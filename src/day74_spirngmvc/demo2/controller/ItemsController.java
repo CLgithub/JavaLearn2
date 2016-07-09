@@ -237,6 +237,7 @@ public class ItemsController {
 	 * */
 	
 	
+	//对restful的支持
 	//根据商品id查看商品信息rest接口
 	//@PathVariable("id") 用于绑定url中的参数
 	//@RequestMapping("viewItems/{id}")	指定restful方式的url参数
