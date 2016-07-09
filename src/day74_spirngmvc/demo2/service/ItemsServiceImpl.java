@@ -27,7 +27,7 @@ public class ItemsServiceImpl implements ItemsService{
 	public ItemsCustom findbyId(int id) throws Exception {
 		Items items = itemsMapper.selectByPrimaryKey(id);
 		//测试自定义异常
-		int d=1/0;
+//		int d=1/0;
 		if(items==null){
 			throw new CustomException("修改商品信息不存在");
 		}

@@ -15,10 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -235,8 +237,15 @@ public class ItemsController {
 	 * */
 	
 	
-	
-	
+	//根据商品id查看商品信息rest接口
+	//@PathVariable("id") 用于绑定url中的参数
+	//@RequestMapping("viewItems/{id}")	指定restful方式的url参数
+	@RequestMapping("viewItems/{id}")
+	@ResponseBody
+	public ItemsCustom vieItems(@PathVariable("id") Integer id) throws Exception{
+		ItemsCustom itemsCustom = itemsService.findbyId(id);
+		return itemsCustom;
+	}
 	
 	
 }

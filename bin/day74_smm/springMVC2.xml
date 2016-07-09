@@ -79,5 +79,9 @@
 	
 	<!-- 配置统一异常处理器 -->
 	<bean class="day74_spirngmvc.demo2.exception.CustomExceptionResolver" />
+	
+	<!-- 如果配置了restful，会拦截所有/请求，需要配置静态资源解析 -->
+	<mvc:resources location="/js/" mapping="/js/**" />
+	<mvc:resources location="/page/" mapping="/page/**" />
 
 </beans>
