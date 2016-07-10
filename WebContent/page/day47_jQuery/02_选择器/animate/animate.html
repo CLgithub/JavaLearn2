@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="../../../../js/jquery-1.4.2.js" type="text/javascript"></script>
+<title>jquery特效</title>
+<script type="text/javascript">
+	jQuery().ready(function(){
+		$("#hidebutton").click(function(){
+			//隐藏	
+			//$("#message").hide(300);
+			//淡出
+			//$("#message").fadeOut(300);
+			//滑动
+			$("#message").slideUp(300);
+		});
+		$("#showbutton").click(function(){
+			//显示	
+			//$("#message").show(300);
+			//淡入
+			//$("#message").fadeIn(300);
+			$("#message").slideDown(300);
+		});
+		$("#animatebutton").click(function(){
+			//{"":""}	json格式在javascript里面是一个对象
+			//"opacity":"hide"	隐藏
+			//"padding":"30"	变大
+			$("#message").animate({"margin-left":"300","padding":"30"},500);
+		});
+		
+		
+	})
+</script>
+</head>
+<style type="text/css">
+	.message{
+		background: red;
+		border: 3px solid #abcdef;
+		height: 200px;
+		width:300px;
+	}
+</style>
+<body>
+	<input type="button" value="隐藏" id="hidebutton" >
+	<input type="button" value="显示" id="showbutton" >
+	<input type="button" value="执行动画" id="animatebutton" >
+	<div class="message" id="message"></div>
+</body>
+</html>
