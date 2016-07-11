@@ -70,6 +70,25 @@ jQuery只有一个对象（jQuery==$）一定要搞清楚jQuery 与dom 对象之
 3.文本节点(先找到元素节点然后调用text())
 
 节点的创建：元素节点，属性节点，文本节点
+
+##jquery 当中的事件
+window.onload=function(){
+	//页面加载完毕后执行
+}
+
+$(function(){
+	//页面加载完毕后执行
+});
+
+$().ready(function(){
+	//页面加载完毕后执行
+});
+
+区别window.onload与$(function(){});都是用来完成页面的初始化
+
+window.onload 需要等待页面所有元素都执行完毕后才执行，包含图片
+
+$(function(){});	页面上的所有的dom	元素绘制完毕之后就执行，不包含图片
 		
 		
 ##插件

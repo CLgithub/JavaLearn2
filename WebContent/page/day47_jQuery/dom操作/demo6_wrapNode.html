@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dom操作：包裹节点</title>
+<script type="text/javascript" src="../../../js/jquery-1.4.2.js"></script>
+<script type="text/javascript">
+/* 
+
+
+*/
+	
+	$(function(){
+		$("#button1").click(function(){
+		//	$("p").wrap("<font color='red'></font>");		//逐个包裹
+		
+		//	$("p").wrapAll("<font color='red'></font>");	//整体包裹
+			
+			$("p").wrapInner("<font color='red'></font>");	//内部包裹
+		});
+		
+		
+		$("#button2").click(function(){
+		
+		});
+	})
+</script>
+<style type="text/css">
+	.css1{
+		background: red;
+		width: 300px;
+	}
+	.css2{
+		font-size: 28px;
+	}
+	.css3{
+		background: greed;
+		width: 300px;
+		font-size: 38px;
+	}
+	
+</style>
+</head>
+<body>
+	<div>
+		<p>fdsfdsc测试测试测试测试测试测试1</p>
+		<p>fdsfdsc测试测试测试测试测试测试2</p>
+		<input type="button" id="button1" value="按钮一"><br>
+		<input type="button" id="button2" value="按钮二"><br>
+	</div>
+</body>
+</html>
