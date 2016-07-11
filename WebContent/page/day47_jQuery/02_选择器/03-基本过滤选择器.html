@@ -55,12 +55,12 @@
 			$(":header").css("background", "red");
 		});
 
-		//<input type="button" value="选择当前正在执行动画的所有元素." id="btn10"/>
 		function move() {
 			$("#mover").slideToggle("slow", move);
 		}
 		move();
 
+		//<input type="button" value="选择当前正在执行动画的所有元素." id="btn10"/>
 		$("#btn10").click(function() {
 			$(":animated").css("background", "red");
 			//$(":animated").stop();		//停止动画
