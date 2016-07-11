@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dom操作：使用jquery创建节点</title>
+<script type="text/javascript" src="../../../js/jquery-1.4.2.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#createNode").click(function(){
+			var div1=$("<div title='hh'>😄</div>");
+			$("body").append(div1);
+		})
+	})
+</script>
+</head>
+<body>
+	<input type="button" value="创建节点" id="createNode">
+</body>
+</html>

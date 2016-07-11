@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dom操作：使用jquery创建节点</title>
+<script type="text/javascript" src="../../../js/jquery-1.4.2.js"></script>
+<script type="text/javascript">
+	//juqery对象与$写在window上
+	window.$(function(){
+//		append(content) 		向a的内部末尾处插入b
+		//$("#a1").append($("#b1"))
+//		prepend(content):		向a的内部开始处插入b
+		//$("#a1").prepend($("#b1"))
+
+//		appendTo(content) :		将a插入到b的内部结尾处
+		//$("#a1").appendTo($("#b1"))
+//		prependTo(content) :	将a插入到b的内部开始处
+		//$("#a1").prependTo($("#b1"))
+
+//		外部插入节点
+//		after(content) :		向a之后插入b
+		//$("#a1").after($("#b1"));
+//		before(content):		向a之前插入b
+		//$("#a1").before($("#b1"));
+		
+//		insertAfter(content):		将a插入到b之后
+		//$("#a1").insertAfter($("#b1"));
+//		insertBefore(content) :		将a插入到b之前
+		//$("#a1").insertBefore($("#b1"));
+	})
+</script>
+</head>
+<body>
+	<div>
+		<ul id="aa">
+			<li id="a1">a1</li>
+			<li id="a2">a2</li>
+			<li id="a3">a3</li>
+			<li id="a4">a4</li>
+		</ul>
+		<ul id="bb">
+			<li id="b1">b1</li>
+			<li id="b2">b2</li>
+			<li id="b3">b3</li>
+			<li id="b4">b4</li>
+		</ul>
+	</div>
+</body>
+</html>
