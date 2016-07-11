@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dom操作：样式操作</title>
+<script type="text/javascript" src="../../../js/jquery-1.4.2.js"></script>
+<script type="text/javascript">
+/* 
+
+
+*/
+	
+	$(function(){
+		$("#button1").click(function(){
+			var node1=$("#aa").children().length;	//获取子节点children()
+			alert(node1);
+			
+			var node2=$("#a1").next().next().prev();		//next下一个节点,prev上一个节点
+			alert(node2.text());
+			
+			var node3=$("#a1").siblings("li")	//获取指定兄弟节点，无参代表所有兄弟节点
+			alert(node3.length);
+		});
+		$("#button2").click(function(){
+		
+		});
+	})
+</script>
+<style type="text/css">
+	.css1{
+		background: red;
+		width: 300px;
+	}
+	.css2{
+		font-size: 28px;
+	}
+	.css3{
+		background: greed;
+		width: 300px;
+		font-size: 38px;
+	}
+	
+</style>
+</head>
+<body>
+	<div>
+		<ul id="aa" style="width: 200px" title="adc">
+			<li id="a1">a1</li>
+			<li id="a2">a2</li>
+			<li id="a3">a3</li>
+			<div>1</div>
+			<li id="a4">a4</li>
+		</ul>
+		<ul id="bb">
+			<li id="b1">b1</li>
+			<li id="b2">b2</li>
+			<li id="b3">b3</li>
+			<li id="b4">b4</li>
+		</ul>
+		<input type="button" id="button1" value="按钮一"><br>
+		<input type="button" id="button2" value="按钮二"><br>
+	</div>
+</body>
+</html>
