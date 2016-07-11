@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>jQuery 当中的好搜特效...</title>
+
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="../../../js/jquery-1.4.2.js"></script>
+
+<script type="text/javascript">
+	/**
+	 * 1:页面的基本框架
+	 * 2：分析好事件
+	 * 3：事件对应的操作（获取到dom（选择器），操作dom（dom 操作api））
+	 * 4:调细节，调兼容..
+	 */
+	$(function() {
+		//光标定位..
+		$("#keywords").focus();
+		//失去焦点的事件...
+		$("#keywords").blur(function() {
+			$(".message_area").hide(1000);
+		})
+		//键盘敲下去离开的事件
+		$("#keywords").bind("keyup", function() {
+			var keywords = $(this).val();
+			if (keywords) {
+				//如果是真实的开发，需要把这个值获取到，然后发送一个ajax 请求到后台。 最终回来10调记录。json， 可能是xml
+				$(".message_area").show(1000);
+			} else {
+				$(".message_area").hide(1000);
+			}
+			$(".message_area>li").mouseover(function() {
+				$(".message_area>li").removeClass("haosouclass");
+				$(this).addClass("haosouclass");
+			})
+			$(".message_area>li").mouseout(function() {
+				$(this).removeClass("haosouclass");
+			})
+		})
+
+		//使用jQuery 监听键盘，因为键盘上面的每一个按键对应的都是一个数字...
+		$(window).keydown(
+			function(event) {
+			//	alert(event.keyCode);
+				switch (event.keyCode) {
+					case 40: {
+						//按向下的键做相应的业务逻辑处理...
+						if ($(".haosouclass").size() == 0) {//代表当前的10个li 里面没有一个是高亮，我应该吧第一个高亮...
+							$(".message_area>li:first-child").addClass( "haosouclass");
+						} else {
+							if ($(".haosouclass").next().size() == 0) {
+								$(".message_area>li:first-child").addClass( "haosouclass");
+								$(".message_area>li:last-child").removeClass( "haosouclass");
+							} else {
+								//把当前元素的class删除调用获取到下一个元素，为下一个元素追加一个样式...
+								$(".haosouclass").removeClass("haosouclass") .next().addClass("haosouclass");
+							}
+						}
+						//设置li 当前正在高亮的值到input 框...
+						$("#keywords").val($(".haosouclass").text());
+						break;
+					}
+				}
+			}
+		);
+
+	})
+</script>
+
+
+<style type="text/css">
+.haosouclass {
+	background: red;
+	cursor: pointer;
+}
+
+#keywords {
+	width: 500px;
+	font-size: 28px;
+}
+
+#searchbutton {
+	font-size: 28px;
+}
+
+.message_area {
+	width: 502px;
+	border: 1px solid #999999;
+	margin-left: -142px;
+	margin-top: -1px;
+	display: none;
+}
+
+.message_area li {
+	list-style: none;
+	padding: 5px;
+}
+</style>
+</head>
+
+<body>
+	<div align="center">
+		<input type="text" id="keywords"> <input type="button"
+			id="searchbutton" value="好搜一下">
+		<div class="message_area" align="left">
+			<li>郑州</li>
+			<li>许昌</li>
+			<li>洛阳</li>
+			<li>周口</li>
+			<li>新乡</li>
+			<li>南阳</li>
+			<li>日本</li>
+			<li>大阪</li>
+			<li>东京</li>
+			<li>米国</li>
+		</div>
+	</div>
+</body>
+</html>
