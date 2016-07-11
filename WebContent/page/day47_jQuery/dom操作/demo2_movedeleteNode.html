@@ -2,11 +2,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>dom操作：使用jquery创建节点</title>
+<title>dom操作：移动节点和删除节点</title>
 <script type="text/javascript" src="../../../js/jquery-1.4.2.js"></script>
 <script type="text/javascript">
 	//juqery对象与$写在window上
 	window.$(function(){
+		//移动节点
 //		append(content) 		向a的内部末尾处插入b
 		//$("#a1").append($("#b1"))
 //		prepend(content):		向a的内部开始处插入b
@@ -27,6 +28,18 @@
 		//$("#a1").insertAfter($("#b1"));
 //		insertBefore(content) :		将a插入到b之前
 		//$("#a1").insertBefore($("#b1"));
+		
+		//删除节点
+		$("#delete1").click(function(){
+			$("#aa").remove();	//remove()删除当前节点及其子元素
+//			$("#aa").empty();	//请求该元素的子元素
+		});
+
+		//克隆节点
+		$("#clone1").click(function(){
+			var ac=$("#aa").clone(true);	//加true，克隆元素及其事件，不加true之克隆元素
+			$("#bb").after(ac);
+		});
 	})
 </script>
 </head>
@@ -44,6 +57,8 @@
 			<li id="b3">b3</li>
 			<li id="b4">b4</li>
 		</ul>
+		<input type="button" id="delete1" value="删除节点aa"><br>
+		<input type="button" id="clone1" value="克隆节点aa">
 	</div>
 </body>
 </html>
