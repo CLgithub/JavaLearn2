@@ -82,3 +82,21 @@ jQuery常用Event-API
     dblclick：双击触发
     blur：焦点失去	
 
+#jQuery常用AJAX-API 
+目的：简化客户端与服务端进行局部刷新的异步通讯
+
+1）取得服务端当前时间
+
+	简单形式：jQuery对象.load(url)
+		返回结果自动添加到jQuery对象代表的标签中间
+		如果是Servlet的话，采用的是GET方式
+	复杂形式：jQuery对象.load(url,sendData,function(backData,textStatus,ajax){... ...})
+		sendData = {"user.name":"jack","user.pass":"123"}; 
+ 		以JSON格式文本方式发送，使用POST方式发送，服务端能收到数据
+注意：对于load方法而言，如果请求体无参数发送的话，load方法，将采用GET方式提交
+
+注意：对于load方法而言，如果请求体有参数发送的话，load方法，将采用POST方式提交
+
+注意：使用load方法时，自动进行编码，无需手工编码
+
+
