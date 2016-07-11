@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dom操作：样式操作</title>
+<script type="text/javascript" src="../../../js/jquery-1.4.2.js"></script>
+<script type="text/javascript">
+/* 
+
+
+*/
+	
+	$(function(){
+		$("#button1").click(function(){
+			//添加样式	方式一
+			$("#aa").addClass("css1");
+			//添加样式	方式二
+			//$("#aa").attr("class","css1");
+			//添加样式	方式三
+			//$("#aa").css("background", "green");
+		});
+		$("#button2").click(function(){
+			//删除样式	
+			$("#aa").removeClass("css1");		//无参数，删除全部class，加参数，删除指定的class
+		});
+		$("#button3").click(function(){
+			//判断当前某个元素是否具备某样式
+			var flag=$("#aa").hasClass("css1");
+			alert(flag);
+		});
+		$("#button4").click(function(){
+			//切换样式	判断指定样式是否存在，如果存在清除，如果不存在添加
+			$("#aa").toggleClass("css3");
+			
+			//切换,会先判断调用者是否是状态，如果是隐藏状态则显示，如果是显示状态则隐藏
+			//$("#aa").toggle("css3");
+		});
+	})
+</script>
+<style type="text/css">
+	.css1{
+		background: red;
+		width: 300px;
+	}
+	.css2{
+		font-size: 28px;
+	}
+	.css3{
+		background: greed;
+		width: 300px;
+		font-size: 38px;
+	}
+	
+</style>
+</head>
+<body>
+	<input type="button" value="添加样式" id="button1">
+	<input type="button" value="删除样式" id="button2">
+	<input type="button" value="判断是否具备某样式" id="button3">
+	<input type="button" value="切换样式" id="button4">
+	<div id="aa" class="css1 css2">
+		测试测试测试
+	</div>
+</body>
+</html>
