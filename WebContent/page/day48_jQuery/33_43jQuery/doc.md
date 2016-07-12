@@ -85,7 +85,7 @@ jQuery常用Event-API
 #jQuery常用AJAX-API 
 目的：简化客户端与服务端进行局部刷新的异步通讯
 
-1）取得服务端当前时间
+####1）取得服务端当前时间（jquer对象.load）
 
 	简单形式：jQuery对象.load(url)
 		返回结果自动添加到jQuery对象代表的标签中间
@@ -93,10 +93,26 @@ jQuery常用Event-API
 	复杂形式：jQuery对象.load(url,sendData,function(backData,textStatus,ajax){... ...})
 		sendData = {"user.name":"jack","user.pass":"123"}; 
  		以JSON格式文本方式发送，使用POST方式发送，服务端能收到数据
-注意：对于load方法而言，如果请求体无参数发送的话，load方法，将采用GET方式提交
+	注意：对于load方法而言，如果请求体无参数发送的话，load方法，将采用GET方式提交
+	注意：对于load方法而言，如果请求体有参数发送的话，load方法，将采用POST方式提交
+	注意：使用load方法时，自动进行编码，无需手工编码
+####2）检查主持用户名和密码是否存在（$get()和$post()）
 
-注意：对于load方法而言，如果请求体有参数发送的话，load方法，将采用POST方式提交
-
-注意：使用load方法时，自动进行编码，无需手工编码
-
-
+	$.get(url,sendData,funciton(backData,textStatus,ajax){...})//强行使用get
+	$.post(usl,sendData,funciton(backData,textStatus,ajax){...})//强行使用post
+	注意：使用get货post方法时，自动进行编码，无需手动编码
+####3)	jQuery对象.serialize()
+	作用：自动生成json格式的文本
+	注意：为每个jQuery对象设置一个name属性，因为name 属性会被认为请求参数名
+	注意：必须用<form>标签
+	适用：如果属性过多，强烈推荐使用这个api
+####4)$.ajax()
+	
+	$.ajax({
+		type: "post",	//以什么方式发送
+		url : url,		//url
+		data: sendData,	//发送的数据，json格式
+		success:function(backData,textStatus,xmlHttpRequest){//成功后调用的函数
+			
+		}
+	});	

@@ -14,7 +14,19 @@
 				"name":"aa汉字",
 				"password":123,
 			};
-			$("#time").load(url,sendDate);
+			
+			//$("#time").load(url);
+			//$("#time").load(url,sendDate);
+			$("#time").load(url,sendDate,function(backData,textStatus,xmlHttpRequest){
+				//回调函数参数一：backData返回的数据，他是js对象
+				//回调函数参数二：textStatus:返回状态的文本描述：例如：success,error
+				//回调函数参数三：xmlHttpRequest对象,ajax中核心对象
+				alert(backData);	//是一个对象
+			//	alert(textStatus);
+			//	alert(xmlHttpRequest);
+			//	alert(xmlHttpRequest.status);
+			//	alert(xmlHttpRequest.responseText);		//是一个字符串
+			});
 		})
 	});
 </script>
