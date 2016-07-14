@@ -35,7 +35,8 @@ sql分类：
 		主键(非空＋唯一)
 			作用：通常每张表都会有个主键的字段，用于标记每条数据的唯一性
 			修改id为主键
-				alter table demo4 change column id id int primary key;	--效果和非空＋唯一相同
+				alter table demo4 change column id id int primary key;	
+					--效果和非空＋唯一相同(还是有差别，mybatis逆向工程时非空＋唯一不能被识别成主键，navicat下也能 看出差别)
 			注意：
 				设计表的时候，不要选择表的包含业务含义的字段作为主键
 		自增长
