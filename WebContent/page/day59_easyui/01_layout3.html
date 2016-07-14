@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>布局</title>
+	<!-- 引入easyui css文件,不限顺序 -->
+	<link rel="stylesheet" href="../../easyui/themes/default/easyui.css" type="text/css" />
+	<link rel="stylesheet" href="../../easyui/themes/icon.css" type="text/css" />
+	<!-- 引入js文件，有顺序限制 -->
+	<script type="text/javascript" src="../../easyui/jquery.min.js" ></script>
+	<script type="text/javascript" src="../../easyui/jquery.easyui.min.js" ></script>
+	<!-- 所有的css文件和所有的js文件位置不限 -->
+</head>
+<body >
+	<!-- 布局 -->
+	<div id="layoutID" class="easyui-layout" data-options="fit:true" >
+		<!-- 北 top -->
+		<div data-options="region:'north', border:false " style="height:100px;" ></div>
+		<!-- 中 -->
+		<div data-options="region:'center', border:false " style="width:100px;">
+			<div class="easyui-layout" data-options="fit:true">
+				<!-- 西 导航 -->
+				<div data-options="region:'west' " style="width:160px;"></div>
+				<!-- 中 正文 -->
+				<div data-options="region:'center' " >
+					<div class="easyui-layout" data-options="fit:true">
+						<!-- 北  -->
+						<div data-options="region:'north', border:false " style="height:130px;"></div>
+						<!-- 中 正文 -->
+						<div data-options="region:'center' " >
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

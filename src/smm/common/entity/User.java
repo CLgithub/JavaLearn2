@@ -1,5 +1,7 @@
 package smm.common.entity;
 
+import java.util.Date;
+
 public class User {
     private Integer id;
 
@@ -8,6 +10,8 @@ public class User {
     private String password;
 
     private Integer status;
+
+    private Date brithday;
 
     public Integer getId() {
         return id;
@@ -38,13 +42,14 @@ public class User {
     }
 
     public void setStatus(Integer status) {
-		this.status = status;
-	}
+        this.status = status;
+    }
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", loginname=" + loginname + ", password=" + password + ", status=" + status + "]";
-	}
-    
-    
+    public Date getBrithday() {
+        return brithday;
+    }
+
+    public void setBrithday(Date brithday) {
+        this.brithday = brithday;
+    }
 }

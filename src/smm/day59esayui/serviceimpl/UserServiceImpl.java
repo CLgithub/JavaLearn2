@@ -8,12 +8,11 @@ import smm.common.servicebase.BaseServiceImpl;
 import smm.day59esayui.service.UserService;
 
 @Service("userService")
-public class UserServiceImpl extends BaseServiceImpl<User> implements UserService{
+public class UserServiceImpl extends BaseServiceImpl<User> implements UserService {
 
-	@Resource(name="userMapper")
+	@Resource(name = "userMapper")
 	public void setBaseMapper(BaseMapper<User> baseMapper) {
 		super.setBaseMapper(baseMapper);
 	}
-	
-	
+
 }

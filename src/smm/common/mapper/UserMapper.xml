@@ -6,9 +6,10 @@
     <result column="loginName" property="loginname" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="brithday" property="brithday" jdbcType="DATE" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, loginName, password, status
+    id, loginName, password, status, brithday
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,9 +23,9 @@
   </delete>
   <insert id="insert" parameterType="smm.common.entity.User" >
     insert into user (id, loginName, password, 
-      status)
+      status, brithday)
     values (#{id,jdbcType=INTEGER}, #{loginname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER})
+      #{status,jdbcType=INTEGER}, #{brithday,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="smm.common.entity.User" >
     insert into user
@@ -41,6 +42,9 @@
       <if test="status != null" >
         status,
       </if>
+      <if test="brithday != null" >
+        brithday,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -54,6 +58,9 @@
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="brithday != null" >
+        #{brithday,jdbcType=DATE},
       </if>
     </trim>
   </insert>
@@ -69,6 +76,9 @@
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
+      <if test="brithday != null" >
+        brithday = #{brithday,jdbcType=DATE},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -76,7 +86,8 @@
     update user
     set loginName = #{loginname,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER}
+      status = #{status,jdbcType=INTEGER},
+      brithday = #{brithday,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -15,7 +15,21 @@
 	<context:component-scan base-package="smm.*.controller" />
 	
 	<!-- 通过这个，可以替代处理器映射器以及适配器的配置，但是其实不写也行，不知道为什么 -->
-	<mvc:annotation-driven  />
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">  
+					<bean class="com.fasterxml.jackson.databind.ObjectMapper">  
+						<property name="dateFormat">  
+							<bean class="java.text.SimpleDateFormat">  
+								<constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />  
+							</bean>  
+						</property>  
+					</bean>  
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 
 	<!-- 配置全局拦截器，其实只是个快捷方式，springmvc自动将这里配置的拦截器添加到各个handlerMapping中 -->
 	<!-- <mvc:interceptors>
