@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>linkbutton</title>
+	<!-- 引入easyui css文件,不限顺序 -->
+	<link rel="stylesheet" href="../../easyui/themes/default/easyui.css" type="text/css" />
+	<link rel="stylesheet" href="../../easyui/themes/icon.css" type="text/css" />
+	<!-- 引入js文件，有顺序限制 -->
+	<script type="text/javascript" src="../../easyui/jquery.min.js" ></script>
+	<script type="text/javascript" src="../../easyui/jquery.easyui.min.js" ></script>
+	<!-- 所有的css文件和所有的js文件位置不限 -->
+</head>
+<body >
+	<!-- <input type="button" value="普通按钮"><br> -->
+	<a 
+		id="btn_add" 
+		href="#" 
+		class="easyui-linkbutton" 
+		data-options="iconCls:'icon-add',disabled:true,plain:true">新增部门</a><p>
+	<a 
+		id="btn_find" 
+		href="#" 
+		class="easyui-linkbutton" 
+		data-options="iconCls:'icon-search',toggle:true,group:'aa',plain:true">查询部门</a><p>
+	<a 
+		id="btn_update" 
+		href="#" 
+		class="easyui-linkbutton" 
+		data-options="iconCls:'icon-edit',toggle:true,group:'aa',plain:true ">修改部门</a><p>
+	<a 
+		id="btn_delete" 
+		href="#" 
+		class="easyui-linkbutton" 
+		data-options="iconCls:'icon-remove',toggle:true,group:'aa'">删除部门</a><p>
+	<a 
+		id="btn_button" 
+		href="#" 
+		class="easyui-linkbutton" 
+		data-options="iconCls:'icon-save',iconAlign:'right' ,plain:true">按钮</a><p>
+</body>
+<script type="text/javascript">
+	$(function(){
+		//定位上面的按钮，绑定其点击事件
+		$("a").click(function(){
+			alert($(this).text())
+		});
+	});
+</script>
+</html>

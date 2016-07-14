@@ -32,25 +32,38 @@
 				data-options="fit:true,border:false,animate:true,multiple:false,selected:0" 
 				>
 				<!-- 面板 -->
-				<div title="系统设置" data-options="iconCls:'icon-save'" >
+				<div title="系统设置" data-options="iconCls:'icon-save'" style="padding: 10px;">
 					上海
 				</div>
-				<div title="功能管理一" data-options="iconCls:'icon-reload'" >
-					北京
+				<div title="部门管理" data-options="iconCls:'icon-reload'" style="padding: 10px;">
+					<a id="btn_add" href="#" class="easyui-linkbutton" 
+						data-options="iconCls:'icon-add',plain:true">新增部门</a><p>
+					<a id="btn_find" href="#"class="easyui-linkbutton" 
+						data-options="iconCls:'icon-search',plain:true">查询部门</a><p>
+					<a id="btn_update" href="#" class="easyui-linkbutton" 
+						data-options="iconCls:'icon-edit',plain:true ">修改部门</a><p>
+					<a id="btn_delete" href="#" class="easyui-linkbutton" 
+						data-options="iconCls:'icon-remove',plain:true">删除部门</a><p>
 				</div>
-				<div title="功能管理二" data-options="iconCls:'icon-reload'">
+				<div title="功能管理二" data-options="iconCls:'icon-reload'" style="padding: 10px;">
 					深圳
 				</div>
 			</div>
 	    </div>  
 	    <!-- 中 -->
-	    <div data-options="region:'center',title:'center title', href:'/JavaLearn2/page/day59_easyui/img/mm.html'" style="padding:5px;background:#eee;"></div>
+	    <div data-options="region:'center',title:'center title', href:''" style="padding:5px;background:#eee;"></div>
 	</div>
 </body>
 <script type="text/javascript">
 	$(function(){
 		$("#layoutID").layout('collapse','south');
 		$("#layoutID").layout('collapse','east');
+		
+		//定位上面的按钮，绑定其点击事件
+		$("a").click(function(){
+			alert($(this).text())
+		});
 	});
+	
 </script>
 </html>
