@@ -51,7 +51,20 @@
 			</div>
 	    </div>  
 	    <!-- 中 -->
-	    <div data-options="region:'center',title:'center title', href:''" style="padding:5px;background:#eee;"></div>
+	    <div data-options="region:'center', href:''" style="padding:5px;background:#eee;">
+	    	<!-- 嵌入tabs选卡 -->
+	    	<div id="tabsID" 
+				class="easyui-tabs" 
+				style="width:500px;height:250px;"
+				data-options="plain:true,fit:true,border:false,
+				toolPosition:'right', tabPosition:'top', selected:0
+				">  
+				<!-- 选项卡 -->
+				<div title="首页" style="padding:20px;display:none;">  
+			        tab1
+			    </div>  
+			</div>
+	    </div>
 	</div>
 </body>
 <script type="text/javascript">
@@ -59,9 +72,24 @@
 		$("#layoutID").layout('collapse','south');
 		$("#layoutID").layout('collapse','east');
 		
-		//定位上面的按钮，绑定其点击事件
-		$("a").click(function(){
-			alert($(this).text())
+		//定位上面的导航条按钮，绑定其点击事件
+		$("#accordionID a").click(function(){
+			var titletext=$.trim($(this).text());
+			//先检测改选项卡是否已经打开
+			var flag=$("#tabsID").tabs('exists',titletext+'面板');
+			if(flag){	//已经打开，则选中打开页
+				$("#tabsID").tabs('select',titletext+'面板');
+			}else{	//否则就打开一个新的
+				//添加选项卡
+				$("#tabsID").tabs('add',{
+					id:titletext,
+					title:titletext+'面板',
+					iconCls:'icon-ok',
+					closable:true,
+					content:titletext+'内容',
+					href:'${pageContext.request.contextPath}/page/day59_easyui/img/mm.html'
+				});
+			}
 		});
 	});
 	
