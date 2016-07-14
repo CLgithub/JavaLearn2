@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>分类accordion</title>
+	<!-- 引入easyui css文件,不限顺序 -->
+	<link rel="stylesheet" href="../../easyui/themes/default/easyui.css" type="text/css" />
+	<link rel="stylesheet" href="../../easyui/themes/icon.css" type="text/css" />
+	<!-- 引入js文件，有顺序限制 -->
+	<script type="text/javascript" src="../../easyui/jquery.min.js" ></script>
+	<script type="text/javascript" src="../../easyui/jquery.easyui.min.js" ></script>
+	<!-- 所有的css文件和所有的js文件位置不限 -->
+</head>
+<body >
+	<!-- 容器 -->
+	<div id="accordionID" 
+		class="easyui-accordion" 
+		data-options="fit:false,border:true,animate:true,multiple:false,selected:0" 
+		style="width: 300px; 
+		height: 200px;">
+		<!-- 面板 -->
+		<div title="Title1" data-options="iconCls:'icon-save'" style="overflow: auto; padding: 10px;">
+			上海
+		</div>
+		<div title="Title2" data-options="iconCls:'icon-reload',selected:true" style="padding: 10px;">
+			北京
+		</div>
+		<div title="Title3" data-options="collapsible:true">
+			深圳
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(function(){
+		/* 加载完成后500ms后添加一个面板 */
+		window.setTimeout(function(){
+			$("#accordionID").accordion(
+				'add',{
+					title: 'Title3',
+					content: '新内容',
+					selected: true
+				}
+			)
+		}, 300);
+		//删除指定面板
+		window.setTimeout(function(){
+			$("#accordionID").accordion(
+				'remove','Title3'
+			)
+		}, 800);
+	});
+</script>
+</html>
