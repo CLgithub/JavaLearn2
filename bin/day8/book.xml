@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xxxx:书架 
-	xmlns:xxxx="http://www.xxx.cn"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xxxx="http://www.xxx.cn"
 	xsi:schemaLocation="http://www.xxx.cn book.xsd"
 	>
 	<!-- 
