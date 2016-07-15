@@ -37,7 +37,7 @@ public class Demo4 {
 		Element nameE = contactE.addElement("name");
 
 		//添加属性
-		contactE.addAttribute("id", "001");
+		contactE.addAttribute("id", "002");
 		contactE.addAttribute("name", "小明");
 		
 		//二，修改document对象内容
@@ -68,7 +68,7 @@ public class Demo4 {
 		
 		//修改文本：1得到标签，修改文本
 		Element nameE = document.getRootElement().element("contact").element("name");
-		nameE.setText("小明");
+		nameE.setText("小明1");
 		
 		//三、把修改后的document写到指定文件中
 		FileOutputStream fos=new FileOutputStream("/Users/L/javaProjectE/javaLearn2/src/day7/Demo4xml2.xml");

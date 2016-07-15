@@ -2,7 +2,7 @@
 
 <contactList> 
   <contact id="002"> 
-    <name>小明</name>  
+    <name>小明1</name>  
     <age>20</age>  
     <phone>134222223333</phone>  
     <email>zhangsan@qq.com</email>  
