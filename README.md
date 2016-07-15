@@ -22,4 +22,4 @@ java就业学习及零散<br>
 	
 
 ###WiKi
-<a hrer='https://github.com/CLgithub/JavaLearn2/wiki'>知识点梳理与复习</a>
+<a herf='https://github.com/CLgithub/JavaLearn2/wiki'>知识点梳理与复习</a>
