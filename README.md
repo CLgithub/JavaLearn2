@@ -21,5 +21,5 @@ java就业学习及零散<br>
 		springMVC			
 	
 
-###WiKi
-<a herf='https://github.com/CLgithub/JavaLearn2/wiki'>知识点梳理与复习</a>
+#WiKi
+[知识点梳理与复习](https://github.com/CLgithub/JavaLearn2/wiki)
