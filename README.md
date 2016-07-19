@@ -23,4 +23,4 @@ java就业学习及零散<br>
 
 #WiKi
 [知识点梳理与复习](https://github.com/CLgithub/JavaLearn2/wiki)<br>
-[day1~day10](https://github.com/CLgithub/JavaLearn2.wiki.git)
+[day1~day10](https://github.com/CLgithub/JavaLearn2/wiki/day1~day10)
