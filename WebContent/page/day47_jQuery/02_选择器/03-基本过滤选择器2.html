@@ -11,44 +11,50 @@
 	$(document).ready(function() {
 		//<input type="button" value="选择第一个div元素." id="btn1"/>
 		$("#btn1").click(function() {
-			$("div:first").css('background','blue');
+			$('div:first').css("background", "red");
 		});
 
 		//<input type="button" value="选择最后一个div元素." id="btn2"/>
 		$("#btn2").click(function() {
-			$("div:last").css('background','blue');
+			$('div:last').css("background", "red");
 		});
 
 		//<input type="button" value="选择class不为one的 所有div元素." id="btn3"/>
 		$("#btn3").click(function() {
-			$("div:not('.one')").css("background","blue");
-		//	$("div:.one").css('background','blue');	//div中class为one的
+	//		$("div:.one").css('background','blue');	//div中class为one的
+	//		$("div[class=one]").css('background','red');
+			$('div:not(.one)').css('background','blue');
 		});
 
 		//<input type="button" value="选择索引值为偶数 的div元素." id="btn4"/>
 		$("#btn4").click(function() {
-			
+			$('div:even').css('background','blue');
 		});
 
 		//<input type="button" value="选择索引值为奇数 的div元素." id="btn5"/>
 		$("#btn5").click(function() {
+			$('div:odd').css('background','blue');
 		});
 
 		//<input type="button" value="选择索引值等于3的元素." id="btn6"/>
 		$("#btn6").click(function() {
+			$('div:eq(3)').css('background','blue');
 		});
 
 		//<input type="button" value="选择索引值大于3的元素." id="btn7"/>
 		$("#btn7").click(function() {
+			$('div:gt(3)').css('background','blue');
 		});
 
 		//<input type="button" value="选择索引值小于3的元素." id="btn8"/>
 		$("#btn8").click(function() {
+			$('div:lt(3)').css('background','blue');
 		});
 
 		//<input type="button" value="选择所有的标题元素." id="btn9"/>
 		$("#btn9").click(function() {
 			//标题元素	<h1> <h2>
+			$(":header").css('background','blue');
 		});
 
 		function move() {
