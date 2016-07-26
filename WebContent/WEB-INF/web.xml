@@ -453,7 +453,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>Servlet3</servlet-name>
-		<servlet-class>day9_http.Deom1</servlet-class>
+		<servlet-class>day9_http.Demo1</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Servlet3</servlet-name>

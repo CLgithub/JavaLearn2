@@ -91,11 +91,11 @@
 		HttpServletRequest（request）		请求对象
 		HttpServletResponse（response）		相应对象
 		
-		PageConfig（pageContext）			jsp上下文对象
+		PageContext（pageContext）			jsp上下文对象
 		Object（page）						相当于jsp的this，翻译过来的java源文件这个类
 		
 		jspWriter（out）						向浏览器输出信息用
-		Throwable(exception)				异常对象（需要在page指令中设置后才能用）
+		Throwable(exception)				异常对象（需要在jsp的page指令中设置后才能用）
 		
 	特殊的：PageContext，jsp上下文对象，
 		（1）可以得到其他八个对象
@@ -118,6 +118,8 @@
 				1.2 定制域获取
 					${requestScope.name}
 					域范围：pageScope,requestScope,sessionScope,applicationScope
+					获取请求参数
+						${param.name}					
 			(2)输出对象的属性值
 			(3)输出集合对象：
 				List和Map

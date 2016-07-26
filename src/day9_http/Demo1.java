@@ -120,7 +120,7 @@ public class Demo1 extends HttpServlet{
 		//3.从request对象取出请求数据。
 		
 		//3.1请求行 （GET /day09/hello HTTP/1.1）
-//		t1(req);
+		t1(req);
 		
 		//3.2请求头
 //		t2(req);
