@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery对象与dom对象之间的区别与联系</title>
+<script type="text/javascript" src="../../js/jquery-1.4.2.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#dombutton').click(function(){
+			var $userName=$('#userna1me');
+		//	alert($userName.val());
+			//转换方式一：
+		//	var userName=$userName[0];
+		//	alert(userName.value);
+			//转换方式二
+		//	var userName=$userName.get(0);
+		//	alert(userName.value);
+				
+			alert($userName.get(0));	//如果没有找到对应的jquery对象，那么$对象的长度就是0，得到其第一个元素这是undefined
+		});
+	});
+</script>
+</head>
+<body>
+	<input type="text" id="username">
+	<input type="button" id="dombutton" value="dom vs jquery 对象">
+</body>
+</html>
