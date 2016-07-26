@@ -13,12 +13,14 @@
 				dom.checked=c;
 			});
 		});
+		
 		$('#fC').click(function(){
 			var items=$('input[name=item]');
 			items.each(function(index,dom){
 				dom.checked=dom.checked?false:true;
 			});
 		});
+		
 		$('input[type=button]').click(function(){
 			var checks=$('input:checkbox[name=item][checked=true]');
 			var sum=0;
@@ -27,7 +29,18 @@
 			});
 			$('#sumid').text(sum);
 		});
+		
+		//得到所有多选框
+		$('#getA').click(function(){
+			alert($('input:checkbox[name=item]').size());
+		});
+		//得到选中的多选框
+		$('#getSed').click(function(){
+		//	alert($('input:checkbox[checked=true]').size());
+			alert($('input:checked').size());
+		});
 	});
+	
 </script>
 </head>
 <body>
@@ -40,6 +53,8 @@
     <input type="checkbox" name="item" value="3000"  />笔记本电脑3000元<br />
     <input type="checkbox" name="all"  id="allC" /> 全选
     <a href="#" id="fC" >反选</a><br />
-    <input type="button" value="总金额：" /><span id="sumid"></span>
+    <input type="button" value="总金额：" /><span id="sumid"></span> <br/>
+    <input type="button" value="得到所有多选框" id="getA" /><br />
+    <input type="button" value="得到选中的多选框" id="getSed" />
 </body>
 </html>

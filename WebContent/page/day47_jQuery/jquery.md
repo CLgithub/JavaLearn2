@@ -75,6 +75,23 @@
 	子元素过滤，‘ :’	过滤第x个子元素nth-child(x)	第一个first-child	最后一个last-child	唯一的子元素only-child
 
 ####8.表单对象属性过滤选择器
+	* 多选框checkbox
+		得到所有多选框
+			$('input:checkbox')
+		得到选中的多选框
+			$('input:checked')
+			$('input:checkbox[checked=true]')
+	* 单选框radio
+		得到所有单选框
+			$('input:radio')
+		得到选中的单选框
+			$('input:checked')
+			$('input:radio[checked=true]')
+	* 下拉框select
+		得到下拉框所有选项
+			$('select>option')
+		得到下拉框选中的选项
+			$('select>option:selected')
 ####9.表单选择器
 
 ###主要分为４类：
