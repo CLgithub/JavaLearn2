@@ -72,6 +72,7 @@
 	有某内容的某元素contains	有某子元素的某元素has	内容为空的某元素empty	内容不为空的某元素parent
 
 ####7.子元素过滤选择器
+	子元素过滤，‘ :’	过滤第x个子元素nth-child(x)	第一个first-child	最后一个last-child	唯一的子元素only-child
 
 ####8.表单对象属性过滤选择器
 ####9.表单选择器
