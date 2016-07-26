@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Insert title here</title>
+<script src="../../js/jquery-1.4.2.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#allC').click(function(){
+			var items=$('input[name=item]');
+			var c=this.checked;
+			items.each(function(index,dom){
+				dom.checked=c;
+			});
+		});
+		$('#fC').click(function(){
+			var items=$('input[name=item]');
+			items.each(function(index,dom){
+				dom.checked=dom.checked?false:true;
+			});
+		});
+		$('input[type=button]').click(function(){
+			var checks=$('input:checkbox[name=item][checked=true]');
+			var sum=0;
+			checks.each(function(index,dom){
+				sum+=parseInt($(dom).val());
+			});
+			$('#sumid').text(sum);
+		});
+	});
+</script>
+</head>
+<body>
+	<div>商品列表</div>
+    <input type="checkbox" name="item" value="3000" />笔记本电脑3000元<br />
+    <input type="checkbox" name="item" value="1800"  />笔记本电脑1800元<br />
+    <input type="checkbox" name="item" value="300"  />笔记本电脑300元<br />
+    <input type="checkbox" name="item" value="3000"  />笔记本电脑3000元<br />
+    <input type="checkbox" name="item" value="3000"  />笔记本电脑3000元<br />
+    <input type="checkbox" name="item" value="3000"  />笔记本电脑3000元<br />
+    <input type="checkbox" name="all"  id="allC" /> 全选
+    <a href="#" id="fC" >反选</a><br />
+    <input type="button" value="总金额：" /><span id="sumid"></span>
+</body>
+</html>
