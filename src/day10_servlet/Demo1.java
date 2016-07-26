@@ -78,7 +78,7 @@ Servlet学习的大纲：
 		问题：url输入http://localhost:8090/JavaLearn2/index.jsp的时候是如何读取文件的？？？
 		
 		1）到JavaLearn2应用下的web.xml中去查找是否有匹配的 url－pattern，如果找到就处理
-		2）如果某页匹配的url－pattern，则交给tomcat内置的DefaultServlet去处理，
+		2）如果没有页匹配的url－pattern，则交给tomcat内置的DefaultServlet去处理，
 		3）DefaultServlet程序到javalearn2应用的根目录下去查找是否存在一个名称为index.jsp的静态文件。
 		4）如果找到改文件，这读取改文件内容，返回给浏览器，如果找不到，返回404
 		

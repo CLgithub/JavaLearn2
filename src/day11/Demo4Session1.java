@@ -1,6 +1,8 @@
 package day11;
 
 import java.io.IOException;
+
+import javax.management.RuntimeErrorException;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -79,16 +81,24 @@ public class Demo4Session1 extends HttpServlet {
 		System.out.println("JSESSIONID="+httpSession.getId());
 		
 		//设置session的有效时间
-		httpSession.setMaxInactiveInterval(20);		//20s后过期
+		httpSession.setMaxInactiveInterval(20);		//20s后过期	服务器端过期时间
 		
-		//为了避免关掉浏览器后cookie失效，造成的不到session，可以手动发送一个cookie，设置有效时间
+		//为了避免关掉浏览器后cookie失效，造成的不到session，可以手动发送一个cookie，设置有效时间		浏览器端过期
 		Cookie cookie = new Cookie("JSESSIONID", httpSession.getId());
 		cookie.setMaxAge(60*3);		//3分钟
 		resp.addCookie(cookie);
 		
 		
+		
 		//2.保存数据到session对象中
 		httpSession.setAttribute("name", "小明");
+		System.out.println("Demo4Session1.doGet()");
+		
+		try {
+			throw new Error("错误");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
