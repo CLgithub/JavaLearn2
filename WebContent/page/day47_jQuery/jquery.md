@@ -1,4 +1,5 @@
-##jquery
+#jquery
+##jquery选择器
 ###9大选择器
 ####1.基本选择器（基本的选择）
 	* 根据id选择		
@@ -103,3 +104,25 @@
 		一般过滤‘:’
 		子过滤‘ :’
 	* 表单的单多选
+##事件
+####鼠标键盘事件
+	捕获键盘敲击事件
+		$(document).keyup(function(key){
+			var code=key.keyCode;	//得到键code
+		});
+	捕获鼠标
+		移动
+			$对象.mousmove(function(event){
+				var x = event.clientX;	//鼠标横坐标
+				var y = event.clientY;	//鼠标纵坐标
+			});
+		移入某区域
+			$对象.mouseover(function(event){
+			});
+		移出某区域
+			$对象.mouseout(function(event){
+			});
+		点击
+			$对象.click(function(){
+			});
+* [其他常用事件](https://github.com/CLgithub/JavaLearn2/blob/master/WebContent/page/day48_jQuery/33_43jQuery/doc.md)	
