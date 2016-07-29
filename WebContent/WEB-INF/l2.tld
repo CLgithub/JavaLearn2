@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+	version="2.1">
+	
+	<!-- 标签库的版本 -->
+	<tlib-version>1.1</tlib-version>
+	<!-- 标签库前缀 -->
+	<short-name>l</short-name>
+	<!-- tld文件的唯一标记 -->
+	<uri>http://tag.cl2.com</uri>
+
+	<!-- 一个标签的声明 -->
+	<tag>
+		<!-- 表情名称 -->
+		<name>showIp2</name>
+		<!-- 标签处理器类的全名 -->
+		<tag-class>day14.Dome1_2ShowIpTag</tag-class>
+		<!-- 输出标签体内容的格式 -->
+		<body-content>scriptless</body-content>
+	</tag>
+		
+	
+
+</taglib>

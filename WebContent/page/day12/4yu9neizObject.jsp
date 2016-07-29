@@ -89,7 +89,7 @@
 		ServletConfig（config）				Serlvet配置
 		HttpSession(session)				会话对象
 		HttpServletRequest（request）		请求对象
-		HttpServletResponse（response）		相应对象
+		HttpServletResponse（response）		响应对象
 		
 		PageContext（pageContext）			jsp上下文对象
 		Object（page）						相当于jsp的this，翻译过来的java源文件这个类
