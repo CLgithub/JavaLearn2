@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery练习2找到select选中项</title>
+<script type="text/javascript" src="../../js/jquery-1.4.2.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#select1').change(function(){
+			var va=$('#select1>option:selected').val();
+			var te=$('#select1>option:selected').text();
+			alert(va+":"+te);
+		});
+	});
+</script>
+</head>
+<body>
+	<select id="select1">
+		<option value="a">AA</option>
+		<option value="b">BB</option>
+		<option value="c">CC</option>
+		<option value="d">DD</option>
+	</select>
+</body>
+</html>

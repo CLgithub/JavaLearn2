@@ -112,7 +112,7 @@
 		});
 	捕获鼠标
 		移动
-			$对象.mousmove(function(event){
+			$对象.mousemove(function(event){
 				var x = event.clientX;	//鼠标横坐标
 				var y = event.clientY;	//鼠标纵坐标
 			});

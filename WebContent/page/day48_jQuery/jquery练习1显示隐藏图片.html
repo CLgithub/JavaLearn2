@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>练习一</title>
+<style type="text/css">
+	.aa1{
+		display: none;
+	}
+</style>
+<script type="text/javascript" src="../../js/jquery-1.4.2.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//方法一
+		$('#but1').click(function(){
+			if($('#img1').attr('hidden')){
+				$('#img1').removeAttr('hidden');	//显示
+			}else{
+				$('#img1').attr('hidden','true');	//隐藏
+			}
+		});
+		//方法二
+		$('#but2').click(function(){
+		//	$('#img2').removeClass('aa1');
+		//	$('#img2').addClass('aa1');
+			$('#img2').toggleClass('aa1');
+		});
+		//方法三
+		$('#but3_1').click(function(){
+			$('#img3').hide();
+		});
+		$('#but3_2').click(function(){
+			$('#img3').show();
+		});
+	});
+</script>
+</head>
+<body>
+	<input id="but1" type="button" value="方法一：隐藏/显示图片"><br>
+	<img id="img1" src="./33_43jQuery/images/lb.jpg" >
+<hr>
+	<input id="but2" type="button" value="方法二：隐藏/显示图片"><br>
+	<img id="img2" src="./33_43jQuery/images/lb.jpg" >
+<hr>
+	<input id="but3_1" type="button" value="方法三：隐藏图片"><br>
+	<input id="but3_2" type="button" value="方法三：显示图片"><br>
+	<img id="img3" src="./33_43jQuery/images/lb.jpg" >
+</body>
+</html>
