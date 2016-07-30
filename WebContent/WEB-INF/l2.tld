@@ -22,7 +22,100 @@
 		<!-- 输出标签体内容的格式 -->
 		<body-content>scriptless</body-content>
 	</tag>
+	
+	<tag>
+		<name>Demo2Tag2</name>
+		<tag-class>day14.Dem02Tag2</tag-class>
+		<body-content>scriptless</body-content>
+		 <!-- 属性声明 -->
+		 <attribute>
+	    	<!-- 属性名称 -->
+			<name>num</name>
+	    	<!-- 是否必填 -->
+	    	<required>false</required>
+	    	<!-- 是否支持EL表达式 -->
+		 	<rtexprvalue>false</rtexprvalue>
+		 </attribute>
+	</tag>
+	
+	<!-- 登录框 -->
+	<tag>
+		<name>loginForm</name>
+		<tag-class>day14.Demo3Login2</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<name>action</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>method</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>loginName</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>password</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
 		
+	<!-- 模拟c:if标签 -->
+	<tag>
+		<name>if</name>
+		<tag-class>day14.Demo4Tagif2</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<name>test</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 模拟set集合 -->
+	<tag>
+		<name>set</name>
+		<tag-class>day14.Demo4Tagset2</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 模拟c:choose -->
+	<tag>
+		<name>choose</name>
+		<tag-class>day14.Demo4Tagchoose2</tag-class>
+		<body-content>scriptless</body-content>
+	</tag>
+	<tag>
+		<name>when</name>
+		<tag-class>day14.Demo4Tagwhen2</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<name>test</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>otherwise</name>
+		<tag-class>day14.Demo4Tagotherwise2</tag-class>
+		<body-content>scriptless</body-content>
+	</tag>
+	
 	
 
 </taglib>

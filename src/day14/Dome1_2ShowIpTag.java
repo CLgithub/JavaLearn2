@@ -13,7 +13,6 @@ public class Dome1_2ShowIpTag extends SimpleTagSupport {
 	public void doTag() throws JspException, IOException {
 		JspContext context = this.getJspContext();
 		PageContext pageContext=(PageContext) context;
-		ServletResponse response = pageContext.getResponse();
 		pageContext.getOut().write(pageContext.getRequest().getRemoteHost());
 	}
 }

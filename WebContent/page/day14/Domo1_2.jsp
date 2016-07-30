@@ -17,6 +17,12 @@
 <title>自定义标签</title>
 </head>
 <body>
-	你当前的ip：<l2:showIp2 >xxxx</l2:showIp2> <br>
+		你当前的ip：<l2:showIp2 >xxxx</l2:showIp2> <br>
+	<HR>
+		自定义标签2：<br>
+			<l2:Demo2Tag2 num='3'> 标签体内容aaAABBDECD<br> </l2:Demo2Tag2> 标签余下的内容
+	<hr>
+		自定义标签实现登录框：
+			<l2:loginForm action="" method="post" loginName="loginName" password="password" />
 </body>
 </html>

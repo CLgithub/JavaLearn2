@@ -39,7 +39,7 @@ public class Demo2Tag extends SimpleTagSupport {
 //		jspBody.invoke(null);
 		
 		//2控制标签余下内容是否输出
-		//默认是输出	抛出SkipPageException异常着不输出
+		//默认是输出	抛出SkipPageException异常则不输出
 //		throw new SkipPageException();
 		
 		//3控制重复输出标签体内容,多次执行jspBody.invoke(null);
