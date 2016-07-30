@@ -99,7 +99,16 @@ sql分类：
 					alter table 表名 drop foreign key 外键名;
 					alter table demo4_2 drop foreign key demo42_dept_fk;
 					
+
+约束(constraint)几个关键字：
+	非空		not null
+	唯一		unique
+	主键		primary key
+	外键		foreign key
+	自增长	auto_increment
 	
+	
+
 2.数据库设计
 3.存储过程
 4.触发器
