@@ -6,7 +6,20 @@ import java.sql.SQLException;
 import org.junit.Test;
 
 import day17.Demo2JdbcUtil;
+/*
+事务特性：
+	1.原子性
+	2.隔离性
+	3.一致性
+	4.持久性
+	
+	其中，隔离性有4个隔离级别：
+		1.read uncommitted(读未提交的)：存在脏读（读取到其他事务未提交的数据）问题
+		2.read committed(读提交的)：解决脏读问题，但是有不可重复读（update）问题		oracle中默认
+		3.repeatable read(可重复读)：解决不可重复读问题，但是会有虚度（insert）问题		mysql中默认
+		4.serializable(序列化)：解决所有问题，用锁，效率低下
 
+*/
 /*
 
 事务特性(重点) ACID
@@ -43,7 +56,7 @@ import day17.Demo2JdbcUtil;
 							start transaction;
 							update account set money=money-500 where name='aaa';
 							update account set money=money+500 where name='bbb';
-						在不事务中
+						在b事务中
 							start transaction;
 							select * from account;
 							
