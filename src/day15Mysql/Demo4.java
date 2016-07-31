@@ -104,7 +104,7 @@ sql分类：
 	非空		not null
 	唯一		unique
 	主键		primary key
-	外键		foreign key
+	外键		foreign key		约束：constraint 	引用：references
 	自增长	auto_increment
 	
 	

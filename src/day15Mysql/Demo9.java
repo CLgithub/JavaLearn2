@@ -24,15 +24,38 @@ mysql,90, 就业班, 考试时间为2014-04-04
 			on e.Sid=s.id and `user`.id=e.Uid 
 			where `user`.id='U001' and e.Edate='2014-04-01' 
 			and s.name='java';
+		--------------------------复习-------------------------------------
+		--方法一
+		select 
+			user.name,subject.name,score 
+		from 
+			user,examination,subject 
+		where 
+			user.id=examination.uid and examination.Sid=subject.id and user.id='u001' and subject.name='java';
+		--方法二
+		select * from (
+			select a.*,score,Sid from 
+				(select name,id from user where id='U001') a LEFT JOIN examination on a.id=examination.Uid
+		) b LEFT JOIN `subject` on b.Sid=`subject`.id
+		where `subject`.`name`='java'
+		
 	2. 查询出通过考试（高于60分）的学员所在的姓名、、所属学学习阶段、考试科目名称、学员的成绩。
 		select u.name,g.name,s.name,e.score from user u join examination e join grade g join subject s 
 			on u.id=e.Uid and e.Gid=g.id and e.Sid=s.id
 			where e.score>=60
 			order by u.name asc,g.name asc;
+		--------------------------复习-------------------------------------
+		select * from (
+			select score,Uid,Gid,Sid from examination where score>'60'
+		) as e,`user`,grade,`subject` 
+		where `user`.id=e.Uid and grade.id=e.Gid and `subject`.id=e.Sid
 
 	利用子查询语句，筛选出生日期比“李四”大的学生
 		select u2.name from user u1 join user u2 
 			where u1.name='李四' and u1.birth>u2.birth;
+		--------------------------复习-------------------------------------
+		select u1.name from user as u1 join user as u2 
+			where u2.name='李四' and u1.birth<u2.birth
 		
 	查询“java”课程考试成绩为60-80分的学生名单
 		select * from user u join examination e join subject s 
@@ -43,6 +66,15 @@ mysql,90, 就业班, 考试时间为2014-04-04
 				select * from examination e
 					where e.score>=60 and e.score<=80 and e.Sid=(select id from subject where name='java')
 			) as exa on exa.Uid=u.id;
+		--------------------------复习-------------------------------------
+		SELECT 
+			* 
+		from 
+			user 
+		where
+			id in(
+				SELECT Uid from examination where score>'60' and score<'80' and Sid in(SELECT id FROM `subject` where name='java')
+			)
 		
 	查询参加最近一次“mysql”考试成绩最高分和最低分
 		select MAX(score) as '最高',min(score) as '最低' from examination
