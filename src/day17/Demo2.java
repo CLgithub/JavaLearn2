@@ -16,7 +16,8 @@ import org.junit.Test;
 				url:链接数据库的url
 					url语法：jdbc协议:数据库子协议://主机:端口/具体数据库
 					user：数据库的用户名
-					password：数据库的用户密码
+					pa
+					ssword：数据库的用户密码
 	|- DriverManager类：驱动管理器类。用于管理所有注册的驱动程序
 		|- registerDriver(driver):注册驱动对象
 		|- Connection getConnection(url,user,password):获取连接对象

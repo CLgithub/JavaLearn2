@@ -12,6 +12,8 @@ import java.util.Properties;
 day17~day19回顾：
 	jdbc：
 		Java 数据库连接，（Java Database Connectivity，简称JDBC）是Java语言中用来规范客户端程序如何来访问数据库的应用程序接口，
+	jdbc核心api
+		（/JavaLearn2/src/day17/Demo2.java）
 	jdbc基础开发：
 		如下method1(),method2(),method3()及/JavaLearn2/src/day17/Demo3.java
 		jdbc调用存储过程
