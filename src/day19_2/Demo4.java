@@ -8,12 +8,14 @@ import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
+import org.apache.commons.dbutils.handlers.ArrayHandler;
 import org.apache.commons.dbutils.handlers.ArrayListHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -56,14 +58,18 @@ public class Demo4 {
 		//ArrayListHandler, 将结果集中每一条记录封装到Object[],数组中的每一个元素就是记录中的字段值。在将这些数组装入到List集合。
 //		List<Object[]> list = runner.query(sql, new ArrayListHandler());
 //		System.out.println(list);
+//		for(Object[] objects:list){
+//			System.out.println(Arrays.toString(objects));
+//		}
+		
 		
 		//BeanHandler（重点）, 将结果集中第一条记录封装到一个javaBean中。
 //		Account account = runner.query(sql, new BeanHandler<>(Account.class));
 //		System.out.println(account);
 		
 		//BeanListHandler(重点), 将结果集中每一条记录封装到javaBean中，在将javaBean封装到List集合.
-//		List<Account> list = runner.query(sql, new BeanListHandler<>(Account.class));
-//		System.out.println(list);
+		List<Account> list = runner.query(sql, new BeanListHandler<>(Account.class));
+		System.out.println(list);
 		
 		//ColumnListHandler 将结果集中指定字段的值封装到List集合.
 //		List<Object> list= runner.query(sql, new ColumnListHandler<Object>("accountName"));
@@ -91,8 +97,8 @@ public class Demo4 {
 //		System.out.println(list);
 		
 		//自定义ResultSetHandler接口实现类
-		Account account = runner.query(sql, new MyBeanHandler<>(Account.class));
-		System.out.println(account);
+//		Account account = runner.query(sql, new MyBeanHandler<>(Account.class));
+//		System.out.println(account);
 	}
 	
 }

@@ -126,13 +126,78 @@ day17~day19
 			c3p0与dbcp区别
 				dbcp没有自动回收空闲连接的功能
 				c3p0有自动回收空闲连接功能
+		
+		tomcat内置连接池管理
+			tomcat内置连接池使用的是dbcp
+			问题1：tomcat怎么管理连接池
+				要想将一个dbcp连接池让tomcat管理，只需要创建一个context.xml配置文件，在配置文件中配置相关信息
+				<Context>
+				  	<Resource name="jdbc/jdbc1" auth="Container"
+							type="javax.sql.DataSource" username="L" password="123456"
+							driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql:///jdbc1"
+							maxActive="8" maxIdle="4"/>
+				</Context>
+				context.xml文件位置：
+					1.放在tomcat/conf/context.xml		这时这个连接池是给整个服务器用
+					2.放在tomcat/conf/Catalina/localhost		这时这个连接池只给localhost虚拟主机使用。
+					3.放在web应用的META-INF目录下			只给这个应用用
+					
+					注意：如果是1，和2，我们需要将数据库驱动放在tomcat/lib目录下
+			问题2:怎样从tomcat中获取连接池?
+				在Servlet中获取连接池对象
+				Context context = new InitialContext();
+				Context envCtx = (Context) context.lookup("java:comp/env");	//固定路径
+				DataSource dataSource=(DataSource) envCtx.lookup("jdbc/jdbc1");
 				
-	
+			JNDI----->	JNDI(java naming and directory interface ,java命名和目录接口)是SUN公司提供的一种标准的Java命名系统接口，
+							JNDI提供统一的客户端API，通过不同的访问提供者接口JNDI SPI的实现，由管理者将JNDI API映射为特定的命名服务
+							和目录系统，使得Java应用程序可以和这些命名服务和目录服务之间进行交互。目录服务是一种命名服务，
+							在这种服务里，对象不但有名称，还有属性。
 	
 	BenUtils
-	元数据
-	dbutils
-	
+		
+		
+	元数据(day19_2.Demo2)
+		什么是元数据。又什么作用
+			元数据（metaData）指数据中 库、表、列的定义信息
+		1.DataBaseMetaData		数据库元数据
+			问题:怎样获取一个DataBaseMetaData?
+				DatabaseMetaData dMetaData = connection.getMetaData();
+			问题：常用api
+				数据库驱动名：	dMetaData.getDriverName();
+				数据库url：		dMetaData.getURL();
+				数据库用户名：	dMetaData.getUerName();
+				数据库产品名称：	dMetaData.getDatabaseProductName();
+				数据库产品版本：	dMetaData.getDatabaseProductVersion();
+				
+				获取表中主键相关描述		每个主键列描述都有以下列：
+					TABLE_CAT String 	=> 表类别（可为 null） 
+					TABLE_SCHEM String	=> 表模式（可为 null） 
+					TABLE_NAME String 	=> 表名称 
+					COLUMN_NAME String 	=> 列名称 
+					KEY_SEQ short 		=> 主键中的序列号（值 1 表示主键中的第一列，值 2 表示主键中的第二列）。 
+					PK_NAME String 		=> 主键的名称（可为 null）
+		2.ParameterMetaData		参数元数据
+			参数元数据主要用于获取:sql语句中占位符的相关信息.
+			问题:怎样获取ParameterMetaData?
+				在PreparedStatement中有一个方法getParameterMetaData可以获取.
+		3.ResultSetMetaData		结果集元数据
+			问题:怎样获取结果集元数据?
+				可以通过ResultSet的getMetaData()方法获取.
+			利用结果集元数据可以做出通用的DAO，而DBUtils更方便
+				
+	DBUtils（day19_2.Demo3）
+		DBUtils核心
+			1.QueryRunner类
+				用于执行sql语句的类
+				1.query 用于执行select
+				2.update 用于执行update delete insert
+				3.batch 批处理
+			2.ResultSetHandlerh接口
+				用于定义结果集封装
+				提供9个实现类，可以进行不同的封装
+			3.Dbtuils类
+				提供关于关闭资源以及事务rollback，commit操作
 
 
 */
