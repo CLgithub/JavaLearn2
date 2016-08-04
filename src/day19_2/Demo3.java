@@ -83,8 +83,8 @@ public class Demo3 {
 		String sql="select * from account";
 		
 		QueryRunner runner=new QueryRunner(MyDataSourceUtils.getDataSource());		//事务自动控制
-		List<Account> list = runner.query(sql, new MyRsHandler<Account>(Account.class));
-//		List<Account> list = runner.query(sql, new MyRsHandler2<Account>(Account.class));
+//		List<Account> list = runner.query(sql, new MyRsHandler<Account>(Account.class));
+		List<Account> list = runner.query(sql, new MyRsHandler2<Account>(Account.class));
 		System.out.println(list);
 	}
 	class MyRsHandler<T> implements ResultSetHandler<List<T>> {
@@ -115,19 +115,21 @@ public class Demo3 {
 	}
 	
 	class MyRsHandler2<T> implements ResultSetHandler<List<T>> {
-		private Class<T> calzz;
+		private Class<T> clazz;
+		
 		public MyRsHandler2(Class<T> clazz) {
-			this.calzz = clazz;
+			this.clazz=clazz;
 		}
+
 		@Override
 		public List<T> handle(ResultSet rs) throws SQLException {
-			ResultSetMetaData metaData = rs.getMetaData();
-			List<T> list = new ArrayList<>();
+			List<T> list=new ArrayList<>();
 			try {
-				while (rs.next()) {
-					T t = calzz.newInstance();
+				ResultSetMetaData metaData = rs.getMetaData();
+				while(rs.next()){
+					T t = clazz.newInstance();
 					int count = metaData.getColumnCount();
-					for (int i = 1; i < count; i++) {
+					for(int i=1;i<=count;i++){
 						Object value = rs.getObject(i);
 						String name = metaData.getColumnName(i);
 						BeanUtils.setProperty(t, name, value);
