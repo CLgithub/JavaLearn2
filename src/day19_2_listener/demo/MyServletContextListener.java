@@ -39,7 +39,7 @@ public class MyServletContextListener implements ServletContextListener{
 					}
 				}
 			}
-		}, 1000,2000);
+		}, 1000,2000);	//延时1s执行，没间隔2s执行一次
 	}
 
 }

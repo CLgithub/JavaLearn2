@@ -306,14 +306,22 @@
 	<listener >
 		<listener-class>day19_2_listener.MySessionListener</listener-class>
 	</listener>
-	注册监听request对象的创建与销毁监听器
-	<listener >
+	注册监听request对象的创建与销毁监听器-->
+	<!-- <listener >
 		<listener-class>day19_2_listener.MyRequestListener</listener-class>
-	</listener>
-	注册监听session域对象的属性变化
-	<listener >
-		<listener-class>day19_2_listener.MySessionAttributeListener</listener-class>
 	</listener> -->
+	<!-- 注册监听session域对象的属性变化-->
+	<!-- <listener >
+		<listener-class>day19_2_listener.MySessionAttributeListener</listener-class>
+	</listener>  -->
+	<!-- <servlet>
+		<servlet-name>MySessionAttributeListenerTestServlet</servlet-name>
+		<servlet-class>day19_2_listener.MySessionAttributeListenerTestServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MySessionAttributeListenerTestServlet</servlet-name>
+		<url-pattern>/MySessionAttributeListenerTestServlet</url-pattern>
+	</servlet-mapping> -->
 	
 	<!-- DEMO -->
 	<!-- <listener >

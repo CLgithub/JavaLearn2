@@ -5,7 +5,8 @@ import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionBindingEvent;
 
 /*
-
+演示监听属性变化
+	演示监听session的属性变化（MySessionAttributeListener）
 */
 public class MySessionAttributeListener implements HttpSessionAttributeListener{
 

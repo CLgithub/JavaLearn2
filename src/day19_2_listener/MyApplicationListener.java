@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.event.ContextRefreshedEvent;
+
 /*
 问题：现在学习的是javaweb，那么javaweb中有什么监听器，有什么作用
 	javaweb中的监听器，主要用于监听javaweb中的常用对象（request（HpptServletRequest），session（HttpSession），application（ServletContext））的三种类型操作
@@ -28,10 +30,20 @@ import javax.servlet.http.HttpServletResponse;
 		3.session绑定javaBean
 			1.HttpSessionBindingListener
 				这个监听器，可以让JavaBean对象，感知他被绑定到session中或从session中移除。
-			2.HttpSessionAttributeListener
+			2.HttpSessionActivationListener
 				这个监听器，可以让javaBean对象，感知被钝化或活化
 					（服务器正常关闭时，session会被保存到文件里？）
 					钝化：内存--》硬盘，活化：硬盘---》内存
+				使用：需要创建一个配置文件context.xml
+					这个配置文件保持到META-INF目录下（和配置tomcat链接池一样）
+					<?xml version="1.0" encoding="UTF-8"?>
+					<Context>
+						<Manager className="org.apache.catalina.session.PersistentManager"
+							maxIdleSwap="1">
+							<Store className="org.apache.catalina.session.FileStore"
+								directory="cltest" />
+						</Manager>
+					</Context>
 			这两个监听器都由javaBean实现，并且都不用配置
 	在javaweb中servlet规范中定义了三种技术 servlet、Listener、Filter
 
@@ -59,8 +71,7 @@ import javax.servlet.http.HttpServletResponse;
 			3.监听request对象的创建与销毁
 				请求发生时创建
 				响应产生时销毁
-演示监听属性变化
-	演示监听session的属性变化（MySessionAttributeListener）
+
 
 思考：在监听器中能拿到属性值吗
 	常识：在java的监听机制中，是可以在监听器中获取事件源的
