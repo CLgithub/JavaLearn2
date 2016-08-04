@@ -12,7 +12,7 @@ public class Demo2Filter1 implements Filter{
 
 	@Override
 	public void destroy() {
-		
+		System.out.println("Demo2Filter1.destroy()");
 	}
 
 	@Override
@@ -25,7 +25,7 @@ public class Demo2Filter1 implements Filter{
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		
+		System.out.println("Demo2Filter1.init()");
 	}
 
 }

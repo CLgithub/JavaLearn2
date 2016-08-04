@@ -37,6 +37,7 @@ public class Demo5LoginServlet extends HttpServlet {
 				pass.setPath("/JavaLearn2");
 				resp.addCookie(name);
 				resp.addCookie(pass);
+//				req.getSession().setAttribute("user", user);
 			}
 			
 			resp.sendRedirect(req.getContextPath() + "/page/day21/mainPage.jsp");

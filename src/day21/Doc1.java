@@ -58,7 +58,7 @@ Filter过滤器
 				销毁操作
 	
 	filterConfig（和servletConfig对象很相似，day10_servlet/Demo4.java）
-		在filter的init方法中有一个参数filterConfig
+		在filter的init方法中有一个参数filterConfig（day21.Demo1Filter2）
 		filterConfig作用也是获取的filter的相关配置信息
 			1.初始化参数的获取
 				String gitInitParameter(String name)

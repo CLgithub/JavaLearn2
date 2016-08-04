@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Enumeration;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -90,6 +91,6 @@ public class Demo4 extends HttpServlet{
 			System.out.println(name+"="+config.getInitParameter(name));
 		}
 		System.out.println("servletName="+config.getServletName());
-		
+		ServletContext servletContext = config.getServletContext();
 	}
 }

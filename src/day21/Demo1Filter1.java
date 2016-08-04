@@ -19,7 +19,7 @@ public class Demo1Filter1 implements Filter{
 
 	@Override
 	public void destroy() {
-//		System.out.println("filter销毁");
+		System.out.println("filter销毁");
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class Demo1Filter1 implements Filter{
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-//		System.out.println("filter初始化");
+		System.out.println("filter初始化");
 	}
 
 }
