@@ -24,7 +24,7 @@ import java.net.URL;
 			System.out.println(classLoader);
 			结果null
 			原因:引导(也称为原始)类加载器,它负责加载Java的核⼼心类。这个加载器的是⾮常特殊的,
-				它实际上不是 java.lang.ClassLoader的⼦子 类,⽽而是由JVM⾃自⾝身实现的。
+				它实际上不是 java.lang.ClassLoader的⼦类,⽽是由JVM⾃自身实现的。
 				可以通过执⾏行以下代码 来获得bootstrap classloader加载了那些核⼼心类库
 					URLClassPath bootstrapClassPath = Launcher.getBootstrapClassPath();
 					URL[] urLs = bootstrapClassPath.getURLs();

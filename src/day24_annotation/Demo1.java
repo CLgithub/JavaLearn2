@@ -24,6 +24,6 @@ public class Demo1 implements A{
 }
 interface A{
 	
-	 @Deprecated
+	@Deprecated
 	void show();
 }
