@@ -136,6 +136,11 @@ javaweb中servlet规范中定义了三种技术：servlet	 listener filter总结
 			语法上很解决，都是用来的到各种相应的配置环境，初始化参数
 			day10_servlet.Demo4
 			day21.Demo1Filter2
+			
+			
+		servlet有初始化参数
+		filter有初始化参数
+		listener没有初始化参数，在开发中一般使用servletCentext中的（<context-param>）
 		
 		
 		

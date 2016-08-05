@@ -1,8 +1,10 @@
 package day22;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -70,8 +72,38 @@ public class Demo2 extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+//		handerUploadFile(req,resp);
+		
 	}
 	
+	private void handerUploadFile(HttpServletRequest req, HttpServletResponse resp) {
+		try {
+			DiskFileItemFactory dFileItemFactory = new DiskFileItemFactory();
+			ServletFileUpload servletFileUpload = new ServletFileUpload(dFileItemFactory);
+			List<FileItem> parseRequest = servletFileUpload.parseRequest(req);
+			for(FileItem fileItem:parseRequest){
+				if(!fileItem.isFormField()){
+					String fileName = fileItem.getName();
+//					System.out.println(fileItem.getFieldName());	//得到页面上组件name
+					if(fileName.contains("\\")){
+						fileName=fileName.substring(fileName.lastIndexOf("\\")+1);
+					}
+					InputStream inputStream = fileItem.getInputStream();
+					File dir=new File(this.getServletContext().getRealPath("/uploadFile/")+FileUploadUtis.getRandomDirectory(fileName));
+					if(!dir.exists()){
+						dir.mkdirs();
+					}
+					FileOutputStream fOutputStream=new FileOutputStream(dir+"/"+System.currentTimeMillis()+"_"+fileName);
+					IOUtils.copy(inputStream, fOutputStream);
+					inputStream.close();
+					fOutputStream.close();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
