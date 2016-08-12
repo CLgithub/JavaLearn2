@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * PageBean分装（目前只用到list和allRow,其余有ligerui自行计算得到）
  * 
- * @author 陈雷
+ * @author L
  * @date 2015-5-4
  * @param <T>
  */
