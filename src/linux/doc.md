@@ -208,4 +208,81 @@
 			tar -czvf jee.tar.gz jee/
 		拆包及解压
 			tar -xzvf jee.tar.gz
+			
+## 软件管理
+
+	windows ： .exe     安装 、卸载 
+       安装：  mysql.exe  cc.exe   
+       卸载 ： 该软件唯一的标识  ，包名   alibaba
+    android : *.apk   卸载 包名
+    red hat ：*.rpm 
+    ubuntu  : 对debian的升级  *.deb 格式	
+    
+    1.安装软件
+       - dpkg ：debian  package 
+          离线安装：
+	  安装 ： sudo dpkg - i  <文件名> 
+	    -i ：install
+	   命令：sudo dpkg -i ./tree_1.6.0-1_i386.deb
+	  卸载 ： sudo dpkg - r  <包名> 
+	    -r ：remove
+           命令：sudo dpkg -r tree
+       - apt-get  ：advance  package  tools 
+       　　对dpkg命令的升级，在线安装
+	  安装 ： sudo apt-get -install  <包名>
+	  卸载 ： sudo apt-get -remove  <包名>
+	  
+## 实现远程安全访问linux系统
+    
+    1.通过ssh实现安全远程访问linux系统 
+       ssh ：secure shell(安全的外壳)
+         加密：
+	   1. 对称加密 （加密密钥与解密密钥相同）
+	      des 、aes
+	   2. 非对称加密（加密密钥与解密密钥不同）
+	      RSA ：公钥、私钥 
+	 数字摘要：
+	   md5 \sha1 
+	    
+      
+       1. 查看是否安装了ssh服务端与客户端
+         sudo apt-cache policy openssh-client openssh-server
+       2. 安装ssh 服务端与客户端软件
+          sudo dpkg -i ./ssh/*
+          
+## 配置java开发环境
+
+	2. 安装jdk
+       进入 root用户
+       实现步骤：
+        1. jdk 存放在哪里  /opt
+		2. 把软件拷贝到/opt
+		3. 绿色软件，解压 
+		4.设置环境变量
+		   vim /etc/profile 
+		export JAVA_HOME="/opt/jdk1.6.0_39"
+	        export PATH="$JAVA_HOME/bin:$PATH"
+		5. 刷新配置 ，让配置生效
+		   source /etc/profile
+		6. 编写Demo.java,测试 
+		   -javac Demo.java
+	           - java Demo
+
+    3. 安装tomcat 
+       步骤：
+        1. 安装在哪里 /opt
+		2. 拷贝、解压
+		   tar -xzvf  apache-tomcat.tar.gz
+		3. 运行
+		   - ./startup.sh
+		   - ./shutdown.sh
+       
+      
+    4. 安装Eclipse
+       步骤：
+         1.安装在/opt
+		 2. 拷贝、解压
+		   cp eclipse.tar.gz  /opt
+		   tar -xzvf  eclipse.tar.gz  
+          
 		
