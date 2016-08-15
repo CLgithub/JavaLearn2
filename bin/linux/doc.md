@@ -250,4 +250,39 @@
        2. 安装ssh 服务端与客户端软件
           sudo dpkg -i ./ssh/*
           
+## 配置java开发环境
+
+	2. 安装jdk
+       进入 root用户
+       实现步骤：
+        1. jdk 存放在哪里  /opt
+		2. 把软件拷贝到/opt
+		3. 绿色软件，解压 
+		4.设置环境变量
+		   vim /etc/profile 
+		export JAVA_HOME="/opt/jdk1.6.0_39"
+	        export PATH="$JAVA_HOME/bin:$PATH"
+		5. 刷新配置 ，让配置生效
+		   source /etc/profile
+		6. 编写Demo.java,测试 
+		   -javac Demo.java
+	           - java Demo
+
+    3. 安装tomcat 
+       步骤：
+        1. 安装在哪里 /opt
+		2. 拷贝、解压
+		   tar -xzvf  apache-tomcat.tar.gz
+		3. 运行
+		   - ./startup.sh
+		   - ./shutdown.sh
+       
+      
+    4. 安装Eclipse
+       步骤：
+         1.安装在/opt
+		 2. 拷贝、解压
+		   cp eclipse.tar.gz  /opt
+		   tar -xzvf  eclipse.tar.gz  
+          
 		
