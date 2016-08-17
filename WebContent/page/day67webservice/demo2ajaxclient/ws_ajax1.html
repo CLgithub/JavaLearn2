@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 用原生ajax去访问webservice -->
+<script type="text/javascript">
+	function invoke(){
+		var mytest=document.getElementById("mytest").value;
+		var url="http://127.0.0.1:8092/hello?wsdl";
+		//原生ajax开发步骤
+		//1.得到xmlhttprequest对象
+		var xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+		/* if (window.XMLHttpRequest){// 新的浏览器，包括ie7及以上
+			xmlHttpRequest=new XMLHttpRequest();
+		} else if (window.ActiveXObject){// code for IE5 and IE6
+			xmlHttpRequest=new ActiveXObject("Microsoft.XMLHTTP");
+		} */
+		//2.open	初始化http请求参数	第三个参数是否异步，true异步，false同步
+		xmlHttpRequest.open("post", url, true);
+		xmlHttpRequest.setRequestHeader("Content-Type", "text/xml;charset=UTF-8");
+		//3.发送请求
+		/* var data = 
+		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="http://demo2server.day67webservice/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
+		+'<soapenv:Body>'
+		+' <q0:sayHello>'
+		+'	<arg0>'+mytest+'</arg0>' 
+		+' </q0:sayHello>'
+		+' </soapenv:Body>'
+		+'</soapenv:Envelope>'; */
+		var data=
+		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="http://demo2server.day67webservice/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
+			+'<soapenv:Body>'
+			+'<q0:sayHello>'
+			+'<arg0>'+mytest+'</arg0>' 
+			+'</q0:sayHello>'
+			+'</soapenv:Body>'
+			+'</soapenv:Envelope>'
+		  
+		xmlHttpRequest.send(data);
+		//4.设置回调函数，当xmlhtmlrequest的readystate改变时调用（5个状态）
+		xmlHttpRequest.onreadystatechange=function(){
+			if(xmlHttpRequest.readyState==4&&xmlHttpRequest.status==200){
+				//以文本形式
+				var result = xmlHttpRequest.responseText;
+				//以xml文档对象
+				var obj = xmlHttpRequest.responseXML;
+				//解析文档
+				var returns = obj.getElementsByTagName("return");
+				alert(returns[0].text);
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="mytest" >
+	<input type="button" value="click" onclick="invoke()">
+</body>
+</html>

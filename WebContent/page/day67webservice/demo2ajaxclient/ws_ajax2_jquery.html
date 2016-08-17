@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 用jquery的ajax来请求 -->
+<script type="text/javascript" src="../../../js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+	function invoke(){
+		var mytest=$("#mytest").val();
+		var url="http://127.0.0.1:8092/hello?wsdl";
+		var sendData='<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="http://demo2server.day67webservice/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
+			+'<soapenv:Body>'
+			+'<q0:sayHello>'
+			+'<arg0>'+mytest+'</arg0>' 
+			+'</q0:sayHello>'
+			+'</soapenv:Body>'
+			+'</soapenv:Envelope>';
+		$.ajax({
+			type:"post",
+			url:url,
+			data:sendData,
+			contentType:'text/xml',
+			success:function(backData,textStatus,xmlHttpReqeust){
+				var returns = backData.getElementsByTagName("return");
+				alert(returns[0].text);
+			}
+		})
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="mytest" >
+	<input type="button" value="click" onclick="invoke()">
+</body>
+</html>
