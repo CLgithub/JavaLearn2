@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 用jquery的ajax来请求 -->
+<script type="text/javascript" src="../../../js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+	function invoke(){
+		var mytest=$("#mytest").val();
+		var url="http://www.webservicex.net/globalweather.asmx?WSDL";
+		var sendData=
+			'<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">'
+			+'<soap:Body>'
+			+'<GetWeather xmlns="http://www.webserviceX.NET">'
+			+'<CityName>beijing</CityName>'
+			+'<CountryNÅame></CountryName>'
+			+'</GetWeather>'
+			+'</soap:Body>'
+			+'</soap:Envelope>';
+		$.ajax({
+			type:"post",
+			url:url,
+			data:sendData,
+			contentType:'text/xml',
+			success:function(backData,textStatus,xmlHttpReqeust){
+				var returns = backData.getElementsByTagName("return");
+				alert(returns[0].text);
+			}
+		})
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="mytest" >
+	<input type="button" value="click" onclick="invoke()">
+</body>
+</html>

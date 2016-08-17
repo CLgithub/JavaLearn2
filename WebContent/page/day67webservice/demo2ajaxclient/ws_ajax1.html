@@ -10,12 +10,12 @@
 		var url="http://127.0.0.1:8092/hello?wsdl";
 		//原生ajax开发步骤
 		//1.得到xmlhttprequest对象
-		var xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-		/* if (window.XMLHttpRequest){// 新的浏览器，包括ie7及以上
+	//	var xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+		if (window.XMLHttpRequest){// 新的浏览器，包括ie7及以上
 			xmlHttpRequest=new XMLHttpRequest();
 		} else if (window.ActiveXObject){// code for IE5 and IE6
 			xmlHttpRequest=new ActiveXObject("Microsoft.XMLHTTP");
-		} */
+		}
 		//2.open	初始化http请求参数	第三个参数是否异步，true异步，false同步
 		xmlHttpRequest.open("post", url, true);
 		xmlHttpRequest.setRequestHeader("Content-Type", "text/xml;charset=UTF-8");
