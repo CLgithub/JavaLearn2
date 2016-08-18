@@ -1,5 +1,7 @@
 package day67webservice;
 
+import javax.jws.WebService;
+
 /*
 
 WebService定义: 顾名思义就是基于Web的服务。它使用Web(HTTP)方式，
@@ -43,6 +45,20 @@ WSDL解析(http://www.webservicex.net/globalweather.asmx?WSDL)
 	生产java源文件和.class文件	wsimport.exe -s . http://www.webservicex.net/globalweather.asmx?WSDL
 	自定义包名生成：
 	
+	
+第一天总结：
+	webService服务端编写
+		1.编写一个类，添加@WebService注解，对注解可配置属性，对这个类添加公共的非静态的非final的方法
+		2.使用Endpoint类的静态方法Endpoint.publish("http://127.0.0.1:8092/hello", new HelloServer())发布服务
+		3.访问http://127.0.0.1:8092/hello?wsdl	查看wsdl
+	webService客户端编写
+		客户端一：
+			1.使用使用jdk自带的wsimport，通过wsdl文档自动生成对应的类
+			2.使用生成的类访问服务端
+		客户端二：
+			使用ajax发送消息体访问服务端
+		客户端三：
+			使用urlconnect发送消息体访问服务端
 
 
 	
