@@ -1,5 +1,5 @@
 
-package day68webservice.deom1client.stub;
+package day68webservice.demo1client.stub;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the day68webservice.deom1client.stub package. 
+ * generated in the day68webservice.demo1client.stub package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -28,7 +28,7 @@ public class ObjectFactory {
     private final static QName _GetJob_QNAME = new QName("http://demo1service.day68webservice/", "getJob");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: day68webservice.deom1client.stub
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: day68webservice.demo1client.stub
      * 
      */
     public ObjectFactory() {

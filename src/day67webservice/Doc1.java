@@ -43,6 +43,9 @@ WSDL解析(http://www.webservicex.net/globalweather.asmx?WSDL)
 生成客户端代码
 	使用jdk自带的wsimport生成
 	生产java源文件和.class文件	wsimport.exe -s . http://www.webservicex.net/globalweather.asmx?WSDL
+	 - d  ：指定要输出的文件的位置
+     - s  ：表示要解析java的源码 ，默认解析出的是class字节码 
+     - p  ： 指定输出的包名
 	自定义包名生成：
 	
 	

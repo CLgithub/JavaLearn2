@@ -1,7 +1,7 @@
-package day68webservice.deom1client;
+package day68webservice.demo1client;
 
-import day68webservice.deom1client.stub.JobService;
-import day68webservice.deom1client.stub.JobServiceImplService;
+import day68webservice.demo1client.stub.JobService;
+import day68webservice.demo1client.stub.JobServiceImplService;
 
 public class JobClientTest1 {
 	/**

@@ -1,5 +1,5 @@
 
-package day68webservice.deom1client.stub;
+package day68webservice.demo1client.stub;
 
 import javax.jws.WebMethod;
 import javax.jws.WebResult;
@@ -30,8 +30,8 @@ public interface JobService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getJob", targetNamespace = "http://demo1service.day68webservice/", className = "day68webservice.deom1client.stub.GetJob")
-    @ResponseWrapper(localName = "getJobResponse", targetNamespace = "http://demo1service.day68webservice/", className = "day68webservice.deom1client.stub.GetJobResponse")
+    @RequestWrapper(localName = "getJob", targetNamespace = "http://demo1service.day68webservice/", className = "day68webservice.demo1client.stub.GetJob")
+    @ResponseWrapper(localName = "getJobResponse", targetNamespace = "http://demo1service.day68webservice/", className = "day68webservice.demo1client.stub.GetJobResponse")
     @Action(input = "http://demo1service.day68webservice/JobService/getJobRequest", output = "http://demo1service.day68webservice/JobService/getJobResponse")
     public String getJob();
 

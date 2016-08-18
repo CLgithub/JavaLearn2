@@ -1,5 +1,5 @@
 
-package day68webservice.deom1client.stub;
+package day68webservice.demo1client.stub;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "JobServiceImplService", targetNamespace = "http://demo1service.day68webservice/", wsdlLocation = "http://192.168.8.215:8092/job?wsdl")
+@WebServiceClient(name = "JobServiceImplService", targetNamespace = "http://demo1service.day68webservice/", wsdlLocation = "http://192.168.1.101:8092/job?wsdl")
 public class JobServiceImplService
     extends Service
 {
@@ -30,7 +30,7 @@ public class JobServiceImplService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://192.168.8.215:8092/job?wsdl");
+            url = new URL("http://192.168.1.101:8092/job?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

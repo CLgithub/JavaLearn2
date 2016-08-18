@@ -9,7 +9,7 @@ import javax.xml.ws.Endpoint;
  */
 public class Test1 {
 	public static void main(String[] args) {
-		String address="http://192.168.8.215:8092/job";
+		String address="http://192.168.1.101:8092/job";
 		JobService jobService=new JobServiceImpl();
 		Endpoint.publish(address, jobService);
 	}
