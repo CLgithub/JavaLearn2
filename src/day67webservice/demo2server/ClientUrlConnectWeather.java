@@ -48,19 +48,19 @@ public class ClientUrlConnectWeather {
 			//接收响应参数
 			InputStream iStream = httpuc.getInputStream();
 			
-			int i=0;
+			/*int i=0;
 			byte[] buf=new byte[1024];
 			while((i=iStream.read(buf))>0){
 				System.out.println(new String(buf,0,i));
-			}
+			}*/
 			
-			/*BufferedReader bReader=new BufferedReader(new InputStreamReader(iStream));
+			BufferedReader bReader=new BufferedReader(new InputStreamReader(iStream));
 			String line=null;
 			StringBuffer sBuffer=new StringBuffer();
 			while((line=bReader.readLine())!=null){
 				sBuffer.append(line);
 			}
-			System.out.println(sBuffer);*/
+			System.out.println(sBuffer);
 //			Document document = new SAXReader().read(iStream);
 //			System.out.println(document);
 		}
