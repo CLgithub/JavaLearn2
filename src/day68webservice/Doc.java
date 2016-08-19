@@ -31,7 +31,7 @@ package day68webservice;
 		希望有一个webservice的服务列表
 	通过webservice框架来实现：axis2、xfire
 	
-使用CXF框架，发布webservice服务，并使用客户端远程访问webservice(详情查看webservice1CXF工程)
+使用CXF框架，发布webservice服务，并使用客户端远程访问webservice(详情查看SMM_5,当还存在问题)
   1. CXF介绍 ：soa的框架
     * cxf 是 Celtrix （ESB框架）和 XFire（webserivice） 合并而成，并且捐给了apache  
     * CxF的核心是org.apache.cxf.Bus(总线)，类似于Spring的 ApplicationContext
