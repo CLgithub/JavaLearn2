@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : locahhost
 Source Server Version : 50712
 Source Host           : localhost:3306
-Source Database       : test0807
+Source Database       : test0824
 
 Target Server Type    : MYSQL
 Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2016-08-07 17:30:12
+Date: 2016-08-24 11:15:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,9 +20,9 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `course`;
 CREATE TABLE `course` (
-  `CNO` varchar(5) NOT NULL,
-  `CNAME` varchar(10) NOT NULL,
-  `TNO` varchar(10) NOT NULL
+  `cid` varchar(5) NOT NULL,
+  `cname` varchar(10) NOT NULL,
+  `tid` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -53,41 +53,41 @@ INSERT INTO `grade` VALUES ('60', '69', 'D');
 INSERT INTO `grade` VALUES ('0', '59', 'E');
 
 -- ----------------------------
--- Table structure for score
+-- Table structure for sc
 -- ----------------------------
-DROP TABLE IF EXISTS `score`;
-CREATE TABLE `score` (
-  `SNO` varchar(3) NOT NULL,
-  `CNO` varchar(5) NOT NULL,
-  `DEGREE` decimal(10,1) NOT NULL
+DROP TABLE IF EXISTS `sc`;
+CREATE TABLE `sc` (
+  `sid` varchar(3) NOT NULL,
+  `cid` varchar(5) NOT NULL,
+  `score` decimal(10,1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of score
+-- Records of sc
 -- ----------------------------
-INSERT INTO `score` VALUES ('103', '3-245', '86.0');
-INSERT INTO `score` VALUES ('105', '3-245', '75.0');
-INSERT INTO `score` VALUES ('109', '3-245', '68.0');
-INSERT INTO `score` VALUES ('103', '3-105', '92.0');
-INSERT INTO `score` VALUES ('105', '3-105', '88.0');
-INSERT INTO `score` VALUES ('109', '3-105', '76.0');
-INSERT INTO `score` VALUES ('101', '3-105', '64.0');
-INSERT INTO `score` VALUES ('107', '3-105', '91.0');
-INSERT INTO `score` VALUES ('108', '3-105', '78.0');
-INSERT INTO `score` VALUES ('101', '6-166', '85.0');
-INSERT INTO `score` VALUES ('107', '6-106', '79.0');
-INSERT INTO `score` VALUES ('108', '6-166', '81.0');
+INSERT INTO `sc` VALUES ('103', '3-245', '86.0');
+INSERT INTO `sc` VALUES ('105', '3-245', '75.0');
+INSERT INTO `sc` VALUES ('109', '3-245', '68.0');
+INSERT INTO `sc` VALUES ('103', '3-105', '92.0');
+INSERT INTO `sc` VALUES ('105', '3-105', '88.0');
+INSERT INTO `sc` VALUES ('109', '3-105', '76.0');
+INSERT INTO `sc` VALUES ('101', '3-105', '64.0');
+INSERT INTO `sc` VALUES ('107', '3-105', '91.0');
+INSERT INTO `sc` VALUES ('108', '3-105', '78.0');
+INSERT INTO `sc` VALUES ('101', '6-166', '85.0');
+INSERT INTO `sc` VALUES ('107', '6-106', '79.0');
+INSERT INTO `sc` VALUES ('108', '6-166', '81.0');
 
 -- ----------------------------
 -- Table structure for student
 -- ----------------------------
 DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student` (
-  `SNO` varchar(3) NOT NULL,
-  `SNAME` varchar(4) NOT NULL,
-  `SSEX` varchar(2) NOT NULL,
-  `SBIRTHDAY` datetime DEFAULT NULL,
-  `CLASS` varchar(5) DEFAULT NULL
+  `sid` varchar(3) NOT NULL,
+  `sname` varchar(4) NOT NULL,
+  `ssex` varchar(2) NOT NULL,
+  `sbirthday` datetime DEFAULT NULL,
+  `class` varchar(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -105,12 +105,12 @@ INSERT INTO `student` VALUES ('103', '陆君', '男', '1974-06-03 00:00:00', '95
 -- ----------------------------
 DROP TABLE IF EXISTS `teacher`;
 CREATE TABLE `teacher` (
-  `TNO` varchar(3) NOT NULL,
-  `TNAME` varchar(4) NOT NULL,
-  `TSEX` varchar(2) NOT NULL,
-  `TBIRTHDAY` datetime NOT NULL,
-  `PROF` varchar(6) DEFAULT NULL,
-  `DEPART` varchar(10) NOT NULL
+  `tid` varchar(3) NOT NULL,
+  `tname` varchar(4) NOT NULL,
+  `tsex` varchar(2) NOT NULL,
+  `tbirthday` datetime NOT NULL,
+  `prof` varchar(6) DEFAULT NULL,
+  `depart` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------

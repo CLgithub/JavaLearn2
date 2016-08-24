@@ -153,41 +153,75 @@ from sc
 	GROUP BY cid
 	ORDER BY avg(score) asc,jgl desc
 20、查询如下课程平均成绩和及格率的百分数(用"1行"显示): 企业管理（001），马克思（002），OO&UML （003），数据库（004） 
-   
+select cid,avg(score)
+	,100 * SUM(
+		case 
+			when score>='60'
+			THEN 1
+			ELSE 0
+		end
+	)/count(score) as jgl
+ from sc GROUP BY cid
 21、查询不同老师所教不同课程平均分从高到低显示 
-  
+select teacher.tname,course.cname,avg(sc.score) as a from 
+	teacher join(sc join course on sc.cid=course.cid)
+	on teacher.tid=course.tid
+	GROUP BY course.cid
+	order by a desc
 22、查询如下课程成绩第 3 名到第 6 名的学生成绩单：企业管理（001），马克思（002），UML （003），数据库（004） 
     [学生ID],[学生姓名],企业管理,马克思,UML,数据库,平均成绩 
    
 23、统计列印各科成绩,各分数段人数:课程ID,课程名称,[100-85],[85-70],[70-60],[ <60] 
-
+select course.cid,course.cname,
+	sum(CASE when score<=100 and score>85 THEN 1 END) as '[100-85]',
+	sum(CASE when score<=85 and score>70 THEN 1 END) as '[85-70]',
+	sum(CASE when score<=70 and score>60 THEN 1 END) as '[70-60]',
+	sum(CASE when score<=60 THEN 1 END) as '[<60]'
+from 
+	sc,course where sc.cid=course.cid
+GROUP BY cname
 24、查询学生平均成绩及其名次 
-  
+select student.sid,student.sname,avg(sc.score) as pj from 
+	student LEFT JOIN sc on student.sid=sc.sid
+GROUP BY sid ORDER BY pj desc
 25、查询各科成绩前三名的记录:(不考虑成绩并列情况) 
-     
+
 26、查询每门课程被选修的学生数 
-
+select cid,count(sid) from sc GROUP BY cid
 27、查询出只选修了一门课程的全部学生的学号和姓名 
-
+select student.sid,student.sname
+	from sc,student where sc.sid=student.sid GROUP BY sid 
+having count(cid)=1
 28、查询男生、女生人数 
-
+select ssex,count(ssex) from student GROUP BY ssex
 29、查询姓“张”的学生名单 
-
+select * from student where sname LIKE '张%'
 30、查询同名同性学生名单，并统计同名人数 
-
+select count(1) from student GROUP BY sname having count(1)>1
 31、1981年出生的学生名单(注：Student表中Sage列的类型是datetime) 
-
+select * from student where sbirthday like '1981%'
 32、查询每门课程的平均成绩，结果按平均成绩升序排列，平均成绩相同时，按课程号降序排列 
- 
+select cid,avg(score) as pj from sc GROUP BY cid 
+ORDER BY pj asc,cid desc
 33、查询平均成绩大于85的所有学生的学号、姓名和平均成绩 
-   
+select student.sid,student.sname,avg(score)
+	from sc,student where sc.sid=student.sid
+GROUP BY sc.sid HAVING avg(score)>'85'
 34、查询课程名称为“数据库”，且分数低于60的学生姓名和分数 
-   
-35、查询所有学生的选课情况； 
-   
+34、查询课程名称为“数据电路”，且分数低于75的学生姓名和分数 
+select student.sname,sc.score
+	from student,sc,course where sc.cid=course.cid and student.sid=sc.sid
+	and sc.score>'75' and course.cname='数据电路'
+35、查询所有学生的选课情况
+select student.sid,student.sname,sc.cid,sc.score,course.cname
+	from student LEFT JOIN (sc join course on sc.cid=course.cid) 
+	on student.sid=sc.sid
+	ORDER BY student.sid
 36、查询任何一门课程成绩在70分以上的姓名、课程名称和分数； 
- 
-37、查询不及格的课程，并按课程号从大到小排列 
+select student.sname,course.cname,sc.score
+	from sc,student,course where sc.sid=student.sid and sc.cid=course.cid
+	and sc.score>'70'
+37、查询不及格的课程，并按课程号从大到小排列
 
 38、查询课程编号为003且课程成绩在80分以上的学生的学号和姓名； 
  
@@ -214,14 +248,3 @@ from sc
 49、检索“004”课程分数小于60，按分数降序排列的同学学号 
  
 50、删除“002”同学的“001”课程的成绩 
-
-
-
-
-
-
-
-
-
-
-
