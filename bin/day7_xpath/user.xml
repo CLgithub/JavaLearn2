@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Users>
-  <user id="001" name="aaa" password="123456"></user>
-  <user id="002" name="bbb" password="456789"></user>
-  <user id="003" name="ccc" password="123789"></user>
-  <user id="004" name="ddd" password="456123"></user>
-</Users>
